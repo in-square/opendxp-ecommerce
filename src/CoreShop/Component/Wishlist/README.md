@@ -6,7 +6,7 @@ CoreShop
 
 ![CoreShop](http://www.coreshop.org/assets/img/logo-full.svg)
 
-CoreShop is an eCommerce Solution for Pimcore. It is build from decoupled components to get highest quality of code. [Read more on coreshop.org](http://www.coreshop.org)
+CoreShop is an eCommerce Solution for OpenDxp. It is build from decoupled components to get highest quality of code. [Read more on coreshop.org](http://www.coreshop.org)
 
 Documentation
 -------------

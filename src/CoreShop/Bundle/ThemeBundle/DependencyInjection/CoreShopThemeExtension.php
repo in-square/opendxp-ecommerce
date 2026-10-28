@@ -20,14 +20,14 @@ namespace CoreShop\Bundle\ThemeBundle\DependencyInjection;
 
 use CoreShop\Bundle\ThemeBundle\Attribute\AsThemeResolver;
 use CoreShop\Bundle\ThemeBundle\DependencyInjection\Compiler\CompositeThemeResolverPass;
-use CoreShop\Bundle\ThemeBundle\Service\PimcoreDocumentPropertyResolver;
-use CoreShop\Bundle\ThemeBundle\Service\PimcoreSiteThemeResolver;
+use CoreShop\Bundle\ThemeBundle\Service\OpenDxpDocumentPropertyResolver;
+use CoreShop\Bundle\ThemeBundle\Service\OpenDxpSiteThemeResolver;
 use CoreShop\Bundle\ThemeBundle\Service\ThemeResolverInterface;
 use CoreShop\Component\Registry\Autoconfiguration;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader;
-use Symfony\Component\HttpKernel\DependencyInjection\Extension;
+use Symfony\Component\DependencyInjection\Extension\Extension;
 
 class CoreShopThemeExtension extends Extension
 {
@@ -38,12 +38,12 @@ class CoreShopThemeExtension extends Extension
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));
         $loader->load('services.yml');
 
-        if (false === $configs['default_resolvers']['pimcore_site']) {
-            $container->removeDefinition(PimcoreSiteThemeResolver::class);
+        if (false === $configs['default_resolvers']['opendxp_site']) {
+            $container->removeDefinition(OpenDxpSiteThemeResolver::class);
         }
 
-        if (false === $configs['default_resolvers']['pimcore_document_property']) {
-            $container->removeDefinition(PimcoreDocumentPropertyResolver::class);
+        if (false === $configs['default_resolvers']['opendxp_document_property']) {
+            $container->removeDefinition(OpenDxpDocumentPropertyResolver::class);
         }
 
         Autoconfiguration::registerForAutoConfiguration(

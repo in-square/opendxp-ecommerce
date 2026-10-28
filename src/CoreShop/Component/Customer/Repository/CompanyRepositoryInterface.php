@@ -19,9 +19,9 @@ declare(strict_types=1);
 namespace CoreShop\Component\Customer\Repository;
 
 use CoreShop\Component\Customer\Model\CompanyInterface;
-use CoreShop\Component\Resource\Repository\PimcoreRepositoryInterface;
+use CoreShop\Component\Resource\Repository\OpenDxpRepositoryInterface;
 
-interface CompanyRepositoryInterface extends PimcoreRepositoryInterface
+interface CompanyRepositoryInterface extends OpenDxpRepositoryInterface
 {
     public function findCompanyByName(string $name): ?CompanyInterface;
 }

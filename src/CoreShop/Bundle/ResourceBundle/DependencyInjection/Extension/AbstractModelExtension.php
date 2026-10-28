@@ -18,13 +18,13 @@ declare(strict_types=1);
 
 namespace CoreShop\Bundle\ResourceBundle\DependencyInjection\Extension;
 
-use CoreShop\Bundle\PimcoreBundle\DependencyInjection\Extension\AbstractPimcoreExtension;
+use CoreShop\Bundle\OpenDxpBundle\DependencyInjection\Extension\AbstractOpenDxpExtension;
 use CoreShop\Bundle\ResourceBundle\CoreShopResourceBundle;
 use CoreShop\Bundle\ResourceBundle\DependencyInjection\Driver\DriverProvider;
 use CoreShop\Component\Resource\Metadata\Metadata;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
-abstract class AbstractModelExtension extends AbstractPimcoreExtension
+abstract class AbstractModelExtension extends AbstractOpenDxpExtension
 {
     /**
      * @param string           $applicationName
@@ -65,34 +65,34 @@ abstract class AbstractModelExtension extends AbstractPimcoreExtension
     /**
      * @param string           $applicationName
      */
-    protected function registerPimcoreModels($applicationName, array $models, ContainerBuilder $container): void
+    protected function registerOpenDxpModels($applicationName, array $models, ContainerBuilder $container): void
     {
-        $container->setParameter(sprintf('%s.driver.%s', $this->getAlias(), 'pimcore'), true);
-        $container->setParameter(sprintf('%s.driver', $this->getAlias()), 'pimcore');
+        $container->setParameter(sprintf('%s.driver.%s', $this->getAlias(), 'opendxp'), true);
+        $container->setParameter(sprintf('%s.driver', $this->getAlias()), 'opendxp');
 
         foreach ($models as $modelName => $modelConfig) {
             $alias = $applicationName . '.' . $modelName;
-            $modelConfig = array_merge(['driver' => 'pimcore', 'alias' => $this->getAlias()], $modelConfig);
+            $modelConfig = array_merge(['driver' => 'opendxp', 'alias' => $this->getAlias()], $modelConfig);
 
-            $modelConfig['pimcore_class'] = match ($modelConfig['classes']['type']) {
-                CoreShopResourceBundle::PIMCORE_MODEL_TYPE_FIELD_COLLECTION => str_replace(
-                    'Pimcore\Model\DataObject\Fieldcollection\Data\\',
+            $modelConfig['opendxp_class'] = match ($modelConfig['classes']['type']) {
+                CoreShopResourceBundle::OPENDXP_MODEL_TYPE_FIELD_COLLECTION => str_replace(
+                    'OpenDxp\Model\DataObject\Fieldcollection\Data\\',
                     '',
                     $modelConfig['classes']['model'],
                 ),
-                CoreShopResourceBundle::PIMCORE_MODEL_TYPE_BRICK => str_replace(
-                    'Pimcore\Model\DataObject\Objectbrick\Data\\',
+                CoreShopResourceBundle::OPENDXP_MODEL_TYPE_BRICK => str_replace(
+                    'OpenDxp\Model\DataObject\Objectbrick\Data\\',
                     '',
                     $modelConfig['classes']['model'],
                 ),
                 default => str_replace(
-                    'Pimcore\Model\DataObject\\',
+                    'OpenDxp\Model\DataObject\\',
                     '',
                     $modelConfig['classes']['model'],
                 ),
             };
 
-            foreach (['coreshop.all.pimcore_classes', sprintf('%s.pimcore_classes', $applicationName)] as $parameter) {
+            foreach (['coreshop.all.opendxp_classes', sprintf('%s.opendxp_classes', $applicationName)] as $parameter) {
                 $models = $container->hasParameter($parameter) ? $container->getParameter($parameter) : [];
                 $models = array_merge($models, [$alias => $modelConfig]);
                 $container->setParameter($parameter, $models);
@@ -129,15 +129,15 @@ abstract class AbstractModelExtension extends AbstractPimcoreExtension
         }
     }
 
-    protected function registerPimcoreResources($applicationName, $bundleResources, ContainerBuilder $container): void
+    protected function registerOpenDxpResources($applicationName, $bundleResources, ContainerBuilder $container): void
     {
-        parent::registerPimcoreResources($applicationName, $bundleResources, $container);
+        parent::registerOpenDxpResources($applicationName, $bundleResources, $container);
 
         if (array_key_exists('install', $bundleResources)) {
             foreach ($bundleResources['install'] as $type => $value) {
-                $applicationParameter = sprintf('%s.pimcore.admin.install.%s', $applicationName, $type);
-                //$aliasParameter = sprintf('%s.pimcore.admin.install.%s', $this->getAlias(), $type);
-                $globalParameter = sprintf('coreshop.all.pimcore.admin.install.%s', $type);
+                $applicationParameter = sprintf('%s.opendxp.admin.install.%s', $applicationName, $type);
+                //$aliasParameter = sprintf('%s.opendxp.admin.install.%s', $this->getAlias(), $type);
+                $globalParameter = sprintf('coreshop.all.opendxp.admin.install.%s', $type);
 
                 foreach ([$applicationParameter, $globalParameter] as $containerParameter) {
                     $resources = [];

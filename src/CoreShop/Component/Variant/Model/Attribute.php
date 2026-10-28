@@ -18,8 +18,8 @@ declare(strict_types=1);
 
 namespace CoreShop\Component\Variant\Model;
 
-use CoreShop\Component\Resource\Pimcore\Model\AbstractPimcoreModel;
+use CoreShop\Component\Resource\OpenDxp\Model\AbstractOpenDxpModel;
 
-abstract class Attribute extends AbstractPimcoreModel implements AttributeInterface
+abstract class Attribute extends AbstractOpenDxpModel implements AttributeInterface
 {
 }

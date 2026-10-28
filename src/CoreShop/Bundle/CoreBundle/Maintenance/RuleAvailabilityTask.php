@@ -20,7 +20,7 @@ namespace CoreShop\Bundle\CoreBundle\Maintenance;
 
 use CoreShop\Bundle\RuleBundle\Processor\RuleAvailabilityProcessorInterface;
 use CoreShop\Component\Core\Configuration\ConfigurationServiceInterface;
-use Pimcore\Maintenance\TaskInterface;
+use OpenDxp\Maintenance\TaskInterface;
 
 final class RuleAvailabilityTask implements TaskInterface
 {

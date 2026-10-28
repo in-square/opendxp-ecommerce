@@ -30,8 +30,8 @@ use CoreShop\Bundle\ProductBundle\Form\Type\ProductSpecificPriceRuleTranslationT
 use CoreShop\Bundle\ProductBundle\Form\Type\ProductSpecificPriceRuleType;
 use CoreShop\Bundle\ProductBundle\Form\Type\Unit\ProductUnitTranslationType;
 use CoreShop\Bundle\ProductBundle\Form\Type\Unit\ProductUnitType;
-use CoreShop\Bundle\ProductBundle\Pimcore\Repository\CategoryRepository;
-use CoreShop\Bundle\ProductBundle\Pimcore\Repository\ProductRepository;
+use CoreShop\Bundle\ProductBundle\OpenDxp\Repository\CategoryRepository;
+use CoreShop\Bundle\ProductBundle\OpenDxp\Repository\ProductRepository;
 use CoreShop\Bundle\ResourceBundle\Controller\ResourceController;
 use CoreShop\Bundle\ResourceBundle\CoreShopResourceBundle;
 use CoreShop\Component\Product\Model\CategoryInterface;
@@ -56,7 +56,7 @@ use CoreShop\Component\Product\Model\ProductUnitInterface;
 use CoreShop\Component\Product\Model\ProductUnitTranslation;
 use CoreShop\Component\Product\Model\ProductUnitTranslationInterface;
 use CoreShop\Component\Resource\Factory\Factory;
-use CoreShop\Component\Resource\Factory\PimcoreFactory;
+use CoreShop\Component\Resource\Factory\OpenDxpFactory;
 use CoreShop\Component\Resource\Factory\TranslatableFactory;
 use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
@@ -77,7 +77,7 @@ final class Configuration implements ConfigurationInterface
         ;
 
         $this->addModelsSection($rootNode);
-        $this->addPimcoreResourcesSection($rootNode);
+        $this->addOpenDxpResourcesSection($rootNode);
         $this->addStack($rootNode);
 
         return $treeBuilder;
@@ -295,7 +295,7 @@ final class Configuration implements ConfigurationInterface
                         ->end()
                     ->end()
                 ->end()
-                ->arrayNode('pimcore')
+                ->arrayNode('opendxp')
                     ->addDefaultsIfNotSet()
                     ->children()
                         ->arrayNode('product')
@@ -314,14 +314,14 @@ final class Configuration implements ConfigurationInterface
                                 ->arrayNode('classes')
                                     ->addDefaultsIfNotSet()
                                     ->children()
-                                        ->scalarNode('model')->defaultValue('Pimcore\Model\DataObject\CoreShopProduct')->cannotBeEmpty()->end()
-                                        ->scalarNode('pimcore_class_name')->end()
+                                        ->scalarNode('model')->defaultValue('OpenDxp\Model\DataObject\CoreShopProduct')->cannotBeEmpty()->end()
+                                        ->scalarNode('opendxp_class_name')->end()
                                         ->scalarNode('interface')->defaultValue(ProductInterface::class)->cannotBeEmpty()->end()
-                                        ->scalarNode('factory')->defaultValue(PimcoreFactory::class)->cannotBeEmpty()->end()
+                                        ->scalarNode('factory')->defaultValue(OpenDxpFactory::class)->cannotBeEmpty()->end()
                                         ->scalarNode('admin_controller')->defaultValue(ResourceController::class)->cannotBeEmpty()->end()
                                         ->scalarNode('repository')->defaultValue(ProductRepository::class)->cannotBeEmpty()->end()
-                                        ->scalarNode('install_file')->defaultValue('@CoreShopProductBundle/Resources/install/pimcore/classes/CoreShopProduct.json')->end()
-                                        ->scalarNode('type')->defaultValue(CoreShopResourceBundle::PIMCORE_MODEL_TYPE_OBJECT)->cannotBeOverwritten(true)->end()
+                                        ->scalarNode('install_file')->defaultValue('@CoreShopProductBundle/Resources/install/opendxp/classes/CoreShopProduct.json')->end()
+                                        ->scalarNode('type')->defaultValue(CoreShopResourceBundle::OPENDXP_MODEL_TYPE_OBJECT)->cannotBeOverwritten(true)->end()
                                     ->end()
                                 ->end()
                             ->end()
@@ -342,13 +342,13 @@ final class Configuration implements ConfigurationInterface
                                 ->arrayNode('classes')
                                     ->addDefaultsIfNotSet()
                                     ->children()
-                                        ->scalarNode('model')->defaultValue('Pimcore\Model\DataObject\CoreShopCategory')->cannotBeEmpty()->end()
-                                        ->scalarNode('pimcore_class_name')->end()
+                                        ->scalarNode('model')->defaultValue('OpenDxp\Model\DataObject\CoreShopCategory')->cannotBeEmpty()->end()
+                                        ->scalarNode('opendxp_class_name')->end()
                                         ->scalarNode('interface')->defaultValue(CategoryInterface::class)->cannotBeEmpty()->end()
-                                        ->scalarNode('factory')->defaultValue(PimcoreFactory::class)->cannotBeEmpty()->end()
+                                        ->scalarNode('factory')->defaultValue(OpenDxpFactory::class)->cannotBeEmpty()->end()
                                         ->scalarNode('repository')->defaultValue(CategoryRepository::class)->end()
-                                        ->scalarNode('install_file')->defaultValue('@CoreShopProductBundle/Resources/install/pimcore/classes/CoreShopCategory.json')->end()
-                                        ->scalarNode('type')->defaultValue(CoreShopResourceBundle::PIMCORE_MODEL_TYPE_OBJECT)->cannotBeOverwritten(true)->end()
+                                        ->scalarNode('install_file')->defaultValue('@CoreShopProductBundle/Resources/install/opendxp/classes/CoreShopCategory.json')->end()
+                                        ->scalarNode('type')->defaultValue(CoreShopResourceBundle::OPENDXP_MODEL_TYPE_OBJECT)->cannotBeOverwritten(true)->end()
                                     ->end()
                                 ->end()
                             ->end()
@@ -361,13 +361,13 @@ final class Configuration implements ConfigurationInterface
                                 ->arrayNode('classes')
                                     ->addDefaultsIfNotSet()
                                     ->children()
-                                        ->scalarNode('model')->defaultValue('Pimcore\Model\DataObject\CoreShopManufacturer')->cannotBeEmpty()->end()
-                                        ->scalarNode('pimcore_class_name')->end()
+                                        ->scalarNode('model')->defaultValue('OpenDxp\Model\DataObject\CoreShopManufacturer')->cannotBeEmpty()->end()
+                                        ->scalarNode('opendxp_class_name')->end()
                                         ->scalarNode('interface')->defaultValue(ManufacturerInterface::class)->cannotBeEmpty()->end()
-                                        ->scalarNode('factory')->defaultValue(PimcoreFactory::class)->cannotBeEmpty()->end()
+                                        ->scalarNode('factory')->defaultValue(OpenDxpFactory::class)->cannotBeEmpty()->end()
                                         ->scalarNode('repository')->cannotBeEmpty()->end()
-                                        ->scalarNode('install_file')->defaultValue('@CoreShopProductBundle/Resources/install/pimcore/classes/CoreShopManufacturer.json')->end()
-                                        ->scalarNode('type')->defaultValue(CoreShopResourceBundle::PIMCORE_MODEL_TYPE_OBJECT)->cannotBeOverwritten(true)->end()
+                                        ->scalarNode('install_file')->defaultValue('@CoreShopProductBundle/Resources/install/opendxp/classes/CoreShopManufacturer.json')->end()
+                                        ->scalarNode('type')->defaultValue(CoreShopResourceBundle::OPENDXP_MODEL_TYPE_OBJECT)->cannotBeOverwritten(true)->end()
                                     ->end()
                                 ->end()
                             ->end()
@@ -378,10 +378,10 @@ final class Configuration implements ConfigurationInterface
         ;
     }
 
-    private function addPimcoreResourcesSection(ArrayNodeDefinition $node): void
+    private function addOpenDxpResourcesSection(ArrayNodeDefinition $node): void
     {
         $node->children()
-            ->arrayNode('pimcore_admin')
+            ->arrayNode('opendxp_admin')
                 ->addDefaultsIfNotSet()
                 ->children()
                     ->arrayNode('js')

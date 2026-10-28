@@ -18,8 +18,8 @@ declare(strict_types=1);
 
 namespace CoreShop\Bundle\StorageListBundle\EventListener;
 
-use CoreShop\Component\Resource\Repository\PimcoreRepositoryInterface;
-use Pimcore\Cache;
+use CoreShop\Component\Resource\Repository\OpenDxpRepositoryInterface;
+use OpenDxp\Cache;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpKernel\Event\ResponseEvent;
 use Symfony\Component\HttpKernel\KernelEvents;
@@ -27,8 +27,8 @@ use Symfony\Component\HttpKernel\KernelEvents;
 final class CacheListener implements EventSubscriberInterface
 {
     public function __construct(
-        private PimcoreRepositoryInterface $storageListRepository,
-        private PimcoreRepositoryInterface $storageListItemRepository,
+        private OpenDxpRepositoryInterface $storageListRepository,
+        private OpenDxpRepositoryInterface $storageListItemRepository,
     ) {
     }
 

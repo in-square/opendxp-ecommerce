@@ -7,6 +7,7 @@ on:
 
 jobs:
   coding-standard:
+    if: github.repository == 'coreshop/CoreShop'
     runs-on: ubuntu-latest
     name: "Coding standard refactor"
 
@@ -25,7 +26,7 @@ jobs:
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: 8.1
+          php-version: 8.3
 
       - name: Install PHP dependencies
         run: composer update --no-interaction --no-scripts

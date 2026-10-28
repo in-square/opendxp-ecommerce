@@ -19,7 +19,7 @@ declare(strict_types=1);
 namespace CoreShop\Bundle\OrderBundle\Controller;
 
 use CoreShop\Bundle\OrderBundle\Form\Type\OrderShipmentCreationType;
-use CoreShop\Bundle\ResourceBundle\Controller\PimcoreController;
+use CoreShop\Bundle\ResourceBundle\Controller\OpenDxpController;
 use CoreShop\Bundle\ResourceBundle\Form\Helper\ErrorSerializer;
 use CoreShop\Bundle\WorkflowBundle\Manager\StateMachineManager;
 use CoreShop\Bundle\WorkflowBundle\Manager\StateMachineManagerInterface;
@@ -35,7 +35,7 @@ use CoreShop\Component\Order\ShipmentStates;
 use CoreShop\Component\Order\Transformer\OrderDocumentTransformerInterface;
 use CoreShop\Component\Order\Transformer\OrderToShipmentTransformer;
 use CoreShop\Component\Resource\Factory\FactoryInterface;
-use CoreShop\Component\Resource\Repository\PimcoreRepositoryInterface;
+use CoreShop\Component\Resource\Repository\OpenDxpRepositoryInterface;
 use Symfony\Component\DependencyInjection\Attribute\Autowire;
 use Symfony\Component\EventDispatcher\GenericEvent;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -45,7 +45,7 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Contracts\EventDispatcher\EventDispatcherInterface;
 use Symfony\Contracts\Service\Attribute\SubscribedService;
 
-class OrderShipmentController extends PimcoreController
+class OrderShipmentController extends OpenDxpController
 {
     public function getShipAbleItemsAction(Request $request): JsonResponse
     {
@@ -207,7 +207,7 @@ class OrderShipmentController extends PimcoreController
         return $this->container->get('coreshop.order.shipment.processable');
     }
 
-    protected function getOrderRepository(): PimcoreRepositoryInterface
+    protected function getOrderRepository(): OpenDxpRepositoryInterface
     {
         return $this->container->get('coreshop.repository.order');
     }

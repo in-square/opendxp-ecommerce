@@ -20,8 +20,8 @@ namespace CoreShop\Bundle\CoreBundle\EventListener;
 
 use CoreShop\Component\Core\Model\CustomerInterface;
 use CoreShop\Component\Order\Repository\OrderRepositoryInterface;
-use Pimcore\Bundle\AdminBundle\Event\Model\DataObjectDeleteInfoEvent;
-use Pimcore\Event\Model\DataObjectEvent;
+use OpenDxp\Bundle\AdminBundle\Event\Model\DataObjectDeleteInfoEvent;
+use OpenDxp\Event\Model\DataObjectEvent;
 
 final class CustomerOrderDeletionListener
 {

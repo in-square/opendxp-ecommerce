@@ -24,7 +24,7 @@ use CoreShop\Component\Core\Report\ExportReportInterface;
 use CoreShop\Component\Core\Report\ReportInterface;
 use CoreShop\Component\Locale\Context\LocaleContextInterface;
 use CoreShop\Component\Order\OrderSaleStates;
-use CoreShop\Component\Resource\Repository\PimcoreRepositoryInterface;
+use CoreShop\Component\Resource\Repository\OpenDxpRepositoryInterface;
 use CoreShop\Component\Resource\Repository\RepositoryInterface;
 use Doctrine\DBAL\Connection;
 use Symfony\Component\HttpFoundation\ParameterBag;
@@ -36,8 +36,8 @@ final class AbandonedCartsReport implements ReportInterface, ExportReportInterfa
     public function __construct(
         private RepositoryInterface $storeRepository,
         private Connection $db,
-        private PimcoreRepositoryInterface $cartRepository,
-        private PimcoreRepositoryInterface $customerRepository,
+        private OpenDxpRepositoryInterface $cartRepository,
+        private OpenDxpRepositoryInterface $customerRepository,
         private LocaleContextInterface $localeContext,
     ) {
     }

@@ -21,7 +21,7 @@ namespace CoreShop\Bundle\TaxationBundle;
 use CoreShop\Bundle\MoneyBundle\CoreShopMoneyBundle;
 use CoreShop\Bundle\ResourceBundle\AbstractResourceBundle;
 use CoreShop\Bundle\ResourceBundle\CoreShopResourceBundle;
-use Pimcore\HttpKernel\BundleCollection\BundleCollection;
+use OpenDxp\HttpKernel\BundleCollection\BundleCollection;
 
 final class CoreShopTaxationBundle extends AbstractResourceBundle
 {

@@ -2,11 +2,11 @@ default:
     suites:
         domain_cache:
             contexts:
-                - coreshop.behat.context.hook.pimcore_setup
+                - coreshop.behat.context.hook.opendxp_setup
                 - coreshop.behat.context.hook.coreshop_setup
 
                 - coreshop.behat.context.hook.doctrine_orm
-                - coreshop.behat.context.hook.pimcore_dao
+                - coreshop.behat.context.hook.opendxp_dao
 
                 - coreshop.behat.context.transform.shared_storage
                 - coreshop.behat.context.transform.product
@@ -40,7 +40,7 @@ default:
                 - coreshop.behat.context.setup.tax_rate
                 - coreshop.behat.context.setup.tax_rule_group
                 - coreshop.behat.context.setup.product_unit
-                - coreshop.behat.context.setup.pimcore_class
+                - coreshop.behat.context.setup.opendxp_class
                 - coreshop.behat.context.setup.cart
                 - coreshop.behat.context.setup.product_quantity_price_rule
                 - coreshop.behat.context.setup.variant

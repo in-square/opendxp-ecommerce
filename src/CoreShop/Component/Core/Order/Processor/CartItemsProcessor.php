@@ -30,7 +30,7 @@ use CoreShop\Component\ProductQuantityPriceRules\Detector\QuantityReferenceDetec
 use CoreShop\Component\ProductQuantityPriceRules\Exception\NoPriceFoundException;
 use CoreShop\Component\ProductQuantityPriceRules\Exception\NoRuleFoundException;
 use CoreShop\Component\ProductQuantityPriceRules\Model\QuantityRangePriceAwareInterface;
-use Pimcore\Model\DataObject\Fieldcollection;
+use OpenDxp\Model\DataObject\Fieldcollection;
 
 final class CartItemsProcessor implements CartProcessorInterface
 {

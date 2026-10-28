@@ -22,7 +22,7 @@ use CoreShop\Component\Resource\Model\ResourceInterface;
 use CoreShop\Component\Resource\Model\TimestampableInterface;
 use CoreShop\Component\Resource\Model\TranslatableInterface;
 use Doctrine\Common\Collections\Collection;
-use Pimcore\Model\Asset;
+use OpenDxp\Model\Asset;
 
 interface CarrierInterface extends ResourceInterface, TimestampableInterface, TranslatableInterface
 {

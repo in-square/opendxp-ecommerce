@@ -191,7 +191,7 @@ AppBundle\Model\CustomEntityTranslation:
 
 ### routing.yml
 
-Create `routing.yml` in `AppBundle/Resources/config/pimcore`.
+Create `routing.yml` in `AppBundle/Resources/config/opendxp`.
 
 ```yaml
 app_custom_entity:

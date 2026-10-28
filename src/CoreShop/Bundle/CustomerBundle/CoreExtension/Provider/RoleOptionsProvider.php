@@ -18,28 +18,24 @@ declare(strict_types=1);
 
 namespace CoreShop\Bundle\CustomerBundle\CoreExtension\Provider;
 
-use Pimcore\Model\DataObject\ClassDefinition\Data;
-use Pimcore\Model\DataObject\ClassDefinition\DynamicOptionsProvider\MultiSelectOptionsProviderInterface;
+use OpenDxp\Model\DataObject\ClassDefinition\Data;
+use OpenDxp\Model\DataObject\ClassDefinition\DynamicOptionsProvider\SelectOptionsProviderInterface;
 
-class RoleOptionsProvider implements MultiSelectOptionsProviderInterface
+class RoleOptionsProvider implements SelectOptionsProviderInterface
 {
     protected array $originalRoles;
 
     protected array $invalidRoles = [
-        'ROLE_PIMCORE_ADMIN',
+        'ROLE_OPENDXP_ADMIN',
     ];
 
     public function __construct(
         ) {
-        $systemRoles = \Pimcore::getKernel()->getContainer()->getParameter('security.role_hierarchy.roles');
+        $systemRoles = \OpenDxp::getKernel()->getContainer()->getParameter('security.role_hierarchy.roles');
         $this->originalRoles = array_diff_key($systemRoles, array_flip($this->invalidRoles));
     }
 
-    /**
-     * @param array $context
-     * @param Data  $fieldDefinition
-     */
-    public function getOptions($context, $fieldDefinition): array
+    public function getOptions(array $context, Data $fieldDefinition): array
     {
         $roles = [];
 
@@ -63,20 +59,12 @@ class RoleOptionsProvider implements MultiSelectOptionsProviderInterface
         return $result;
     }
 
-    /**
-     * @param array $context
-     * @param Data  $fieldDefinition
-     */
-    public function hasStaticOptions($context, $fieldDefinition): bool
+    public function hasStaticOptions(array $context, Data $fieldDefinition): bool
     {
         return false;
     }
 
-    /**
-     * @param array $context
-     * @param Data  $fieldDefinition
-     */
-    public function getDefaultValue($context, $fieldDefinition): string
+    public function getDefaultValue(array $context, Data $fieldDefinition): string
     {
         return 'ROLE_USER';
     }

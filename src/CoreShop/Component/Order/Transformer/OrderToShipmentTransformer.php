@@ -24,11 +24,11 @@ use CoreShop\Component\Order\Model\OrderInterface;
 use CoreShop\Component\Order\Model\OrderItemInterface;
 use CoreShop\Component\Order\Model\OrderShipmentInterface;
 use CoreShop\Component\Order\NumberGenerator\NumberGeneratorInterface;
-use CoreShop\Component\Pimcore\DataObject\VersionHelper;
-use CoreShop\Component\Resource\Factory\PimcoreFactoryInterface;
-use CoreShop\Component\Resource\Repository\PimcoreRepositoryInterface;
+use CoreShop\Component\OpenDxp\DataObject\VersionHelper;
+use CoreShop\Component\Resource\Factory\OpenDxpFactoryInterface;
+use CoreShop\Component\Resource\Repository\OpenDxpRepositoryInterface;
 use CoreShop\Component\Resource\Service\FolderCreationServiceInterface;
-use Pimcore\Model\DataObject\Service;
+use OpenDxp\Model\DataObject\Service;
 use Webmozart\Assert\Assert;
 
 class OrderToShipmentTransformer implements OrderDocumentTransformerInterface
@@ -37,8 +37,8 @@ class OrderToShipmentTransformer implements OrderDocumentTransformerInterface
         protected OrderDocumentItemTransformerInterface $orderItemToShipmentItemTransformer,
         protected NumberGeneratorInterface $numberGenerator,
         protected FolderCreationServiceInterface $folderCreationService,
-        protected PimcoreRepositoryInterface $orderItemRepository,
-        protected PimcoreFactoryInterface $shipmentItemFactory,
+        protected OpenDxpRepositoryInterface $orderItemRepository,
+        protected OpenDxpFactoryInterface $shipmentItemFactory,
         protected TransformerEventDispatcherInterface $eventDispatcher,
     ) {
     }
@@ -69,7 +69,7 @@ class OrderToShipmentTransformer implements OrderDocumentTransformerInterface
         $document->setShipmentDate(Carbon::now());
 
         /*
-         * We need to save the order twice in order to create the object in the tree for pimcore
+         * We need to save the order twice in order to create the object in the tree for opendxp
          */
         VersionHelper::useVersioning(function () use ($document) {
             $document->save();

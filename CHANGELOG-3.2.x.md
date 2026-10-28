@@ -16,7 +16,7 @@
 * [FrontendBundle] add check for currency in switch action (https://github.com/coreshop/CoreShop/commit/f4cbe978a906fa95c426cd7cb953e0434a178d63)
 
 # 3.2.16
-* [PimcoreBundle] fix MultiSelect (check for existing store) by @breakone in https://github.com/coreshop/CoreShop/pull/2754
+* [OpenDxpBundle] fix MultiSelect (check for existing store) by @breakone in https://github.com/coreshop/CoreShop/pull/2754
 * [priceNull - 3.2] - add listener for null/empty price on field by @codingioanniskrikos in https://github.com/coreshop/CoreShop/pull/2757
 * [ResourceBundle] Version Marshalling for FieldCollections by @dpfaffenbauer in https://github.com/coreshop/CoreShop/pull/2768
 
@@ -24,12 +24,12 @@
 * [PayumBundle] remove payment_state processing to confirm orders by @dpfaffenbauer in https://github.com/coreshop/CoreShop/pull/2743
 
 # 3.2.14
-* [Pimcore] introduce LocalizedFallbackHelper by @dpfaffenbauer in https://github.com/coreshop/CoreShop/pull/2723
+* [OpenDxp] introduce LocalizedFallbackHelper by @dpfaffenbauer in https://github.com/coreshop/CoreShop/pull/2723
 * [Translations] add missing translations by @dpfaffenbauer in https://github.com/coreshop/CoreShop/pull/2721
 * [Payum] 2.6 compatibility by @dpfaffenbauer in https://github.com/coreshop/CoreShop/pull/2722
 
 # 3.2.13
-* [Currency/Money] implement Pimcore Grid Column by @dpfaffenbauer in https://github.com/coreshop/CoreShop/pull/2686
+* [Currency/Money] implement OpenDxp Grid Column by @dpfaffenbauer in https://github.com/coreshop/CoreShop/pull/2686
 * [StorageList] make sure to remove StorageList from Session on Logout by @dpfaffenbauer in https://github.com/coreshop/CoreShop/pull/2684
 * [InventoryBundle] add stock label renderer and hide onHand field by @dpfaffenbauer in https://github.com/coreshop/CoreShop/pull/2690
 * [InventoryBundle] add translations for stock label #2 by @dpfaffenbauer in https://github.com/coreshop/CoreShop/pull/2691
@@ -51,7 +51,7 @@
 
 ## 3.2.9
 * [PaymentBundle] fix null title for payment provider by @dpfaffenbauer in https://github.com/coreshop/CoreShop/pull/2640
-* [Pimcore] CoreShop 3 compatibility only with Pimcore 10.6 by @dpfaffenbauer in https://github.com/coreshop/CoreShop/pull/2644
+* [OpenDxp] CoreShop 3 compatibility only with OpenDxp 10.6 by @dpfaffenbauer in https://github.com/coreshop/CoreShop/pull/2644
 
 ## 3.2.8
 * [CoreBundle] fix PaymentWorkflow Listener to trigger state transition conditions by @dpfaffenbauer in https://github.com/coreshop/CoreShop/pull/2601
@@ -74,13 +74,13 @@
 
 ## 3.2.6
 * [Tests] add test for stock tracked products in checkout by @dpfaffenbauer in https://github.com/coreshop/CoreShop/pull/2560
-* [Tests] test only latest pimcore with highest deps for 3.2 by @dpfaffenbauer in https://github.com/coreshop/CoreShop/pull/2559
+* [Tests] test only latest opendxp with highest deps for 3.2 by @dpfaffenbauer in https://github.com/coreshop/CoreShop/pull/2559
 * Increase MessengerBundle Receivers combobox width by @NiklasBr in https://github.com/coreshop/CoreShop/pull/2567
 * Updated CachedStoreContext.php by @kamil-karkus in https://github.com/coreshop/CoreShop/pull/2565
 * [Core] fix price calculation with immutables and adjustments by @dpfaffenbauer in https://github.com/coreshop/CoreShop/pull/2573
 
 ## 3.2.5
-* [Migration] [Migration] fix Staticroute Migration for Pimcore 10 by @dpfaffenbauer in https://github.com/coreshop/CoreShop/pull/2550
+* [Migration] [Migration] fix Staticroute Migration for OpenDxp 10 by @dpfaffenbauer in https://github.com/coreshop/CoreShop/pull/2550
 
 ## 3.2.4
 * [CoreBundle] fix priority of coreshop_payment_token route by @dpfaffenbauer in https://github.com/coreshop/CoreShop/pull/2542

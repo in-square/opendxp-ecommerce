@@ -19,7 +19,7 @@ declare(strict_types=1);
 namespace CoreShop\Bundle\OrderBundle\Controller;
 
 use CoreShop\Bundle\OrderBundle\Form\Type\CartCreationType;
-use CoreShop\Bundle\ResourceBundle\Controller\PimcoreController;
+use CoreShop\Bundle\ResourceBundle\Controller\OpenDxpController;
 use CoreShop\Bundle\ResourceBundle\Form\Helper\ErrorSerializer;
 use CoreShop\Bundle\WorkflowBundle\Manager\StateMachineManagerInterface;
 use CoreShop\Component\Address\Formatter\AddressFormatterInterface;
@@ -34,12 +34,12 @@ use CoreShop\Component\Order\Model\OrderItemInterface;
 use CoreShop\Component\Order\OrderSaleTransitions;
 use CoreShop\Component\Order\OrderTransitions;
 use CoreShop\Component\Order\Processor\CartProcessorInterface;
-use CoreShop\Component\Pimcore\DataObject\DataLoader;
-use CoreShop\Component\Pimcore\DataObject\InheritanceHelper;
+use CoreShop\Component\OpenDxp\DataObject\DataLoader;
+use CoreShop\Component\OpenDxp\DataObject\InheritanceHelper;
 use CoreShop\Component\Resource\Factory\FactoryInterface;
 use CoreShop\Component\Store\Model\StoreInterface;
-use Pimcore\Model\DataObject\Concrete;
-use Pimcore\Security\User\TokenStorageUserResolver;
+use OpenDxp\Model\DataObject\Concrete;
+use OpenDxp\Security\User\TokenStorageUserResolver;
 use Symfony\Component\DependencyInjection\Attribute\Autowire;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -47,7 +47,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 use Symfony\Contracts\Service\Attribute\SubscribedService;
 
-class OrderCreationController extends PimcoreController
+class OrderCreationController extends OpenDxpController
 {
     protected AddressFormatterInterface $addressFormatter;
 
@@ -337,7 +337,7 @@ class OrderCreationController extends PimcoreController
     public static function getSubscribedServices(): array
     {
         return parent::getSubscribedServices() + [
-                new SubscribedService('Pimcore\Security\User\TokenStorageUserResolver', TokenStorageUserResolver::class, attributes: new Autowire(service:'Pimcore\Security\User\TokenStorageUserResolver')),
+                new SubscribedService('OpenDxp\Security\User\TokenStorageUserResolver', TokenStorageUserResolver::class, attributes: new Autowire(service:'OpenDxp\Security\User\TokenStorageUserResolver')),
                 new SubscribedService('CoreShop\Component\Address\Formatter\AddressFormatter', TokenStorageUserResolver::class, attributes: new Autowire(service:'CoreShop\Component\Address\Formatter\AddressFormatter')),
             ];
     }

@@ -1,6 +1,6 @@
 #!/bin/bash
 
 composer install
-vendor/bin/pimcore-install --no-interaction
+vendor/bin/opendxp-install --no-interaction
 bin/console coreshop:install
 bin/console coreshop:install:demo

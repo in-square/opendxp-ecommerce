@@ -1,7 +1,7 @@
 # eCommerce Tracking
 
 CoreShop implements tracking for analytics and Google Tag Manager, integrating seamlessly as soon as Tag Manager or
-Analytics is enabled in Pimcore. By default, all ecommerce trackers are disabled and need to be manually activated.
+Analytics is enabled in OpenDxp. By default, all ecommerce trackers are disabled and need to be manually activated.
 
 ## Available Trackers
 

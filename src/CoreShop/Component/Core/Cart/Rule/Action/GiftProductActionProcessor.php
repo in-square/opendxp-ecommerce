@@ -18,7 +18,7 @@ declare(strict_types=1);
 
 namespace CoreShop\Component\Core\Cart\Rule\Action;
 
-use CoreShop\Bundle\ResourceBundle\Pimcore\Repository\StackRepositoryInterface;
+use CoreShop\Bundle\ResourceBundle\OpenDxp\Repository\StackRepositoryInterface;
 use CoreShop\Component\Core\Model\ProductInterface;
 use CoreShop\Component\Order\Cart\Rule\Action\CartPriceRuleActionProcessorInterface;
 use CoreShop\Component\Order\Factory\AdjustmentFactoryInterface;

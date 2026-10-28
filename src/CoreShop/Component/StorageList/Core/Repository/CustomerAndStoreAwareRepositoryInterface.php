@@ -19,11 +19,11 @@ declare(strict_types=1);
 namespace CoreShop\Component\StorageList\Core\Repository;
 
 use CoreShop\Component\Customer\Model\CustomerInterface;
-use CoreShop\Component\Resource\Repository\PimcoreRepositoryInterface;
+use CoreShop\Component\Resource\Repository\OpenDxpRepositoryInterface;
 use CoreShop\Component\StorageList\Model\StorageListInterface;
 use CoreShop\Component\Store\Model\StoreInterface;
 
-interface CustomerAndStoreAwareRepositoryInterface extends PimcoreRepositoryInterface
+interface CustomerAndStoreAwareRepositoryInterface extends OpenDxpRepositoryInterface
 {
     public function findLatestByStoreAndCustomer(StoreInterface $store, CustomerInterface $customer, string $name = null): ?StorageListInterface;
 

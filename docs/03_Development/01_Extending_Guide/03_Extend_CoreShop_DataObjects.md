@@ -1,19 +1,19 @@
 # Extending CoreShop
 
-CoreShop Data Objects (like CoreShopProduct or CoreShopOrder) can be changed directly within Pimcore.
+CoreShop Data Objects (like CoreShopProduct or CoreShopOrder) can be changed directly within OpenDxp.
 
 ## Replace CoreShop Object Classes with your own Classes
 
-CoreShop uses Pimcore Parameters to determine the Pimcore Object Class. To change it, simply add this to
+CoreShop uses OpenDxp Parameters to determine the OpenDxp Object Class. To change it, simply add this to
 your `config.yml`:
 
 ```yaml
 core_shop_order:
-  pimcore:
+  opendxp:
     order:
       classes:
-        model: 'Pimcore\Model\DataObject\MyOrderClass'
-        install_file: 'config/Resources/install/pimcore/classes/MyOrderClass.json'
+        model: 'OpenDxp\Model\DataObject\MyOrderClass'
+        install_file: 'config/Resources/install/opendxp/classes/MyOrderClass.json'
         repository: App\Repository\OrderRepository
         factory: App\Factory\OrderFactory
 ```

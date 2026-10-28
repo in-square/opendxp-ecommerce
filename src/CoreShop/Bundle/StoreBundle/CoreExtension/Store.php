@@ -21,7 +21,7 @@ namespace CoreShop\Bundle\StoreBundle\CoreExtension;
 use CoreShop\Bundle\ResourceBundle\CoreExtension\Select;
 use CoreShop\Component\Store\Model\StoreInterface;
 use InvalidArgumentException;
-use Pimcore\Model\DataObject\ClassDefinition\Helper\OptionsProviderResolver;
+use OpenDxp\Model\DataObject\ClassDefinition\Helper\OptionsProviderResolver;
 
 /**
  * @psalm-suppress InvalidReturnType, InvalidReturnStatement
@@ -43,12 +43,12 @@ class Store extends Select
 
     protected function getRepository()
     {
-        return \Pimcore::getContainer()->get('coreshop.repository.store');
+        return \OpenDxp::getContainer()->get('coreshop.repository.store');
     }
 
     protected function getModel(): string
     {
-        return \Pimcore::getContainer()->getParameter('coreshop.model.store.class');
+        return \OpenDxp::getContainer()->getParameter('coreshop.model.store.class');
     }
 
     protected function getInterface(): string

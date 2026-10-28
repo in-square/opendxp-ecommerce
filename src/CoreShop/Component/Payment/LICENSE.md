@@ -2,7 +2,7 @@
 Copyright (C) CoreShop GmbH
 
 This software is available under two different licenses:
-* GNU General Public License version 3 (GPLv3) as Pimcore Community Edition
+* GNU General Public License version 3 (GPLv3) as OpenDxp Community Edition
 * CoreShop Commercial License (CCL)
 
 The default CoreShop license, without a valid CoreShop Commercial License agreement, is the Open-Source GPLv3 license.

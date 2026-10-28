@@ -19,16 +19,16 @@ declare(strict_types=1);
 namespace CoreShop\Bundle\TrackingBundle\EventListener;
 
 use CoreShop\Bundle\TrackingBundle\Tracker\Google\TagManager\CodeTracker;
-use Pimcore\Bundle\GoogleMarketingBundle\SiteId\SiteIdProvider;
-use Pimcore\Http\Request\Resolver\PimcoreContextResolver;
-use Pimcore\Http\ResponseHelper;
-use Pimcore\Tool;
+use OpenDxp\Bundle\GoogleMarketingBundle\SiteId\SiteIdProvider;
+use OpenDxp\Http\Request\Resolver\OpenDxpContextResolver;
+use OpenDxp\Http\ResponseHelper;
+use OpenDxp\Tool;
 use Symfony\Component\HttpKernel\Event\ResponseEvent;
 
 class GtmDataLayerBlockListener
 {
     public function __construct(
-        protected PimcoreContextResolver $pimcoreContextResolver,
+        protected OpenDxpContextResolver $opendxpContextResolver,
         protected ResponseHelper $responseHelper,
         protected SiteIdProvider $siteIdProvider,
         protected CodeTracker $codeTracker,
@@ -43,7 +43,7 @@ class GtmDataLayerBlockListener
             return;
         }
 
-        if (!$this->pimcoreContextResolver->matchesPimcoreContext($request, PimcoreContextResolver::CONTEXT_DEFAULT)) {
+        if (!$this->opendxpContextResolver->matchesOpenDxpContext($request, OpenDxpContextResolver::CONTEXT_DEFAULT)) {
             return;
         }
 

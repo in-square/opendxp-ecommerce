@@ -21,9 +21,9 @@ namespace CoreShop\Bundle\ResourceBundle\DataHub\QueryType;
 use CoreShop\Bundle\ResourceBundle\DataHub\Resolver\MultiResourceResolver;
 use CoreShop\Component\Resource\Repository\RepositoryInterface;
 use GraphQL\Type\Definition\Type;
-use Pimcore\Bundle\DataHubBundle\GraphQL\DataObjectQueryFieldConfigGenerator\Base;
-use Pimcore\Bundle\DataHubBundle\GraphQL\Service;
-use Pimcore\Model\DataObject\ClassDefinition\Data;
+use OpenDxp\Bundle\DataHubBundle\GraphQL\DataObjectQueryFieldConfigGenerator\Base;
+use OpenDxp\Bundle\DataHubBundle\GraphQL\Service;
+use OpenDxp\Model\DataObject\ClassDefinition\Data;
 
 class Multiselect extends Base
 {

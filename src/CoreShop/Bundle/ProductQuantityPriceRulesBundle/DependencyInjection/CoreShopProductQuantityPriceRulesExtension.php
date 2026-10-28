@@ -42,13 +42,13 @@ class CoreShopProductQuantityPriceRulesExtension extends AbstractModelExtension
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));
 
         $this->registerResources('coreshop', CoreShopResourceBundle::DRIVER_DOCTRINE_ORM, $configs['resources'], $container);
-        $this->registerPimcoreResources('coreshop', $configs['pimcore_admin'], $container);
+        $this->registerOpenDxpResources('coreshop', $configs['opendxp_admin'], $container);
 
         $container->setParameter('coreshop.product_quantity_price_rules.ranges.action_constraints', $configs['action_constraints']);
 
         $bundles = $container->getParameter('kernel.bundles');
 
-        if (array_key_exists('PimcoreDataHubBundle', $bundles)) {
+        if (array_key_exists('OpenDxpDataHubBundle', $bundles)) {
             $loader->load('services/data_hub.yml');
         }
 

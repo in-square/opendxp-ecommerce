@@ -21,7 +21,7 @@ namespace CoreShop\Bundle\CoreBundle\Form\Type;
 use CoreShop\Component\Address\Model\AddressInterface;
 use CoreShop\Component\Core\Customer\Allocator\CustomerAddressAllocatorInterface;
 use CoreShop\Component\Core\Model\CustomerInterface;
-use CoreShop\Component\Resource\Repository\PimcoreRepositoryInterface;
+use CoreShop\Component\Resource\Repository\OpenDxpRepositoryInterface;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\OptionsResolver\Options;
@@ -30,7 +30,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 final class AddressChoiceType extends AbstractType
 {
     public function __construct(
-        private PimcoreRepositoryInterface $customerRepository,
+        private OpenDxpRepositoryInterface $customerRepository,
         private CustomerAddressAllocatorInterface $customerAddressAllocator,
     ) {
     }

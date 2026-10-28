@@ -19,10 +19,10 @@ declare(strict_types=1);
 namespace CoreShop\Component\Customer\Model;
 
 use CoreShop\Component\Resource\Model\ResourceInterface;
-use CoreShop\Component\Resource\Pimcore\Model\PimcoreModelInterface;
+use CoreShop\Component\Resource\OpenDxp\Model\OpenDxpModelInterface;
 use Symfony\Component\Security\Core\User\EquatableInterface;
 
-interface CompanyInterface extends ResourceInterface, PimcoreModelInterface, EquatableInterface
+interface CompanyInterface extends ResourceInterface, OpenDxpModelInterface, EquatableInterface
 {
     public function getId(): ?int;
 

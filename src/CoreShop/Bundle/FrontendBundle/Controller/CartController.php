@@ -24,7 +24,7 @@ use CoreShop\Bundle\OrderBundle\Form\Type\AddToCartType;
 use CoreShop\Bundle\OrderBundle\Form\Type\CartListType;
 use CoreShop\Bundle\OrderBundle\Form\Type\CartType;
 use CoreShop\Bundle\OrderBundle\Form\Type\ShippingCalculatorType;
-use CoreShop\Bundle\ResourceBundle\Pimcore\Repository\StackRepositoryInterface;
+use CoreShop\Bundle\ResourceBundle\OpenDxp\Repository\StackRepositoryInterface;
 use CoreShop\Bundle\WorkflowBundle\Manager\StateMachineManagerInterface;
 use CoreShop\Component\Address\Model\AddressInterface;
 use CoreShop\Component\Core\Context\ShopperContextInterface;

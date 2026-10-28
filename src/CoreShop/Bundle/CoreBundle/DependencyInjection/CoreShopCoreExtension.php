@@ -29,8 +29,8 @@ use CoreShop\Component\Core\Report\ReportInterface;
 use CoreShop\Component\Order\Checkout\CheckoutManagerFactoryInterface;
 use CoreShop\Component\Order\Checkout\DefaultCheckoutManagerFactory;
 use CoreShop\Component\Registry\Autoconfiguration;
-use Pimcore\Bundle\CustomReportsBundle\PimcoreCustomReportsBundle;
-use Pimcore\Bundle\SimpleBackendSearchBundle\PimcoreSimpleBackendSearchBundle;
+use OpenDxp\Bundle\CustomReportsBundle\OpenDxpCustomReportsBundle;
+use OpenDxp\Bundle\SimpleBackendSearchBundle\OpenDxpSimpleBackendSearchBundle;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\Alias;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
@@ -50,7 +50,7 @@ final class CoreShopCoreExtension extends AbstractModelExtension implements Prep
         'core_shop_locale',
         'core_shop_menu',
         'core_shop_payment',
-        'core_shop_pimcore',
+        'core_shop_opendxp',
         'core_shop_product',
         'core_shop_product_quantity_price_rules',
         'core_shop_rule',
@@ -69,17 +69,17 @@ final class CoreShopCoreExtension extends AbstractModelExtension implements Prep
         $container->setParameter('coreshop.all.dependant.bundles', []);
 
         $this->registerResources('coreshop', CoreShopResourceBundle::DRIVER_DOCTRINE_ORM, $configs['resources'], $container);
-        $this->registerDependantBundles('coreshop', [PimcoreSimpleBackendSearchBundle::class, PimcoreCustomReportsBundle::class], $container);
+        $this->registerDependantBundles('coreshop', [OpenDxpSimpleBackendSearchBundle::class, OpenDxpCustomReportsBundle::class], $container);
 
-        if (array_key_exists('pimcore_admin', $configs)) {
-            $this->registerPimcoreResources('coreshop', $configs['pimcore_admin'], $container);
+        if (array_key_exists('opendxp_admin', $configs)) {
+            $this->registerOpenDxpResources('coreshop', $configs['opendxp_admin'], $container);
         }
 
         $container->setParameter('coreshop.after_logout_redirect_route', $configs['after_logout_redirect_route']);
 
         $bundles = $container->getParameter('kernel.bundles');
 
-        if (array_key_exists('PimcoreDataHubBundle', $bundles)) {
+        if (array_key_exists('OpenDxpDataHubBundle', $bundles)) {
             $loader->load('services/data_hub.yml');
         }
 

@@ -23,7 +23,7 @@ This example creates a `ProductSetCalculator`, which calculates prices for each 
 
 namespace App\CoreShop\Order\Calculator;
 
-use CoreShop\Component\Order\Calculator\PurchasablePriceCalculatorInterface;use Pimcore\Model\Product\ProductSet;
+use CoreShop\Component\Order\Calculator\PurchasablePriceCalculatorInterface;use OpenDxp\Model\Product\ProductSet;
 
 final class ProductSetCalculator implements PurchasablePriceCalculatorInterface
 {

@@ -19,7 +19,7 @@ declare(strict_types=1);
 namespace CoreShop\Bundle\VariantBundle\DependencyInjection;
 
 use CoreShop\Bundle\ResourceBundle\CoreShopResourceBundle;
-use CoreShop\Component\Resource\Factory\PimcoreFactory;
+use CoreShop\Component\Resource\Factory\OpenDxpFactory;
 use CoreShop\Component\Variant\Model\AttributeColorInterface;
 use CoreShop\Component\Variant\Model\AttributeGroupInterface;
 use CoreShop\Component\Variant\Model\AttributeInterface;
@@ -40,7 +40,7 @@ final class Configuration implements ConfigurationInterface
 
         $this->addStack($rootNode);
         $this->addModelsSection($rootNode);
-        $this->addPimcoreResourcesSection($rootNode);
+        $this->addOpenDxpResourcesSection($rootNode);
 
         $rootNode
             ->children()
@@ -70,7 +70,7 @@ final class Configuration implements ConfigurationInterface
     {
         $node
             ->children()
-                ->arrayNode('pimcore')
+                ->arrayNode('opendxp')
                     ->addDefaultsIfNotSet()
                     ->children()
                         ->arrayNode('attribute_group')
@@ -80,12 +80,12 @@ final class Configuration implements ConfigurationInterface
                                 ->arrayNode('classes')
                                     ->addDefaultsIfNotSet()
                                     ->children()
-                                        ->scalarNode('model')->defaultValue('Pimcore\Model\DataObject\CoreShopAttributeGroup')->cannotBeEmpty()->end()
+                                        ->scalarNode('model')->defaultValue('OpenDxp\Model\DataObject\CoreShopAttributeGroup')->cannotBeEmpty()->end()
                                         ->scalarNode('interface')->defaultValue(AttributeGroupInterface::class)->cannotBeEmpty()->end()
-                                        ->scalarNode('factory')->defaultValue(PimcoreFactory::class)->cannotBeEmpty()->end()
+                                        ->scalarNode('factory')->defaultValue(OpenDxpFactory::class)->cannotBeEmpty()->end()
                                         ->scalarNode('repository')->cannotBeEmpty()->end()
-                                        ->scalarNode('install_file')->defaultValue('@CoreShopVariantBundle/Resources/install/pimcore/classes/CoreShopAttributeGroup.json')->end()
-                                        ->scalarNode('type')->defaultValue(CoreShopResourceBundle::PIMCORE_MODEL_TYPE_OBJECT)->cannotBeOverwritten(true)->end()
+                                        ->scalarNode('install_file')->defaultValue('@CoreShopVariantBundle/Resources/install/opendxp/classes/CoreShopAttributeGroup.json')->end()
+                                        ->scalarNode('type')->defaultValue(CoreShopResourceBundle::OPENDXP_MODEL_TYPE_OBJECT)->cannotBeOverwritten(true)->end()
                                     ->end()
                                 ->end()
                             ->end()
@@ -97,12 +97,12 @@ final class Configuration implements ConfigurationInterface
                                 ->arrayNode('classes')
                                     ->addDefaultsIfNotSet()
                                     ->children()
-                                        ->scalarNode('model')->defaultValue('Pimcore\Model\DataObject\CoreShopAttributeValue')->cannotBeEmpty()->end()
+                                        ->scalarNode('model')->defaultValue('OpenDxp\Model\DataObject\CoreShopAttributeValue')->cannotBeEmpty()->end()
                                         ->scalarNode('interface')->defaultValue(AttributeValueInterface::class)->cannotBeEmpty()->end()
-                                        ->scalarNode('factory')->defaultValue(PimcoreFactory::class)->cannotBeEmpty()->end()
+                                        ->scalarNode('factory')->defaultValue(OpenDxpFactory::class)->cannotBeEmpty()->end()
                                         ->scalarNode('repository')->cannotBeEmpty()->end()
-                                        ->scalarNode('install_file')->defaultValue('@CoreShopVariantBundle/Resources/install/pimcore/classes/CoreShopAttributeValue.json')->end()
-                                        ->scalarNode('type')->defaultValue(CoreShopResourceBundle::PIMCORE_MODEL_TYPE_OBJECT)->cannotBeOverwritten(true)->end()
+                                        ->scalarNode('install_file')->defaultValue('@CoreShopVariantBundle/Resources/install/opendxp/classes/CoreShopAttributeValue.json')->end()
+                                        ->scalarNode('type')->defaultValue(CoreShopResourceBundle::OPENDXP_MODEL_TYPE_OBJECT)->cannotBeOverwritten(true)->end()
                                     ->end()
                                 ->end()
                             ->end()
@@ -114,12 +114,12 @@ final class Configuration implements ConfigurationInterface
                                 ->arrayNode('classes')
                                     ->addDefaultsIfNotSet()
                                     ->children()
-                                        ->scalarNode('model')->defaultValue('Pimcore\Model\DataObject\CoreShopAttributeColor')->cannotBeEmpty()->end()
+                                        ->scalarNode('model')->defaultValue('OpenDxp\Model\DataObject\CoreShopAttributeColor')->cannotBeEmpty()->end()
                                         ->scalarNode('interface')->defaultValue(AttributeColorInterface::class)->cannotBeEmpty()->end()
-                                        ->scalarNode('factory')->defaultValue(PimcoreFactory::class)->cannotBeEmpty()->end()
+                                        ->scalarNode('factory')->defaultValue(OpenDxpFactory::class)->cannotBeEmpty()->end()
                                         ->scalarNode('repository')->cannotBeEmpty()->end()
-                                        ->scalarNode('install_file')->defaultValue('@CoreShopVariantBundle/Resources/install/pimcore/classes/CoreShopAttributeColor.json')->end()
-                                        ->scalarNode('type')->defaultValue(CoreShopResourceBundle::PIMCORE_MODEL_TYPE_OBJECT)->cannotBeOverwritten(true)->end()
+                                        ->scalarNode('install_file')->defaultValue('@CoreShopVariantBundle/Resources/install/opendxp/classes/CoreShopAttributeColor.json')->end()
+                                        ->scalarNode('type')->defaultValue(CoreShopResourceBundle::OPENDXP_MODEL_TYPE_OBJECT)->cannotBeOverwritten(true)->end()
                                     ->end()
                                 ->end()
                             ->end()
@@ -130,10 +130,10 @@ final class Configuration implements ConfigurationInterface
         ;
     }
 
-    private function addPimcoreResourcesSection(ArrayNodeDefinition $node): void
+    private function addOpenDxpResourcesSection(ArrayNodeDefinition $node): void
     {
         $node->children()
-            ->arrayNode('pimcore_admin')
+            ->arrayNode('opendxp_admin')
                 ->addDefaultsIfNotSet()
                 ->children()
                     ->arrayNode('js')

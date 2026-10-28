@@ -19,12 +19,12 @@ declare(strict_types=1);
 namespace CoreShop\Bundle\FrontendBundle\Twig;
 
 use CoreShop\Component\Core\Context\ShopperContextInterface;
-use CoreShop\Component\Pimcore\Slug\SluggableInterface;
-use Pimcore\Bundle\StaticRoutesBundle\Model\Staticroute;
-use Pimcore\Model\DataObject\Data\UrlSlug;
-use Pimcore\Model\Document;
-use Pimcore\Model\Site;
-use Pimcore\Tool;
+use CoreShop\Component\OpenDxp\Slug\SluggableInterface;
+use OpenDxp\Bundle\StaticRoutesBundle\Model\Staticroute;
+use OpenDxp\Model\DataObject\Data\UrlSlug;
+use OpenDxp\Model\Document;
+use OpenDxp\Model\Site;
+use OpenDxp\Tool;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\Routing\RouterInterface;
@@ -88,7 +88,7 @@ final class LocaleSwitcherExtension extends AbstractExtension
             }
 
             $link = '';
-            if ($this->getMainRequest()->attributes->get('pimcore_request_source') === 'staticroute') {
+            if ($this->getMainRequest()->attributes->get('opendxp_request_source') === 'staticroute') {
                 $route = $this->getMainRequest()->attributes->get('_route');
                 $staticRoute = Staticroute::getByName($route);
 

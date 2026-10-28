@@ -20,6 +20,7 @@ on:
 
 jobs:
     gitsplit:
+        if: github.repository == 'coreshop/CoreShop'
         runs-on: ubuntu-latest
         steps:
             -

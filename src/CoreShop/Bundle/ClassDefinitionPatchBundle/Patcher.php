@@ -18,7 +18,7 @@ declare(strict_types=1);
 
 namespace CoreShop\Bundle\ClassDefinitionPatchBundle;
 
-use CoreShop\Component\Pimcore\DataObject\ClassUpdate;
+use CoreShop\Component\OpenDxp\DataObject\ClassUpdate;
 
 class Patcher implements PatcherInterface
 {

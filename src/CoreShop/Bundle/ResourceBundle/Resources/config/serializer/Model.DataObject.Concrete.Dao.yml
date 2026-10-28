@@ -1,2 +1,2 @@
-Pimcore\Model\DataObject\Concrete\Dao:
+OpenDxp\Model\DataObject\Concrete\Dao:
     exclude: true

@@ -18,8 +18,8 @@ declare(strict_types=1);
 
 namespace CoreShop\Bundle\ResourceBundle\DependencyInjection;
 
-use CoreShop\Bundle\PimcoreBundle\DependencyInjection\Extension\AbstractPimcoreExtension;
-use CoreShop\Bundle\ResourceBundle\Attribute\AsPimcoreModel;
+use CoreShop\Bundle\OpenDxpBundle\DependencyInjection\Extension\AbstractOpenDxpExtension;
+use CoreShop\Bundle\ResourceBundle\Attribute\AsOpenDxpModel;
 use CoreShop\Bundle\ResourceBundle\CoreShopResourceBundle;
 use CoreShop\Bundle\ResourceBundle\DependencyInjection\Compiler\RegisterInstallersPass;
 use CoreShop\Bundle\ResourceBundle\DependencyInjection\Driver\DriverProvider;
@@ -36,7 +36,7 @@ use Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
 use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
 use function Symfony\Component\String\u;
 
-final class CoreShopResourceExtension extends AbstractPimcoreExtension
+final class CoreShopResourceExtension extends AbstractOpenDxpExtension
 {
     public function load(array $configs, ContainerBuilder $container): void
     {
@@ -51,12 +51,12 @@ final class CoreShopResourceExtension extends AbstractPimcoreExtension
             $container->setAlias('coreshop.translation_locale_provider', $configs['translation']['locale_provider']);
         }
 
-        if (array_key_exists('pimcore_admin', $configs)) {
-            $this->registerPimcoreResources('coreshop', $configs['pimcore_admin'], $container);
+        if (array_key_exists('opendxp_admin', $configs)) {
+            $this->registerOpenDxpResources('coreshop', $configs['opendxp_admin'], $container);
         }
 
-        if (!$container->hasParameter('coreshop.all.pimcore_classes')) {
-            $container->setParameter('coreshop.all.pimcore_classes', []);
+        if (!$container->hasParameter('coreshop.all.opendxp_classes')) {
+            $container->setParameter('coreshop.all.opendxp_classes', []);
         }
 
         if (!$container->hasParameter('coreshop.all.stack')) {
@@ -65,18 +65,19 @@ final class CoreShopResourceExtension extends AbstractPimcoreExtension
 
         $bundles = $container->getParameter('kernel.bundles');
 
-        if (array_key_exists('PimcoreDataHubBundle', $bundles)) {
+        if (array_key_exists('OpenDxpDataHubBundle', $bundles)) {
             $loader->load('services/data_hub.yml');
         }
 
         $container->setParameter('coreshop.resources', []);
         $container->setParameter('coreshop.resource.mapping', $configs['mapping']);
+        $container->setParameter('coreshop.orm_cascade_merge', $configs['orm_cascade_merge_associations']);
 
-        $this->autoRegisterPimcoreModels($configs, $container);
+        $this->autoRegisterOpenDxpModels($configs, $container);
 
         $this->loadPersistence($configs['drivers'], $configs['resources'], $loader);
         $this->loadResources($configs['resources'], $container);
-        $this->loadPimcoreModels($configs['pimcore'], $container);
+        $this->loadOpenDxpModels($configs['opendxp'], $container);
 
         $bodyListener = new Definition(BodyListener::class);
         $bodyListener->addTag('kernel.event_listener', [
@@ -93,10 +94,10 @@ final class CoreShopResourceExtension extends AbstractPimcoreExtension
         ;
     }
 
-    private function autoRegisterPimcoreModels(array &$config, ContainerBuilder $container): void
+    private function autoRegisterOpenDxpModels(array &$config, ContainerBuilder $container): void
     {
-        /** @var array $pimcoreResources */
-        $pimcoreResources = $config['pimcore'];
+        /** @var array $opendxpResources */
+        $opendxpResources = $config['opendxp'];
 
         /** @var array $mapping */
         $mapping = $container->getParameter('coreshop.resource.mapping');
@@ -104,42 +105,42 @@ final class CoreShopResourceExtension extends AbstractPimcoreExtension
 
         /** @var class-string $className */
         foreach (ClassReflection::getResourcesByPaths($paths) as $className) {
-            $resourceAttributes = ClassReflection::getClassAttributes($className, AsPimcoreModel::class);
+            $resourceAttributes = ClassReflection::getClassAttributes($className, AsOpenDxpModel::class);
 
             foreach ($resourceAttributes as $resourceAttribute) {
-                /** @var AsPimcoreModel $resource */
+                /** @var AsOpenDxpModel $resource */
                 $resource = $resourceAttribute->newInstance();
                 $alias = $this->getResourceAlias($resource, $className);
 
-                if ($pimcoreResources[$alias] ?? false) {
+                if ($opendxpResources[$alias] ?? false) {
                     continue;
                 }
 
-                $pimcoreResources[$alias] = [
+                $opendxpResources[$alias] = [
                     'options' => $resource->getOptions(),
                     'path' => $resource->getPath(),
                     'slug' => $resource->getSlug() ?: false,
                     'route' => $resource->getRoute(),
                     'classes' => [
-                        'model' => $resource->getPimcoreModel(),
-                        'pimcore_class_name' => '',
+                        'model' => $resource->getOpenDxpModel(),
+                        'opendxp_class_name' => '',
                         'interface' => $resource->getInterface(),
                         'factory' => $resource->getFactory(),
                         'admin_controller' => $resource->getAdminController(),
                         'repository' => $resource->getRepository(),
                         'install_file' => $resource->getInstallFile(),
                         'type' => $resource->getType(),
-                        'pimcore_controller' => $resource->getPimcoreController(),
+                        'opendxp_controller' => $resource->getOpenDxpController(),
                     ],
-                    'driver' => CoreShopResourceBundle::DRIVER_PIMCORE,
+                    'driver' => CoreShopResourceBundle::DRIVER_OPENDXP,
                 ];
             }
         }
 
-        $config['pimcore'] = $pimcoreResources;
+        $config['opendxp'] = $opendxpResources;
     }
 
-    private function getResourceAlias(AsPimcoreModel $resource, string $className): string
+    private function getResourceAlias(AsOpenDxpModel $resource, string $className): string
     {
         $alias = $resource->getAlias();
 
@@ -198,23 +199,23 @@ final class CoreShopResourceExtension extends AbstractPimcoreExtension
         }
     }
 
-    protected function loadPimcoreModels(array $models, ContainerBuilder $container): void
+    protected function loadOpenDxpModels(array $models, ContainerBuilder $container): void
     {
         foreach ($models as $alias => $resourceConfig) {
-            $resourceConfig['driver'] = CoreShopResourceBundle::DRIVER_PIMCORE;
-            $resourceConfig['pimcore_class'] = match ($resourceConfig['classes']['type']) {
-                CoreShopResourceBundle::PIMCORE_MODEL_TYPE_FIELD_COLLECTION => str_replace(
-                    'Pimcore\Model\DataObject\Fieldcollection\Data\\',
+            $resourceConfig['driver'] = CoreShopResourceBundle::DRIVER_OPENDXP;
+            $resourceConfig['opendxp_class'] = match ($resourceConfig['classes']['type']) {
+                CoreShopResourceBundle::OPENDXP_MODEL_TYPE_FIELD_COLLECTION => str_replace(
+                    'OpenDxp\Model\DataObject\Fieldcollection\Data\\',
                     '',
                     $resourceConfig['classes']['model'],
                 ),
-                CoreShopResourceBundle::PIMCORE_MODEL_TYPE_BRICK => str_replace(
-                    'Pimcore\Model\DataObject\Objectbrick\Data\\',
+                CoreShopResourceBundle::OPENDXP_MODEL_TYPE_BRICK => str_replace(
+                    'OpenDxp\Model\DataObject\Objectbrick\Data\\',
                     '',
                     $resourceConfig['classes']['model'],
                 ),
                 default => str_replace(
-                    'Pimcore\Model\DataObject\\',
+                    'OpenDxp\Model\DataObject\\',
                     '',
                     $resourceConfig['classes']['model'],
                 ),
@@ -222,7 +223,7 @@ final class CoreShopResourceExtension extends AbstractPimcoreExtension
 
             $metadata = Metadata::fromAliasAndConfiguration($alias, $resourceConfig);
 
-            foreach (['coreshop.all.pimcore_classes', sprintf('%s.pimcore_classes', $metadata->getApplicationName())] as $parameter) {
+            foreach (['coreshop.all.opendxp_classes', sprintf('%s.opendxp_classes', $metadata->getApplicationName())] as $parameter) {
                 /**
                  * @var array $resources
                  */

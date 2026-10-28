@@ -20,8 +20,8 @@ namespace CoreShop\Component\Core\Product\Cloner;
 
 use CoreShop\Component\Core\Model\ProductInterface;
 use CoreShop\Component\Core\Model\ProductStoreValuesInterface;
-use Pimcore\Model\DataObject\ClassDefinition\Data\CustomDataCopyInterface;
-use Pimcore\Model\DataObject\Concrete;
+use OpenDxp\Model\DataObject\ClassDefinition\Data\CustomDataCopyInterface;
+use OpenDxp\Model\DataObject\Concrete;
 
 class ProductUnitDefinitionsCloner implements ProductClonerInterface
 {

@@ -40,8 +40,8 @@ final class CoreShopRuleExtension extends AbstractModelExtension
 
         $this->registerResources('coreshop', CoreShopResourceBundle::DRIVER_DOCTRINE_ORM, $configs['resources'], $container);
 
-        if (array_key_exists('pimcore_admin', $configs)) {
-            $this->registerPimcoreResources('coreshop', $configs['pimcore_admin'], $container);
+        if (array_key_exists('opendxp_admin', $configs)) {
+            $this->registerOpenDxpResources('coreshop', $configs['opendxp_admin'], $container);
         }
 
         $loader->load('services.yml');

@@ -29,8 +29,8 @@ final class CoreShopFrontendExtension extends AbstractModelExtension
     {
         $configs = $this->processConfiguration($this->getConfiguration([], $container), $configs);
 
-        if (array_key_exists('pimcore_admin', $configs)) {
-            $this->registerPimcoreResources('coreshop', $configs['pimcore_admin'], $container);
+        if (array_key_exists('opendxp_admin', $configs)) {
+            $this->registerOpenDxpResources('coreshop', $configs['opendxp_admin'], $container);
         }
 
         if (array_key_exists('controllers', $configs)) {

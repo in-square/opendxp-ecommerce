@@ -8,7 +8,7 @@ services:
     tags:
       - { name: fob.context_service }
 
-  CoreShop\Bundle\TestBundle\Context\Hook\PimcoreDaoContext:
+  CoreShop\Bundle\TestBundle\Context\Hook\OpenDxpDaoContext:
     arguments:
       - '@kernel'
       - '@doctrine.dbal.default_connection'

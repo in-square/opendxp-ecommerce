@@ -24,12 +24,12 @@ use CoreShop\Bundle\PayumPaymentBundle\DependencyInjection\Compiler\RegisterPaym
 use CoreShop\Bundle\ResourceBundle\AbstractResourceBundle;
 use CoreShop\Bundle\ResourceBundle\ComposerPackageBundleInterface;
 use CoreShop\Bundle\ResourceBundle\CoreShopResourceBundle;
-use Pimcore\Extension\Bundle\Installer\InstallerInterface;
-use Pimcore\Extension\Bundle\PimcoreBundleInterface;
-use Pimcore\HttpKernel\BundleCollection\BundleCollection;
+use OpenDxp\Extension\Bundle\Installer\InstallerInterface;
+use OpenDxp\Extension\Bundle\OpenDxpBundleInterface;
+use OpenDxp\HttpKernel\BundleCollection\BundleCollection;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
-class CoreShopPayumPaymentBundle extends AbstractResourceBundle implements PimcoreBundleInterface, ComposerPackageBundleInterface
+class CoreShopPayumPaymentBundle extends AbstractResourceBundle implements OpenDxpBundleInterface, ComposerPackageBundleInterface
 {
     public function getSupportedDrivers(): array
     {

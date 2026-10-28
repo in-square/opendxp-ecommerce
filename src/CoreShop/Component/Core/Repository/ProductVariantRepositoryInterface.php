@@ -29,7 +29,7 @@ interface ProductVariantRepositoryInterface extends BaseProductRepositoryInterfa
      */
     public function findAllVariants(ProductInterface $product, bool $recursive = true): array;
 
-    public function findRecursiveVariantIdsForProductAndStore(ProductInterface $product, StoreInterface $store): array|\Pimcore\Model\DataObject\Listing;
+    public function findRecursiveVariantIdsForProductAndStore(ProductInterface $product, StoreInterface $store): array|\OpenDxp\Model\DataObject\Listing;
 
     public function findRecursiveVariantIdsForProductAndStoreByProducts(array $products, StoreInterface $store, array $cacheTags = []): array;
 }

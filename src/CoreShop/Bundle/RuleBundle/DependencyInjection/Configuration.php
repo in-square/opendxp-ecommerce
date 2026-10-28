@@ -43,7 +43,7 @@ final class Configuration implements ConfigurationInterface
         ;
 
         $this->addModelsSection($rootNode);
-        $this->addPimcoreResourcesSection($rootNode);
+        $this->addOpenDxpResourcesSection($rootNode);
 
         return $treeBuilder;
     }
@@ -95,10 +95,10 @@ final class Configuration implements ConfigurationInterface
         ;
     }
 
-    private function addPimcoreResourcesSection(ArrayNodeDefinition $node): void
+    private function addOpenDxpResourcesSection(ArrayNodeDefinition $node): void
     {
         $node->children()
-            ->arrayNode('pimcore_admin')
+            ->arrayNode('opendxp_admin')
                 ->addDefaultsIfNotSet()
                 ->children()
                     ->arrayNode('js')

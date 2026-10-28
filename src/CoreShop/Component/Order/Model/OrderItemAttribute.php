@@ -18,10 +18,10 @@ declare(strict_types=1);
 
 namespace CoreShop\Component\Order\Model;
 
-use CoreShop\Component\Resource\Exception\ImplementedByPimcoreException;
-use CoreShop\Component\Resource\Pimcore\Model\AbstractPimcoreFieldcollection;
+use CoreShop\Component\Resource\Exception\ImplementedByOpenDxpException;
+use CoreShop\Component\Resource\OpenDxp\Model\AbstractOpenDxpFieldcollection;
 
-abstract class OrderItemAttribute extends AbstractPimcoreFieldcollection implements OrderItemAttributeInterface
+abstract class OrderItemAttribute extends AbstractOpenDxpFieldcollection implements OrderItemAttributeInterface
 {
     public function getId(): ?int
     {
@@ -30,21 +30,21 @@ abstract class OrderItemAttribute extends AbstractPimcoreFieldcollection impleme
 
     public function getAttributeKey(): ?string
     {
-        throw new ImplementedByPimcoreException(__CLASS__, __METHOD__);
+        throw new ImplementedByOpenDxpException(__CLASS__, __METHOD__);
     }
 
     public function setAttributeKey(?string $attributeKey)
     {
-        throw new ImplementedByPimcoreException(__CLASS__, __METHOD__);
+        throw new ImplementedByOpenDxpException(__CLASS__, __METHOD__);
     }
 
     public function getAttributeValue()
     {
-        throw new ImplementedByPimcoreException(__CLASS__, __METHOD__);
+        throw new ImplementedByOpenDxpException(__CLASS__, __METHOD__);
     }
 
     public function setAttributeValue($attributeValue)
     {
-        throw new ImplementedByPimcoreException(__CLASS__, __METHOD__);
+        throw new ImplementedByOpenDxpException(__CLASS__, __METHOD__);
     }
 }

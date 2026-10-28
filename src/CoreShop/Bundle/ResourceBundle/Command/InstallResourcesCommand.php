@@ -18,7 +18,7 @@ declare(strict_types=1);
 
 namespace CoreShop\Bundle\ResourceBundle\Command;
 
-use CoreShop\Bundle\ResourceBundle\Installer\PimcoreClassInstaller;
+use CoreShop\Bundle\ResourceBundle\Installer\OpenDxpClassInstaller;
 use CoreShop\Bundle\ResourceBundle\Installer\ResourceInstallerInterface;
 use Symfony\Bundle\FrameworkBundle\Console\Application;
 use Symfony\Component\Console\Command\Command;
@@ -42,7 +42,7 @@ final class InstallResourcesCommand extends Command
             ->setDescription('Install Resources.')
             ->setHelp(
                 <<<EOT
-The <info>%command.name%</info> command install Resources. (Like Static Routes or Pimcore Classes)
+The <info>%command.name%</info> command install Resources. (Like Static Routes or OpenDxp Classes)
 EOT
             )
             ->addOption(
@@ -77,7 +77,7 @@ EOT
         $this->resourceInstaller->installResources(
             $output,
             $input->getOption('application-name'),
-            [PimcoreClassInstaller::OPTION_UPDATE_CLASSES => $input->getOption('update-classes')],
+            [OpenDxpClassInstaller::OPTION_UPDATE_CLASSES => $input->getOption('update-classes')],
         );
 
         return 0;

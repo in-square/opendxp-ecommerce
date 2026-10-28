@@ -22,7 +22,7 @@ use CoreShop\Component\Core\Repository\CurrencyRepositoryInterface;
 use CoreShop\Component\Currency\Context\CurrencyContextInterface;
 use CoreShop\Component\Currency\Model\CurrencyInterface;
 use CoreShop\Component\Store\Context\StoreContextInterface;
-use Pimcore\Http\Request\Resolver\PimcoreContextResolver;
+use OpenDxp\Http\Request\Resolver\OpenDxpContextResolver;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\DataCollector\DataCollector;
@@ -33,7 +33,7 @@ final class CurrencyCollector extends DataCollector
         CurrencyRepositoryInterface $currencyRepository,
         private CurrencyContextInterface $currencyContext,
         StoreContextInterface $storeContext,
-        private PimcoreContextResolver $pimcoreContext,
+        private OpenDxpContextResolver $opendxpContext,
         $currencyChangeSupport = false,
     ) {
         try {
@@ -64,7 +64,7 @@ final class CurrencyCollector extends DataCollector
 
     public function collect(Request $request, Response $response, \Throwable $exception = null): void
     {
-        if ($this->pimcoreContext->matchesPimcoreContext($request, PimcoreContextResolver::CONTEXT_ADMIN)) {
+        if ($this->opendxpContext->matchesOpenDxpContext($request, OpenDxpContextResolver::CONTEXT_ADMIN)) {
             $this->data['admin'] = true;
 
             return;

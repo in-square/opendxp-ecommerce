@@ -4,7 +4,7 @@ Feature: Adding a object index
   I want to create a new datetime column
 
   Background:
-    Given there is a pimcore class "TestIndexFields"
+    Given there is a opendxp class "TestIndexFields"
     And the definitions parent class is set to "\CoreShop\Behat\Model\Index\TestIndexFields"
 
   Scenario: Create a new index and add integer Field

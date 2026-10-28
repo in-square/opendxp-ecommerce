@@ -41,7 +41,7 @@ use Doctrine\Migrations\DependencyFactory;
 use Doctrine\Migrations\Version\Direction;
 use Doctrine\Migrations\Version\ExecutionResult;
 use Doctrine\Migrations\Version\Version;
-use Pimcore\Tool;
+use OpenDxp\Tool;
 
 class MysqlWorker extends AbstractWorker implements MysqlWorkerInterface, WorkerDeleteableByIdInterface
 {

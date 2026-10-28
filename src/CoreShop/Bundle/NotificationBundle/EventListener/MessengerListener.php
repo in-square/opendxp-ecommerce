@@ -18,9 +18,9 @@ declare(strict_types=1);
 
 namespace CoreShop\Bundle\NotificationBundle\EventListener;
 
-use CoreShop\Bundle\MessengerBundle\Stamp\PimcoreObjectStamp;
+use CoreShop\Bundle\MessengerBundle\Stamp\OpenDxpObjectStamp;
 use CoreShop\Component\Notification\Messenger\NotificationMessage;
-use Pimcore\Model\DataObject\Concrete;
+use OpenDxp\Model\DataObject\Concrete;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\Messenger\Event\WorkerMessageReceivedEvent;
 
@@ -42,7 +42,7 @@ class MessengerListener implements EventSubscriberInterface
         }
 
         if (is_subclass_of($message->getResourceType(), Concrete::class)) {
-            $event->addStamps(new PimcoreObjectStamp($message->getResourceId()));
+            $event->addStamps(new OpenDxpObjectStamp($message->getResourceId()));
         }
     }
 }

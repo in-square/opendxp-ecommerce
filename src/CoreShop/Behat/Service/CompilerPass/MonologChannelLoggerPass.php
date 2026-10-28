@@ -30,7 +30,7 @@ class MonologChannelLoggerPass implements CompilerPassInterface
             'doctrine',
             'console',
             'cache',
-            'pimcore',
+            'opendxp',
         ];
 
         $monologHandlers = $container->getParameter('monolog.handlers_to_channels');

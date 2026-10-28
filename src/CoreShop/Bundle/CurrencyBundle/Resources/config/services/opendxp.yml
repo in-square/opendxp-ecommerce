@@ -1,0 +1,12 @@
+services:
+    _defaults:
+        public: true
+
+    coreshop.opendxp.document.editable.currency:
+        class: CoreShop\Component\Resource\OpenDxp\ResourceDocumentTagFactory
+        arguments:
+            - 'CoreShop\Bundle\ResourceBundle\CoreExtension\Document\Select'
+            - 'coreshop.repository.currency'
+            - 'name'
+        tags:
+            - { name: coreshop.opendxp.document.editable, type: coreshop_currency }

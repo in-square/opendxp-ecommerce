@@ -23,7 +23,7 @@ use CoreShop\Component\Address\Repository\CountryRepositoryInterface;
 use CoreShop\Component\Resource\Factory\FactoryInterface;
 use CoreShop\Component\Resource\Repository\RepositoryInterface;
 use Doctrine\ORM\EntityManagerInterface;
-use Pimcore\Tool;
+use OpenDxp\Tool;
 use Rinvex\Country\CountryLoader;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;

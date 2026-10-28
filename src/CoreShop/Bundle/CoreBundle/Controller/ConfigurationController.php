@@ -34,7 +34,11 @@ class ConfigurationController extends ResourceController
         StoreRepositoryInterface $storeRepository,
     ): Response {
         $values = $this->decodeJson($this->getParameterFromRequest($request, 'values'), true, [], false);
-        $values = array_htmlspecialchars($values);
+        array_walk_recursive($values, static function (mixed &$value): void {
+            if (is_string($value) || is_numeric($value)) {
+                $value = htmlspecialchars((string) $value, ENT_COMPAT, 'UTF-8');
+            }
+        });
 
         foreach ($values as $store => $storeValues) {
             /**

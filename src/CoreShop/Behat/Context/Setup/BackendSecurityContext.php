@@ -19,15 +19,15 @@ declare(strict_types=1);
 namespace CoreShop\Behat\Context\Setup;
 
 use Behat\Behat\Context\Context;
-use CoreShop\Bundle\TestBundle\Service\PimcoreSecurityServiceInterface;
+use CoreShop\Bundle\TestBundle\Service\OpenDxpSecurityServiceInterface;
 use CoreShop\Bundle\TestBundle\Service\SharedStorageInterface;
-use Pimcore\Model\User;
+use OpenDxp\Model\User;
 
 final class BackendSecurityContext implements Context
 {
     public function __construct(
         private SharedStorageInterface $sharedStorage,
-        private PimcoreSecurityServiceInterface $securityService,
+        private OpenDxpSecurityServiceInterface $securityService,
     ) {
     }
 

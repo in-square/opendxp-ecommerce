@@ -21,7 +21,7 @@ namespace CoreShop\Bundle\WorkflowBundle\StateManager;
 use CoreShop\Bundle\WorkflowBundle\Event\WorkflowTransitionEvent;
 use CoreShop\Bundle\WorkflowBundle\History\HistoryRepositoryInterface;
 use CoreShop\Bundle\WorkflowBundle\Manager\StateMachineManagerInterface;
-use Pimcore\Model\DataObject\Concrete;
+use OpenDxp\Model\DataObject\Concrete;
 use Symfony\Contracts\EventDispatcher\EventDispatcherInterface;
 use Symfony\Contracts\Translation\TranslatorInterface;
 

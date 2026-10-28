@@ -11,10 +11,10 @@
 * Disable CartStockAvailability constraint in revise action by @solverat in https://github.com/coreshop/CoreShop/pull/2461
 * [Cache] don't overwrite the prepareCacheData by @dpfaffenbauer in https://github.com/coreshop/CoreShop/pull/2469
 * [Core] defaultUnitQuantity should never be null by @dpfaffenbauer in https://github.com/coreshop/CoreShop/pull/2470
-* [PimcoreBundle] add cache.system to ExpressionLanguage by @dpfaffenbauer in https://github.com/coreshop/CoreShop/pull/2468
+* [OpenDxpBundle] add cache.system to ExpressionLanguage by @dpfaffenbauer in https://github.com/coreshop/CoreShop/pull/2468
 * [User] implement symfony "getUserIdentifier" by @dpfaffenbauer in https://github.com/coreshop/CoreShop/pull/2475
 * [StorageList] implement \Countable by @dpfaffenbauer in https://github.com/coreshop/CoreShop/pull/2476
-* [Composer] update bdi and add psr-4 autoload-dev for Pimcore Data Objects by @dpfaffenbauer in https://github.com/coreshop/CoreShop/pull/2477
+* [Composer] update bdi and add psr-4 autoload-dev for OpenDxp Data Objects by @dpfaffenbauer in https://github.com/coreshop/CoreShop/pull/2477
 * [FrontendBundle] check for isSubmitted before calling isValid by @dpfaffenbauer in https://github.com/coreshop/CoreShop/pull/2480
 * allow pending payments in checkout workflow by @solverat in https://github.com/coreshop/CoreShop/pull/2481
 
@@ -32,7 +32,7 @@
 * [Cart] fix using right context for performance increase by @dpfaffenbauer in https://github.com/coreshop/CoreShop/pull/2387
 * [Core] Optimize Category recursive and Product Variants Condition Checker by @dpfaffenbauer in https://github.com/coreshop/CoreShop/pull/2388
 * [ResourceBundle] fix cache marshalling issues with CoreShop Doctrine … by @dpfaffenbauer in https://github.com/coreshop/CoreShop/pull/2389
-* [Cache] cache improvements - decorate Pimcore CoreCacheHandler by @dpfaffenbauer in https://github.com/coreshop/CoreShop/pull/2398
+* [Cache] cache improvements - decorate OpenDxp CoreCacheHandler by @dpfaffenbauer in https://github.com/coreshop/CoreShop/pull/2398
 * [Messenger] fix menu in standalone mode by @jdreesen in https://github.com/coreshop/CoreShop/pull/2393
 
 ## 3.1.2
@@ -89,6 +89,6 @@
 ### Features
  - [WishlistBundle] new feature: wishlist cleaner (https://github.com/coreshop/CoreShop/pull/2234, https://github.com/coreshop/CoreShop/pull/2267)
  - [OrderBundle] introduce not-combinable price rule condition (https://github.com/coreshop/CoreShop/pull/2253)
- - [ClassDefinitionPatchBundle] Introduce new Bundle to allow patching Pimcore Class Definitions (https://github.com/coreshop/CoreShop/pull/2279)
+ - [ClassDefinitionPatchBundle] Introduce new Bundle to allow patching OpenDxp Class Definitions (https://github.com/coreshop/CoreShop/pull/2279)
  - [Tracking] add Google Analytics 4 Tracking (https://github.com/coreshop/CoreShop/pull/2303)
  - [Payment] Introduce Payment Provider Rules for conditionally selecting Payment Providers or adding Payment Fees (https://github.com/coreshop/CoreShop/pull/2301)

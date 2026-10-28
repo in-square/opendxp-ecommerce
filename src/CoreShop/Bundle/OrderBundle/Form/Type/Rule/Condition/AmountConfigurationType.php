@@ -40,13 +40,13 @@ final class AmountConfigurationType extends AbstractType
             ->add('minAmount', MoneyType::class, [
                 'constraints' => [
                     new NotBlank(['groups' => $this->validationGroups]),
-                    new Type(['type' => 'numeric', 'groups' => $this->validationGroups]),
+                    new Type(type: 'numeric', groups: $this->validationGroups),
                 ],
             ])
             ->add('maxAmount', MoneyType::class, [
                 'constraints' => [
                     new NotBlank(['groups' => $this->validationGroups]),
-                    new Type(['type' => 'numeric', 'groups' => $this->validationGroups]),
+                    new Type(type: 'numeric', groups: $this->validationGroups),
                 ],
             ])
         ;

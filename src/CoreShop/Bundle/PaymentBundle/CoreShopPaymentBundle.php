@@ -25,7 +25,7 @@ use CoreShop\Bundle\ResourceBundle\AbstractResourceBundle;
 use CoreShop\Bundle\ResourceBundle\CoreShopResourceBundle;
 use CoreShop\Bundle\RuleBundle\CoreShopRuleBundle;
 use CoreShop\Bundle\WorkflowBundle\CoreShopWorkflowBundle;
-use Pimcore\HttpKernel\BundleCollection\BundleCollection;
+use OpenDxp\HttpKernel\BundleCollection\BundleCollection;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
 final class CoreShopPaymentBundle extends AbstractResourceBundle

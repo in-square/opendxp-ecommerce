@@ -2,7 +2,7 @@
 
 ## Utilizing Grid View for Order Management
 
-CoreShop's order management leverages Pimcore's grid view, providing a robust and customizable interface.
+CoreShop's order management leverages OpenDxp's grid view, providing a robust and customizable interface.
 
 ### Default Column Configuration
 

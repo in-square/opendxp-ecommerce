@@ -21,12 +21,12 @@ namespace CoreShop\Bundle\ResourceBundle\Routing;
 use CoreShop\Component\Resource\Metadata\MetadataInterface;
 use CoreShop\Component\Resource\Metadata\RegistryInterface;
 use Symfony\Component\Config\Definition\Processor;
-use Symfony\Component\Config\Loader\LoaderInterface;
-use Symfony\Component\Config\Loader\LoaderResolverInterface;
+use Symfony\Component\Config\Loader\Loader;
 use Symfony\Component\Routing\Route;
+use Symfony\Component\Routing\RouteCollection;
 use Symfony\Component\Yaml\Yaml;
 
-final class ResourceLoader implements LoaderInterface
+final class ResourceLoader extends Loader
 {
     public function __construct(
         private RegistryInterface $modelRegistry,
@@ -34,7 +34,7 @@ final class ResourceLoader implements LoaderInterface
     ) {
     }
 
-    public function load($resource, $type = null)
+    public function load(mixed $resource, ?string $type = null): RouteCollection
     {
         $processor = new Processor();
         $configurationDefinition = new Configuration();
@@ -100,22 +100,9 @@ final class ResourceLoader implements LoaderInterface
         return $routes;
     }
 
-    public function supports($resource, $type = null): bool
+    public function supports(mixed $resource, ?string $type = null): bool
     {
         return 'coreshop.resources' === $type;
-    }
-
-    /**
-     * @psalm-suppress InvalidReturnType Symfony docblocks are messing with us
-     */
-    public function getResolver()
-    {
-        // Intentionally left blank.
-    }
-
-    public function setResolver(LoaderResolverInterface $resolver): void
-    {
-        // Intentionally left blank.
     }
 
     private function createRoute(MetadataInterface $metadata, array $configuration, $path, $actionName, array $methods, array $options): Route

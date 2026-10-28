@@ -18,10 +18,10 @@ declare(strict_types=1);
 
 namespace CoreShop\Component\Customer\Model;
 
-use CoreShop\Component\Resource\Pimcore\Model\AbstractPimcoreModel;
+use CoreShop\Component\Resource\OpenDxp\Model\AbstractOpenDxpModel;
 use Symfony\Component\Security\Core\User\UserInterface;
 
-abstract class Company extends AbstractPimcoreModel implements CompanyInterface
+abstract class Company extends AbstractOpenDxpModel implements CompanyInterface
 {
     public function isEqualTo(UserInterface $user): bool
     {

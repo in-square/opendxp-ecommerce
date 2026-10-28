@@ -2,15 +2,16 @@ services:
     _defaults:
         public: true
 
-    CoreShop\Component\Resource\Translation\Provider\TranslationLocaleProviderInterface: '@CoreShop\Component\Resource\Translation\Provider\PimcoreTranslationLocaleProvider'
-    CoreShop\Component\Resource\Translation\Provider\PimcoreTranslationLocaleProvider: ~
+    CoreShop\Component\Resource\Translation\Provider\TranslationLocaleProviderInterface: '@CoreShop\Component\Resource\Translation\Provider\OpenDxpTranslationLocaleProvider'
+    CoreShop\Component\Resource\Translation\Provider\OpenDxpTranslationLocaleProvider: ~
 
     CoreShop\Bundle\ResourceBundle\EventListener\ORMTranslatableListener:
         arguments:
             - '@CoreShop\Component\Resource\Metadata\RegistryInterface'
             - '@CoreShop\Component\Resource\Translation\TranslatableEntityLocaleAssignerInterface'
         tags:
-            - { name: doctrine.event_subscriber, connection: default, priority: 99 }
+            - { name: doctrine.event_listener, event: loadClassMetadata, connection: default, priority: 99 }
+            - { name: doctrine.event_listener, event: postLoad, connection: default, priority: 99 }
 
     CoreShop\Component\Resource\Translation\TranslatableEntityLocaleAssignerInterface: '@CoreShop\Component\Resource\Translation\TranslatableEntityLocaleAssigner'
     CoreShop\Component\Resource\Translation\TranslatableEntityLocaleAssigner:
@@ -24,6 +25,6 @@ services:
         tags:
             - { name: form.type }
 
-    CoreShop\Bundle\ResourceBundle\Form\Type\PimcoreClassChoiceType:
+    CoreShop\Bundle\ResourceBundle\Form\Type\OpenDxpClassChoiceType:
         tags:
             - { name: form.type }

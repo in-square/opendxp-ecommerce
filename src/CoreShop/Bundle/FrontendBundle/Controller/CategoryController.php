@@ -32,8 +32,8 @@ use CoreShop\Component\Resource\Model\AbstractObject;
 use CoreShop\Component\SEO\SEOPresentationInterface;
 use CoreShop\Component\Tracking\Tracker\TrackerInterface;
 use Knp\Component\Pager\PaginatorInterface;
-use Pimcore\Http\RequestHelper;
-use Pimcore\Model\DataObject\Data\UrlSlug;
+use OpenDxp\Http\RequestHelper;
+use OpenDxp\Model\DataObject\Data\UrlSlug;
 use Symfony\Component\DependencyInjection\Attribute\Autowire;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -87,7 +87,7 @@ class CategoryController extends FrontendController
 
         $category = $this->getRepository()->findOneBy([
             $this->repositoryIdentifier => $id,
-            'pimcore_unpublished' => true,
+            'opendxp_unpublished' => true,
         ]);
 
         if (!$category instanceof CategoryInterface) {

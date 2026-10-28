@@ -19,8 +19,9 @@ declare(strict_types=1);
 namespace CoreShop\Bundle\CoreBundle;
 
 use Doctrine\Migrations\Metadata\AvailableMigration;
-use Pimcore\Console\Application;
-use Pimcore\Extension\Bundle\Installer\SettingsStoreAwareInstaller;
+use OpenDxp\Console\Application;
+use OpenDxp\Extension\Bundle\Installer\SettingsStoreAwareInstaller;
+use RuntimeException;
 use Symfony\Component\Console\Input\ArrayInput;
 use Symfony\Component\HttpKernel\KernelInterface;
 
@@ -68,9 +69,14 @@ class Installer extends SettingsStoreAwareInstaller
         /** @psalm-suppress InternalClass, InternalMethod */
         $application = new Application($this->kernel);
         $application->setAutoExit(false);
-        $options = ['command' => 'coreshop:install'];
-        $options = array_merge($options, ['--no-interaction' => true, '--application-name coreshop']);
-        $application->run(new ArrayInput($options));
+        $exitCode = $application->run(new ArrayInput([
+            'command' => 'coreshop:install',
+            '--no-interaction' => true,
+        ]), $this->output);
+
+        if (0 !== $exitCode) {
+            throw new RuntimeException(sprintf('CoreShop installation failed with exit code %d.', $exitCode), $exitCode);
+        }
 
         parent::install();
     }

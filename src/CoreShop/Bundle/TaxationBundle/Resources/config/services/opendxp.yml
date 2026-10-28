@@ -1,0 +1,21 @@
+services:
+    _defaults:
+        public: true
+
+    coreshop.opendxp.document.editable.tax_rate:
+        class: CoreShop\Component\Resource\OpenDxp\ResourceDocumentTagFactory
+        arguments:
+            - 'CoreShop\Bundle\ResourceBundle\CoreExtension\Document\Select'
+            - 'coreshop.repository.tax_rate'
+            - 'name'
+        tags:
+            - { name: coreshop.opendxp.document.editable, type: coreshop_tax_rate }
+
+    coreshop.opendxp.document.editable.tax_rule_group:
+        class: CoreShop\Component\Resource\OpenDxp\ResourceDocumentTagFactory
+        arguments:
+            - 'CoreShop\Bundle\ResourceBundle\CoreExtension\Document\Select'
+            - 'coreshop.repository.tax_rule_group'
+            - 'name'
+        tags:
+            - { name: coreshop.opendxp.document.editable, type: coreshop_tax_rule_group }

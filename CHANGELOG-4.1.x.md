@@ -11,7 +11,7 @@
 ## 4.1.8
 * [Messenger] dispatch `FailedMessageDetailsEvent` to allow customization of failed message details generation by @jdreesen in https://github.com/coreshop/CoreShop/pull/2911
 * [Messenger] wrap failed message details info modal data in `<pre>` tags by @jdreesen in https://github.com/coreshop/CoreShop/pull/2910
-* [Pimcore] require Pimcore 11.5 only and test for PHP 8.3 by @dpfaffenbauer in https://github.com/coreshop/CoreShop/pull/2937
+* [OpenDxp] require OpenDxp 11.5 only and test for PHP 8.3 by @dpfaffenbauer in https://github.com/coreshop/CoreShop/pull/2937
 * [CoreBundle] fix reports injection by @dpfaffenbauer in https://github.com/coreshop/CoreShop/pull/2936
 
 ## 4.1.7
@@ -20,13 +20,13 @@
 
 ## 4.1.6
 * [IndexBundle] Ignore missing 404 error when deleting non-existent document by @aarongerig in https://github.com/coreshop/CoreShop/pull/2896
-* [PimcoreBundle] replace outdated translation ts with t by @philippmunz in https://github.com/coreshop/CoreShop/pull/2905
+* [OpenDxpBundle] replace outdated translation ts with t by @philippmunz in https://github.com/coreshop/CoreShop/pull/2905
 
 ## 4.1.5
 * [IndexBundle] Optimize 404 Exception Handling on Index Item Deletion by @aarongerig in https://github.com/coreshop/CoreShop/pull/2894
 
 ## 4.1.4
-* [Pimcore] DynamicDropdown - check if null by @codingioanniskrikos in https://github.com/coreshop/CoreShop/pull/2874
+* [OpenDxp] DynamicDropdown - check if null by @codingioanniskrikos in https://github.com/coreshop/CoreShop/pull/2874
 * [Messenger] Fix `MessageRepository` service registration by @jdreesen in https://github.com/coreshop/CoreShop/pull/2876
 * [UPMERGE] 3.2 -> 4.0 by @github-actions[bot] in https://github.com/coreshop/CoreShop/pull/2878
 * [UPMERGE] 4.0 -> 4.1 by @github-actions[bot] in https://github.com/coreshop/CoreShop/pull/2879
@@ -68,9 +68,9 @@
 > **Important** The FrontendBundle is now disabled by default. We added a migration to enable it
 > Please check if it actually is enabled in the bundles.php file
 > If you don't need it, feel free to disable it.
-* [ResourceBundle] check also for empty "pimcore_class_name" by @breakone in https://github.com/coreshop/CoreShop/pull/2716
+* [ResourceBundle] check also for empty "opendxp_class_name" by @breakone in https://github.com/coreshop/CoreShop/pull/2716
 * [CoreBundle] implement name functions and add migration for order-name and wishlist-name by @dpfaffenbauer in https://github.com/coreshop/CoreShop/pull/2717
-* [Pimcore] introduce the Printable by @dpfaffenbauer in https://github.com/coreshop/CoreShop/pull/2720
+* [OpenDxp] introduce the Printable by @dpfaffenbauer in https://github.com/coreshop/CoreShop/pull/2720
 * [Printable] further improvements to new printable feature by @dpfaffenbauer in https://github.com/coreshop/CoreShop/pull/2724
 
 ## 4.1.0-RC1 
@@ -80,12 +80,12 @@
 > composer require dachcom-digital/emailizr
 
 * [Attributes] allow PHP8 Attributes for tagging services by @dpfaffenbauer in https://github.com/coreshop/CoreShop/pull/2533
-* [TestBundle] introduce a standalone test-bundle to make testing with Pimcore and Behat easier by @dpfaffenbauer in https://github.com/coreshop/CoreShop/pull/2078
+* [TestBundle] introduce a standalone test-bundle to make testing with OpenDxp and Behat easier by @dpfaffenbauer in https://github.com/coreshop/CoreShop/pull/2078
 * [Core] add tax-rule per store by @dpfaffenbauer in https://github.com/coreshop/CoreShop/pull/2341
-* [ResourceBundle] auto registration of pimcore models by @dpfaffenbauer in https://github.com/coreshop/CoreShop/pull/2536
+* [ResourceBundle] auto registration of opendxp models by @dpfaffenbauer in https://github.com/coreshop/CoreShop/pull/2536
 * [Payment] allow encryption of gatway configs by @dpfaffenbauer in https://github.com/coreshop/CoreShop/pull/2538
 * [Order] allow passing custom-attributes from price rules to order-item by @dpfaffenbauer in https://github.com/coreshop/CoreShop/pull/2555
 * [StorageList] Multi Cart Selection by @dpfaffenbauer in https://github.com/coreshop/CoreShop/pull/2631
 * [JMS] allow v5 by @dpfaffenbauer in https://github.com/coreshop/CoreShop/pull/2493
-* [OrderBundle] re-factor PDF rendering to use Pimcore Web2Print by @dpfaffenbauer in https://github.com/coreshop/CoreShop/pull/2668
+* [OrderBundle] re-factor PDF rendering to use OpenDxp Web2Print by @dpfaffenbauer in https://github.com/coreshop/CoreShop/pull/2668
 * [Emailzr] remove extension by @dpfaffenbauer in https://github.com/coreshop/CoreShop/pull/2703

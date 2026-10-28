@@ -18,10 +18,10 @@ declare(strict_types=1);
 
 namespace CoreShop\Component\Order\Model;
 
-use CoreShop\Component\Resource\Exception\ImplementedByPimcoreException;
-use CoreShop\Component\Resource\Pimcore\Model\AbstractPimcoreModel;
+use CoreShop\Component\Resource\Exception\ImplementedByOpenDxpException;
+use CoreShop\Component\Resource\OpenDxp\Model\AbstractOpenDxpModel;
 
-abstract class OrderShipmentItem extends AbstractPimcoreModel implements OrderShipmentItemInterface
+abstract class OrderShipmentItem extends AbstractOpenDxpModel implements OrderShipmentItemInterface
 {
     public function getDocument(): OrderDocumentInterface
     {
@@ -60,41 +60,41 @@ abstract class OrderShipmentItem extends AbstractPimcoreModel implements OrderSh
 
     public function getTotalNet(): int
     {
-        throw new ImplementedByPimcoreException(__CLASS__, __METHOD__);
+        throw new ImplementedByOpenDxpException(__CLASS__, __METHOD__);
     }
 
     public function setTotalNet(int $totalNet)
     {
-        throw new ImplementedByPimcoreException(__CLASS__, __METHOD__);
+        throw new ImplementedByOpenDxpException(__CLASS__, __METHOD__);
     }
 
     public function getTotalGross(): int
     {
-        throw new ImplementedByPimcoreException(__CLASS__, __METHOD__);
+        throw new ImplementedByOpenDxpException(__CLASS__, __METHOD__);
     }
 
     public function setTotalGross(int $totalGross)
     {
-        throw new ImplementedByPimcoreException(__CLASS__, __METHOD__);
+        throw new ImplementedByOpenDxpException(__CLASS__, __METHOD__);
     }
 
     public function getConvertedTotalNet(): int
     {
-        throw new ImplementedByPimcoreException(__CLASS__, __METHOD__);
+        throw new ImplementedByOpenDxpException(__CLASS__, __METHOD__);
     }
 
     public function setConvertedTotalNet(int $convertedTotalNet)
     {
-        throw new ImplementedByPimcoreException(__CLASS__, __METHOD__);
+        throw new ImplementedByOpenDxpException(__CLASS__, __METHOD__);
     }
 
     public function getConvertedTotalGross(): int
     {
-        throw new ImplementedByPimcoreException(__CLASS__, __METHOD__);
+        throw new ImplementedByOpenDxpException(__CLASS__, __METHOD__);
     }
 
     public function setConvertedTotalGross(int $convertedTotalGross)
     {
-        throw new ImplementedByPimcoreException(__CLASS__, __METHOD__);
+        throw new ImplementedByOpenDxpException(__CLASS__, __METHOD__);
     }
 }

@@ -35,7 +35,7 @@ use CoreShop\Component\Index\Worker\WorkerDeleteableByIdInterface;
 use CoreShop\Component\Registry\ServiceRegistryInterface;
 use OpenSearch\Client;
 use OpenSearch\Common\Exceptions\Missing404Exception;
-use Pimcore\Tool;
+use OpenDxp\Tool;
 use Symfony\Component\EventDispatcher\GenericEvent;
 use Symfony\Component\String\Slugger\SluggerInterface;
 use function Symfony\Component\String\u;

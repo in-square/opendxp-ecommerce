@@ -22,8 +22,8 @@ use Behat\Behat\Context\Context;
 use CoreShop\Bundle\TestBundle\Service\SharedStorageInterface;
 use CoreShop\Component\Product\Model\ManufacturerInterface;
 use CoreShop\Component\Resource\Factory\FactoryInterface;
-use Pimcore\File;
-use Pimcore\Model\DataObject\Service;
+use OpenDxp\File;
+use OpenDxp\Model\DataObject\Service;
 
 final class ManufacturerContext implements Context
 {

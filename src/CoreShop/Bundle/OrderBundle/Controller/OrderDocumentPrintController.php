@@ -20,7 +20,7 @@ namespace CoreShop\Bundle\OrderBundle\Controller;
 
 use CoreShop\Component\Order\Model\OrderDocumentInterface;
 use CoreShop\Component\Order\Model\OrderInterface;
-use Pimcore\Controller\FrontendController;
+use OpenDxp\Controller\FrontendController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 

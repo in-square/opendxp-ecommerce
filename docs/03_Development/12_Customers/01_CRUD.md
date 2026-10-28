@@ -1,6 +1,6 @@
 # Custom Customer Management
 
-CoreShop utilizes Pimcore Data Objects to manage customer information, enhancing it with a wrapper for increased
+CoreShop utilizes OpenDxp Data Objects to manage customer information, enhancing it with a wrapper for increased
 dynamism and configurability. This approach leverages the Factory and Repository patterns for efficient data handling.
 
 ## Create
@@ -30,7 +30,7 @@ $repository = $container->get('coreshop.repository.customer');
 // Query by ID
 $customerWithIdOne = $repository->findById(1);
 
-// Get a Listing as you would in Pimcore
+// Get a Listing as you would in OpenDxp
 $list = $repository->getList();
 $list->setCondition("active = 1");
 $customers = $list->getObjects();
@@ -38,7 +38,7 @@ $customers = $list->getObjects();
 
 ## Update
 
-Updating customer information follows the same process as in Pimcore:
+Updating customer information follows the same process as in OpenDxp:
 
 ```php
 $repository = $container->get('coreshop.repository.customer');
@@ -53,7 +53,7 @@ $customerWithIdOne->save();
 
 ## Delete
 
-The deletion process is also similar to standard Pimcore operations:
+The deletion process is also similar to standard OpenDxp operations:
 
 ```php
 $repository = $container->get('coreshop.repository.customer');

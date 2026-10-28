@@ -5,9 +5,9 @@
         <div class="row" {{ coreshop_test_html_attribute('category-products') }}>
             <div class="col-12 col-sm-3">
                 <div class="image">
-                    {% if product.image is pimcore_asset_image %}
-                        <a href="{{ pimcore_object_path(product) }}" >
-                            {{ product.image|pimcore_image_thumbnail_html("coreshop_productList", {"imgAttributes": {"class": "img-fluid"}}) }}
+                    {% if product.image is opendxp_asset_image %}
+                        <a href="{{ opendxp_object_path(product) }}" >
+                            {{ product.image|opendxp_image_thumbnail_html("coreshop_productList", {"imgAttributes": {"class": "img-fluid"}}) }}
                         </a>
                     {% endif %}
                 </div>
@@ -15,7 +15,7 @@
             <div class="col-12 col-sm-9">
                 <div class="caption">
                     <h4>
-                        <a href="{{ pimcore_object_path(product) }}" {{ coreshop_test_html_attribute('cat_product-name') }}>{{ product.name }}</a>
+                        <a href="{{ opendxp_object_path(product) }}" {{ coreshop_test_html_attribute('cat_product-name') }}>{{ product.name }}</a>
                     </h4>
                     <div class="description">
                         {{ product.shortDescription }}
@@ -23,7 +23,7 @@
 
                     {% set attributeGroups = coreshop_variant_attribute_list_variants(product, true)|sort((a, b) => a.group.sorting <=> b.group.sorting) %}
                     {% for attributeGroup in attributeGroups %}
-                        {% if attributeGroup.type == "Pimcore\\Model\\DataObject\\CoreShopAttributeColor" %}
+                        {% if attributeGroup.type == "OpenDxp\\Model\\DataObject\\CoreShopAttributeColor" %}
                             {% include '@CoreShopFrontend/Product/attributes/detail/_color.html.twig' with { group: attributeGroup } %}
                         {% else %}
                             {% include '@CoreShopFrontend/Product/attributes/detail/_text.html.twig' with { group: attributeGroup } %}

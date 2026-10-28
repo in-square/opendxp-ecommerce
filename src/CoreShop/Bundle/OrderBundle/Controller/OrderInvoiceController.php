@@ -19,7 +19,7 @@ declare(strict_types=1);
 namespace CoreShop\Bundle\OrderBundle\Controller;
 
 use CoreShop\Bundle\OrderBundle\Form\Type\OrderInvoiceCreationType;
-use CoreShop\Bundle\ResourceBundle\Controller\PimcoreController;
+use CoreShop\Bundle\ResourceBundle\Controller\OpenDxpController;
 use CoreShop\Bundle\ResourceBundle\Form\Helper\ErrorSerializer;
 use CoreShop\Bundle\WorkflowBundle\Manager\StateMachineManager;
 use CoreShop\Bundle\WorkflowBundle\Manager\StateMachineManagerInterface;
@@ -33,9 +33,9 @@ use CoreShop\Component\Order\Renderer\OrderDocumentRendererInterface;
 use CoreShop\Component\Order\Repository\OrderInvoiceRepositoryInterface;
 use CoreShop\Component\Order\Repository\OrderRepositoryInterface;
 use CoreShop\Component\Order\Transformer\OrderDocumentTransformerInterface;
-use CoreShop\Component\Pimcore\DataObject\NoteServiceInterface;
+use CoreShop\Component\OpenDxp\DataObject\NoteServiceInterface;
 use CoreShop\Component\Resource\Factory\FactoryInterface;
-use CoreShop\Component\Resource\Factory\PimcoreFactoryInterface;
+use CoreShop\Component\Resource\Factory\OpenDxpFactoryInterface;
 use Symfony\Component\DependencyInjection\Attribute\Autowire;
 use Symfony\Component\EventDispatcher\GenericEvent;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -45,7 +45,7 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Contracts\EventDispatcher\EventDispatcherInterface;
 use Symfony\Contracts\Service\Attribute\SubscribedService;
 
-class OrderInvoiceController extends PimcoreController
+class OrderInvoiceController extends OpenDxpController
 {
     public function getInvoiceAbleItemsAction(Request $request): JsonResponse
     {
@@ -216,7 +216,7 @@ class OrderInvoiceController extends PimcoreController
         return $this->container->get('coreshop.repository.order_invoice');
     }
 
-    private function getInvoiceFactory(): PimcoreFactoryInterface
+    private function getInvoiceFactory(): OpenDxpFactoryInterface
     {
         return $this->container->get('coreshop.factory.order_invoice');
     }

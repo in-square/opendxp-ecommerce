@@ -1,0 +1,20 @@
+core_shop_product:
+    opendxp:
+        category:
+            path: coreshop/categories
+            classes:
+                repository: CoreShop\Bundle\CoreBundle\OpenDxp\Repository\CategoryRepository
+                interface: CoreShop\Component\Core\Model\CategoryInterface
+                install_file: '@CoreShopCoreBundle/Resources/install/opendxp/classes/CoreShopProductBundle/CoreShopCategory.json'
+        product:
+            path: coreshop/products
+            classes:
+                repository: CoreShop\Bundle\CoreBundle\OpenDxp\Repository\ProductRepository
+                interface: CoreShop\Component\Core\Model\ProductInterface
+                install_file: '@CoreShopCoreBundle/Resources/install/opendxp/classes/CoreShopProductBundle/CoreShopProduct.json'
+                admin_controller: CoreShop\Bundle\CoreBundle\Controller\ProductController
+    resources:
+        product_unit_definition_price:
+            classes:
+                model: CoreShop\Component\Core\Model\ProductUnitDefinitionPrice
+                interface: CoreShop\Component\Core\Model\ProductUnitDefinitionPriceInterface

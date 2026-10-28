@@ -29,7 +29,7 @@ use CoreShop\Bundle\ShippingBundle\DependencyInjection\Compiler\ShippingPriceCal
 use CoreShop\Bundle\ShippingBundle\DependencyInjection\Compiler\ShippingRuleActionPass;
 use CoreShop\Bundle\ShippingBundle\DependencyInjection\Compiler\ShippingRuleConditionPass;
 use CoreShop\Bundle\ShippingBundle\DependencyInjection\Compiler\ShippingTaxCalculationStrategyPass;
-use Pimcore\HttpKernel\BundleCollection\BundleCollection;
+use OpenDxp\HttpKernel\BundleCollection\BundleCollection;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
 final class CoreShopShippingBundle extends AbstractResourceBundle

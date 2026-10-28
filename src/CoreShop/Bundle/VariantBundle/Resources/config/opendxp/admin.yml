@@ -1,0 +1,4 @@
+core_shop_variant:
+    opendxp_admin:
+        js:
+            resource: '/bundles/coreshopvariant/opendxp/js/resource.js'

@@ -11,12 +11,12 @@
  */
 
 
-use Pimcore\Bootstrap;
-use Pimcore\Tool;
+use OpenDxp\Bootstrap;
+use OpenDxp\Tool;
 use Symfony\Component\HttpFoundation\Request;
 
-define('PIMCORE_PROJECT_ROOT', __DIR__.'/..');
-$_SERVER['PIMCORE_ENVIRONMENT'] = $_SERVER['APP_ENV'] = $_SERVER['SYMFONY_ENV'] = 'test_precision';
+define('OPENDXP_PROJECT_ROOT', __DIR__.'/..');
+$_SERVER['OPENDXP_ENVIRONMENT'] = $_SERVER['APP_ENV'] = $_SERVER['SYMFONY_ENV'] = 'test_precision';
 
 //use runtime
 require_once dirname(__DIR__).'/vendor/autoload_runtime.php';

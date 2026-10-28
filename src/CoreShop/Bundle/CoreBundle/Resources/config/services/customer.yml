@@ -37,7 +37,7 @@ services:
         arguments:
             - '@coreshop.repository.customer'
         tags:
-            - { name: kernel.event_listener, event: pimcore.dataobject.preDelete, method: onCompanyDelete }
+            - { name: kernel.event_listener, event: opendxp.dataobject.preDelete, method: onCompanyDelete }
 
     CoreShop\Component\Core\Customer\Address\AddressAccessOptionsProvider: ~
 

@@ -19,7 +19,6 @@ declare(strict_types=1);
 namespace CoreShop\Bundle\ResourceBundle\DependencyInjection\Compiler;
 
 use CoreShop\Component\Resource\Model\ResourceInterface;
-use Doctrine\Common\EventSubscriber;
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
@@ -44,13 +43,9 @@ final class DoctrineTargetEntitiesResolverPass implements CompilerPassInterface
             $resolveTargetEntityListener->addMethodCall('addResolveTargetEntity', [$interface, $model, []]);
         }
 
-        $resolveTargetEntityListenerClass = $container->getParameterBag()->resolveValue($resolveTargetEntityListener->getClass());
-        if (is_a($resolveTargetEntityListenerClass, EventSubscriber::class, true)) {
-            if (!$resolveTargetEntityListener->hasTag('doctrine.event_subscriber')) {
-                $resolveTargetEntityListener->addTag('doctrine.event_subscriber');
-            }
-        } elseif (!$resolveTargetEntityListener->hasTag('doctrine.event_listener')) {
+        if (!$resolveTargetEntityListener->hasTag('doctrine.event_listener')) {
             $resolveTargetEntityListener->addTag('doctrine.event_listener', ['event' => 'loadClassMetadata']);
+            $resolveTargetEntityListener->addTag('doctrine.event_listener', ['event' => 'onClassMetadataNotFound']);
         }
     }
 
@@ -61,7 +56,7 @@ final class DoctrineTargetEntitiesResolverPass implements CompilerPassInterface
         foreach ($resources as $alias => $configuration) {
             $model = $this->getModel($alias, $configuration);
 
-            foreach (class_implements($model) as $interface) {
+            foreach (class_implements($model) ?: [] as $interface) {
                 if ($interface === ResourceInterface::class) {
                     continue;
                 }

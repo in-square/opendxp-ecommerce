@@ -22,16 +22,16 @@ use Behat\Behat\Context\Context;
 use Behat\Gherkin\Node\TableNode;
 use CoreShop\Bundle\TestBundle\Service\ClassStorageInterface;
 use CoreShop\Bundle\TestBundle\Service\SharedStorageInterface;
-use CoreShop\Component\Pimcore\DataObject\BrickDefinitionUpdate;
-use CoreShop\Component\Pimcore\DataObject\ClassUpdate;
-use CoreShop\Component\Pimcore\DataObject\ClassUpdateInterface;
-use CoreShop\Component\Pimcore\DataObject\FieldCollectionDefinitionUpdate;
-use Pimcore\Model\DataObject;
-use Pimcore\Model\DataObject\ClassDefinition;
-use Pimcore\Model\DataObject\Concrete;
-use Pimcore\Model\DataObject\Fieldcollection;
-use Pimcore\Model\DataObject\Objectbrick;
-use Pimcore\Tool;
+use CoreShop\Component\OpenDxp\DataObject\BrickDefinitionUpdate;
+use CoreShop\Component\OpenDxp\DataObject\ClassUpdate;
+use CoreShop\Component\OpenDxp\DataObject\ClassUpdateInterface;
+use CoreShop\Component\OpenDxp\DataObject\FieldCollectionDefinitionUpdate;
+use OpenDxp\Model\DataObject;
+use OpenDxp\Model\DataObject\ClassDefinition;
+use OpenDxp\Model\DataObject\Concrete;
+use OpenDxp\Model\DataObject\Fieldcollection;
+use OpenDxp\Model\DataObject\Objectbrick;
+use OpenDxp\Tool;
 
 class ClassContext implements Context
 {
@@ -44,7 +44,7 @@ class ClassContext implements Context
     /**
      * @Given /^I enable inheritance for class "([^"]+)"$/
      */
-    public function iEnableInheritanceForPimcoreClass($className): void
+    public function iEnableInheritanceForOpenDxpClass($className): void
     {
         $definitionUpdater = new ClassUpdate($className);
         $definitionUpdater->setProperty('allowInherit', true);
@@ -54,7 +54,7 @@ class ClassContext implements Context
     /**
      * @Given /^I enable variants for class "([^"]+)"$/
      */
-    public function iEnableVariantsForPimcoreClass($className): void
+    public function iEnableVariantsForOpenDxpClass($className): void
     {
         $definitionUpdater = new ClassUpdate($className);
         $definitionUpdater->setProperty('allowVariants', true);
@@ -62,7 +62,7 @@ class ClassContext implements Context
     }
 
     /**
-     * @Given /^I enable pimcore inheritance$/
+     * @Given /^I enable opendxp inheritance$/
      */
     public function enableInheritance(): void
     {
@@ -70,7 +70,7 @@ class ClassContext implements Context
     }
 
     /**
-     * @Given /^I disable pimcore inheritance$/
+     * @Given /^I disable opendxp inheritance$/
      */
     public function disableInheritance(): void
     {
@@ -78,7 +78,7 @@ class ClassContext implements Context
     }
 
     /**
-     * @Given /^there is a pimcore class "([^"]+)"$/
+     * @Given /^there is a opendxp class "([^"]+)"$/
      */
     public function createClassNamed($className): void
     {
@@ -102,7 +102,7 @@ class ClassContext implements Context
                 "fieldtype": "panel",
                 "labelWidth": 100,
                 "layout": null,
-                "name": "pimcore_root",
+                "name": "opendxp_root",
                 "type": null,
                 "region": null,
                 "title": null,
@@ -159,12 +159,12 @@ class ClassContext implements Context
 
         ClassDefinition\Service::importClassDefinitionFromJson($classDefinition, $json, true);
 
-        $this->sharedStorage->set('pimcore_definition_name', $className);
-        $this->sharedStorage->set('pimcore_definition_class', $classDefinition::class);
+        $this->sharedStorage->set('opendxp_definition_name', $className);
+        $this->sharedStorage->set('opendxp_definition_class', $classDefinition::class);
     }
 
     /**
-     * @Given /^there is a pimcore brick "([^"]+)"$/
+     * @Given /^there is a opendxp brick "([^"]+)"$/
      */
     public function createBrickNamed($brickName): void
     {
@@ -219,12 +219,12 @@ class ClassContext implements Context
 
         ClassDefinition\Service::importObjectBrickFromJson($brickDefinition, $json, true);
 
-        $this->sharedStorage->set('pimcore_definition_name', $brickName);
-        $this->sharedStorage->set('pimcore_definition_class', $brickDefinition::class);
+        $this->sharedStorage->set('opendxp_definition_name', $brickName);
+        $this->sharedStorage->set('opendxp_definition_class', $brickDefinition::class);
     }
 
     /**
-     * @Given /^there is a pimcore field-collection "([^"]+)"$/
+     * @Given /^there is a opendxp field-collection "([^"]+)"$/
      */
     public function createCollectionNamed($collection): void
     {
@@ -277,8 +277,8 @@ class ClassContext implements Context
 
         ClassDefinition\Service::importFieldCollectionFromJson($collectionDefinition, $json, true);
 
-        $this->sharedStorage->set('pimcore_definition_name', $collection);
-        $this->sharedStorage->set('pimcore_definition_class', $collectionDefinition::class);
+        $this->sharedStorage->set('opendxp_definition_name', $collection);
+        $this->sharedStorage->set('opendxp_definition_class', $collectionDefinition::class);
     }
 
     /**
@@ -501,7 +501,7 @@ class ClassContext implements Context
         $jsonDefinition = sprintf('
             {
                 "fieldtype": "localizedfields",
-                "phpdocType": "\\Pimcore\\Model\\DataObject\\Localizedfield",
+                "phpdocType": "\\OpenDxp\\Model\\DataObject\\Localizedfield",
                 "children": [
                     {
                         "fieldtype": "input",
@@ -561,7 +561,7 @@ class ClassContext implements Context
         $jsonDefinition = sprintf('
             {
                 "fieldtype": "localizedfields",
-                "phpdocType": "\\Pimcore\\Model\\DataObject\\Localizedfield",
+                "phpdocType": "\\OpenDxp\\Model\\DataObject\\Localizedfield",
                 "children": [
                     {
                         "fieldtype": "textarea",
@@ -623,7 +623,7 @@ class ClassContext implements Context
         $jsonDefinition = sprintf('
             {
                 "fieldtype": "objectbricks",
-                "phpdocType": "\\Pimcore\\Model\\DataObject\\Objectbrick",
+                "phpdocType": "\\OpenDxp\\Model\\DataObject\\Objectbrick",
                 "allowedTypes": [],
                 "maxItems": null,
                 "name": "%s",
@@ -658,7 +658,7 @@ class ClassContext implements Context
         $jsonDefinition = sprintf('
             {
                 "fieldtype": "fieldcollections",
-                "phpdocType": "\\Pimcore\\Model\\DataObject\\Fieldcollection",
+                "phpdocType": "\\OpenDxp\\Model\\DataObject\\Fieldcollection",
                 "allowedTypes": [
                     "%s"
                 ],
@@ -696,7 +696,7 @@ class ClassContext implements Context
         /**
          * @var class-string $className
          */
-        $className = sprintf('Pimcore\\Model\\DataObject\\%s', $definition->getName());
+        $className = sprintf('OpenDxp\\Model\\DataObject\\%s', $definition->getName());
         /**
          * @var Concrete $instance
          */
@@ -716,7 +716,7 @@ class ClassContext implements Context
         /**
          * @var class-string $className
          */
-        $className = sprintf('Pimcore\\Model\\DataObject\\%s', $definition->getName());
+        $className = sprintf('OpenDxp\\Model\\DataObject\\%s', $definition->getName());
 
         for ($i = 0; $i < $count; ++$i) {
             /**
@@ -792,7 +792,7 @@ class ClassContext implements Context
 
                     break;
                 case 'relation':
-                    $object->setValue($row['key'], DataObject::getById($row['value']));
+                    $object->setValue($row['key'], DataObject::getById((int) $row['value']));
 
                     break;
                 case 'localized':
@@ -809,7 +809,7 @@ class ClassContext implements Context
                     /**
                      * @var class-string $className
                      */
-                    $className = sprintf('Pimcore\\Model\\DataObject\\Objectbrick\\Data\\%s', $type);
+                    $className = sprintf('OpenDxp\\Model\\DataObject\\Objectbrick\\Data\\%s', $type);
 
                     $brickInstance = new $className($object);
 
@@ -826,7 +826,7 @@ class ClassContext implements Context
                     /**
                      * @var class-string $className
                      */
-                    $className = sprintf('Pimcore\\Model\\DataObject\\Fieldcollection\\Data\\%s', $type);
+                    $className = sprintf('OpenDxp\\Model\\DataObject\\Fieldcollection\\Data\\%s', $type);
 
                     $items = new Fieldcollection();
 

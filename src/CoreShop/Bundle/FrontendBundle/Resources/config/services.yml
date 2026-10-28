@@ -25,7 +25,7 @@ services:
 
     CoreShop\Bundle\FrontendBundle\Twig\LocaleSwitcherExtension:
         arguments:
-            - '@Pimcore\Model\Document\Service'
+            - '@OpenDxp\Model\Document\Service'
             - '@CoreShop\Component\Core\Context\ShopperContextInterface'
             - '@Symfony\Component\HttpFoundation\RequestStack'
             - '@router'

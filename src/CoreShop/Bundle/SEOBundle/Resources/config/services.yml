@@ -16,7 +16,7 @@ services:
     CoreShop\Component\SEO\SEOPresentationInterface: '@CoreShop\Component\SEO\SEOPresentation'
     CoreShop\Component\SEO\SEOPresentation:
         arguments:
-        - '@Pimcore\Twig\Extension\Templating\HeadMeta'
-        - '@Pimcore\Twig\Extension\Templating\HeadTitle'
+        - '@OpenDxp\Twig\Extension\Templating\HeadMeta'
+        - '@OpenDxp\Twig\Extension\Templating\HeadTitle'
         - '@coreshop.registry.seo.extractor'
 

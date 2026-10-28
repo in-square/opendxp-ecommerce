@@ -1,11 +1,11 @@
 {% import "@CoreShopFrontend/Common/Macro/currency.html.twig" as currency %}
-{% set href = pimcore_object_path(product) %}
+{% set href = opendxp_object_path(product) %}
 
 <div class="product-col">
     <div class="image">
-        {% if product.image is pimcore_asset_image %}
+        {% if product.image is opendxp_asset_image %}
             <a href="{{ href }}">
-                {{ product.image|pimcore_image_thumbnail_html('coreshop_productList', {'imgAttributes': {'class': 'img-fluid'}, 'alt': product.name, 'id': 'image' ~ product.id}) }}
+                {{ product.image|opendxp_image_thumbnail_html('coreshop_productList', {'imgAttributes': {'class': 'img-fluid'}, 'alt': product.name, 'id': 'image' ~ product.id}) }}
             </a>
         {% endif %}
     </div>

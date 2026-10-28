@@ -41,7 +41,7 @@ class AdditionPercentActionConfigurationType extends AbstractType
             ->add('percent', NumberType::class, [
                 'constraints' => [
                     new NotBlank(['groups' => $this->validationGroups]),
-                    new Type(['type' => 'numeric', 'groups' => $this->validationGroups]),
+                    new Type(type: 'numeric', groups: $this->validationGroups),
                     new Range(['min' => 0, 'max' => 100, 'groups' => $this->validationGroups]),
                 ],
             ])

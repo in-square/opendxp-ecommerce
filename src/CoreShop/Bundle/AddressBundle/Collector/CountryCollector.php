@@ -20,7 +20,7 @@ namespace CoreShop\Bundle\AddressBundle\Collector;
 
 use CoreShop\Component\Address\Context\CountryContextInterface;
 use CoreShop\Component\Address\Model\CountryInterface;
-use Pimcore\Http\Request\Resolver\PimcoreContextResolver;
+use OpenDxp\Http\Request\Resolver\OpenDxpContextResolver;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\DataCollector\DataCollector;
@@ -29,7 +29,7 @@ final class CountryCollector extends DataCollector
 {
     public function __construct(
         private CountryContextInterface $countryContext,
-        private PimcoreContextResolver $pimcoreContext,
+        private OpenDxpContextResolver $opendxpContext,
         $countryChangeSupport = false,
     ) {
         $this->data = [
@@ -50,7 +50,7 @@ final class CountryCollector extends DataCollector
 
     public function collect(Request $request, Response $response, \Throwable $exception = null): void
     {
-        if ($this->pimcoreContext->matchesPimcoreContext($request, PimcoreContextResolver::CONTEXT_ADMIN)) {
+        if ($this->opendxpContext->matchesOpenDxpContext($request, OpenDxpContextResolver::CONTEXT_ADMIN)) {
             $this->data['admin'] = true;
 
             return;

@@ -43,7 +43,7 @@ final class Configuration implements ConfigurationInterface
             ->end()
         ;
         $this->addModelsSection($rootNode);
-        $this->addPimcoreResourcesSection($rootNode);
+        $this->addOpenDxpResourcesSection($rootNode);
         $this->addCheckoutConfigurationSection($rootNode);
 
         return $treeBuilder;
@@ -83,10 +83,10 @@ final class Configuration implements ConfigurationInterface
         ;
     }
 
-    private function addPimcoreResourcesSection(ArrayNodeDefinition $node): void
+    private function addOpenDxpResourcesSection(ArrayNodeDefinition $node): void
     {
         $node->children()
-            ->arrayNode('pimcore_admin')
+            ->arrayNode('opendxp_admin')
                 ->addDefaultsIfNotSet()
                 ->children()
                     ->arrayNode('js')
@@ -97,7 +97,7 @@ final class Configuration implements ConfigurationInterface
                         ->addDefaultsIfNotSet()
                         ->ignoreExtraKeys(false)
                         ->children()
-                            ->scalarNode('core')->defaultValue('/bundles/coreshopcore/pimcore/css/core.css')->end()
+                            ->scalarNode('core')->defaultValue('/bundles/coreshopcore/opendxp/css/core.css')->end()
                         ->end()
                     ->end()
                     ->scalarNode('permissions')

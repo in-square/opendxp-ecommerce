@@ -14,8 +14,8 @@ it uses a concept called context and context resolver.
 
 | Name                                                                                                                                                                                | Priority | Tag                                             | Description                                         |
 |-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------|-------------------------------------------------|-----------------------------------------------------|
-| [SiteBasedRequestResolver](https://github.com/coreshop/CoreShop/blob/master/src/CoreShop/Component/Store/Context/RequestBased/SiteBasedRequestResolver.php)                         | 100      | `coreshop.context.store.request_based.resolver` | Determines a store by a given pimcore frontend site |
-| [PimcoreAdminSiteBasedRequestResolver](https://github.com/coreshop/CoreShop/blob/master/src/CoreShop/Component/Store/Context/RequestBased/PimcoreAdminSiteBasedRequestResolver.php) | 200      | `coreshop.context.store.request_based.resolver` | Determines a store by a given document in backend   |
+| [SiteBasedRequestResolver](https://github.com/coreshop/CoreShop/blob/master/src/CoreShop/Component/Store/Context/RequestBased/SiteBasedRequestResolver.php)                         | 100      | `coreshop.context.store.request_based.resolver` | Determines a store by a given opendxp frontend site |
+| [OpenDxpAdminSiteBasedRequestResolver](https://github.com/coreshop/CoreShop/blob/master/src/CoreShop/Component/Store/Context/RequestBased/OpenDxpAdminSiteBasedRequestResolver.php) | 200      | `coreshop.context.store.request_based.resolver` | Determines a store by a given document in backend   |
 
 These resolver take care about finding the correct store for the current request.a# Store Context
 
@@ -37,8 +37,8 @@ Resolvers are responsible for finding the correct store based on specific criter
 
 | Name                                                                                                                                                                                | Priority | Tag                                             | Description                                         |
 |-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------|-------------------------------------------------|-----------------------------------------------------|
-| [SiteBasedRequestResolver](https://github.com/coreshop/CoreShop/blob/master/src/CoreShop/Component/Store/Context/RequestBased/SiteBasedRequestResolver.php)                         | 100      | `coreshop.context.store.request_based.resolver` | Determines a store by a given Pimcore frontend site |
-| [PimcoreAdminSiteBasedRequestResolver](https://github.com/coreshop/CoreShop/blob/master/src/CoreShop/Component/Store/Context/RequestBased/PimcoreAdminSiteBasedRequestResolver.php) | 200      | `coreshop.context.store.request_based.resolver` | Determines a store by a given document in backend   |
+| [SiteBasedRequestResolver](https://github.com/coreshop/CoreShop/blob/master/src/CoreShop/Component/Store/Context/RequestBased/SiteBasedRequestResolver.php)                         | 100      | `coreshop.context.store.request_based.resolver` | Determines a store by a given OpenDxp frontend site |
+| [OpenDxpAdminSiteBasedRequestResolver](https://github.com/coreshop/CoreShop/blob/master/src/CoreShop/Component/Store/Context/RequestBased/OpenDxpAdminSiteBasedRequestResolver.php) | 200      | `coreshop.context.store.request_based.resolver` | Determines a store by a given document in backend   |
 
 ## Create a Custom Resolver
 
@@ -60,7 +60,7 @@ CoreShop supports request-based store context resolvers:
 
 ## Example: Implementing a Document-Based Store Context
 
-To resolve a Store based on a Pimcore document, such as differentiating between `/de` and `/en` sites:
+To resolve a Store based on a OpenDxp document, such as differentiating between `/de` and `/en` sites:
 
 1. Create the RequestBased Store Context:
 
@@ -109,7 +109,7 @@ attribute.
 
 ## Example
 
-We want to a StoreContext to be based on the Pimcore Document. So if we are on site `/de`, we want to resolve
+We want to a StoreContext to be based on the OpenDxp Document. So if we are on site `/de`, we want to resolve
 to `Store DE`, if we
 are on page `/en` we want to resolve to Store `Store EN`:
 
@@ -122,7 +122,7 @@ namespace App\CoreShop\Store\Context;
 
 use CoreShop\Component\Store\Context\RequestBased\RequestResolverInterface;
 use CoreShop\Component\Store\Repository\StoreRepositoryInterface;
-use Pimcore\Http\Request\Resolver\DocumentResolver;
+use OpenDxp\Http\Request\Resolver\DocumentResolver;
 use Symfony\Component\HttpFoundation\Request;
 
 final class DocumentBasedRequestRequestResolver implements RequestResolverInterface
@@ -161,4 +161,4 @@ services:
 
 ```
 
-CoreShop now tries to resolve the current Store based on the Pimcore Site we are on.
+CoreShop now tries to resolve the current Store based on the OpenDxp Site we are on.

@@ -29,10 +29,10 @@ use CoreShop\Component\Order\Renderer\OrderDocumentRendererInterface;
 use CoreShop\Component\Order\Repository\OrderInvoiceRepositoryInterface;
 use CoreShop\Component\Order\Repository\OrderShipmentRepositoryInterface;
 use CoreShop\Component\Order\ShipmentStates;
-use CoreShop\Component\Pimcore\Mail\MailProcessorInterface;
+use CoreShop\Component\OpenDxp\Mail\MailProcessorInterface;
 use Monolog\Logger;
-use Pimcore\Model\DataObject\Concrete;
-use Pimcore\Model\Document\Email;
+use OpenDxp\Model\DataObject\Concrete;
+use OpenDxp\Model\Document\Email;
 
 class OrderMailProcessor implements OrderMailProcessorInterface
 {
@@ -64,7 +64,7 @@ class OrderMailProcessor implements OrderMailProcessorInterface
         $emailParameters['object'] = $order;
         $emailParameters['storeNote'] = true;
 
-        unset($emailParameters['____pimcore_cache_item__'], $emailParameters['__dataVersionTimestamp']);
+        unset($emailParameters['____opendxp_cache_item__'], $emailParameters['__dataVersionTimestamp']);
 
         $recipient = [];
 

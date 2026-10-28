@@ -23,7 +23,7 @@ use CoreShop\Component\Order\Model\OrderInterface;
 use CoreShop\Component\Order\Model\PurchasableInterface;
 use CoreShop\Component\Order\Processor\CartProcessorInterface;
 use CoreShop\Component\Resource\Translation\Provider\TranslationLocaleProviderInterface;
-use Pimcore\Model\DataObject\AbstractObject;
+use OpenDxp\Model\DataObject\AbstractObject;
 
 final class CartTextProcessor implements CartProcessorInterface
 {

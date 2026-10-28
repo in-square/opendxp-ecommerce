@@ -21,7 +21,7 @@ namespace CoreShop\Bundle\CoreBundle\EventListener;
 use CoreShop\Component\Core\Configuration\ConfigurationServiceInterface;
 use CoreShop\Component\Core\Context\ShopperContextInterface;
 use CoreShop\Component\Order\Manager\CartManagerInterface;
-use Pimcore\Http\RequestHelper;
+use OpenDxp\Http\RequestHelper;
 use Symfony\Component\HttpKernel\Event\RequestEvent;
 
 final class RequestCartRecalculation
@@ -30,7 +30,7 @@ final class RequestCartRecalculation
         private CartManagerInterface $cartManager,
         private ShopperContextInterface $shopperContext,
         private ConfigurationServiceInterface $configurationService,
-        private RequestHelper $pimcoreRequestHelper,
+        private RequestHelper $opendxpRequestHelper,
     ) {
     }
 
@@ -40,7 +40,7 @@ final class RequestCartRecalculation
             return;
         }
 
-        if (!$this->pimcoreRequestHelper->isFrontendRequest($event->getRequest())) {
+        if (!$this->opendxpRequestHelper->isFrontendRequest($event->getRequest())) {
             return;
         }
 

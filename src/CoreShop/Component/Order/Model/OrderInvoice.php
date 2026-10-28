@@ -19,10 +19,10 @@ declare(strict_types=1);
 namespace CoreShop\Component\Order\Model;
 
 use Carbon\Carbon;
-use CoreShop\Component\Resource\Exception\ImplementedByPimcoreException;
-use CoreShop\Component\Resource\Pimcore\Model\AbstractPimcoreModel;
+use CoreShop\Component\Resource\Exception\ImplementedByOpenDxpException;
+use CoreShop\Component\Resource\OpenDxp\Model\AbstractOpenDxpModel;
 
-abstract class OrderInvoice extends AbstractPimcoreModel implements OrderInvoiceInterface
+abstract class OrderInvoice extends AbstractOpenDxpModel implements OrderInvoiceInterface
 {
     use AdjustableTrait;
     use ConvertedAdjustableTrait;
@@ -179,87 +179,87 @@ abstract class OrderInvoice extends AbstractPimcoreModel implements OrderInvoice
 
     public function getTotalNet(): int
     {
-        throw new ImplementedByPimcoreException(__CLASS__, __METHOD__);
+        throw new ImplementedByOpenDxpException(__CLASS__, __METHOD__);
     }
 
     public function setTotalNet(int $total)
     {
-        throw new ImplementedByPimcoreException(__CLASS__, __METHOD__);
+        throw new ImplementedByOpenDxpException(__CLASS__, __METHOD__);
     }
 
     public function getTotalGross(): int
     {
-        throw new ImplementedByPimcoreException(__CLASS__, __METHOD__);
+        throw new ImplementedByOpenDxpException(__CLASS__, __METHOD__);
     }
 
     public function setTotalGross(int $total)
     {
-        throw new ImplementedByPimcoreException(__CLASS__, __METHOD__);
+        throw new ImplementedByOpenDxpException(__CLASS__, __METHOD__);
     }
 
     public function getSubtotalNet(): int
     {
-        throw new ImplementedByPimcoreException(__CLASS__, __METHOD__);
+        throw new ImplementedByOpenDxpException(__CLASS__, __METHOD__);
     }
 
     public function setSubtotalNet(int $subTotalNet)
     {
-        throw new ImplementedByPimcoreException(__CLASS__, __METHOD__);
+        throw new ImplementedByOpenDxpException(__CLASS__, __METHOD__);
     }
 
     public function getSubtotalGross(): int
     {
-        throw new ImplementedByPimcoreException(__CLASS__, __METHOD__);
+        throw new ImplementedByOpenDxpException(__CLASS__, __METHOD__);
     }
 
     public function setSubtotalGross(int $subTotalGross)
     {
-        throw new ImplementedByPimcoreException(__CLASS__, __METHOD__);
+        throw new ImplementedByOpenDxpException(__CLASS__, __METHOD__);
     }
 
     public function getShippingNet(): int
     {
-        throw new ImplementedByPimcoreException(__CLASS__, __METHOD__);
+        throw new ImplementedByOpenDxpException(__CLASS__, __METHOD__);
     }
 
     public function getConvertedTotalNet(): int
     {
-        throw new ImplementedByPimcoreException(__CLASS__, __METHOD__);
+        throw new ImplementedByOpenDxpException(__CLASS__, __METHOD__);
     }
 
     public function setConvertedTotalNet(int $total)
     {
-        throw new ImplementedByPimcoreException(__CLASS__, __METHOD__);
+        throw new ImplementedByOpenDxpException(__CLASS__, __METHOD__);
     }
 
     public function getConvertedTotalGross(): int
     {
-        throw new ImplementedByPimcoreException(__CLASS__, __METHOD__);
+        throw new ImplementedByOpenDxpException(__CLASS__, __METHOD__);
     }
 
     public function setConvertedTotalGross(int $convertedTotal)
     {
-        throw new ImplementedByPimcoreException(__CLASS__, __METHOD__);
+        throw new ImplementedByOpenDxpException(__CLASS__, __METHOD__);
     }
 
     public function getConvertedSubtotalNet(): int
     {
-        throw new ImplementedByPimcoreException(__CLASS__, __METHOD__);
+        throw new ImplementedByOpenDxpException(__CLASS__, __METHOD__);
     }
 
     public function setConvertedSubtotalNet(int $convertedSubTotalNet)
     {
-        throw new ImplementedByPimcoreException(__CLASS__, __METHOD__);
+        throw new ImplementedByOpenDxpException(__CLASS__, __METHOD__);
     }
 
     public function getConvertedSubtotalGross(): int
     {
-        throw new ImplementedByPimcoreException(__CLASS__, __METHOD__);
+        throw new ImplementedByOpenDxpException(__CLASS__, __METHOD__);
     }
 
     public function setConvertedSubtotalGross(int $convertedSubTotalGross)
     {
-        throw new ImplementedByPimcoreException(__CLASS__, __METHOD__);
+        throw new ImplementedByOpenDxpException(__CLASS__, __METHOD__);
     }
 
     protected function recalculateAfterAdjustmentChange(): void

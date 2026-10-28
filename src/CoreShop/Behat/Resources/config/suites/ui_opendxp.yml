@@ -1,0 +1,22 @@
+imports:
+    - ui_opendxp/login.yml
+    - ui_opendxp/menu.yml
+    - ui_opendxp/carrier.yml
+    - ui_opendxp/cart.yml
+    - ui_opendxp/cart_price_rule.yml
+    - ui_opendxp/country.yml
+    - ui_opendxp/currency.yml
+    - ui_opendxp/exchange_rate.yml
+    - ui_opendxp/filter.yml
+    - ui_opendxp/index.yml
+    - ui_opendxp/notification_rule.yml
+    - ui_opendxp/order.yml
+    - ui_opendxp/payment_provider.yml
+    - ui_opendxp/product_price_rule.yml
+    - ui_opendxp/product_unit.yml
+    - ui_opendxp/quote.yml
+    - ui_opendxp/shipping_rule.yml
+    - ui_opendxp/state.yml
+    - ui_opendxp/tax_rate.yml
+    - ui_opendxp/tax_rule.yml
+    - ui_opendxp/zone.yml

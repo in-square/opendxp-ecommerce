@@ -108,7 +108,7 @@ And you need to configure it to be loaded as well:
 
 ```yaml
 core_shop_store:
-  pimcore_admin:
+  opendxp_admin:
     js:
       custom_store: '/coreshop/js/store.js'
 ```

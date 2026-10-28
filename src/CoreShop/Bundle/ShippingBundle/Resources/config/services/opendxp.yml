@@ -1,0 +1,12 @@
+services:
+    _defaults:
+        public: true
+
+    coreshop.opendxp.document.editable.carrier:
+        class: CoreShop\Component\Resource\OpenDxp\ResourceDocumentTagFactory
+        arguments:
+            - 'CoreShop\Bundle\ResourceBundle\CoreExtension\Document\Select'
+            - 'coreshop.repository.carrier'
+            - 'title'
+        tags:
+            - { name: coreshop.opendxp.document.editable, type: coreshop_carrier }

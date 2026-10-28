@@ -1,0 +1,54 @@
+services:
+    coreshop.datahub.graphql.querytypegenerator.resource.dynamic_dropdown:
+        class: OpenDxp\Bundle\DataHubBundle\GraphQL\DataObjectQueryFieldConfigGenerator\Href
+        arguments:
+            - '@OpenDxp\Bundle\DataHubBundle\GraphQL\Service'
+        tags:
+            - { name: opendxp.datahub.graphql.dataobjectquerytypegenerator, id: typegenerator_dataobjectquerydatatype_coreShopDynamicDropdown }
+
+    coreshop.datahub.graphql.querytypegenerator.resource.relation:
+        class: OpenDxp\Bundle\DataHubBundle\GraphQL\DataObjectQueryFieldConfigGenerator\Href
+        arguments:
+            - '@OpenDxp\Bundle\DataHubBundle\GraphQL\Service'
+        tags:
+            - { name: opendxp.datahub.graphql.dataobjectquerytypegenerator, id: typegenerator_dataobjectquerydatatype_coreShopRelation }
+
+    coreshop.datahub.graphql.dataobjectmutationtypegenerator.resource.dynamic_dropdown:
+        class: OpenDxp\Bundle\DataHubBundle\GraphQL\DataObjectMutationFieldConfigGenerator\ManyToOneRelation
+        arguments:
+            - '@OpenDxp\Bundle\DataHubBundle\GraphQL\Service'
+        tags:
+            - { name: opendxp.datahub.graphql.dataobjectmutationtypegenerator, id: typegenerator_dataobjectmutationdatatype_coreShopDynamicDropdown }
+
+    coreshop.datahub.graphql.dataobjectmutationtypegenerator.resource.relations:
+        class: OpenDxp\Bundle\DataHubBundle\GraphQL\DataObjectMutationFieldConfigGenerator\ManyToOneRelation
+        arguments:
+            - '@OpenDxp\Bundle\DataHubBundle\GraphQL\Service'
+        tags:
+            - { name: opendxp.datahub.graphql.dataobjectmutationtypegenerator, id: typegenerator_dataobjectmutationdatatype_coreShopRelations }
+
+    coreshop.datahub.graphql.querytypegenerator.resource.dynamic_dropdown_multiple:
+        class: OpenDxp\Bundle\DataHubBundle\GraphQL\DataObjectQueryFieldConfigGenerator\Multihref
+        arguments:
+            - '@OpenDxp\Bundle\DataHubBundle\GraphQL\Service'
+        tags:
+            - { name: opendxp.datahub.graphql.dataobjectquerytypegenerator, id: typegenerator_dataobjectquerydatatype_coreShopDynamicDropdownMultiple }
+            - { name: opendxp.datahub.graphql.dataobjectquerytypegenerator, id: typegenerator_dataobjectquerydatatype_coreShopItemSelector }
+            - { name: opendxp.datahub.graphql.dataobjectquerytypegenerator, id: typegenerator_dataobjectquerydatatype_coreShopSuperBoxSelect }
+
+    coreshop.datahub.graphql.dataobjectmutationtypegenerator.redsource.dynamic_dropdown_multiple:
+        class: OpenDxp\Bundle\DataHubBundle\GraphQL\DataObjectMutationFieldConfigGenerator\ManyToManyRelation
+        arguments:
+            - '@OpenDxp\Bundle\DataHubBundle\GraphQL\Service'
+            - '@OpenDxp\Bundle\DataHubBundle\GraphQL\DataObjectType\ElementDescriptorInputType'
+        tags:
+            - { name: opendxp.datahub.graphql.dataobjectmutationtypegenerator, id: typegenerator_dataobjectmutationdatatype_coreShopDynamicDropdownMultiple }
+            - { name: opendxp.datahub.graphql.dataobjectmutationtypegenerator, id: typegenerator_dataobjectmutationdatatype_coreShopItemSelector }
+            - { name: opendxp.datahub.graphql.dataobjectmutationtypegenerator, id: typegenerator_dataobjectmutationdatatype_coreShopSuperBoxSelect }
+
+    coreshop.datahub.graphql.querytypegenerator.resource.serialized_data:
+        class: CoreShop\Bundle\OpenDxpBundle\DataHub\QueryType\SerializedData
+        arguments:
+            - '@OpenDxp\Bundle\DataHubBundle\GraphQL\Service'
+        tags:
+            - { name: opendxp.datahub.graphql.dataobjectquerytypegenerator, id: typegenerator_dataobjectquerydatatype_coreShopSerializedData }

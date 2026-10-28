@@ -1,3 +1,7 @@
 {
-  "name": "coreshop/test-theme"
+    "name": "coreshop/test-theme",
+    "license": "GPL-3.0-or-later",
+    "require": {
+        "php": "^8.3"
+    }
 }

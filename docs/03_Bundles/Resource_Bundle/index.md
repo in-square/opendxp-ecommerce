@@ -2,7 +2,7 @@
 
 The Resource Bundle is a central component of CoreShop, handling the creation, reading, updating, and deleting (CRUD) of
 CoreShop models. It manages Doctrine ORM mappings, translations, routing, event dispatching, serialization, and CRUD
-operations. This bundle also facilitates the installation of various Pimcore definitions.
+operations. This bundle also facilitates the installation of various OpenDxp definitions.
 
 ## Installation Process
 
@@ -111,13 +111,13 @@ App\Model\CustomEntity:
       groups: [List, Detailed]
 ```
 
-### Adding Custom Pimcore Entities
+### Adding Custom OpenDxp Entities
 
-Similar to Doctrine entities, you can register Pimcore DataObject Classes:
+Similar to Doctrine entities, you can register OpenDxp DataObject Classes:
 
 #### 1. Model Implementation:
 
-Extend from `CoreShop\Component\Resource\Pimcore\Model\AbstractPimcoreModel` or
+Extend from `CoreShop\Component\Resource\OpenDxp\Model\AbstractOpenDxpModel` or
 implement `CoreShop\Component\Resource\Model\ResourceInterface`.
 
 #### 2. Register as CoreShop Resource:
@@ -125,10 +125,10 @@ implement `CoreShop\Component\Resource\Model\ResourceInterface`.
 ```yaml
 # app/config/config.yml
 core_shop_resource:
-  pimcore:
+  opendxp:
     app.my_data_object_class:
       classes:
-        model: Pimcore\Model\DataObject\MyDataObjectClass
+        model: OpenDxp\Model\DataObject\MyDataObjectClass
         interface: CoreShop\Component\Resource\Model\ResourceInterface
 ```
 #### 2.1. Register as a CoreShop Resource with PHP Attributes:
@@ -139,14 +139,14 @@ You can do this by adding the following Attribute to your Entity Class:
 
 ```php
 
-use CoreShop\Bundle\ResourceBundle\Attribute\AsPimcoreModel;
-use CoreShop\Component\Resource\Pimcore\Model\AbstractPimcoreModel;
+use CoreShop\Bundle\ResourceBundle\Attribute\AsOpenDxpModel;
+use CoreShop\Component\Resource\OpenDxp\Model\AbstractOpenDxpModel;
 
-#[AsPimcoreModel(
-    pimcoreModel: 'Pimcore\Model\DataObject\MyDataObjectClass',
+#[AsOpenDxpModel(
+    opendxpModel: 'OpenDxp\Model\DataObject\MyDataObjectClass',
     type: 'object'
 )]
-class MyDataObjectClass extends AbstractPimcoreModel
+class MyDataObjectClass extends AbstractOpenDxpModel
 {
 
 }
@@ -157,7 +157,7 @@ Per default, it points to `%kernel.project_dir%/src/Model`.
 
 #### 3. Usage
 
-Utilize CoreShop's repository service or Pimcore's listing classes for data manipulation and retrieval.
+Utilize CoreShop's repository service or OpenDxp's listing classes for data manipulation and retrieval.
 
 The Resource Bundle is the backbone of CoreShop, enhancing its capabilities and providing a robust framework for
-managing models and data in Pimcore.
+managing models and data in OpenDxp.

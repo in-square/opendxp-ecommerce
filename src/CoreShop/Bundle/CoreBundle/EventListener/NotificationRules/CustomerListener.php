@@ -23,8 +23,8 @@ use CoreShop\Bundle\UserBundle\Event\RequestPasswordChangeEvent;
 use CoreShop\Component\Core\Model\CustomerInterface;
 use CoreShop\Component\Core\Model\UserInterface;
 use CoreShop\Component\Core\Notification\Rule\Condition\User\UserTypeChecker;
-use CoreShop\Component\Pimcore\DataObject\VersionHelper;
-use Pimcore\Model\DataObject\Concrete;
+use CoreShop\Component\OpenDxp\DataObject\VersionHelper;
+use OpenDxp\Model\DataObject\Concrete;
 use Symfony\Component\EventDispatcher\GenericEvent;
 use Webmozart\Assert\Assert;
 

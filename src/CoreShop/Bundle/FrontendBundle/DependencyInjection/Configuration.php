@@ -53,7 +53,7 @@ final class Configuration implements ConfigurationInterface
         ;
 
         $this->addCategorySection($rootNode);
-        $this->addPimcoreResourcesSection($rootNode);
+        $this->addOpenDxpResourcesSection($rootNode);
         $this->addControllerSection($rootNode);
 
         return $treeBuilder;
@@ -107,10 +107,10 @@ final class Configuration implements ConfigurationInterface
         ;
     }
 
-    private function addPimcoreResourcesSection(ArrayNodeDefinition $node): void
+    private function addOpenDxpResourcesSection(ArrayNodeDefinition $node): void
     {
         $node->children()
-            ->arrayNode('pimcore_admin')
+            ->arrayNode('opendxp_admin')
                 ->addDefaultsIfNotSet()
                 ->children()
                     ->arrayNode('install')
@@ -119,17 +119,17 @@ final class Configuration implements ConfigurationInterface
                             ->arrayNode('routes')
                                 ->treatNullLike([])
                                 ->scalarPrototype()->end()
-                                ->defaultValue(['@CoreShopFrontendBundle/Resources/install/pimcore/staticroutes.yml'])
+                                ->defaultValue(['@CoreShopFrontendBundle/Resources/install/opendxp/staticroutes.yml'])
                             ->end()
                             ->arrayNode('documents')
                                 ->treatNullLike([])
                                 ->scalarPrototype()->end()
-                                ->defaultValue(['@CoreShopFrontendBundle/Resources/install/pimcore/documents.yml'])
+                                ->defaultValue(['@CoreShopFrontendBundle/Resources/install/opendxp/documents.yml'])
                             ->end()
                             ->arrayNode('image_thumbnails')
                                 ->treatNullLike([])
                                 ->scalarPrototype()->end()
-                                ->defaultValue(['@CoreShopFrontendBundle/Resources/install/pimcore/image-thumbnails.yml'])
+                                ->defaultValue(['@CoreShopFrontendBundle/Resources/install/opendxp/image-thumbnails.yml'])
                             ->end()
                         ->end()
                     ->end()

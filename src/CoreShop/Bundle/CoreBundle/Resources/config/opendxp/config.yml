@@ -1,0 +1,37 @@
+imports:
+    - { resource: admin.yml }
+    - { resource: coreshop.yml }
+    - { resource: checkout.yml }
+    - { resource: workflow.yml }
+    - { resource: migrations.yml }
+
+jms_serializer:
+    metadata:
+        directories:
+            core-shop-core:
+                namespace_prefix: "CoreShop\\Component\\Core"
+                path: "@CoreShopCoreBundle/Resources/config/serializer"
+
+core_shop_resource:
+    orm_cascade_merge_associations:
+        CoreShop\Component\Core\Model\Country:
+            associations:
+                - currency
+        CoreShop\Component\Core\Model\Store:
+            associations:
+                - countries
+
+twig:
+    globals:
+        coreshop: '@CoreShop\Component\Core\Context\ShopperContextInterface'
+
+opendxp:
+    security:
+        encoder_factories:
+            '%coreshop.model.user.class%': coreshop.security.user.password_encoder_factory
+    objects:
+        class_definitions:
+            data:
+                map:
+                    coreShopStoreValues: CoreShop\Bundle\CoreBundle\CoreExtension\StoreValues
+        auto_save_interval: 0

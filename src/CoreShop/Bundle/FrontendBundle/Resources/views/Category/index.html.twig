@@ -5,7 +5,7 @@
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{ path('coreshop_index') }}">{{ 'coreshop.ui.home'|trans }}</a></li>
             {% for cat in category.hierarchy %}
-                <li class="breadcrumb-item active"><a href="{{ pimcore_object_path(cat) }}">{{ cat.name }}</a></li>
+                <li class="breadcrumb-item active"><a href="{{ opendxp_object_path(cat) }}">{{ cat.name }}</a></li>
             {% endfor %}
         </ol>
     </nav>
@@ -18,10 +18,10 @@
         <div class="row">
             <div class="col-md-4">
                 <div class="display">
-                    <a href="{{ pimcore_url({'type': 'list'})  }}" class="{% if type == 'list' %} active {% endif %}" {{ coreshop_test_html_attribute('view-list') }}>
+                    <a href="{{ opendxp_url({'type': 'list'})  }}" class="{% if type == 'list' %} active {% endif %}" {{ coreshop_test_html_attribute('view-list') }}>
                         <i class="fa fa-th-list" title="" data-original-title="{{ 'coreshop.ui.list_view'|trans }}"></i>
                     </a>
-                    <a href="{{ pimcore_url({'type': 'grid'})  }}" class="{% if type == 'grid' %} active {% endif %}" {{ coreshop_test_html_attribute('view-grid') }}>
+                    <a href="{{ opendxp_url({'type': 'grid'})  }}" class="{% if type == 'grid' %} active {% endif %}" {{ coreshop_test_html_attribute('view-grid') }}>
                         <i class="fa fa-th" title="" data-original-title="{{ 'coreshop.ui.grid_view'|trans }}"></i>
                     </a>
                 </div>

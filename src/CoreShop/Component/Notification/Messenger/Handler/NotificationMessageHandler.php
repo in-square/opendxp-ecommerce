@@ -25,7 +25,7 @@ use CoreShop\Component\Notification\Repository\NotificationRuleRepositoryInterfa
 use CoreShop\Component\Resource\Model\ResourceInterface;
 use CoreShop\Component\Rule\Condition\RuleValidationProcessorInterface;
 use Doctrine\Persistence\ManagerRegistry;
-use Pimcore\Model\DataObject\Concrete;
+use OpenDxp\Model\DataObject\Concrete;
 
 class NotificationMessageHandler
 {

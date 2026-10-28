@@ -1,0 +1,69 @@
+<?php
+
+declare(strict_types=1);
+
+/*
+ * CoreShop
+ *
+ * This source file is available under two different licenses:
+ *  - GNU General Public License version 3 (GPLv3)
+ *  - CoreShop Commercial License (CCL)
+ * Full copyright and license information is available in
+ * LICENSE.md which is distributed with this source code.
+ *
+ * @copyright  Copyright (c) CoreShop GmbH (https://www.coreshop.com)
+ * @license    https://www.coreshop.com/license     GPLv3 and CCL
+ *
+ */
+
+namespace CoreShop\Bundle\WishlistBundle\OpenDxp\Repository;
+
+use Carbon\Carbon;
+use CoreShop\Bundle\ResourceBundle\OpenDxp\OpenDxpRepository;
+use CoreShop\Component\StorageList\Model\StorageListInterface;
+use CoreShop\Component\Wishlist\Model\WishlistInterface;
+use CoreShop\Component\Wishlist\Repository\WishlistRepositoryInterface;
+use Webmozart\Assert\Assert;
+
+class WishlistRepository extends OpenDxpRepository implements WishlistRepositoryInterface
+{
+    public function findExpiredStorageLists(int $days, array $params = []): array
+    {
+        $daysTimestamp = Carbon::now();
+        $daysTimestamp->subDays($days);
+        $queryParams = [$daysTimestamp->getTimestamp()];
+
+        $list = $this->getList();
+        $list->setCondition('modificationDate < ?', $queryParams);
+
+        /**
+         * @var StorageListInterface[] $result
+         */
+        $result = $list->getObjects();
+
+        return $result;
+    }
+
+    public function findByStorageListId(int $id): ?StorageListInterface
+    {
+        return $this->find($id);
+    }
+
+    public function findByToken(string $token): ?WishlistInterface
+    {
+        $list = $this->getList();
+        $list->setCondition('token = ?', [$token]);
+        $list->setLimit(1);
+        $list->load();
+
+        if ($list->getTotalCount() === 1) {
+            $objects = $list->getObjects();
+
+            Assert::isInstanceOf($objects[0], WishlistInterface::class);
+
+            return $objects[0];
+        }
+
+        return null;
+    }
+}

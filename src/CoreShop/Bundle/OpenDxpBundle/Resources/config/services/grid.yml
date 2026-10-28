@@ -1,0 +1,33 @@
+services:
+    _defaults:
+        public: true
+        autowire: true
+
+    CoreShop\Bundle\OpenDxpBundle\Controller\Admin\GridController:
+        tags:
+            - { name: controller.service_arguments }
+            - { name: container.service_subscriber }
+
+    CoreShop\Bundle\OpenDxpBundle\EventListener\Grid\ObjectListFilterListener:
+        arguments:
+            - '@coreshop.registry.grid.filter'
+        tags:
+            - { name: kernel.event_listener, event: opendxp.admin.object.list.beforeListLoad, method: checkObjectList }
+
+    coreshop.registry.grid.filter:
+        class: CoreShop\Component\Registry\ServiceRegistry
+        public: true
+        arguments:
+            - 'CoreShop\Component\OpenDxp\DataObject\Grid\GridFilterInterface'
+            - 'coreshop-grid-filter'
+        tags:
+            - { name: coreshop.registry, type_hint: gridFilters }
+
+    coreshop.registry.grid.action:
+        class: CoreShop\Component\Registry\ServiceRegistry
+        public: true
+        arguments:
+            - 'CoreShop\Component\OpenDxp\DataObject\Grid\GridActionInterface'
+            - 'coreshop-grid-action'
+        tags:
+            - { name: coreshop.registry, type_hint: gridActions }

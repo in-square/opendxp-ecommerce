@@ -19,9 +19,9 @@ declare(strict_types=1);
 namespace CoreShop\Bundle\WishlistBundle\DependencyInjection;
 
 use CoreShop\Bundle\ResourceBundle\CoreShopResourceBundle;
-use CoreShop\Bundle\WishlistBundle\Pimcore\Repository\WishlistItemRepository;
-use CoreShop\Bundle\WishlistBundle\Pimcore\Repository\WishlistRepository;
-use CoreShop\Component\Resource\Factory\PimcoreFactory;
+use CoreShop\Bundle\WishlistBundle\OpenDxp\Repository\WishlistItemRepository;
+use CoreShop\Bundle\WishlistBundle\OpenDxp\Repository\WishlistRepository;
+use CoreShop\Component\Resource\Factory\OpenDxpFactory;
 use CoreShop\Component\Wishlist\Model\WishlistInterface;
 use CoreShop\Component\Wishlist\Model\WishlistItemInterface;
 use CoreShop\Component\Wishlist\Model\WishlistProductInterface;
@@ -34,7 +34,7 @@ class Configuration implements ConfigurationInterface
     /**
      * @inheritdoc
      */
-    public function getConfigTreeBuilder()
+    public function getConfigTreeBuilder(): TreeBuilder
     {
         $treeBuilder = new TreeBuilder('coreshop_wishlist');
 
@@ -66,7 +66,7 @@ class Configuration implements ConfigurationInterface
     {
         $node
             ->children()
-                ->arrayNode('pimcore')
+                ->arrayNode('opendxp')
                     ->addDefaultsIfNotSet()
                     ->children()
                         ->arrayNode('wishlist')
@@ -82,13 +82,13 @@ class Configuration implements ConfigurationInterface
                                 ->arrayNode('classes')
                                     ->addDefaultsIfNotSet()
                                     ->children()
-                                        ->scalarNode('model')->defaultValue('Pimcore\Model\DataObject\CoreShopWishlist')->cannotBeEmpty()->end()
-                                        ->scalarNode('pimcore_class_name')->end()
+                                        ->scalarNode('model')->defaultValue('OpenDxp\Model\DataObject\CoreShopWishlist')->cannotBeEmpty()->end()
+                                        ->scalarNode('opendxp_class_name')->end()
                                         ->scalarNode('interface')->defaultValue(WishlistInterface::class)->cannotBeEmpty()->end()
-                                        ->scalarNode('factory')->defaultValue(PimcoreFactory::class)->cannotBeEmpty()->end()
+                                        ->scalarNode('factory')->defaultValue(OpenDxpFactory::class)->cannotBeEmpty()->end()
                                         ->scalarNode('repository')->defaultValue(WishlistRepository::class)->end()
-                                        ->scalarNode('install_file')->defaultValue('@CoreShopWishlistBundle/Resources/install/pimcore/classes/CoreShopWishlist.json')->end()
-                                        ->scalarNode('type')->defaultValue(CoreShopResourceBundle::PIMCORE_MODEL_TYPE_OBJECT)->cannotBeOverwritten(true)->end()
+                                        ->scalarNode('install_file')->defaultValue('@CoreShopWishlistBundle/Resources/install/opendxp/classes/CoreShopWishlist.json')->end()
+                                        ->scalarNode('type')->defaultValue(CoreShopResourceBundle::OPENDXP_MODEL_TYPE_OBJECT)->cannotBeOverwritten(true)->end()
                                     ->end()
                                 ->end()
                             ->end()
@@ -101,13 +101,13 @@ class Configuration implements ConfigurationInterface
                                 ->arrayNode('classes')
                                     ->addDefaultsIfNotSet()
                                     ->children()
-                                        ->scalarNode('model')->defaultValue('Pimcore\Model\DataObject\CoreShopWishlistItem')->cannotBeEmpty()->end()
-                                        ->scalarNode('pimcore_class_name')->end()
+                                        ->scalarNode('model')->defaultValue('OpenDxp\Model\DataObject\CoreShopWishlistItem')->cannotBeEmpty()->end()
+                                        ->scalarNode('opendxp_class_name')->end()
                                         ->scalarNode('interface')->defaultValue(WishlistItemInterface::class)->cannotBeEmpty()->end()
-                                        ->scalarNode('factory')->defaultValue(PimcoreFactory::class)->cannotBeEmpty()->end()
+                                        ->scalarNode('factory')->defaultValue(OpenDxpFactory::class)->cannotBeEmpty()->end()
                                         ->scalarNode('repository')->defaultValue(WishlistItemRepository::class)->cannotBeEmpty()->end()
-                                        ->scalarNode('install_file')->defaultValue('@CoreShopWishlistBundle/Resources/install/pimcore/classes/CoreShopWishlistItem.json')->end()
-                                        ->scalarNode('type')->defaultValue(CoreShopResourceBundle::PIMCORE_MODEL_TYPE_OBJECT)->cannotBeOverwritten(true)->end()
+                                        ->scalarNode('install_file')->defaultValue('@CoreShopWishlistBundle/Resources/install/opendxp/classes/CoreShopWishlistItem.json')->end()
+                                        ->scalarNode('type')->defaultValue(CoreShopResourceBundle::OPENDXP_MODEL_TYPE_OBJECT)->cannotBeOverwritten(true)->end()
                                     ->end()
                                 ->end()
                             ->end()

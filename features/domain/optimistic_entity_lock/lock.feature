@@ -2,7 +2,7 @@
 Feature: Locking an Entity to not overwrite it again
 
   Background:
-    Given there is a pimcore class "Locking"
+    Given there is a opendxp class "Locking"
     And the definition has a input field "name"
     And the definition has a numeric integer field "optimisticLockVersion"
     And the definitions parent class is set to "\CoreShop\Behat\Model\Lock\OptimisticLock"

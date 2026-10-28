@@ -20,7 +20,7 @@ namespace CoreShop\Bundle\CoreBundle\Twig;
 
 use CoreShop\Component\Order\Model\PurchasableInterface;
 use CoreShop\Component\Variant\Model\ProductVariantAwareInterface;
-use Pimcore\Model\DataObject\AbstractObject;
+use OpenDxp\Model\DataObject\AbstractObject;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFunction;
 

@@ -2,13 +2,13 @@ services:
     coreshop.datahub.graphql.querytypegenerator.resource.money_types:
         class: CoreShop\Bundle\MoneyBundle\DataHub\QueryType\Money
         arguments:
-            - '@Pimcore\Bundle\DataHubBundle\GraphQL\Service'
+            - '@OpenDxp\Bundle\DataHubBundle\GraphQL\Service'
         tags:
-            - { name: pimcore.datahub.graphql.dataobjectquerytypegenerator, id: typegenerator_dataobjectquerydatatype_coreShopMoney }
+            - { name: opendxp.datahub.graphql.dataobjectquerytypegenerator, id: typegenerator_dataobjectquerydatatype_coreShopMoney }
 
     coreshop.datahub.graphql.mutationtypegenerator.resource.money_types:
         class: CoreShop\Bundle\MoneyBundle\DataHub\MutationType\Money
         arguments:
-            - '@Pimcore\Bundle\DataHubBundle\GraphQL\Service'
+            - '@OpenDxp\Bundle\DataHubBundle\GraphQL\Service'
         tags:
-            - { name: pimcore.datahub.graphql.dataobjectmutationtypegenerator, id: typegenerator_dataobjectmutationdatatype_coreShopMoney }
+            - { name: opendxp.datahub.graphql.dataobjectmutationtypegenerator, id: typegenerator_dataobjectmutationdatatype_coreShopMoney }

@@ -35,7 +35,7 @@ docker compose build --build-arg uid=$(id -u) --pull
 ```
 
 ### Step 2: Full Install
-Run the following command to install Pimcore and CoreShop:
+Run the following command to install OpenDxp and CoreShop:
 ```shell
 docker compose run --rm php bin/install
 ````
@@ -60,10 +60,10 @@ Run the following command to install all the required dependencies using Compose
 docker compose run --rm php composer install
 ```
 
-#### Step 2: Install Pimcore
-Run the following command to install Pimcore using the provided Docker image:
+#### Step 2: Install OpenDxp
+Run the following command to install OpenDxp using the provided Docker image:
 ```shell
-docker compose run --rm php vendor/bin/pimcore-install --no-interaction --ignore-existing-config
+docker compose run --rm php vendor/bin/opendxp-install --no-interaction --ignore-existing-config
 ```
 
 #### Step 3: Install CoreShop

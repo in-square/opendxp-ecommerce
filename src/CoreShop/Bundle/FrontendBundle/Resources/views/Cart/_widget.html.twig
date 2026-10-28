@@ -16,16 +16,16 @@
                     <tr>
                         <td class="text-center">
                             {% if item.product %}
-                            <a href="{{ pimcore_object_path(item.product) }}">
-                                {% if item.product and item.product.image is pimcore_asset_image %}
-                                    {{ item.product.image|pimcore_image_thumbnail_html('coreshop_productCartPreview', {'imgAttributes': {'class': 'img-thumbnail img-fluid'}, 'title': item.product.name, 'alt': item.product.name}) }}
+                            <a href="{{ opendxp_object_path(item.product) }}">
+                                {% if item.product and item.product.image is opendxp_asset_image %}
+                                    {{ item.product.image|opendxp_image_thumbnail_html('coreshop_productCartPreview', {'imgAttributes': {'class': 'img-thumbnail img-fluid'}, 'title': item.product.name, 'alt': item.product.name}) }}
                                 {% endif %}
                             </a>
                             {% endif %}
                         </td>
                         <td class="text-left">
                             {% if item.product %}
-                            <a href="{{ pimcore_object_path(item.product) }}">
+                            <a href="{{ opendxp_object_path(item.product) }}">
                                 {{ item.product.name }}
                             </a>
                             {% endif %}

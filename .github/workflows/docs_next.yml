@@ -16,4 +16,5 @@ permissions:
 
 jobs:
   docs:
+    if: github.repository == 'coreshop/CoreShop'
     uses: coreshop/workflow-collection/.github/workflows/docs.yml@v1

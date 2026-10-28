@@ -23,7 +23,7 @@ use CoreShop\Component\Index\Condition\LikeCondition;
 use CoreShop\Component\Index\Listing\ListingInterface;
 use CoreShop\Component\Index\Model\FilterConditionInterface;
 use CoreShop\Component\Index\Model\FilterInterface;
-use Pimcore\Model\DataObject\Concrete;
+use OpenDxp\Model\DataObject\Concrete;
 use Symfony\Component\HttpFoundation\ParameterBag;
 
 class CategoryMultiSelectConditionProcessor implements FilterConditionProcessorInterface

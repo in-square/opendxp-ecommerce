@@ -21,11 +21,11 @@ CoreShop combines three distinct elements:
 3. **Complete eCommerce Suite**: A cohesive solution crafted from these building blocks.
 
 CoreShop can be utilized in various ways: as standalone components in any framework, as bundles in a new or existing
-Pimcore application, or as a full-stack suite.
+OpenDxp application, or as a full-stack suite.
 
 # CoreShop Suite
 
-This documentation focuses on the CoreShop full-stack eCommerce suite. As a standard Pimcore Bundle, it provides the
+This documentation focuses on the CoreShop full-stack eCommerce suite. As a standard OpenDxp Bundle, it provides the
 foundation for common webshop functionality and custom systems.
 
 # Leveraging Symfony Bundles
@@ -33,9 +33,9 @@ foundation for common webshop functionality and custom systems.
 For custom systems built from scratch, CoreShop's standalone Symfony bundles can be integrated into your project.
 Installation instructions are available in each bundle's documentation.
 
-## Difference to the Official Pimcore eCommerce Framework
+## Difference to the Official OpenDxp eCommerce Framework
 
-While the Pimcore eCommerce Framework offers a basic toolset for eCommerce development, CoreShop extends this with a
+While the OpenDxp eCommerce Framework offers a basic toolset for eCommerce development, CoreShop extends this with a
 feature-rich set of tools for complex and rich eCommerce solutions.
 
 > **Example I:** The Framework does not fully support complex shipping price calculations. This requires custom coding.

@@ -31,10 +31,10 @@ use CoreShop\Component\Order\OrderSaleStates;
 use CoreShop\Component\Order\OrderShipmentStates;
 use CoreShop\Component\Order\OrderStates;
 use CoreShop\Component\Order\OrderTransitions;
-use CoreShop\Component\Pimcore\DataObject\ObjectClonerInterface;
-use CoreShop\Component\Pimcore\DataObject\VersionHelper;
+use CoreShop\Component\OpenDxp\DataObject\ObjectClonerInterface;
+use CoreShop\Component\OpenDxp\DataObject\VersionHelper;
 use CoreShop\Component\Resource\Service\FolderCreationServiceInterface;
-use Pimcore\Model\DataObject\Service;
+use OpenDxp\Model\DataObject\Service;
 use Webmozart\Assert\Assert;
 
 class OrderCommitter implements OrderCommitterInterface

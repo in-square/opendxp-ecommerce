@@ -21,8 +21,8 @@ namespace CoreShop\Bundle\VariantBundle\Messenger\Handler;
 use CoreShop\Bundle\VariantBundle\Messenger\CreateVariantMessage;
 use CoreShop\Bundle\VariantBundle\Service\VariantGeneratorServiceInterface;
 use CoreShop\Component\Variant\Model\ProductVariantAwareInterface;
-use Pimcore\Model\DataObject;
-use Pimcore\Model\Notification\Service\NotificationService;
+use OpenDxp\Model\DataObject;
+use OpenDxp\Model\Notification\Service\NotificationService;
 
 class CreateVariantMessageHandler
 {

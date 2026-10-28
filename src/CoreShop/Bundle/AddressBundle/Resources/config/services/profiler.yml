@@ -5,7 +5,7 @@ services:
     CoreShop\Bundle\AddressBundle\Collector\CountryCollector:
         arguments:
             - '@CoreShop\Component\Address\Context\CountryContextInterface'
-            - '@Pimcore\Http\Request\Resolver\PimcoreContextResolver'
+            - '@OpenDxp\Http\Request\Resolver\OpenDxpContextResolver'
             - false
         tags:
             - { name: data_collector, template: '@CoreShopAddress/Collector/country.html.twig', id: coreshop.country_collector }

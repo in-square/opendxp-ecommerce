@@ -2,13 +2,13 @@
 
 CoreShop Carriers play a pivotal role in the shipping process of the CoreShop e-commerce framework, enabling you to
 integrate various shipping providers like UPS, FedEx, or DHL. This guide outlines the steps for creating and managing
-carriers within the CoreShop environment on the Pimcore platform.
+carriers within the CoreShop environment on the OpenDxp platform.
 
 ## Creating a Carrier
 
 Follow these steps to set up a new carrier:
 
-1. **Access Admin Interface**: Log in to the Pimcore admin interface.
+1. **Access Admin Interface**: Log in to the OpenDxp admin interface.
 2. **Navigate to Shipping**: Go to the "CoreShop Menu" -> "Shipping" tab and select "Carriers."
 3. **Add New Carrier**: Click on "Add new" to initiate a new carrier setup.
 4. **Configure Carrier**: Enter the carrier's name and adjust the settings as required.

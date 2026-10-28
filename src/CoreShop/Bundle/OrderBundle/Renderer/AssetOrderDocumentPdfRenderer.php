@@ -20,7 +20,7 @@ namespace CoreShop\Bundle\OrderBundle\Renderer;
 
 use CoreShop\Component\Order\Model\OrderDocumentInterface;
 use CoreShop\Component\Order\Renderer\OrderDocumentRendererInterface;
-use Pimcore\Model\Asset;
+use OpenDxp\Model\Asset;
 
 class AssetOrderDocumentPdfRenderer implements OrderDocumentRendererInterface
 {

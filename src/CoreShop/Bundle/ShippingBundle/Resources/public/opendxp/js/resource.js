@@ -1,0 +1,56 @@
+/*
+ * CoreShop.
+ *
+ * This source file is subject to the GNU General Public License version 3 (GPLv3)
+ * For the full copyright and license information, please view the LICENSE.md and gpl-3.0.txt
+ * files that are distributed with this source code.
+ *
+ * @copyright  Copyright (c) CoreShop GmbH (https://www.coreshop.com)
+ * @license    https://www.coreshop.com/license     GPLv3 and CCL
+ *
+ */
+
+opendxp.registerNS('coreshop.shipping.resource');
+coreshop.shipping.resource = Class.create(coreshop.resource, {
+    initialize: function () {
+        coreshop.global.addStoreWithRoute('coreshop_carriers', 'coreshop_carrier_list', [
+            [
+                {name: 'id'},
+                {name: 'identifier'}
+            ]
+        ]);
+        coreshop.global.addStoreWithRoute('coreshop_carrier_shipping_rules', 'coreshop_shipping_rule_list');
+
+        coreshop.broker.fireEvent('resource.register', 'coreshop.shipping', this);
+    },
+
+    openResource: function(item) {
+        if (item === 'carrier') {
+            this.openCarrierResource();
+        } else if (item === 'shipping_rules') {
+            this.openShippingRules();
+        }
+    },
+
+    openCarrierResource: function() {
+        try {
+            opendxp.globalmanager.get('coreshop_carriers_panel').activate();
+        }
+        catch (e) {
+            opendxp.globalmanager.add('coreshop_carriers_panel', new coreshop.carrier.panel());
+        }
+    },
+
+    openShippingRules: function() {
+        try {
+            opendxp.globalmanager.get('coreshop_carrier_shipping_rule_panel').activate();
+        }
+        catch (e) {
+            opendxp.globalmanager.add('coreshop_carrier_shipping_rule_panel', new coreshop.shippingrule.panel());
+        }
+    }
+});
+
+coreshop.broker.addListener('opendxp.ready', function() {
+    new coreshop.shipping.resource();
+});

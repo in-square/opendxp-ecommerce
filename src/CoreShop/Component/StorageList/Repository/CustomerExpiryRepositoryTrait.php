@@ -20,7 +20,7 @@ namespace CoreShop\Component\StorageList\Repository;
 
 use Carbon\Carbon;
 use CoreShop\Component\StorageList\Model\StorageListInterface;
-use Pimcore\Model\DataObject\Listing;
+use OpenDxp\Model\DataObject\Listing;
 
 trait CustomerExpiryRepositoryTrait
 {

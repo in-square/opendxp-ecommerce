@@ -4,7 +4,7 @@ Feature: Adding a object index
   I want to create a new index and add objects and need to interpret some informations
 
   Background:
-    Given there is a pimcore class "InterpreterTest"
+    Given there is a opendxp class "InterpreterTest"
     And the definition has a checkbox field "enabled"
     And the definition has a localized input field "name"
     And the definition has a relation field "objectHref"

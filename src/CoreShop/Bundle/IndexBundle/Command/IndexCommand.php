@@ -21,10 +21,10 @@ namespace CoreShop\Bundle\IndexBundle\Command;
 use CoreShop\Component\Index\Model\IndexableInterface;
 use CoreShop\Component\Index\Model\IndexInterface;
 use CoreShop\Component\Index\Service\IndexUpdaterServiceInterface;
-use CoreShop\Component\Pimcore\BatchProcessing\DataObjectBatchListing;
+use CoreShop\Component\OpenDxp\BatchProcessing\DataObjectBatchListing;
 use CoreShop\Component\Resource\Repository\RepositoryInterface;
-use Pimcore\Model\DataObject\AbstractObject;
-use Pimcore\Model\DataObject\Listing;
+use OpenDxp\Model\DataObject\AbstractObject;
+use OpenDxp\Model\DataObject\Listing;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Helper\ProgressBar;
 use Symfony\Component\Console\Input\InputArgument;
@@ -125,7 +125,7 @@ final class IndexCommand extends Command
             /**
              * @psalm-var class-string $list
              */
-            $list = '\Pimcore\Model\DataObject\\' . $class . '\Listing';
+            $list = '\OpenDxp\Model\DataObject\\' . $class . '\Listing';
             /**
              * @var Listing $list
              *

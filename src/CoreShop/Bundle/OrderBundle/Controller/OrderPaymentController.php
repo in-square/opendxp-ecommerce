@@ -19,7 +19,7 @@ declare(strict_types=1);
 namespace CoreShop\Bundle\OrderBundle\Controller;
 
 use Carbon\Carbon;
-use CoreShop\Bundle\ResourceBundle\Controller\PimcoreController;
+use CoreShop\Bundle\ResourceBundle\Controller\OpenDxpController;
 use CoreShop\Bundle\WorkflowBundle\Manager\StateMachineManager;
 use CoreShop\Bundle\WorkflowBundle\Manager\StateMachineManagerInterface;
 use CoreShop\Component\Order\Model\OrderInterface;
@@ -38,7 +38,7 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Contracts\Service\Attribute\SubscribedService;
 
-class OrderPaymentController extends PimcoreController
+class OrderPaymentController extends OpenDxpController
 {
     public function updateStateAction(Request $request): JsonResponse
     {

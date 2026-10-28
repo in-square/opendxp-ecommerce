@@ -19,9 +19,9 @@ declare(strict_types=1);
 namespace CoreShop\Bundle\IndexBundle\ProcessManager;
 
 use ProcessManagerBundle\Model\ExecutableInterface;
-use ProcessManagerBundle\Process\Pimcore;
+use ProcessManagerBundle\Process\OpenDxp;
 
-final class IndexProcess extends Pimcore
+final class IndexProcess extends OpenDxp
 {
     public function run(ExecutableInterface $executable, array $params = null): int
     {

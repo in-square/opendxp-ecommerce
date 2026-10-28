@@ -6,11 +6,11 @@ services:
     CoreShop\Component\Locale\Context\CompositeLocaleContext:
         public: false
 
-    CoreShop\Component\Locale\Context\PimcoreLocaleContext:
+    CoreShop\Component\Locale\Context\OpenDxpLocaleContext:
         #Quite Important to keep that, otherwise we get some pretty weird issues.
         lazy: true
         arguments:
-            - '@Pimcore\Localization\LocaleServiceInterface'
+            - '@OpenDxp\Localization\LocaleServiceInterface'
         tags:
             - { name: coreshop.context.locale, priority: 100 }
 

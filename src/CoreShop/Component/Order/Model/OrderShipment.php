@@ -19,9 +19,9 @@ declare(strict_types=1);
 namespace CoreShop\Component\Order\Model;
 
 use Carbon\Carbon;
-use CoreShop\Component\Resource\Pimcore\Model\AbstractPimcoreModel;
+use CoreShop\Component\Resource\OpenDxp\Model\AbstractOpenDxpModel;
 
-abstract class OrderShipment extends AbstractPimcoreModel implements OrderShipmentInterface
+abstract class OrderShipment extends AbstractOpenDxpModel implements OrderShipmentInterface
 {
     public static function getDocumentType(): string
     {

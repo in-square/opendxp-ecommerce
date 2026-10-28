@@ -18,7 +18,7 @@ declare(strict_types=1);
 
 namespace CoreShop\Component\Variant\Model;
 
-use Pimcore\Model\DataObject\Data\RgbaColor;
+use OpenDxp\Model\DataObject\Data\RgbaColor;
 
 interface AttributeColorInterface extends AttributeInterface
 {

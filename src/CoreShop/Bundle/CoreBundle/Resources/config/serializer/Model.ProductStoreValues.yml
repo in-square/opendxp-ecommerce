@@ -13,7 +13,7 @@ CoreShop\Component\Core\Model\ProductStoreValues:
             groups: [List, Detailed, Version]
         product:
             expose: true
-            type: pimcoreObject<CoreShop\Component\Product\Model\ProductInterface>
+            type: opendxpObject<CoreShop\Component\Product\Model\ProductInterface>
             groups: [List, Detailed]
         productUnitDefinitionPrices:
             expose: true

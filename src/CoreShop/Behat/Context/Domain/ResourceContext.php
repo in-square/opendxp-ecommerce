@@ -30,12 +30,12 @@ final class ResourceContext implements Context
     }
 
     /**
-     * @Then /^the (class "[^"]+") is registered as Pimcore Resource$/
+     * @Then /^the (class "[^"]+") is registered as OpenDxp Resource$/
      */
-    public function theClassIsRegisteredAsPimcoreResource(): void
+    public function theClassIsRegisteredAsOpenDxpResource(): void
     {
         $car = $this->metadataRegistry->get('app.car');
 
-        Assert::eq($car->getClass('model'), 'Pimcore\Model\DataObject\Car');
+        Assert::eq($car->getClass('model'), 'OpenDxp\Model\DataObject\Car');
     }
 }

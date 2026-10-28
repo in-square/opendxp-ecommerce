@@ -18,8 +18,8 @@ declare(strict_types=1);
 
 namespace CoreShop\Bundle\MenuBundle\EventListener;
 
-use Pimcore\Bundle\AdminBundle\Event\BundleManagerEvents;
-use Pimcore\Event\BundleManager\PathsEvent;
+use OpenDxp\Bundle\AdminBundle\Event\BundleManagerEvents;
+use OpenDxp\Event\BundleManager\PathsEvent;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\Routing\RouterInterface;
 
@@ -43,7 +43,7 @@ class MenuAdminListener implements EventSubscriberInterface
             array_merge(
                 $event->getPaths(),
                 [
-                    '/bundles/coreshopmenu/pimcore/js/menu.js',
+                    '/bundles/coreshopmenu/opendxp/js/menu.js',
                     $this->router->generate('coreshop_menu', ['type' => 'coreshop.coreshop']),
                 ],
             ),

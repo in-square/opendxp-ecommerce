@@ -23,7 +23,7 @@ use CoreShop\Component\Resource\Model\TimestampableInterface;
 use CoreShop\Component\Resource\Model\ToggleableInterface;
 use CoreShop\Component\Resource\Model\TranslatableInterface;
 use Doctrine\Common\Collections\Collection;
-use Pimcore\Model\Asset;
+use OpenDxp\Model\Asset;
 
 interface PaymentProviderInterface extends
     ResourceInterface,

@@ -19,9 +19,9 @@ declare(strict_types=1);
 namespace CoreShop\Component\Resource\DataHub\QueryType;
 
 use CoreShop\Component\Resource\DataHub\DoctrineProvider;
-use Pimcore\Bundle\DataHubBundle\GraphQL\DataObjectQueryFieldConfigGenerator\Input;
-use Pimcore\Bundle\DataHubBundle\GraphQL\Service;
-use Pimcore\Model\DataObject\ClassDefinition\Data;
+use OpenDxp\Bundle\DataHubBundle\GraphQL\DataObjectQueryFieldConfigGenerator\Input;
+use OpenDxp\Bundle\DataHubBundle\GraphQL\Service;
+use OpenDxp\Model\DataObject\ClassDefinition\Data;
 
 class Resource extends Input
 {

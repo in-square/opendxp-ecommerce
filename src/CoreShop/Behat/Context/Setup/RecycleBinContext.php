@@ -21,9 +21,9 @@ namespace CoreShop\Behat\Context\Setup;
 use Behat\Behat\Context\Context;
 use CoreShop\Bundle\TestBundle\Service\SharedStorageInterface;
 use CoreShop\Component\Core\Model\ProductInterface;
-use Pimcore\Model\DataObject;
-use Pimcore\Model\DataObject\Concrete;
-use Pimcore\Model\Element\Recyclebin\Item;
+use OpenDxp\Model\DataObject;
+use OpenDxp\Model\DataObject\Concrete;
+use OpenDxp\Model\Element\Recyclebin\Item;
 use Webmozart\Assert\Assert;
 
 final class RecycleBinContext implements Context

@@ -20,8 +20,8 @@ namespace CoreShop\Bundle\ThemeBundle\EventListener;
 
 use CoreShop\Bundle\ThemeBundle\Service\DocumentThemeResolverInterface;
 use CoreShop\Bundle\ThemeBundle\Service\ThemeNotResolvedException;
-use Pimcore\Event\DocumentEvents;
-use Pimcore\Event\Model\DocumentEvent;
+use OpenDxp\Event\DocumentEvents;
+use OpenDxp\Event\Model\DocumentEvent;
 use Sylius\Bundle\ThemeBundle\Context\SettableThemeContext;
 use Sylius\Bundle\ThemeBundle\Repository\ThemeRepositoryInterface;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;

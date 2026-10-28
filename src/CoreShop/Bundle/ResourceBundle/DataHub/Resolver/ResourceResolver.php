@@ -20,7 +20,7 @@ namespace CoreShop\Bundle\ResourceBundle\DataHub\Resolver;
 
 use CoreShop\Component\Resource\Model\ResourceInterface;
 use GraphQL\Type\Definition\ResolveInfo;
-use Pimcore\Model\DataObject\ClassDefinition\Data;
+use OpenDxp\Model\DataObject\ClassDefinition\Data;
 
 class ResourceResolver
 {

@@ -1,0 +1,28 @@
+core_shop_address:
+    opendxp_admin:
+        js:
+            resource: '/bundles/coreshopaddress/opendxp/js/resource.js'
+            resource_country: '/bundles/coreshopaddress/opendxp/js/resource/country.js'
+            resource_state: '/bundles/coreshopaddress/opendxp/js/resource/state.js'
+            resource_zone: '/bundles/coreshopaddress/opendxp/js/resource/zone.js'
+            resource_country_salutation: '/bundles/coreshopaddress/opendxp/js/resource/country_salutation.js'
+            country_item: '/bundles/coreshopaddress/opendxp/js/country/item.js'
+            country_panel: '/bundles/coreshopaddress/opendxp/js/country/panel.js'
+            state_item: '/bundles/coreshopaddress/opendxp/js/state/item.js'
+            state_panel: '/bundles/coreshopaddress/opendxp/js/state/panel.js'
+            zone_item: '/bundles/coreshopaddress/opendxp/js/zone/item.js'
+            zone_panel: '/bundles/coreshopaddress/opendxp/js/zone/panel.js'
+            core_extension_data_country: '/bundles/coreshopaddress/opendxp/js/coreExtension/data/coreShopCountry.js'
+            core_extension_tag_country: '/bundles/coreshopaddress/opendxp/js/coreExtension/tags/coreShopCountry.js'
+            core_extension_data_country_multiselect: '/bundles/coreshopaddress/opendxp/js/coreExtension/data/coreShopCountryMultiselect.js'
+            core_extension_tag_country_multiselect: '/bundles/coreshopaddress/opendxp/js/coreExtension/tags/coreShopCountryMultiselect.js'
+            core_extension_data_state: '/bundles/coreshopaddress/opendxp/js/coreExtension/data/coreShopState.js'
+            core_extension_tag_state: '/bundles/coreshopaddress/opendxp/js/coreExtension/tags/coreShopState.js'
+            core_extension_data_address_identifier: '/bundles/coreshopaddress/opendxp/js/coreExtension/data/coreShopAddressIdentifier.js'
+            core_extension_tag_address_identifier: '/bundles/coreshopaddress/opendxp/js/coreExtension/tags/coreShopAddressIdentifier.js'
+        css:
+            address: '/bundles/coreshopaddress/opendxp/css/address.css'
+        editmode_js:
+            core_extension_document_tag_country: '/bundles/coreshopaddress/opendxp/js/coreExtension/document/coreShopCountry.js'
+            core_extension_document_tag_state: '/bundles/coreshopaddress/opendxp/js/coreExtension/document/coreShopState.js'
+            core_extension_document_tag_zone: '/bundles/coreshopaddress/opendxp/js/coreExtension/document/coreShopZone.js'

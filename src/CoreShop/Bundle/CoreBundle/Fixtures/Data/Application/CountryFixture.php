@@ -28,7 +28,7 @@ use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Bundle\FixturesBundle\FixtureGroupInterface;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
-use Pimcore\Tool;
+use OpenDxp\Tool;
 use Rinvex\Country\Country;
 use Rinvex\Country\CountryLoader;
 use Symfony\Component\Intl\Languages;

@@ -7,7 +7,7 @@ services:
 
   CoreShop\Component\StorageList\StorageListsManager: ~
 
-  CoreShop\Component\StorageList\Manager\StorageListPimcoreModelManager:
+  CoreShop\Component\StorageList\Manager\StorageListOpenDxpModelManager:
     arguments:
       - '@CoreShop\Component\Resource\Service\FolderCreationServiceInterface'
 

@@ -1,4 +1,4 @@
-Pimcore\Model\AbstractModel:
+OpenDxp\Model\AbstractModel:
     exclude: true
     properties:
         dao:

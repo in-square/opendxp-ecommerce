@@ -1,0 +1,61 @@
+<?php
+
+declare(strict_types=1);
+
+/*
+ * CoreShop
+ *
+ * This source file is available under two different licenses:
+ *  - GNU General Public License version 3 (GPLv3)
+ *  - CoreShop Commercial License (CCL)
+ * Full copyright and license information is available in
+ * LICENSE.md which is distributed with this source code.
+ *
+ * @copyright  Copyright (c) CoreShop GmbH (https://www.coreshop.com)
+ * @license    https://www.coreshop.com/license     GPLv3 and CCL
+ *
+ */
+
+namespace CoreShop\Bundle\ProductBundle\OpenDxp\Repository;
+
+use CoreShop\Bundle\ResourceBundle\OpenDxp\OpenDxpRepository;
+use CoreShop\Component\Product\Model\CategoryInterface;
+use CoreShop\Component\Product\Repository\CategoryRepositoryInterface;
+use Webmozart\Assert\Assert;
+
+class CategoryRepository extends OpenDxpRepository implements CategoryRepositoryInterface
+{
+    public function findFirstLevel(): array
+    {
+        $list = $this->getList();
+        $list->setCondition('parentCategory__id is null');
+
+        $objects = $list->getObjects();
+        Assert::allIsInstanceOf($objects, CategoryInterface::class);
+
+        return $objects;
+    }
+
+    public function findChildCategories(CategoryInterface $category): array
+    {
+        $list = $this->getList();
+        $list->setCondition('parentCategory__id = ?', [$category->getId()]);
+
+        if (method_exists($category, 'getChildrenSortBy')) {
+            $list->setOrderKey(
+                sprintf('`%s` ASC', $category->getChildrenSortBy()),
+                false,
+            );
+        } else {
+            $list->setOrderKey(
+                '`key` ASC',
+                false,
+            );
+        }
+
+        $objects = $list->getObjects();
+        Assert::allIsInstanceOf($objects, CategoryInterface::class);
+
+        return $objects;
+    }
+}

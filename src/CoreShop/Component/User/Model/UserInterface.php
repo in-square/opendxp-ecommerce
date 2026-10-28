@@ -19,12 +19,12 @@ declare(strict_types=1);
 namespace CoreShop\Component\User\Model;
 
 use CoreShop\Component\Resource\Model\ResourceInterface;
-use CoreShop\Component\Resource\Pimcore\Model\PimcoreModelInterface;
+use CoreShop\Component\Resource\OpenDxp\Model\OpenDxpModelInterface;
 use Symfony\Component\Security\Core\User\EquatableInterface;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface as SymfonyUserInterface;
 
-interface UserInterface extends ResourceInterface, PimcoreModelInterface, SymfonyUserInterface, EquatableInterface, PasswordAuthenticatedUserInterface
+interface UserInterface extends ResourceInterface, OpenDxpModelInterface, SymfonyUserInterface, EquatableInterface, PasswordAuthenticatedUserInterface
 {
     public const CORESHOP_ROLE_DEFAULT = 'ROLE_USER';
 

@@ -33,7 +33,7 @@ class RegisterIndexProductExtensionPass implements CompilerPassInterface
             return;
         }
 
-        $stackId = 'coreshop.stack.product.pimcore_class_names';
+        $stackId = 'coreshop.stack.product.opendxp_class_names';
 
         if ($container->hasParameter($stackId)) {
             $registry = $container->getDefinition('coreshop.registry.index.extensions');

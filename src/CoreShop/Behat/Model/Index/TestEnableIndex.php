@@ -20,11 +20,11 @@ namespace CoreShop\Behat\Model\Index;
 
 use CoreShop\Component\Index\Model\IndexableInterface;
 use CoreShop\Component\Index\Model\IndexInterface;
-use CoreShop\Component\Resource\Exception\ImplementedByPimcoreException;
-use CoreShop\Component\Resource\Pimcore\Model\AbstractPimcoreModel;
+use CoreShop\Component\Resource\Exception\ImplementedByOpenDxpException;
+use CoreShop\Component\Resource\OpenDxp\Model\AbstractOpenDxpModel;
 
 /** @noinspection ALL */
-class TestEnableIndex extends AbstractPimcoreModel implements IndexableInterface
+class TestEnableIndex extends AbstractOpenDxpModel implements IndexableInterface
 {
     public function getIndexable(IndexInterface $index): bool
     {
@@ -43,11 +43,11 @@ class TestEnableIndex extends AbstractPimcoreModel implements IndexableInterface
 
     public function getEnabled(): ?bool
     {
-        throw new ImplementedByPimcoreException(__CLASS__, __METHOD__);
+        throw new ImplementedByOpenDxpException(__CLASS__, __METHOD__);
     }
 
     public function getName(?string $language): ?string
     {
-        throw new ImplementedByPimcoreException(__CLASS__, __METHOD__);
+        throw new ImplementedByOpenDxpException(__CLASS__, __METHOD__);
     }
 }

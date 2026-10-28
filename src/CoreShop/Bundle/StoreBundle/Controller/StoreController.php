@@ -19,7 +19,7 @@ declare(strict_types=1);
 namespace CoreShop\Bundle\StoreBundle\Controller;
 
 use CoreShop\Bundle\ResourceBundle\Controller\ResourceController;
-use Pimcore\Model\Site;
+use OpenDxp\Model\Site;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 

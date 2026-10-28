@@ -18,10 +18,10 @@ declare(strict_types=1);
 
 namespace CoreShop\Component\Resource\Service;
 
-use CoreShop\Component\Pimcore\DataObject\ObjectServiceInterface;
+use CoreShop\Component\OpenDxp\DataObject\ObjectServiceInterface;
 use CoreShop\Component\Resource\Metadata\RegistryInterface;
 use CoreShop\Component\Resource\Model\ResourceInterface;
-use Pimcore\Model\DataObject\Folder;
+use OpenDxp\Model\DataObject\Folder;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class FolderCreationService implements FolderCreationServiceInterface

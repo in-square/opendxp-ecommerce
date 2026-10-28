@@ -18,10 +18,10 @@ declare(strict_types=1);
 
 namespace CoreShop\Component\Order\Model;
 
-use CoreShop\Component\Resource\Exception\ImplementedByPimcoreException;
-use CoreShop\Component\Resource\Pimcore\Model\AbstractPimcoreFieldcollection;
+use CoreShop\Component\Resource\Exception\ImplementedByOpenDxpException;
+use CoreShop\Component\Resource\OpenDxp\Model\AbstractOpenDxpFieldcollection;
 
-abstract class Adjustment extends AbstractPimcoreFieldcollection implements AdjustmentInterface
+abstract class Adjustment extends AbstractOpenDxpFieldcollection implements AdjustmentInterface
 {
     public function getId(): ?int
     {
@@ -41,13 +41,13 @@ abstract class Adjustment extends AbstractPimcoreFieldcollection implements Adju
 
     public function getAmount(bool $withTax = true): int
     {
-        return $withTax ? $this->getPimcoreAmountGross() : $this->getPimcoreAmountNet();
+        return $withTax ? $this->getOpenDxpAmountGross() : $this->getOpenDxpAmountNet();
     }
 
     public function setAmount(int $grossAmount, int $netAmount)
     {
-        $this->setPimcoreAmountGross($grossAmount);
-        $this->setPimcoreAmountNet($netAmount);
+        $this->setOpenDxpAmountGross($grossAmount);
+        $this->setOpenDxpAmountNet($netAmount);
 
         if (!$this->getNeutral()) {
             $this->recalculateAdjustable();
@@ -56,13 +56,13 @@ abstract class Adjustment extends AbstractPimcoreFieldcollection implements Adju
 
     public function getNeutral(): bool
     {
-        return (bool) $this->getPimcoreNeutral();
+        return (bool) $this->getOpenDxpNeutral();
     }
 
     public function setNeutral(bool $neutral)
     {
-        if ($this->getPimcoreNeutral() !== $neutral) {
-            $this->setPimcoreNeutral($neutral);
+        if ($this->getOpenDxpNeutral() !== $neutral) {
+            $this->setOpenDxpNeutral($neutral);
 
             $this->recalculateAdjustable();
         }
@@ -80,52 +80,52 @@ abstract class Adjustment extends AbstractPimcoreFieldcollection implements Adju
 
     public function getTypeIdentifier(): ?string
     {
-        throw new ImplementedByPimcoreException(__CLASS__, __METHOD__);
+        throw new ImplementedByOpenDxpException(__CLASS__, __METHOD__);
     }
 
     public function setTypeIdentifier(?string $typeIdentifier)
     {
-        throw new ImplementedByPimcoreException(__CLASS__, __METHOD__);
+        throw new ImplementedByOpenDxpException(__CLASS__, __METHOD__);
     }
 
     public function getLabel(): ?string
     {
-        throw new ImplementedByPimcoreException(__CLASS__, __METHOD__);
+        throw new ImplementedByOpenDxpException(__CLASS__, __METHOD__);
     }
 
     public function setLabel(?string $label)
     {
-        throw new ImplementedByPimcoreException(__CLASS__, __METHOD__);
+        throw new ImplementedByOpenDxpException(__CLASS__, __METHOD__);
     }
 
-    public function setPimcoreAmountNet(int $pimcoreAmountNet)
+    public function setOpenDxpAmountNet(int $opendxpAmountNet)
     {
-        throw new ImplementedByPimcoreException(__CLASS__, __METHOD__);
+        throw new ImplementedByOpenDxpException(__CLASS__, __METHOD__);
     }
 
-    public function getPimcoreAmountNet(): int
+    public function getOpenDxpAmountNet(): int
     {
-        throw new ImplementedByPimcoreException(__CLASS__, __METHOD__);
+        throw new ImplementedByOpenDxpException(__CLASS__, __METHOD__);
     }
 
-    public function setPimcoreAmountGross(int $pimcoreAmountGross)
+    public function setOpenDxpAmountGross(int $opendxpAmountGross)
     {
-        throw new ImplementedByPimcoreException(__CLASS__, __METHOD__);
+        throw new ImplementedByOpenDxpException(__CLASS__, __METHOD__);
     }
 
-    public function getPimcoreAmountGross(): int
+    public function getOpenDxpAmountGross(): int
     {
-        throw new ImplementedByPimcoreException(__CLASS__, __METHOD__);
+        throw new ImplementedByOpenDxpException(__CLASS__, __METHOD__);
     }
 
-    public function setPimcoreNeutral(?bool $pimcoreNeutral)
+    public function setOpenDxpNeutral(?bool $opendxpNeutral)
     {
-        throw new ImplementedByPimcoreException(__CLASS__, __METHOD__);
+        throw new ImplementedByOpenDxpException(__CLASS__, __METHOD__);
     }
 
-    public function getPimcoreNeutral(): ?bool
+    public function getOpenDxpNeutral(): ?bool
     {
-        throw new ImplementedByPimcoreException(__CLASS__, __METHOD__);
+        throw new ImplementedByOpenDxpException(__CLASS__, __METHOD__);
     }
 
     private function recalculateAdjustable(): void

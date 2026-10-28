@@ -43,15 +43,14 @@ use CoreShop\Component\StorageList\Storage\SimpleStorageListStorage;
 use CoreShop\Component\StorageList\StorageListsManager;
 use CoreShop\Component\Store\Context\StoreContextInterface;
 use CoreShop\Component\Store\Model\StoreAwareInterface;
-use Pimcore\Http\Request\Resolver\PimcoreContextResolver;
-use Pimcore\Http\RequestHelper;
+use OpenDxp\Http\Request\Resolver\OpenDxpContextResolver;
+use OpenDxp\Http\RequestHelper;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\Alias;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Definition;
 use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
 use Symfony\Component\DependencyInjection\Reference;
-use Symfony\Component\Security\Http\Event\LogoutEvent;
 
 final class CoreShopStorageListExtension extends AbstractModelExtension
 {
@@ -110,7 +109,7 @@ final class CoreShopStorageListExtension extends AbstractModelExtension
 
             if ($list['session']['enabled']) {
                 $sessionSubscriber = new Definition(SessionSubscriber::class, [
-                    new Reference(PimcoreContextResolver::class),
+                    new Reference(OpenDxpContextResolver::class),
                     new Reference($contextCompositeServiceName),
                     $list['session']['key'],
                 ]);
@@ -279,7 +278,7 @@ final class CoreShopStorageListExtension extends AbstractModelExtension
                         $container->setDefinition('coreshop.storage_list.context.session_and_store_based.' . $name, $sessionAndStoreBasedContextDefinition);
 
                         $sessionAndStoreSubscriber = new Definition(SessionStoreStorageListSubscriber::class);
-                        $sessionAndStoreSubscriber->setArgument('$pimcoreContext', new Reference(PimcoreContextResolver::class));
+                        $sessionAndStoreSubscriber->setArgument('$opendxpContext', new Reference(OpenDxpContextResolver::class));
                         $sessionAndStoreSubscriber->setArgument('$context', new Reference($contextCompositeServiceName));
                         $sessionAndStoreSubscriber->setArgument('$storageListStorage', new Reference('coreshop.storage_list.storage.' . $name));
                         $sessionAndStoreSubscriber->addTag('kernel.event_subscriber');
@@ -290,14 +289,7 @@ final class CoreShopStorageListExtension extends AbstractModelExtension
                             $logoutSubscriber = new Definition(SessionStoreStorageListLogoutSubscriber::class);
                             $logoutSubscriber->setArgument('$context', new Reference($contextCompositeServiceName));
                             $logoutSubscriber->setArgument('$sessionKeyName', $list['session']['key']);
-                            $logoutSubscriber->addTag(
-                                'kernel.event_listener',
-                                [
-                                    'event' => LogoutEvent::class,
-                                    'method' => 'onLogoutSuccess',
-                                    'dispatcher' => 'security.event_dispatcher.coreshop_frontend',
-                                ],
-                            );
+                            $logoutSubscriber->addTag('coreshop.frontend_logout_listener');
 
                             $container->setDefinition(
                                 'coreshop.storage_list.logout_subscriber.' . $name,
@@ -332,7 +324,7 @@ final class CoreShopStorageListExtension extends AbstractModelExtension
                     $expireTask->setArgument('$days', $list['expiration']['days']);
                     $expireTask->setArgument('$params', $list['expiration']['params'] ?? []);
                     $expireTask->setTags([
-                        'pimcore.maintenance.task' => [
+                        'opendxp.maintenance.task' => [
                             [
                                 'type' => sprintf('coreshop_%s_storage_list_expiration', $name),
                             ],

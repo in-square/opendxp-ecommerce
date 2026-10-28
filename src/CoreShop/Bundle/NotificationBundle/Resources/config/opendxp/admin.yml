@@ -1,0 +1,11 @@
+core_shop_notification:
+    opendxp_admin:
+        js:
+            resource: '/bundles/coreshopnotification/opendxp/js/resource.js'
+            notification_rule_item: '/bundles/coreshopnotification/opendxp/js/rule/item.js'
+            notification_rule_panel: '/bundles/coreshopnotification/opendxp/js/rule/panel.js'
+            notification_rule_action: '/bundles/coreshopnotification/opendxp/js/rule/action.js'
+            notification_rule_condition: '/bundles/coreshopnotification/opendxp/js/rule/condition.js'
+            notification_rule_action_mail: '/bundles/coreshopnotification/opendxp/js/rule/actions/mail.js'
+        css:
+            notification_rule: '/bundles/coreshopnotification/opendxp/css/notification.css'

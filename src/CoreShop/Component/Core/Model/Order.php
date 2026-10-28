@@ -20,7 +20,7 @@ namespace CoreShop\Component\Core\Model;
 
 use CoreShop\Component\Order\Model\AdjustmentInterface;
 use CoreShop\Component\Order\Model\Order as BaseOrder;
-use CoreShop\Component\Resource\Exception\ImplementedByPimcoreException;
+use CoreShop\Component\Resource\Exception\ImplementedByOpenDxpException;
 use CoreShop\Component\Shipping\Model\CarrierAwareTrait;
 
 abstract class Order extends BaseOrder implements OrderInterface
@@ -29,12 +29,12 @@ abstract class Order extends BaseOrder implements OrderInterface
 
     public function getName(): ?string
     {
-        throw new ImplementedByPimcoreException(__CLASS__, __METHOD__);
+        throw new ImplementedByOpenDxpException(__CLASS__, __METHOD__);
     }
 
     public function setName(?string $name)
     {
-        throw new ImplementedByPimcoreException(__CLASS__, __METHOD__);
+        throw new ImplementedByOpenDxpException(__CLASS__, __METHOD__);
     }
 
     public function getShipping(bool $withTax = true): int

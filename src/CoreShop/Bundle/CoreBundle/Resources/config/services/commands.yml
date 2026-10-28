@@ -59,3 +59,15 @@ services:
         tags:
             - { name: console.command, command: coreshop:setup:states }
 
+
+    CoreShop\Bundle\CoreBundle\Migration\VersionSeoFieldsConverter: ~
+
+    CoreShop\Bundle\CoreBundle\Command\MigrateVersionSeoFieldsCommand:
+        arguments:
+            - '@doctrine.dbal.default_connection'
+            - '@OpenDxp\Model\Version\Adapter\VersionStorageAdapterInterface'
+            - '@CoreShop\Bundle\CoreBundle\Migration\VersionSeoFieldsConverter'
+            - '%coreshop.model.product.class%'
+            - '%coreshop.model.category.class%'
+        tags:
+            - { name: console.command }

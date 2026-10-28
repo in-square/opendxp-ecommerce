@@ -34,7 +34,7 @@ final class InstallCommand extends AbstractInstallCommand
     private array $commands = [
         [
             'command' => 'resources',
-            'message' => 'Install Pimcore Classes.',
+            'message' => 'Install OpenDxp Classes.',
         ],
         [
             'command' => 'database',
@@ -77,7 +77,6 @@ EOT
 
         $this->ensureDirectoryExistsAndIsWritable($this->kernel->getCacheDir(), $output);
 
-        $errored = false;
         foreach ($this->commands as $step => $command) {
             try {
                 $outputStyle->newLine();
@@ -90,20 +89,22 @@ EOT
                     ),
                 );
                 $this->commandExecutor->runCommand('coreshop:install:' . $command['command'], [], $output);
-            } catch (RuntimeException) {
-                $errored = true;
+            } catch (RuntimeException $exception) {
+                $outputStyle->error($exception->getMessage());
+
+                return self::FAILURE;
             }
         }
 
         $this->installer->markAllMigrationsInstalled();
 
         $outputStyle->newLine(2);
-        $outputStyle->success($this->getProperFinalMessage($errored));
+        $outputStyle->success('CoreShop has been successfully installed.');
         $outputStyle->writeln(
             'You can now open your store at the following path under the website root: <info>/</info>',
         );
 
-        return 0;
+        return self::SUCCESS;
     }
 
     private function getCoreShopLogo(): string
@@ -146,14 +147,5 @@ EOT
                                     %%%%%%%%%%%%%%%%%                                
                                         %%%%%%%%%                                                                                                                                 
 </>';
-    }
-
-    private function getProperFinalMessage(bool $errored): string
-    {
-        if ($errored) {
-            return 'CoreShop has been installed, but some error occurred.';
-        }
-
-        return 'CoreShop has been successfully installed.';
     }
 }

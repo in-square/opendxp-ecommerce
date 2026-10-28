@@ -1,0 +1,44 @@
+services:
+    CoreShop\Behat\Page\OpenDxp\AbstractOpenDxpTabPage:
+        arguments:
+            $session: '@behat.mink.default_session'
+            $minkParameters: '@behat.mink.parameters'
+
+    CoreShop\Behat\Page\OpenDxp\AbstractOpenDxpPage:
+        parent: FriendsOfBehat\PageObjectExtension\Page\SymfonyPage
+
+    CoreShop\Behat\Page\OpenDxp\LoginPageInterface: '@CoreShop\Behat\Page\OpenDxp\LoginPage'
+    CoreShop\Behat\Page\OpenDxp\LoginPage:
+        parent: CoreShop\Behat\Page\OpenDxp\AbstractOpenDxpPage
+
+    CoreShop\Behat\Page\OpenDxp\PWAPageInterface: '@CoreShop\Behat\Page\OpenDxp\PWAPage'
+    CoreShop\Behat\Page\OpenDxp\PWAPage:
+        parent: CoreShop\Behat\Page\OpenDxp\AbstractOpenDxpPage
+
+    CoreShop\Behat\Page\OpenDxp\CoreShop\CurrencyPageInterface: '@CoreShop\Behat\Page\OpenDxp\CoreShop\CurrencyPage'
+    CoreShop\Behat\Page\OpenDxp\CoreShop\CurrencyPage:
+        parent: CoreShop\Behat\Page\OpenDxp\AbstractOpenDxpTabPage
+
+    CoreShop\Behat\Page\OpenDxp\CoreShop\CountryPageInterface: '@CoreShop\Behat\Page\OpenDxp\CoreShop\CountryPage'
+    CoreShop\Behat\Page\OpenDxp\CoreShop\CountryPage:
+        parent: CoreShop\Behat\Page\OpenDxp\AbstractOpenDxpTabPage
+
+    CoreShop\Behat\Page\OpenDxp\CoreShop\StatePageInterface: '@CoreShop\Behat\Page\OpenDxp\CoreShop\StatePage'
+    CoreShop\Behat\Page\OpenDxp\CoreShop\StatePage:
+        parent: CoreShop\Behat\Page\OpenDxp\AbstractOpenDxpTabPage
+
+    CoreShop\Behat\Page\OpenDxp\CoreShop\TaxRatePageInterface: '@CoreShop\Behat\Page\OpenDxp\CoreShop\TaxRatePage'
+    CoreShop\Behat\Page\OpenDxp\CoreShop\TaxRatePage:
+        parent: CoreShop\Behat\Page\OpenDxp\AbstractOpenDxpTabPage
+
+    CoreShop\Behat\Page\OpenDxp\CoreShop\TaxRuleGroupPageInterface: '@CoreShop\Behat\Page\OpenDxp\CoreShop\TaxRuleGroupPage'
+    CoreShop\Behat\Page\OpenDxp\CoreShop\TaxRuleGroupPage:
+        parent: CoreShop\Behat\Page\OpenDxp\AbstractOpenDxpTabPage
+
+    CoreShop\Behat\Page\OpenDxp\CoreShop\ZonePageInterface: '@CoreShop\Behat\Page\OpenDxp\CoreShop\ZonePage'
+    CoreShop\Behat\Page\OpenDxp\CoreShop\ZonePage:
+        parent: CoreShop\Behat\Page\OpenDxp\AbstractOpenDxpTabPage
+
+    CoreShop\Behat\Page\OpenDxp\CoreShop\ExchangeRatePageInterface: '@CoreShop\Behat\Page\OpenDxp\CoreShop\ExchangeRatePage'
+    CoreShop\Behat\Page\OpenDxp\CoreShop\ExchangeRatePage:
+        parent: CoreShop\Behat\Page\OpenDxp\AbstractOpenDxpTabPage

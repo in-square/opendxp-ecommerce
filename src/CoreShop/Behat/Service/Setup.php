@@ -20,24 +20,42 @@ namespace CoreShop\Behat\Service;
 
 use CoreShop\Bundle\CoreBundle\Installer;
 use Doctrine\DBAL\DriverManager;
+use Doctrine\DBAL\Tools\DsnParser;
 
 class Setup
 {
-    protected static bool $pimcoreSetupDone = false;
+    protected static bool $opendxpSetupDone = false;
 
     protected static bool $coreShopSetupDone = false;
 
-    public static function setupPimcore(): void
+    public static function setupOpenDxp(): void
     {
         if (getenv('CORESHOP_SKIP_DB_SETUP')) {
             return;
         }
 
-        if (static::$pimcoreSetupDone) {
+        if (static::$opendxpSetupDone) {
             return;
         }
 
-        $connection = \Pimcore::getContainer()->get('database_connection');
+        $container = \OpenDxp::getContainer();
+        if (!in_array($container->getParameter('kernel.environment'), ['test', 'test_precision'], true)) {
+            throw new \LogicException('CoreShop database setup is only available in a test environment.');
+        }
+
+        $testDsn = $_SERVER['OPENDXP_TEST_DB_DSN'] ?? $_ENV['OPENDXP_TEST_DB_DSN'] ?? getenv('OPENDXP_TEST_DB_DSN');
+        if (!is_string($testDsn) || '' === $testDsn) {
+            throw new \LogicException('Set OPENDXP_TEST_DB_DSN to a dedicated disposable database before running CoreShop database setup.');
+        }
+
+        $connection = $container->get('database_connection');
+        $testParams = (new DsnParser(['mysql' => 'pdo_mysql', 'mariadb' => 'pdo_mysql']))->parse($testDsn);
+        $connectionParams = $connection->getParams();
+        foreach (['host', 'port', 'dbname', 'user'] as $parameter) {
+            if ((string) ($testParams[$parameter] ?? '') !== (string) ($connectionParams[$parameter] ?? '')) {
+                throw new \LogicException('The active connection does not match OPENDXP_TEST_DB_DSN. Refusing to reset the database.');
+            }
+        }
 
         if (null === $connection) {
             throw new \Exception('Database connection not found');
@@ -52,10 +70,10 @@ class Setup
         // use a dedicated setup connection as the framework connection is bound to the DB and will
         // fail if the DB doesn't exist
         $setupConnection = DriverManager::getConnection($params, $config);
-        $schemaManager = $setupConnection->getSchemaManager();
+        $schemaManager = $setupConnection->createSchemaManager();
 
         $databases = $schemaManager->listDatabases();
-        if (in_array($dbName, $databases)) {
+        if (in_array($dbName, $databases, true)) {
             $schemaManager->dropDatabase($connection->quoteIdentifier($dbName));
         }
 
@@ -65,34 +83,24 @@ class Setup
             $connection->connect();
         }
 
-        $installer = new \Pimcore\Bundle\InstallBundle\Installer(
-            \Pimcore::getContainer()->get('monolog.logger.pimcore'),
-            \Pimcore::getContainer()->get('event_dispatcher'),
+        $installer = new \OpenDxp\Bundle\InstallBundle\Installer(
+            \OpenDxp::getContainer()->get('monolog.logger.opendxp'),
+            \OpenDxp::getContainer()->get('event_dispatcher'),
         );
 
-        $method = new \ReflectionMethod($installer, 'setupDatabase');
-        $num = $method->getNumberOfParameters();
-
-        if ($num >= 3) {
-            $installer->setupDatabase($connection, [
-                'username' => 'admin',
-                'password' => 'coreshop',
-            ]);
-        } else {
-            /**
-             * @phpstan-ignore-next-line
-             */
-            $installer->setupDatabase([
-                'username' => 'admin',
-                'password' => 'coreshop',
-            ]);
+        $errors = $installer->setupDatabase($connection, [
+            'username' => 'admin',
+            'password' => 'coreshop',
+        ]);
+        if ([] !== $errors) {
+            throw new \RuntimeException('OpenDXP test database setup failed.');
         }
-        static::$pimcoreSetupDone = true;
+        static::$opendxpSetupDone = true;
     }
 
     public static function setupDone(): bool
     {
-        return getenv('CORESHOP_SKIP_DB_SETUP') || (static::$pimcoreSetupDone && static::$coreShopSetupDone);
+        return getenv('CORESHOP_SKIP_DB_SETUP') || (static::$opendxpSetupDone && static::$coreShopSetupDone);
     }
 
     public static function setupCoreShop(): void
@@ -105,7 +113,7 @@ class Setup
             return;
         }
 
-        $installer = \Pimcore::getContainer()->get(Installer::class);
+        $installer = \OpenDxp::getContainer()->get(Installer::class);
         $installer->install();
 
         static::$coreShopSetupDone = true;

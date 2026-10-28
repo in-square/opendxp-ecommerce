@@ -18,8 +18,8 @@ declare(strict_types=1);
 
 namespace CoreShop\Bundle\ResourceBundle\Slug;
 
-use CoreShop\Component\Pimcore\Slug\DataObjectSlugGeneratorInterface;
-use CoreShop\Component\Pimcore\Slug\SluggableInterface;
+use CoreShop\Component\OpenDxp\Slug\DataObjectSlugGeneratorInterface;
+use CoreShop\Component\OpenDxp\Slug\SluggableInterface;
 use CoreShop\Component\Resource\Metadata\RegistryInterface;
 
 class ResourceConfigurationSlugGenerator implements DataObjectSlugGeneratorInterface

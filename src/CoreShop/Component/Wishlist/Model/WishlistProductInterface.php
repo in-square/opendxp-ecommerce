@@ -18,8 +18,8 @@ declare(strict_types=1);
 
 namespace CoreShop\Component\Wishlist\Model;
 
-use CoreShop\Component\Resource\Pimcore\Model\PimcoreModelInterface;
+use CoreShop\Component\Resource\OpenDxp\Model\OpenDxpModelInterface;
 
-interface WishlistProductInterface extends PimcoreModelInterface
+interface WishlistProductInterface extends OpenDxpModelInterface
 {
 }

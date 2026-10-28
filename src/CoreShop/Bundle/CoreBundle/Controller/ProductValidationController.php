@@ -19,12 +19,12 @@ declare(strict_types=1);
 namespace CoreShop\Bundle\CoreBundle\Controller;
 
 use CoreShop\Bundle\ResourceBundle\Controller\AdminController;
-use CoreShop\Bundle\ResourceBundle\Pimcore\Repository\StackRepositoryInterface;
+use CoreShop\Bundle\ResourceBundle\OpenDxp\Repository\StackRepositoryInterface;
 use CoreShop\Component\Core\Model\ProductInterface;
 use CoreShop\Component\Core\Model\QuantityRangeInterface;
 use CoreShop\Component\Product\Model\ProductUnitDefinitionInterface;
 use Doctrine\Common\Collections\Collection;
-use Pimcore\Model\DataObject;
+use OpenDxp\Model\DataObject;
 use Symfony\Component\DependencyInjection\Attribute\Autowire;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;

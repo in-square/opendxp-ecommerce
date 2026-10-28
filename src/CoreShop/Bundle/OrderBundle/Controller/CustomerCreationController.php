@@ -21,21 +21,21 @@ namespace CoreShop\Bundle\OrderBundle\Controller;
 use CoreShop\Bundle\OrderBundle\Event\AdminCustomerCreationEvent;
 use CoreShop\Bundle\OrderBundle\Events;
 use CoreShop\Bundle\OrderBundle\Form\Type\AdminCustomerCreationType;
-use CoreShop\Bundle\ResourceBundle\Controller\PimcoreController;
+use CoreShop\Bundle\ResourceBundle\Controller\OpenDxpController;
 use CoreShop\Bundle\ResourceBundle\Form\Helper\ErrorSerializer;
 use CoreShop\Component\Address\Model\AddressesAwareInterface;
 use CoreShop\Component\Address\Model\AddressInterface;
 use CoreShop\Component\Address\Model\DefaultAddressAwareInterface;
 use CoreShop\Component\Customer\Model\CustomerInterface;
 use CoreShop\Component\Resource\Service\FolderCreationServiceInterface;
-use Pimcore\File;
-use Pimcore\Model\DataObject\Service;
+use OpenDxp\File;
+use OpenDxp\Model\DataObject\Service;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Contracts\EventDispatcher\EventDispatcherInterface;
 use Symfony\Contracts\Service\Attribute\SubscribedService;
 
-class CustomerCreationController extends PimcoreController
+class CustomerCreationController extends OpenDxpController
 {
     public function createCustomerAction(
         Request $request,

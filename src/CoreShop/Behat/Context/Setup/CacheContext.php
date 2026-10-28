@@ -20,8 +20,8 @@ namespace CoreShop\Behat\Context\Setup;
 
 use Behat\Behat\Context\Context;
 use CoreShop\Bundle\TestBundle\Service\SharedStorageInterface;
-use Pimcore\Cache;
-use Pimcore\Model\DataObject\Concrete;
+use OpenDxp\Cache;
+use OpenDxp\Model\DataObject\Concrete;
 use Webmozart\Assert\Assert;
 
 final class CacheContext implements Context
@@ -59,9 +59,9 @@ final class CacheContext implements Context
     }
 
     /**
-     * @Given /^I restore the object with Pimcore Cache Helper/
+     * @Given /^I restore the object with OpenDxp Cache Helper/
      */
-    public function iRestoreTheObjectWithPimcoreCacheHelper(): void
+    public function iRestoreTheObjectWithOpenDxpCacheHelper(): void
     {
         $obj = Cache::getHandler()->load($this->sharedStorage->get('cache_key'));
         $this->sharedStorage->set('cache_object', $obj);

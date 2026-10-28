@@ -38,12 +38,12 @@ abstract class Product extends BaseProduct implements ProductInterface
 
     public function getMetaTitle(?string $language = null): ?string
     {
-        return $this->getPimcoreMetaTitle($language) ?: $this->getName($language);
+        return $this->getOpenDxpMetaTitle($language) ?: $this->getName($language);
     }
 
     public function getMetaDescription(?string $language = null): ?string
     {
-        return $this->getPimcoreMetaDescription($language) ?: $this->getShortDescription($language);
+        return $this->getOpenDxpMetaDescription($language) ?: $this->getShortDescription($language);
     }
 
     public function getOGTitle(?string $language = null): ?string

@@ -18,19 +18,19 @@ declare(strict_types=1);
 
 namespace CoreShop\Bundle\MoneyBundle\DependencyInjection;
 
-use CoreShop\Bundle\PimcoreBundle\DependencyInjection\Extension\AbstractPimcoreExtension;
+use CoreShop\Bundle\OpenDxpBundle\DependencyInjection\Extension\AbstractOpenDxpExtension;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
 
-final class CoreShopMoneyExtension extends AbstractPimcoreExtension
+final class CoreShopMoneyExtension extends AbstractOpenDxpExtension
 {
     public function load(array $configs, ContainerBuilder $container): void
     {
         $loader = new YamlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));
         $configs = $this->processConfiguration($this->getConfiguration([], $container), $configs);
 
-        $this->registerPimcoreResources('coreshop', $configs['pimcore_admin'], $container);
+        $this->registerOpenDxpResources('coreshop', $configs['opendxp_admin'], $container);
 
         if (!$container->hasParameter('coreshop.currency.decimal_factor')) {
             $container->setParameter('coreshop.currency.decimal_factor', 100);
@@ -42,7 +42,7 @@ final class CoreShopMoneyExtension extends AbstractPimcoreExtension
 
         $bundles = $container->getParameter('kernel.bundles');
 
-        if (array_key_exists('PimcoreDataHubBundle', $bundles)) {
+        if (array_key_exists('OpenDxpDataHubBundle', $bundles)) {
             $loader->load('services/data_hub.yml');
         }
 

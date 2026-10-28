@@ -10,8 +10,8 @@
  * @license    https://www.coreshop.com/license     GPLv3 and CCL
  */
 
-use Pimcore\Bootstrap;
-use Pimcore\Tool;
+use OpenDxp\Bootstrap;
+use OpenDxp\Tool;
 use Symfony\Component\HttpFoundation\Request;
 
 //use runtime

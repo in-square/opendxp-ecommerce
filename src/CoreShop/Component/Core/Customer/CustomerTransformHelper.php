@@ -23,16 +23,16 @@ use CoreShop\Component\Address\Model\AddressInterface;
 use CoreShop\Component\Core\Customer\Allocator\CustomerAddressAllocatorInterface;
 use CoreShop\Component\Core\Model\CompanyInterface;
 use CoreShop\Component\Core\Model\CustomerInterface;
-use CoreShop\Component\Pimcore\DataObject\VersionHelper;
+use CoreShop\Component\OpenDxp\DataObject\VersionHelper;
 use CoreShop\Component\Resource\Factory\FactoryInterface;
 use CoreShop\Component\Resource\Service\FolderCreationServiceInterface;
-use Pimcore\File;
-use Pimcore\Model\DataObject;
-use Pimcore\Model\DataObject\Concrete;
-use Pimcore\Model\Dependency;
-use Pimcore\Model\Element\ElementInterface;
-use Pimcore\Model\Element\Service;
-use Pimcore\Model\Element\ValidationException;
+use OpenDxp\File;
+use OpenDxp\Model\DataObject;
+use OpenDxp\Model\DataObject\Concrete;
+use OpenDxp\Model\Dependency;
+use OpenDxp\Model\Element\ElementInterface;
+use OpenDxp\Model\Element\Service;
+use OpenDxp\Model\Element\ValidationException;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 final class CustomerTransformHelper implements CustomerTransformHelperInterface

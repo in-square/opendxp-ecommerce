@@ -20,7 +20,7 @@ namespace CoreShop\Bundle\ProductBundle\CoreExtension;
 
 use CoreShop\Bundle\ResourceBundle\CoreExtension\Select;
 use CoreShop\Component\Product\Model\ProductUnitInterface;
-use Pimcore\Model\DataObject\Concrete;
+use OpenDxp\Model\DataObject\Concrete;
 
 /**
  * @psalm-suppress InvalidReturnType, InvalidReturnStatement
@@ -46,12 +46,12 @@ class ProductUnit extends Select
 
     protected function getRepository()
     {
-        return \Pimcore::getContainer()->get('coreshop.repository.product_unit');
+        return \OpenDxp::getContainer()->get('coreshop.repository.product_unit');
     }
 
     protected function getModel(): string
     {
-        return \Pimcore::getContainer()->getParameter('coreshop.model.product_unit.class');
+        return \OpenDxp::getContainer()->getParameter('coreshop.model.product_unit.class');
     }
 
     protected function getInterface(): string

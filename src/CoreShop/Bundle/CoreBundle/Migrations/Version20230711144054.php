@@ -19,14 +19,9 @@ declare(strict_types=1);
 namespace CoreShop\Bundle\CoreBundle\Migrations;
 
 use Doctrine\DBAL\Schema\Schema;
-use Doctrine\Migrations\AbstractMigration;
-use Symfony\Component\DependencyInjection\ContainerAwareInterface;
-use Symfony\Component\DependencyInjection\ContainerAwareTrait;
 
-final class Version20230711144054 extends AbstractMigration implements ContainerAwareInterface
+final class Version20230711144054 extends AbstractContainerAwareMigration
 {
-    use ContainerAwareTrait;
-
     public function getDescription(): string
     {
         return '';

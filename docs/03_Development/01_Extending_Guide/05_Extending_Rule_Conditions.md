@@ -56,7 +56,7 @@ With configuration, comes a Javascript file as well:
 ```javascript
 //public/coreshop/js/custom_condition.js
 
-pimcore.registerNS('coreshop.product.pricerule.conditions.custom');
+opendxp.registerNS('coreshop.product.pricerule.conditions.custom');
 coreshop.product.pricerule.conditions.custom = Class.create(coreshop.rules.conditions.abstract, {
 
     type: 'custom',
@@ -101,6 +101,6 @@ and add this to your config.yml:
 
 ```yaml
 core_shop_product:
-    pimcore_admin:
+    opendxp_admin:
         js:
             custom_condition: '/coreshop/js/custom_condition.js'

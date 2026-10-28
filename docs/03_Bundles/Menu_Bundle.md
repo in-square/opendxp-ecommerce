@@ -1,6 +1,6 @@
 # Menu Bundle
 
-The Menu Bundle simplifies the creation of Pimcore menus based on permissions, enhancing the user interface and
+The Menu Bundle simplifies the creation of OpenDxp menus based on permissions, enhancing the user interface and
 navigation experience.
 
 ## Installation Process
@@ -51,7 +51,7 @@ public function registerBundlesToCollection(BundleCollection $collection)
                ->addChild('my-menu-item')
                ->setLabel('my-menu-item')
                ->setAttribute('permission', 'my_menu_item')
-               ->setAttribute('iconCls', 'pimcore_icon_delete');
+               ->setAttribute('iconCls', 'opendxp_icon_delete');
        }
    }
    ```

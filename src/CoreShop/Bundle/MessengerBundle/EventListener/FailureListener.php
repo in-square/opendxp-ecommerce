@@ -18,7 +18,7 @@ declare(strict_types=1);
 
 namespace CoreShop\Bundle\MessengerBundle\EventListener;
 
-use CoreShop\Bundle\MessengerBundle\Stamp\PimcoreObjectStamp;
+use CoreShop\Bundle\MessengerBundle\Stamp\OpenDxpObjectStamp;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\Messenger\Event\WorkerMessageFailedEvent;
@@ -63,8 +63,8 @@ class FailureListener implements EventSubscriberInterface
         if ($errorStamp instanceof ErrorDetailsStamp) {
             /** @var RedeliveryStamp|null $lastRedeliveryStamp */
             $lastRedeliveryStamp = $envelope->last(RedeliveryStamp::class);
-            /** @var PimcoreObjectStamp|null $pimcoreObjectStamp */
-            $pimcoreObjectStamp = $envelope->last(PimcoreObjectStamp::class);
+            /** @var OpenDxpObjectStamp|null $opendxpObjectStamp */
+            $opendxpObjectStamp = $envelope->last(OpenDxpObjectStamp::class);
 
             /**
              * @var TransportMessageIdStamp|null $messageIdStamp
@@ -76,7 +76,7 @@ class FailureListener implements EventSubscriberInterface
                 'Y-m-d H:i:s',
             );
             $errorMessage = $errorStamp->getExceptionMessage();
-            $relatedObject = null === $pimcoreObjectStamp ? '' : $pimcoreObjectStamp->getObjectId();
+            $relatedObject = null === $opendxpObjectStamp ? '' : $opendxpObjectStamp->getObjectId();
 
             $message = 'Message with ID "%s" of Class "%s" failed. Error was: "%s"';
             $messageParams = [

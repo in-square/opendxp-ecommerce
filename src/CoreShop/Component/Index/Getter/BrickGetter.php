@@ -20,11 +20,11 @@ namespace CoreShop\Component\Index\Getter;
 
 use CoreShop\Component\Index\Model\IndexableInterface;
 use CoreShop\Component\Index\Model\IndexColumnInterface;
-use CoreShop\Component\Pimcore\DataObject\LocaleFallbackHelper;
+use CoreShop\Component\OpenDxp\DataObject\LocaleFallbackHelper;
 use CoreShop\Component\Resource\Translation\Provider\TranslationLocaleProviderInterface;
-use Pimcore\Model\DataObject\ClassDefinition\Data\Localizedfields;
-use Pimcore\Model\DataObject\Objectbrick;
-use Pimcore\Model\DataObject\Objectbrick\Data\AbstractData;
+use OpenDxp\Model\DataObject\ClassDefinition\Data\Localizedfields;
+use OpenDxp\Model\DataObject\Objectbrick;
+use OpenDxp\Model\DataObject\Objectbrick\Data\AbstractData;
 
 class BrickGetter implements GetterInterface
 {

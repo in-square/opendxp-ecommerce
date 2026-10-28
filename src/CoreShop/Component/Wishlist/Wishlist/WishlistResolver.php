@@ -18,8 +18,8 @@ declare(strict_types=1);
 
 namespace CoreShop\Component\Wishlist\Wishlist;
 
-use CoreShop\Component\StorageList\Core\Context\PimcoreListResolver;
+use CoreShop\Component\StorageList\Core\Context\OpenDxpListResolver;
 
-class WishlistResolver extends PimcoreListResolver
+class WishlistResolver extends OpenDxpListResolver
 {
 }

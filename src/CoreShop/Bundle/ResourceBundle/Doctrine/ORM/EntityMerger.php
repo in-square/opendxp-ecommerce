@@ -19,9 +19,12 @@ declare(strict_types=1);
 namespace CoreShop\Bundle\ResourceBundle\Doctrine\ORM;
 
 use CoreShop\Component\Resource\Model\ResourceInterface;
+use CoreShop\Component\Resource\Model\TranslatableInterface;
+use CoreShop\Component\Resource\Model\TranslationInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\EntityManagerInterface;
+use Doctrine\ORM\Mapping\AssociationMapping;
 use Doctrine\ORM\Mapping\ClassMetadata;
 use Doctrine\ORM\PersistentCollection;
 use Doctrine\ORM\UnitOfWork;
@@ -32,8 +35,12 @@ class EntityMerger
 {
     private IdentifierFlattener $identifierFlattener;
 
+    /**
+     * @param array<class-string, array{associations: list<string>}> $cascadeMergeAssociations
+     */
     public function __construct(
-        private EntityManagerInterface $em,
+        private readonly EntityManagerInterface $em,
+        private readonly array $cascadeMergeAssociations = [],
     ) {
         /**
          * @psalm-suppress InvalidArgument
@@ -130,8 +137,8 @@ class EntityMerger
             /**
              * @psalm-suppress PossiblyFalseArgument
              */
-            $origData = $class->reflFields[$assoc['fieldName']]->getValue($managedCopy);
-            $newData = $class->reflFields[$assoc['fieldName']]->getValue($entity);
+            $origData = $class->reflFields[$assoc->fieldName]->getValue($managedCopy);
+            $newData = $class->reflFields[$assoc->fieldName]->getValue($entity);
 
             if (!$origData instanceof PersistentCollection) {
                 continue;
@@ -167,7 +174,7 @@ class EntityMerger
                 $newDataCollection = $newData;
             }
 
-            if ($assoc['type'] === ClassMetadata::MANY_TO_MANY) {
+            if ($assoc->type() === ClassMetadata::MANY_TO_MANY) {
                 $newCollection = new PersistentCollection(
                     $this->em,
                     $class,
@@ -201,7 +208,7 @@ class EntityMerger
 
                 if ($newData->isDirty() && count($newData->getSnapshot()) > 0) {
                     $snapshotEntries = [];
-                    $assocClass = $this->em->getClassMetadata($assoc['targetEntity']);
+                    $assocClass = $this->em->getClassMetadata($assoc->targetEntity);
 
                     foreach ($newData->getSnapshot() as $snapshotEntry) {
                         $origId = $assocClass->getIdentifierValues($snapshotEntry);
@@ -224,13 +231,13 @@ class EntityMerger
                     $property->setValue($newData, $snapshotEntries);
                 }
 
-                $class->reflFields[$assoc['fieldName']]->setValue($entity, $newCollection);
+                $class->reflFields[$assoc->fieldName]->setValue($entity, $newCollection);
 
                 continue;
             }
 
-            if (!($assoc['type'] & ClassMetadata::TO_MANY &&
-                isset($assoc['orphanRemoval']) && $assoc['orphanRemoval'] &&
+            if (!($assoc->type() & ClassMetadata::TO_MANY &&
+                $assoc->orphanRemoval &&
                 $origData->getOwner())) {
                 continue;
             }
@@ -254,9 +261,9 @@ class EntityMerger
         }
     }
 
-    private function mergeCollection(Collection $from, Collection $to, array $assoc, \Closure $notFound, array &$visited, bool $mergeFoundEntity = false): void
+    private function mergeCollection(Collection $from, Collection $to, AssociationMapping $assoc, \Closure $notFound, array &$visited, bool $mergeFoundEntity = false): void
     {
-        $assocClass = $this->em->getClassMetadata($assoc['targetEntity']);
+        $assocClass = $this->em->getClassMetadata($assoc->targetEntity);
 
         foreach ($from as $fromEntry) {
             $found = false;
@@ -296,37 +303,34 @@ class EntityMerger
 
         $associationMappings = array_filter(
             $class->associationMappings,
-            static function ($assoc) {
-                return $assoc['isCascadeMerge'];
-            },
+            fn (AssociationMapping $association): bool => $this->shouldCascadeMerge($entity, $class, $association),
         );
         $noMergeAssociationMappings = array_filter(
             $class->associationMappings,
-            static function ($assoc) {
-                return !$assoc['isCascadeMerge'];
-            },
+            fn (AssociationMapping $association): bool => !$this->shouldCascadeMerge($entity, $class, $association),
         );
 
         /**
          * Restore managed entities to their original state
          */
         foreach ($noMergeAssociationMappings as $assoc) {
-            $relatedEntities = $class->reflFields[$assoc['fieldName']]->getValue($entity);
+            $relatedEntities = $class->reflFields[$assoc->fieldName]->getValue($entity);
 
             if (!$relatedEntities) {
                 continue;
             }
 
+            $relatedEntityClass = $this->em->getClassMetadata($assoc->targetEntity);
+
             if ($relatedEntities instanceof Collection) {
                 //Reset Collection
-                $pColl = new PersistentCollection($this->em, $assoc['targetEntity'], new ArrayCollection());
+                $pColl = new PersistentCollection($this->em, $relatedEntityClass, new ArrayCollection());
                 $pColl->setOwner($entity, $assoc);
                 $pColl->setInitialized(false);
 
-                $class->reflFields[$assoc['fieldName']]->setValue($entity, $pColl);
+                $class->reflFields[$assoc->fieldName]->setValue($entity, $pColl);
             } else {
                 //Reset "tmp" entity with managed entity
-                $relatedEntityClass = $this->em->getClassMetadata($assoc['targetEntity']);
                 $id = $relatedEntityClass->getIdentifierValues($relatedEntities);
 
                 if (!$id) {
@@ -341,7 +345,7 @@ class EntityMerger
                 }
 
                 if ($uwEntity) {
-                    $class->reflFields[$assoc['fieldName']]->setValue($entity, $uwEntity);
+                    $class->reflFields[$assoc->fieldName]->setValue($entity, $uwEntity);
                 }
             }
         }
@@ -350,7 +354,7 @@ class EntityMerger
          * Merge related entities to the new state
          */
         foreach ($associationMappings as $assoc) {
-            $relatedEntities = $class->reflFields[$assoc['fieldName']]->getValue($entity);
+            $relatedEntities = $class->reflFields[$assoc->fieldName]->getValue($entity);
 
             if ($relatedEntities instanceof Collection) {
                 if ($relatedEntities instanceof PersistentCollection) {
@@ -397,7 +401,7 @@ class EntityMerger
                 $assoc = $class->associationMappings[$name];
 
                 // Inject PersistentCollection
-                $value = new PersistentCollection($this->em, $this->em->getClassMetadata($assoc['targetEntity']), $value);
+                $value = new PersistentCollection($this->em, $this->em->getClassMetadata($assoc->targetEntity), $value);
                 $value->setOwner($entity, $assoc);
                 $value->setDirty(!$value->isEmpty());
 
@@ -414,5 +418,33 @@ class EntityMerger
         }
 
         return $actualData;
+    }
+
+    private function shouldCascadeMerge(object $entity, ClassMetadata $class, AssociationMapping $association): bool
+    {
+        $className = $class->getName();
+
+        do {
+            $configuredAssociations = $this->cascadeMergeAssociations[$className]['associations'] ?? null;
+
+            if (is_array($configuredAssociations)) {
+                return in_array($association->fieldName, $configuredAssociations, true);
+            }
+
+            $className = get_parent_class($className);
+        } while (false !== $className);
+
+        if ($entity instanceof TranslationInterface) {
+            return true;
+        }
+
+        if ($entity instanceof TranslatableInterface && 'translations' === $association->fieldName) {
+            return true;
+        }
+
+        return $association->isCascadePersist()
+            && $association->isCascadeDetach()
+            && $association->isCascadeRefresh()
+            && $association->isCascadeRemove();
     }
 }

@@ -18,7 +18,7 @@ declare(strict_types=1);
 
 namespace CoreShop\Bundle\CoreBundle\Installer\Executor;
 
-use Pimcore\Model\DataObject;
+use OpenDxp\Model\DataObject;
 
 final class FolderInstallerProvider
 {

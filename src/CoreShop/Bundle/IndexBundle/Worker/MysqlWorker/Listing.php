@@ -35,8 +35,8 @@ use CoreShop\Component\Index\Worker\MysqlWorkerInterface;
 use CoreShop\Component\Index\Worker\WorkerInterface;
 use Doctrine\DBAL\Connection;
 use Doctrine\DBAL\Query\QueryBuilder;
-use Pimcore\Model\DataObject\AbstractObject;
-use Pimcore\Model\DataObject\Concrete;
+use OpenDxp\Model\DataObject\AbstractObject;
+use OpenDxp\Model\DataObject\Concrete;
 
 class Listing extends AbstractListing implements OrderAwareListingInterface, ExtendedListingInterface, RawResultListingInterface
 {
@@ -502,7 +502,7 @@ class Listing extends AbstractListing implements OrderAwareListingInterface, Ext
         return $this->totalCount;
     }
 
-    public function current(): \CoreShop\Component\Resource\Pimcore\Model\PimcoreModelInterface|bool
+    public function current(): \CoreShop\Component\Resource\OpenDxp\Model\OpenDxpModelInterface|bool
     {
         $this->getObjects();
 

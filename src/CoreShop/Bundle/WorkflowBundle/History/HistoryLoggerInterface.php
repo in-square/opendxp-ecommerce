@@ -18,7 +18,7 @@ declare(strict_types=1);
 
 namespace CoreShop\Bundle\WorkflowBundle\History;
 
-use Pimcore\Model\DataObject;
+use OpenDxp\Model\DataObject;
 
 interface HistoryLoggerInterface
 {

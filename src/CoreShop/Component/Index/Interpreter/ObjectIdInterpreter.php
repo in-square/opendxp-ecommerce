@@ -20,7 +20,7 @@ namespace CoreShop\Component\Index\Interpreter;
 
 use CoreShop\Component\Index\Model\IndexableInterface;
 use CoreShop\Component\Index\Model\IndexColumnInterface;
-use Pimcore\Model\DataObject\AbstractObject;
+use OpenDxp\Model\DataObject\AbstractObject;
 
 class ObjectIdInterpreter implements InterpreterInterface
 {

@@ -1,2 +1,2 @@
-Pimcore\Model\DataObject\Fieldcollection\Data:
+OpenDxp\Model\DataObject\Fieldcollection\Data:
     exclude: true

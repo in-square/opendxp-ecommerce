@@ -18,8 +18,8 @@ declare(strict_types=1);
 
 namespace CoreShop\Component\Order\Model;
 
-use CoreShop\Component\Resource\Exception\ImplementedByPimcoreException;
-use Pimcore\Model\DataObject\Fieldcollection;
+use CoreShop\Component\Resource\Exception\ImplementedByOpenDxpException;
+use OpenDxp\Model\DataObject\Fieldcollection;
 
 trait ProposalPriceRuleTrait
 {
@@ -28,12 +28,12 @@ trait ProposalPriceRuleTrait
      */
     public function getPriceRuleItems()
     {
-        throw new ImplementedByPimcoreException(__CLASS__, __METHOD__);
+        throw new ImplementedByOpenDxpException(__CLASS__, __METHOD__);
     }
 
     public function setPriceRuleItems(?Fieldcollection $priceRuleItems)
     {
-        throw new ImplementedByPimcoreException(__CLASS__, __METHOD__);
+        throw new ImplementedByOpenDxpException(__CLASS__, __METHOD__);
     }
 
     public function hasPriceRules(): bool

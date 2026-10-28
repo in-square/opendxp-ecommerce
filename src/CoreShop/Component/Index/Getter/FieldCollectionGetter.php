@@ -20,10 +20,10 @@ namespace CoreShop\Component\Index\Getter;
 
 use CoreShop\Component\Index\Model\IndexableInterface;
 use CoreShop\Component\Index\Model\IndexColumnInterface;
-use CoreShop\Component\Pimcore\DataObject\LocaleFallbackHelper;
+use CoreShop\Component\OpenDxp\DataObject\LocaleFallbackHelper;
 use CoreShop\Component\Resource\Translation\Provider\TranslationLocaleProviderInterface;
-use Pimcore\Model\DataObject\ClassDefinition\Data\Localizedfields;
-use Pimcore\Model\DataObject\Fieldcollection;
+use OpenDxp\Model\DataObject\ClassDefinition\Data\Localizedfields;
+use OpenDxp\Model\DataObject\Fieldcollection;
 
 class FieldCollectionGetter implements GetterInterface
 {
@@ -48,7 +48,7 @@ class FieldCollectionGetter implements GetterInterface
                 /**
                  * @psalm-var class-string $className
                  */
-                $className = 'Pimcore\Model\DataObject\Fieldcollection\Data\\' . $columnConfig['className'];
+                $className = 'OpenDxp\Model\DataObject\Fieldcollection\Data\\' . $columnConfig['className'];
                 if (is_a($item, $className)) {
                     $validItems[] = $item;
                 }

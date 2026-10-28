@@ -24,7 +24,7 @@ use CoreShop\Component\Product\Model\ProductUnitDefinitionInterface;
 use CoreShop\Component\Product\Model\ProductUnitDefinitionsInterface;
 use CoreShop\Component\Resource\Model\AbstractObject;
 use CoreShop\Component\Resource\Repository\RepositoryInterface;
-use Pimcore\Model\Element\ValidationException;
+use OpenDxp\Model\Element\ValidationException;
 
 final class QuantityRangeUnitValidationListener
 {

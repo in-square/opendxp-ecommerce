@@ -1,0 +1,18 @@
+core_shop_currency:
+    opendxp_admin:
+        js:
+            resource: '/bundles/coreshopcurrency/opendxp/js/resource.js'
+            resource_currency: '/bundles/coreshopcurrency/opendxp/js/resource/currency.js'
+            currency_item: '/bundles/coreshopcurrency/opendxp/js/currency/item.js'
+            currency_panel: '/bundles/coreshopcurrency/opendxp/js/currency/panel.js'
+            core_extension_data_currency: '/bundles/coreshopcurrency/opendxp/js/coreExtension/data/coreShopCurrency.js'
+            core_extension_tag_currency: '/bundles/coreshopcurrency/opendxp/js/coreExtension/tags/coreShopCurrency.js'
+            core_extension_data_currency_multiselect: '/bundles/coreshopcurrency/opendxp/js/coreExtension/data/coreShopCurrencyMultiselect.js'
+            core_extension_tag_currency_multiselect: '/bundles/coreshopcurrency/opendxp/js/coreExtension/tags/coreShopCurrencyMultiselect.js'
+            core_extension_data_money_currency: '/bundles/coreshopcurrency/opendxp/js/coreExtension/data/coreShopMoneyCurrency.js'
+            core_extension_tag_money_currency: '/bundles/coreshopcurrency/opendxp/js/coreExtension/tags/coreShopMoneyCurrency.js'
+            exchange_rate_panel: '/bundles/coreshopcurrency/opendxp/js/exchangeRate/panel.js'
+        css:
+            currency: '/bundles/coreshopcurrency/opendxp/css/currency.css'
+        editmode_js:
+            core_extension_document_tag_currency: '/bundles/coreshopcurrency/opendxp/js/coreExtension/document/coreShopCurrency.js'

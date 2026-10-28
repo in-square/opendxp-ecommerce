@@ -28,11 +28,11 @@ use CoreShop\Component\Order\Model\OrderItemInterface;
 use CoreShop\Component\Order\NumberGenerator\NumberGeneratorInterface;
 use CoreShop\Component\Order\OrderInvoiceStates;
 use CoreShop\Component\Order\Repository\OrderInvoiceRepositoryInterface;
-use CoreShop\Component\Pimcore\DataObject\VersionHelper;
-use CoreShop\Component\Resource\Factory\PimcoreFactoryInterface;
-use CoreShop\Component\Resource\Repository\PimcoreRepositoryInterface;
+use CoreShop\Component\OpenDxp\DataObject\VersionHelper;
+use CoreShop\Component\Resource\Factory\OpenDxpFactoryInterface;
+use CoreShop\Component\Resource\Repository\OpenDxpRepositoryInterface;
 use CoreShop\Component\Resource\Service\FolderCreationServiceInterface;
-use Pimcore\Model\DataObject\Service;
+use OpenDxp\Model\DataObject\Service;
 use Webmozart\Assert\Assert;
 
 class OrderToInvoiceTransformer implements OrderDocumentTransformerInterface
@@ -41,8 +41,8 @@ class OrderToInvoiceTransformer implements OrderDocumentTransformerInterface
         protected OrderDocumentItemTransformerInterface $orderItemToInvoiceItemTransformer,
         protected NumberGeneratorInterface $numberGenerator,
         protected FolderCreationServiceInterface $folderCreationService,
-        protected PimcoreRepositoryInterface $orderItemRepository,
-        protected PimcoreFactoryInterface $invoiceItemFactory,
+        protected OpenDxpRepositoryInterface $orderItemRepository,
+        protected OpenDxpFactoryInterface $invoiceItemFactory,
         protected OrderInvoiceRepositoryInterface $invoiceRepository,
         protected TransformerEventDispatcherInterface $eventDispatcher,
         protected AdjustmentFactoryInterface $adjustmentFactory,
@@ -78,7 +78,7 @@ class OrderToInvoiceTransformer implements OrderDocumentTransformerInterface
         $document->setInvoiceDate(Carbon::now());
 
         /*
-         * We need to save the order twice in order to create the object in the tree for pimcore
+         * We need to save the order twice in order to create the object in the tree for opendxp
          */
         VersionHelper::useVersioning(function () use ($document) {
             $document->save();

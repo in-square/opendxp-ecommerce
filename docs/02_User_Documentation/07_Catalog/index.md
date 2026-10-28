@@ -1,6 +1,6 @@
 # Products
 
-At the heart of any e-commerce store built on the Pimcore platform are its products. CoreShop offers a robust and
+At the heart of any e-commerce store built on the OpenDxp platform are its products. CoreShop offers a robust and
 versatile system for product management, designed to accommodate the diverse needs of modern e-commerce platforms.
 
 ## Key Features of CoreShop Product Management
@@ -43,7 +43,7 @@ the [Variant Bundle documentation](./../../03_Bundles/Variant_Bundle.md).
 ## Categories
 
 Categories play a crucial role in CoreShop by helping you organize and structure the products in your e-commerce store
-on the Pimcore platform. They enable the creation of a hierarchical navigation system, enhancing the shopping experience
+on the OpenDxp platform. They enable the creation of a hierarchical navigation system, enhancing the shopping experience
 by making it easy for customers to browse and find products.
 
 ### Key Benefits of Using Categories

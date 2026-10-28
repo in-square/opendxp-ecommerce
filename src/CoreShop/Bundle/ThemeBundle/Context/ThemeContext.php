@@ -20,7 +20,7 @@ namespace CoreShop\Bundle\ThemeBundle\Context;
 
 use CoreShop\Bundle\ThemeBundle\Service\ThemeNotResolvedException;
 use CoreShop\Bundle\ThemeBundle\Service\ThemeResolverInterface;
-use Pimcore\Http\Request\Resolver\PimcoreContextResolver;
+use OpenDxp\Http\Request\Resolver\OpenDxpContextResolver;
 use Sylius\Bundle\ThemeBundle\Context\SettableThemeContext;
 use Sylius\Bundle\ThemeBundle\Context\ThemeContextInterface;
 use Sylius\Bundle\ThemeBundle\Model\ThemeInterface;
@@ -32,7 +32,7 @@ final class ThemeContext implements ThemeContextInterface
     public function __construct(
         private ThemeResolverInterface $resolver,
         private ThemeRepositoryInterface $themeRepository,
-        private PimcoreContextResolver $pimcoreContext,
+        private OpenDxpContextResolver $opendxpContext,
         private RequestStack $requestStack,
         private SettableThemeContext $settableThemeContext,
     ) {
@@ -46,9 +46,9 @@ final class ThemeContext implements ThemeContextInterface
             return $this->settableThemeContext->getTheme();
         }
 
-        $isAjaxBrickRendering = $request->attributes->get('_route') === 'pimcore_admin_document_page_areabrick-render-index-editmode';
+        $isAjaxBrickRendering = $request->attributes->get('_route') === 'opendxp_admin_document_page_areabrick-render-index-editmode';
 
-        if (!$isAjaxBrickRendering && $this->pimcoreContext->matchesPimcoreContext($request, PimcoreContextResolver::CONTEXT_ADMIN)) {
+        if (!$isAjaxBrickRendering && $this->opendxpContext->matchesOpenDxpContext($request, OpenDxpContextResolver::CONTEXT_ADMIN)) {
             return $this->settableThemeContext->getTheme();
         }
 

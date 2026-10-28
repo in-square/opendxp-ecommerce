@@ -1,0 +1,27 @@
+core_shop_shipping:
+    opendxp_admin:
+        js:
+            resource: '/bundles/coreshopshipping/opendxp/js/resource.js'
+            carrier_item: '/bundles/coreshopshipping/opendxp/js/carrier/item.js'
+            carrier_panel: '/bundles/coreshopshipping/opendxp/js/carrier/panel.js'
+            shipping_rule_item: '/bundles/coreshopshipping/opendxp/js/shippingrule/item.js'
+            shipping_rule_panel: '/bundles/coreshopshipping/opendxp/js/shippingrule/panel.js'
+            shipping_rule_action: '/bundles/coreshopshipping/opendxp/js/shippingrule/action.js'
+            shipping_rule_condition: '/bundles/coreshopshipping/opendxp/js/shippingrule/condition.js'
+            shipping_rule_actions_addition_percent: '/bundles/coreshopshipping/opendxp/js/shippingrule/actions/additionPercent.js'
+            shipping_rule_actions_discount_percent: '/bundles/coreshopshipping/opendxp/js/shippingrule/actions/discountPercent.js'
+            shipping_rule_actions_shipping_rule: '/bundles/coreshopshipping/opendxp/js/shippingrule/actions/shippingRule.js'
+            shipping_rule_conditions_amount: '/bundles/coreshopshipping/opendxp/js/shippingrule/conditions/amount.js'
+            shipping_rule_conditions_dimension: '/bundles/coreshopshipping/opendxp/js/shippingrule/conditions/dimension.js'
+            shipping_rule_conditions_nested: '/bundles/coreshopshipping/opendxp/js/shippingrule/conditions/nested.js'
+            shipping_rule_conditions_postcodes: '/bundles/coreshopshipping/opendxp/js/shippingrule/conditions/postcodes.js'
+            shipping_rule_conditions_shippingRule: '/bundles/coreshopshipping/opendxp/js/shippingrule/conditions/shippingRule.js'
+            shipping_rule_conditions_weight: '/bundles/coreshopshipping/opendxp/js/shippingrule/conditions/weight.js'
+            core_extension_data_carrier: '/bundles/coreshopshipping/opendxp/js/coreExtension/data/coreShopCarrier.js'
+            core_extension_tag_carrier: '/bundles/coreshopshipping/opendxp/js/coreExtension/tags/coreShopCarrier.js'
+            core_extension_data_carrier_multiselect: '/bundles/coreshopshipping/opendxp/js/coreExtension/data/coreShopCarrierMultiselect.js'
+            core_extension_tag_carrier_multiselect: '/bundles/coreshopshipping/opendxp/js/coreExtension/tags/coreShopCarrierMultiselect.js'
+        css:
+            shipping: '/bundles/coreshopshipping/opendxp/css/shipping.css'
+        editmode_js:
+            core_extension_document_tag_carrier: '/bundles/coreshopshipping/opendxp/js/coreExtension/document/coreShopCarrier.js'

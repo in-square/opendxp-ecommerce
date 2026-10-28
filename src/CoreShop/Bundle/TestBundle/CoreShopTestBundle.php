@@ -19,10 +19,13 @@ declare(strict_types=1);
 namespace CoreShop\Bundle\TestBundle;
 
 use Composer\InstalledVersions;
-use Pimcore\Extension\Bundle\AbstractPimcoreBundle;
+use OpenDxp\Extension\Bundle\AbstractOpenDxpBundle;
+use OpenDxp\Extension\Bundle\OpenDxpBundleAdminClassicInterface;
+use OpenDxp\Extension\Bundle\Traits\BundleAdminClassicTrait;
 
-class CoreShopTestBundle extends AbstractPimcoreBundle
+class CoreShopTestBundle extends AbstractOpenDxpBundle implements OpenDxpBundleAdminClassicInterface
 {
+    use BundleAdminClassicTrait;
     public function getNiceName(): string
     {
         return 'CoreShop - Test';
@@ -47,6 +50,10 @@ class CoreShopTestBundle extends AbstractPimcoreBundle
         $bundleName = 'coreshop/test-bundle';
 
         if (class_exists(InstalledVersions::class)) {
+            if (InstalledVersions::isInstalled('in-square/opendxp-ecommerce')) {
+                return InstalledVersions::getPrettyVersion('in-square/opendxp-ecommerce');
+            }
+
             if (InstalledVersions::isInstalled('coreshop/core-shop')) {
                 return InstalledVersions::getPrettyVersion('coreshop/core-shop');
             }
@@ -62,8 +69,8 @@ class CoreShopTestBundle extends AbstractPimcoreBundle
     public function getJsPaths(): array
     {
         return [
-            '/bundles/coreshoptest/pimcore/js/plugin.js',
-            '/bundles/coreshoptest/pimcore/js/xpath.js',
+            '/bundles/coreshoptest/opendxp/js/plugin.js',
+            '/bundles/coreshoptest/opendxp/js/xpath.js',
         ];
     }
 }

@@ -18,14 +18,14 @@ declare(strict_types=1);
 
 namespace CoreShop\Bundle\FrontendBundle\Controller;
 
-use CoreShop\Bundle\ResourceBundle\Pimcore\Repository\StackRepositoryInterface;
+use CoreShop\Bundle\ResourceBundle\OpenDxp\Repository\StackRepositoryInterface;
 use CoreShop\Component\Core\Model\ProductInterface;
 use CoreShop\Component\Core\Repository\ProductRepositoryInterface;
 use CoreShop\Component\Order\Model\PurchasableInterface;
 use CoreShop\Component\SEO\SEOPresentationInterface;
 use CoreShop\Component\Store\Context\StoreContextInterface;
 use CoreShop\Component\Tracking\Tracker\TrackerInterface;
-use Pimcore\Http\RequestHelper;
+use OpenDxp\Http\RequestHelper;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;

@@ -18,9 +18,9 @@ declare(strict_types=1);
 
 namespace CoreShop\Component\Variant\Model;
 
-use CoreShop\Component\Resource\Pimcore\Model\PimcoreModelInterface;
+use CoreShop\Component\Resource\OpenDxp\Model\OpenDxpModelInterface;
 
-interface AttributeInterface extends PimcoreModelInterface
+interface AttributeInterface extends OpenDxpModelInterface
 {
     public function getName(string $language = null): ?string;
 

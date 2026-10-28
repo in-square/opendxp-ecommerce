@@ -18,29 +18,29 @@ declare(strict_types=1);
 
 namespace CoreShop\Component\Order\Model;
 
-use CoreShop\Component\Resource\Exception\ImplementedByPimcoreException;
-use Pimcore\Model\DataObject\Fieldcollection;
+use CoreShop\Component\Resource\Exception\ImplementedByOpenDxpException;
+use OpenDxp\Model\DataObject\Fieldcollection;
 
 trait ConvertedAdjustableTrait
 {
-    public function setConvertedPimcoreAdjustmentTotalNet(int $adjustmentTotalNet)
+    public function setConvertedOpenDxpAdjustmentTotalNet(int $adjustmentTotalNet)
     {
-        throw new ImplementedByPimcoreException(__CLASS__, __METHOD__);
+        throw new ImplementedByOpenDxpException(__CLASS__, __METHOD__);
     }
 
-    public function getConvertedPimcoreAdjustmentTotalNet(): int
+    public function getConvertedOpenDxpAdjustmentTotalNet(): int
     {
-        throw new ImplementedByPimcoreException(__CLASS__, __METHOD__);
+        throw new ImplementedByOpenDxpException(__CLASS__, __METHOD__);
     }
 
-    public function setConvertedPimcoreAdjustmentTotalGross(int $adjustmentTotalGross)
+    public function setConvertedOpenDxpAdjustmentTotalGross(int $adjustmentTotalGross)
     {
-        throw new ImplementedByPimcoreException(__CLASS__, __METHOD__);
+        throw new ImplementedByOpenDxpException(__CLASS__, __METHOD__);
     }
 
-    public function getConvertedPimcoreAdjustmentTotalGross(): int
+    public function getConvertedOpenDxpAdjustmentTotalGross(): int
     {
-        throw new ImplementedByPimcoreException(__CLASS__, __METHOD__);
+        throw new ImplementedByOpenDxpException(__CLASS__, __METHOD__);
     }
 
     /**
@@ -48,12 +48,12 @@ trait ConvertedAdjustableTrait
      */
     public function getConvertedAdjustmentItems()
     {
-        throw new ImplementedByPimcoreException(__CLASS__, __METHOD__);
+        throw new ImplementedByOpenDxpException(__CLASS__, __METHOD__);
     }
 
     public function setConvertedAdjustmentItems(?Fieldcollection $adjustmentItems)
     {
-        throw new ImplementedByPimcoreException(__CLASS__, __METHOD__);
+        throw new ImplementedByOpenDxpException(__CLASS__, __METHOD__);
     }
 
     public function hasConvertedAdjustments()
@@ -173,10 +173,10 @@ trait ConvertedAdjustableTrait
     {
         if (null === $type) {
             if ($withTax) {
-                return $this->getConvertedPimcoreAdjustmentTotalGross() ?: 0;
+                return $this->getConvertedOpenDxpAdjustmentTotalGross() ?: 0;
             }
 
-            return $this->getConvertedPimcoreAdjustmentTotalNet() ?: 0;
+            return $this->getConvertedOpenDxpAdjustmentTotalNet() ?: 0;
         }
 
         $total = 0;
@@ -201,8 +201,8 @@ trait ConvertedAdjustableTrait
             }
         }
 
-        $this->setConvertedPimcoreAdjustmentTotalGross($adjustmentsTotalGross);
-        $this->setConvertedPimcoreAdjustmentTotalNet($adjustmentsTotalNet);
+        $this->setConvertedOpenDxpAdjustmentTotalGross($adjustmentsTotalGross);
+        $this->setConvertedOpenDxpAdjustmentTotalNet($adjustmentsTotalNet);
 
         $this->recalculateConvertedAfterAdjustmentChange();
     }

@@ -23,7 +23,7 @@ use CoreShop\Component\Notification\Model\NotificationRuleInterface;
 use CoreShop\Component\Notification\Rule\Action\NotificationRuleProcessorInterface;
 use CoreShop\Component\Order\Model\OrderInterface;
 use CoreShop\Component\Order\Repository\OrderRepositoryInterface;
-use Pimcore\Model\Document;
+use OpenDxp\Model\Document;
 
 class OrderMailActionProcessor implements NotificationRuleProcessorInterface
 {

@@ -23,7 +23,7 @@ use CoreShop\Component\Inventory\Model\StockableInterface;
 use CoreShop\Component\Order\Model\PurchasableInterface;
 use CoreShop\Component\Product\Model\ProductInterface as BaseProductInterface;
 use CoreShop\Component\ProductQuantityPriceRules\Model\QuantityRangePriceAwareInterface;
-use CoreShop\Component\SEO\Model\PimcoreSEOAwareInterface;
+use CoreShop\Component\SEO\Model\OpenDxpSEOAwareInterface;
 use CoreShop\Component\SEO\Model\SEOImageAwareInterface;
 use CoreShop\Component\SEO\Model\SEOOpenGraphAwareInterface;
 use CoreShop\Component\Variant\Model\ProductVariantAwareInterface;
@@ -34,11 +34,11 @@ interface ProductInterface extends
     IndexableInterface,
     PurchasableInterface,
     StockableInterface,
-    PimcoreSEOAwareInterface,
+    OpenDxpSEOAwareInterface,
     SEOImageAwareInterface,
     SEOOpenGraphAwareInterface,
     QuantityRangePriceAwareInterface,
-    PimcoreStoresAwareInterface,
+    OpenDxpStoresAwareInterface,
     ProductVariantAwareInterface,
     WishlistProductInterface
 {

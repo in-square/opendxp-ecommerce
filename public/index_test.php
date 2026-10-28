@@ -10,11 +10,11 @@
  * @license    https://www.coreshop.com/license     GPLv3 and CCL
  */
 
-use Pimcore\Bootstrap;
-use Pimcore\Tool;
+use OpenDxp\Bootstrap;
+use OpenDxp\Tool;
 use Symfony\Component\HttpFoundation\Request;
 
-$_SERVER['PIMCORE_ENVIRONMENT'] = $_SERVER['APP_ENV'] = $_SERVER['SYMFONY_ENV'] = 'test';
+$_SERVER['OPENDXP_ENVIRONMENT'] = $_SERVER['APP_ENV'] = $_SERVER['SYMFONY_ENV'] = 'test';
 
 //use runtime
 require_once dirname(__DIR__).'/vendor/autoload_runtime.php';

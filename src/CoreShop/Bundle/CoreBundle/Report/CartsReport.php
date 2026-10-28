@@ -23,7 +23,7 @@ use CoreShop\Component\Core\Model\StoreInterface;
 use CoreShop\Component\Core\Portlet\PortletInterface;
 use CoreShop\Component\Core\Report\ReportInterface;
 use CoreShop\Component\Order\OrderSaleStates;
-use CoreShop\Component\Resource\Repository\PimcoreRepositoryInterface;
+use CoreShop\Component\Resource\Repository\OpenDxpRepositoryInterface;
 use CoreShop\Component\Resource\Repository\RepositoryInterface;
 use Doctrine\DBAL\Connection;
 use Symfony\Component\HttpFoundation\ParameterBag;
@@ -35,7 +35,7 @@ class CartsReport implements ReportInterface, PortletInterface
     public function __construct(
         private RepositoryInterface $storeRepository,
         private Connection $db,
-        private PimcoreRepositoryInterface $orderRepository,
+        private OpenDxpRepositoryInterface $orderRepository,
     ) {
     }
 

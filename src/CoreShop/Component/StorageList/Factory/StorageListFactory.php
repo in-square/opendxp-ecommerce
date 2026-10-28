@@ -19,7 +19,7 @@ declare(strict_types=1);
 namespace CoreShop\Component\StorageList\Factory;
 
 use CoreShop\Component\Resource\Factory\FactoryInterface;
-use CoreShop\Component\Resource\Pimcore\Model\AbstractPimcoreModel;
+use CoreShop\Component\Resource\OpenDxp\Model\AbstractOpenDxpModel;
 use CoreShop\Component\Resource\TokenGenerator\UniqueTokenGenerator;
 use CoreShop\Component\StorageList\Model\NameableStorageListInterface;
 use CoreShop\Component\StorageList\Model\StorageListInterface;
@@ -39,7 +39,7 @@ class StorageListFactory implements StorageListFactoryInterface
          */
         $storageList = $this->storageListFactory->createNew();
 
-        if ($storageList instanceof AbstractPimcoreModel) {
+        if ($storageList instanceof AbstractOpenDxpModel) {
             $storageList->setKey(uniqid('wishlist', true));
             $storageList->setPublished(true);
         }

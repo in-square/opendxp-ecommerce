@@ -18,10 +18,10 @@ declare(strict_types=1);
 
 namespace App;
 
-use Pimcore\HttpKernel\BundleCollection\BundleCollection;
-use Pimcore\Kernel as PimcoreKernel;
+use OpenDxp\HttpKernel\BundleCollection\BundleCollection;
+use OpenDxp\Kernel as OpenDxpKernel;
 
-class Kernel extends PimcoreKernel
+class Kernel extends OpenDxpKernel
 {
     public function registerBundlesToCollection(BundleCollection $collection): void
     {
@@ -41,7 +41,7 @@ class Kernel extends PimcoreKernel
 
     public function boot(): void
     {
-        \Pimcore::setKernel($this);
+        \OpenDxp::setKernel($this);
 
         parent::boot();
     }

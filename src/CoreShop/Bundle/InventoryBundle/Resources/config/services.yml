@@ -18,6 +18,6 @@ services:
         tags:
             - { name: twig.extension }
 
-    CoreShop\Bundle\InventoryBundle\Pimcore\Renderer\StockOnHandRenderer:
+    CoreShop\Bundle\InventoryBundle\OpenDxp\Renderer\StockOnHandRenderer:
         arguments:
             - '@twig'

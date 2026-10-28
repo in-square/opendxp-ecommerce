@@ -9,7 +9,7 @@ money_decimal_factor: 100
 ```
 
 - `money_decimal_precision: 2`: This setting specifies a global precision of 2.
-- `money_decimal_factor: 100`: This setting is for displaying currency with a factor of 100 in the Pimcore Backend.
+- `money_decimal_factor: 100`: This setting is for displaying currency with a factor of 100 in the OpenDxp Backend.
 
 > *WARNING*: If you change these settings in an existing installation with orders, products, etc., you also need to
 > create a migration to change all the values from a precision of 2 to your new setting.

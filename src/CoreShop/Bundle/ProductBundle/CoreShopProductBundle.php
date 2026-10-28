@@ -31,7 +31,7 @@ use CoreShop\Bundle\ProductBundle\DependencyInjection\Compiler\ProductValidPrice
 use CoreShop\Bundle\ResourceBundle\AbstractResourceBundle;
 use CoreShop\Bundle\ResourceBundle\CoreShopResourceBundle;
 use CoreShop\Bundle\RuleBundle\CoreShopRuleBundle;
-use Pimcore\HttpKernel\BundleCollection\BundleCollection;
+use OpenDxp\HttpKernel\BundleCollection\BundleCollection;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
 final class CoreShopProductBundle extends AbstractResourceBundle

@@ -45,7 +45,7 @@ final class SurchargeAmountConfigurationType extends AbstractType
             ->add('amount', MoneyType::class, [
                 'constraints' => [
                     new NotBlank(['groups' => $this->validationGroups]),
-                    new Type(['type' => 'numeric', 'groups' => $this->validationGroups]),
+                    new Type(type: 'numeric', groups: $this->validationGroups),
                     new GreaterThan(['value' => 0, 'groups' => $this->validationGroups]),
                 ],
             ])

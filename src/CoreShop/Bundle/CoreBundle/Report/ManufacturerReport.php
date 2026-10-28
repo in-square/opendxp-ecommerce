@@ -24,10 +24,10 @@ use CoreShop\Component\Core\Report\ReportInterface;
 use CoreShop\Component\Currency\Formatter\MoneyFormatterInterface;
 use CoreShop\Component\Locale\Context\LocaleContextInterface;
 use CoreShop\Component\Order\OrderSaleStates;
-use CoreShop\Component\Resource\Repository\PimcoreRepositoryInterface;
+use CoreShop\Component\Resource\Repository\OpenDxpRepositoryInterface;
 use CoreShop\Component\Resource\Repository\RepositoryInterface;
 use Doctrine\DBAL\Connection;
-use Pimcore\Model\DataObject\ClassDefinition;
+use OpenDxp\Model\DataObject\ClassDefinition;
 use Symfony\Component\HttpFoundation\ParameterBag;
 
 class ManufacturerReport implements ReportInterface
@@ -39,9 +39,9 @@ class ManufacturerReport implements ReportInterface
         private Connection $db,
         private MoneyFormatterInterface $moneyFormatter,
         private LocaleContextInterface $localeService,
-        private PimcoreRepositoryInterface $manufacturerRepository,
-        private PimcoreRepositoryInterface $orderRepository,
-        private PimcoreRepositoryInterface $orderItemRepository,
+        private OpenDxpRepositoryInterface $manufacturerRepository,
+        private OpenDxpRepositoryInterface $orderRepository,
+        private OpenDxpRepositoryInterface $orderItemRepository,
     ) {
     }
 

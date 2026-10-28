@@ -19,9 +19,9 @@ declare(strict_types=1);
 namespace CoreShop\Component\Order\Model;
 
 use CoreShop\Component\Resource\Model\ResourceInterface;
-use CoreShop\Component\Resource\Pimcore\Model\PimcoreModelInterface;
+use CoreShop\Component\Resource\OpenDxp\Model\OpenDxpModelInterface;
 
-interface OrderDocumentItemInterface extends ResourceInterface, PimcoreModelInterface
+interface OrderDocumentItemInterface extends ResourceInterface, OpenDxpModelInterface
 {
     public function getId(): ?int;
 

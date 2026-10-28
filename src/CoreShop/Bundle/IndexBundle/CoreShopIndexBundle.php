@@ -32,8 +32,8 @@ use CoreShop\Bundle\IndexBundle\DependencyInjection\Compiler\RegisterOrderRender
 use CoreShop\Bundle\MenuBundle\CoreShopMenuBundle;
 use CoreShop\Bundle\ResourceBundle\AbstractResourceBundle;
 use CoreShop\Bundle\ResourceBundle\CoreShopResourceBundle;
-use Pimcore\Bundle\OpenSearchClientBundle\PimcoreOpenSearchClientBundle;
-use Pimcore\HttpKernel\BundleCollection\BundleCollection;
+use OpenDxp\Bundle\OpenSearchClientBundle\OpenDxpOpenSearchClientBundle;
+use OpenDxp\HttpKernel\BundleCollection\BundleCollection;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
 final class CoreShopIndexBundle extends AbstractResourceBundle
@@ -67,7 +67,7 @@ final class CoreShopIndexBundle extends AbstractResourceBundle
         $container->addCompilerPass(new RegisterFilterPreConditionTypesPass());
         $container->addCompilerPass(new RegisterFilterUserConditionTypesPass());
 
-        if (class_exists(PimcoreOpenSearchClientBundle::class)) {
+        if (class_exists(OpenDxpOpenSearchClientBundle::class)) {
             $container->addCompilerPass(new RegisterOpenSearchClientPass());
         }
     }

@@ -28,7 +28,7 @@ use CoreShop\Component\Currency\Formatter\MoneyFormatterInterface;
 use CoreShop\Component\Locale\Context\LocaleContextInterface;
 use CoreShop\Component\Order\OrderSaleStates;
 use CoreShop\Component\Order\OrderStates;
-use CoreShop\Component\Resource\Repository\PimcoreRepositoryInterface;
+use CoreShop\Component\Resource\Repository\OpenDxpRepositoryInterface;
 use CoreShop\Component\Resource\Repository\RepositoryInterface;
 use Doctrine\DBAL\Connection;
 use Symfony\Component\HttpFoundation\ParameterBag;
@@ -42,7 +42,7 @@ class SalesReport implements ReportInterface, ExportReportInterface, PortletInte
         private Connection $db,
         private MoneyFormatterInterface $moneyFormatter,
         private LocaleContextInterface $localeContext,
-        private PimcoreRepositoryInterface $orderRepository,
+        private OpenDxpRepositoryInterface $orderRepository,
     ) {
     }
 

@@ -22,7 +22,7 @@ use CoreShop\Component\Order\Model\OrderDocumentInterface;
 use CoreShop\Component\Order\Model\OrderDocumentItemInterface;
 use CoreShop\Component\Order\Model\OrderInvoiceItemInterface;
 use CoreShop\Component\Order\Model\OrderItemInterface;
-use CoreShop\Component\Pimcore\DataObject\VersionHelper;
+use CoreShop\Component\OpenDxp\DataObject\VersionHelper;
 use CoreShop\Component\Resource\Service\FolderCreationServiceInterface;
 use Webmozart\Assert\Assert;
 

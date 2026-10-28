@@ -16,11 +16,11 @@ declare(strict_types=1);
  *
  */
 
-use Pimcore\Kernel as PimcoreKernel;
+use OpenDxp\Kernel as OpenDxpKernel;
 
-class BehatKernel extends PimcoreKernel
+class BehatKernel extends OpenDxpKernel
 {
-    public function registerBundlesToCollection(\Pimcore\HttpKernel\BundleCollection\BundleCollection $collection): void
+    public function registerBundlesToCollection(\OpenDxp\HttpKernel\BundleCollection\BundleCollection $collection): void
     {
         $collection->addBundle(new \CoreShop\Bundle\CoreBundle\CoreShopCoreBundle(), 1000);
         $collection->addBundle(new \CoreShop\Bundle\FrontendBundle\CoreShopFrontendBundle(), 1800);
@@ -28,17 +28,31 @@ class BehatKernel extends PimcoreKernel
         $collection->addBundle(new \CoreShop\Bundle\TestBundle\CoreShopTestBundle(), 0);
     }
 
-    public function boot(): void
+    protected function getEnvironmentsForDevBundles(): array
     {
-        parent::boot();
-
-        \Pimcore::setKernel($this);
+        return array_merge(
+            ['test_precision'],
+            parent::getEnvironmentsForDevBundles(),
+        );
     }
 
-    protected function build(\Symfony\Component\DependencyInjection\ContainerBuilder $container)
+    public function boot(): void
+    {
+        \OpenDxp::setKernel($this);
+
+        parent::boot();
+    }
+
+    public function shutdown(): void
+    {
+        \OpenDxp::setKernel($this);
+
+        parent::shutdown();
+    }
+    protected function build(\Symfony\Component\DependencyInjection\ContainerBuilder $container): void
     {
         parent::build($container);
 
-        $container->setParameter('pimcore.geoip.db_file', $container->getParameter('kernel.project_dir') . '/var/config/GeoLite2-City.mmdb');
+        $container->setParameter('opendxp.geoip.db_file', $container->getParameter('kernel.project_dir') . '/var/config/GeoLite2-City.mmdb');
     }
 }

@@ -31,15 +31,15 @@ services:
     CoreShop\Bundle\WorkflowBundle\History\HistoryLoggerInterface: '@CoreShop\Bundle\WorkflowBundle\History\HistoryLogger'
     CoreShop\Bundle\WorkflowBundle\History\HistoryLogger:
         arguments:
-            - '@CoreShop\Component\Pimcore\DataObject\NoteService'
-            - '@Pimcore\Translation\Translator'
+            - '@CoreShop\Component\OpenDxp\DataObject\NoteService'
+            - '@OpenDxp\Translation\Translator'
             - '%coreshop.workflow.manager.history_log_state_identifier%'
 
     CoreShop\Bundle\WorkflowBundle\History\StateHistoryLoggerInterface: '@CoreShop\Bundle\WorkflowBundle\History\StateHistoryLogger'
     CoreShop\Bundle\WorkflowBundle\History\StateHistoryLogger:
         arguments:
-            - '@CoreShop\Component\Pimcore\DataObject\NoteService'
-            - '@Pimcore\Translation\Translator'
+            - '@CoreShop\Component\OpenDxp\DataObject\NoteService'
+            - '@OpenDxp\Translation\Translator'
             - '%coreshop.workflow.manager.history_log_state_identifier%'
 
     CoreShop\Bundle\WorkflowBundle\History\HistoryRepositoryInterface: '@CoreShop\Bundle\WorkflowBundle\History\HistoryRepository'

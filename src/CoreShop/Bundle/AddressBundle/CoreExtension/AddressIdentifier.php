@@ -36,12 +36,12 @@ class AddressIdentifier extends Select
 
     protected function getRepository(): AddressIdentifierRepositoryInterface
     {
-        return \Pimcore::getContainer()->get('coreshop.repository.address_identifier');
+        return \OpenDxp::getContainer()->get('coreshop.repository.address_identifier');
     }
 
     protected function getModel(): string
     {
-        return \Pimcore::getContainer()->getParameter('coreshop.model.address_identifier.class');
+        return \OpenDxp::getContainer()->getParameter('coreshop.model.address_identifier.class');
     }
 
     protected function getInterface(): string

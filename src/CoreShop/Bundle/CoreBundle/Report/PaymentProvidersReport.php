@@ -23,7 +23,7 @@ use CoreShop\Component\Core\Model\PaymentProviderInterface;
 use CoreShop\Component\Core\Model\StoreInterface;
 use CoreShop\Component\Core\Report\ReportInterface;
 use CoreShop\Component\Order\OrderSaleStates;
-use CoreShop\Component\Resource\Repository\PimcoreRepositoryInterface;
+use CoreShop\Component\Resource\Repository\OpenDxpRepositoryInterface;
 use CoreShop\Component\Resource\Repository\RepositoryInterface;
 use Doctrine\DBAL\Connection;
 use Symfony\Component\HttpFoundation\ParameterBag;
@@ -36,7 +36,7 @@ class PaymentProvidersReport implements ReportInterface
         private RepositoryInterface $storeRepository,
         private Connection $db,
         private RepositoryInterface $paymentProviderRepository,
-        private PimcoreRepositoryInterface $orderRepository,
+        private OpenDxpRepositoryInterface $orderRepository,
     ) {
     }
 

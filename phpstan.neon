@@ -12,6 +12,8 @@ parameters:
         - '**/ProcessManager/IndexListener.php'
         - '**/ProcessManager/IndexProcess.php'
         - '**/DataHub/*.php'
+        - '**/Worker/OpenSearchWorker.php'
+        - '**/Worker/OpenSearchWorker/*.php'
 
     ignoreErrors:
         - identifier: varTag.nativeType
@@ -21,27 +23,27 @@ parameters:
         - '/Call to an undefined static method Webmozart\\Assert\\Assert::nullOr/'
         - '/Call to an undefined method Faker\\Generator::/'
         - '/Access to an undefined property Faker\\Generator::/'
-        - '/Constant PIMCORE_CONFIGURATION_DIRECTORY not found./'
-        - '/Constant PIMCORE_CLASS_DIRECTORY not found./'
-        - '/Constant PIMCORE_WEB_ROOT not found./'
-        - '/Constant PIMCORE_DEVMODE not found./'
+        - '/Constant OPENDXP_CONFIGURATION_DIRECTORY not found./'
+        - '/Constant OPENDXP_CLASS_DIRECTORY not found./'
+        - '/Constant OPENDXP_WEB_ROOT not found./'
+        - '/Constant OPENDXP_DEVMODE not found./'
 
         - '/Call to an undefined method Symfony\\Component\\Config\\Definition\\Builder\\NodeDefinition::children\(\)/'
         - '/Call to an undefined method Symfony\\Component\\Config\\Definition\\Builder\\NodeParentInterface/'
-        - '/Call to an undefined method Pimcore\\Model\\\(.*\)::save\(\)./'
-        - '/Call to an undefined method Pimcore\\Model\\\(.*\)::delete\(\)./'
-        - '/Method Pimcore\\Model\\DataObject\\Concrete::getLatestVersion\(\)(.*)/'
+        - '/Call to an undefined method OpenDxp\\Model\\\(.*\)::save\(\)./'
+        - '/Call to an undefined method OpenDxp\\Model\\\(.*\)::delete\(\)./'
+        - '/Method OpenDxp\\Model\\DataObject\\Concrete::getLatestVersion\(\)(.*)/'
         - '/Symfony\\Contracts\\EventDispatcher\\EventDispatcherInterface::dispatch\(\)/'
         - '/Method CoreShop\\Bundle\\ResourceBundle\\Routing\\ResourceLoader::getResolver\(\) should return Symfony\\Component\\Config\\Loader\\LoaderResolverInterface but return statement is missing./'
         - '/PHPDoc type string of property CoreShop\\Bundle\\PayumBundle\\Request\\GetStatus::\$status is not covariant with PHPDoc type int of overridden property Payum\\Core\\Request\\BaseGetStatus::\$status./'
         - '/Method CoreShop\\Bundle\\ResourceBundle\\Controller\\AdminController::getSubscribedServices\(\) should return non-empty-array<string|Symfony\\Contracts\\Service\\Attribute\\SubscribedService> but returns array<string>./'
-        - '/Pimcore\\Model\\DataObject\\ClassDefinition\\DynamicOptionsProvider\\MultiSelectOptionsProviderInterface is marked deprecated/'
+        - '/OpenDxp\\Model\\DataObject\\ClassDefinition\\DynamicOptionsProvider\\MultiSelectOptionsProviderInterface is marked deprecated/'
 
-        # Pimcore BC Breaks
-        - '/Class Pimcore\\Model\\DataObject\\LazyLoadedFieldsInterface not found/'
-        - '/Class Pimcore\\Model\\DataObject\\ClassDefinition\\Data\\\CustomVersionMarshalInterface not found/'
-        - '/Call to method markLazyKeyAsLoaded\(\) on an unknown class Pimcore\\Model\\DataObject\\LazyLoadedFieldsInterface/'
-        - '/Call to method isLazyKeyLoaded\(\) on an unknown class Pimcore\\Model\\DataObject\\LazyLoadedFieldsInterface/'
+        # OpenDxp BC Breaks
+        - '/Class OpenDxp\\Model\\DataObject\\LazyLoadedFieldsInterface not found/'
+        - '/Class OpenDxp\\Model\\DataObject\\ClassDefinition\\Data\\\CustomVersionMarshalInterface not found/'
+        - '/Call to method markLazyKeyAsLoaded\(\) on an unknown class OpenDxp\\Model\\DataObject\\LazyLoadedFieldsInterface/'
+        - '/Call to method isLazyKeyLoaded\(\) on an unknown class OpenDxp\\Model\\DataObject\\LazyLoadedFieldsInterface/'
         - '/Access to undefined constant PackageVersions\\Versions::VERSIONS/'
 
 includes:

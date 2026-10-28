@@ -23,7 +23,7 @@ use CoreShop\Component\Currency\Model\CurrencyInterface;
 use CoreShop\Component\Order\Model\OrderInterface;
 use CoreShop\Component\Order\Processor\CartProcessorInterface;
 use CoreShop\Component\Taxation\Model\TaxItemInterface;
-use Pimcore\Model\DataObject\Fieldcollection;
+use OpenDxp\Model\DataObject\Fieldcollection;
 
 final class CartCurrencyConversionProcessor implements CartProcessorInterface
 {

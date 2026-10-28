@@ -18,8 +18,8 @@ declare(strict_types=1);
 
 namespace CoreShop\Component\Order\Cart;
 
-use CoreShop\Component\StorageList\Core\Context\PimcoreListResolver;
+use CoreShop\Component\StorageList\Core\Context\OpenDxpListResolver;
 
-class CartResolver extends PimcoreListResolver
+class CartResolver extends OpenDxpListResolver
 {
 }

@@ -1,0 +1,75 @@
+services:
+    _defaults:
+        public: true
+
+    coreshop.behat.context.ui_opendxp.login:
+        class: CoreShop\Behat\Context\Ui\OpenDxp\LoginContext
+        arguments:
+            - '@CoreShop\Behat\Page\OpenDxp\LoginPageInterface'
+            - '@CoreShop\Behat\Page\OpenDxp\PWAPageInterface'
+        tags:
+            - { name: fob.context_service }
+
+    coreshop.behat.context.ui_opendxp.menu:
+        class: CoreShop\Behat\Context\Ui\OpenDxp\MenuContext
+        arguments:
+            - '@CoreShop\Behat\Element\OpenDxp\MenuElementInterface'
+        tags:
+            - { name: fob.context_service }
+
+    coreshop.behat.context.ui_opendxp.pwa:
+        class: CoreShop\Behat\Context\Ui\OpenDxp\PWAContext
+        arguments:
+            - '@CoreShop\Behat\Page\OpenDxp\PWAPageInterface'
+        tags:
+            - { name: fob.context_service }
+
+    coreshop.behat.context.ui_opendxp.coreshop.currency:
+        class: CoreShop\Behat\Context\Ui\OpenDxp\CoreShop\CurrencyContext
+        arguments:
+            - '@CoreShop\Behat\Page\OpenDxp\CoreShop\CurrencyPageInterface'
+        tags:
+            - { name: fob.context_service }
+
+    coreshop.behat.context.ui_opendxp.coreshop.country:
+        class: CoreShop\Behat\Context\Ui\OpenDxp\CoreShop\CountryContext
+        arguments:
+            - '@CoreShop\Behat\Page\OpenDxp\PWAPageInterface'
+            - '@CoreShop\Behat\Page\OpenDxp\CoreShop\CountryPageInterface'
+        tags:
+            - { name: fob.context_service }
+
+    coreshop.behat.context.ui_opendxp.coreshop.state:
+        class: CoreShop\Behat\Context\Ui\OpenDxp\CoreShop\StateContext
+        arguments:
+            - '@CoreShop\Behat\Page\OpenDxp\CoreShop\StatePageInterface'
+        tags:
+            - { name: fob.context_service }
+
+    coreshop.behat.context.ui_opendxp.coreshop.exchange_rate:
+        class: CoreShop\Behat\Context\Ui\OpenDxp\CoreShop\ExchangeRateContext
+        arguments:
+            - '@CoreShop\Behat\Page\OpenDxp\CoreShop\ExchangeRatePageInterface'
+        tags:
+            - { name: fob.context_service }
+
+    coreshop.behat.context.ui_opendxp.coreshop.tax_rate:
+        class: CoreShop\Behat\Context\Ui\OpenDxp\CoreShop\TaxRateContext
+        arguments:
+            - '@CoreShop\Behat\Page\OpenDxp\CoreShop\TaxRatePageInterface'
+        tags:
+            - { name: fob.context_service }
+
+    coreshop.behat.context.ui_opendxp.coreshop.tax_rule_group:
+        class: CoreShop\Behat\Context\Ui\OpenDxp\CoreShop\TaxRuleGroupContext
+        arguments:
+            - '@CoreShop\Behat\Page\OpenDxp\CoreShop\TaxRuleGroupPageInterface'
+        tags:
+            - { name: fob.context_service }
+
+    coreshop.behat.context.ui_opendxp.coreshop.zone:
+        class: CoreShop\Behat\Context\Ui\OpenDxp\CoreShop\ZoneContext
+        arguments:
+            - '@CoreShop\Behat\Page\OpenDxp\CoreShop\ZonePageInterface'
+        tags:
+            - { name: fob.context_service }

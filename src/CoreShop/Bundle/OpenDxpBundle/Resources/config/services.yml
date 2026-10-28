@@ -1,0 +1,105 @@
+imports:
+    - { resource: services/grid.yml }
+    - { resource: services/dynamic_dropdown.yml }
+    - { resource: services/opendxp.yml }
+    - { resource: services/link_generator.yaml }
+    - { resource: services/print.yaml }
+
+parameters:
+    coreshop.admin.route.base: /admin/coreshop
+
+services:
+    _defaults:
+        public: true
+        autowire: true
+
+    CoreShop\Component\OpenDxp\DataObject\ClassInstallerInterface: '@CoreShop\Component\OpenDxp\DataObject\ClassInstaller'
+    CoreShop\Component\OpenDxp\DataObject\ClassInstaller: ~
+
+    CoreShop\Component\OpenDxp\DataObject\GridConfigInstallerInterface: '@CoreShop\Component\OpenDxp\DataObject\GridConfigInstaller'
+    CoreShop\Component\OpenDxp\DataObject\GridConfigInstaller: ~
+
+    CoreShop\Component\OpenDxp\DataObject\ObjectServiceInterface: '@CoreShop\Component\OpenDxp\DataObject\ObjectService'
+    CoreShop\Component\OpenDxp\DataObject\ObjectService: ~
+
+    CoreShop\Component\OpenDxp\DataObject\NoteServiceInterface: '@CoreShop\Component\OpenDxp\DataObject\NoteService'
+    CoreShop\Component\OpenDxp\DataObject\NoteService:
+        arguments:
+            - '@event_dispatcher'
+            - '@monolog.logger.opendxp'
+
+    CoreShop\Component\OpenDxp\DataObject\ObjectClonerInterface: '@CoreShop\Component\OpenDxp\DataObject\ObjectCloner'
+    CoreShop\Component\OpenDxp\DataObject\ObjectCloner: ~
+
+    CoreShop\Component\OpenDxp\Mail\MailProcessorInterface: '@CoreShop\Bundle\OpenDxpBundle\Mail\MailProcessor'
+    CoreShop\Bundle\OpenDxpBundle\Mail\MailProcessor:
+        arguments:
+            - '@event_dispatcher'
+
+    coreshop.expression_language:
+        class: Symfony\Component\ExpressionLanguage\ExpressionLanguage
+        arguments:
+            - '@cache.system'
+
+    CoreShop\Component\OpenDxp\ExpressionLanguage\OpenDxpLanguageProvider:
+        tags:
+            - { name: coreshop.expression_language_provider }
+
+    CoreShop\Component\OpenDxp\ExpressionLanguage\PHPFunctionsProvider:
+        tags:
+            - { name: coreshop.expression_language_provider }
+
+    coreshop.expression_language.provider.symfony_container:
+        class: Symfony\Component\DependencyInjection\ExpressionLanguageProvider
+        tags:
+            - { name: coreshop.expression_language_provider }
+
+    CoreShop\Bundle\OpenDxpBundle\EventListener\AdminJavascriptListener:
+        arguments:
+            - '%coreshop.all.opendxp.admin.js%'
+            - '%coreshop.all.opendxp.admin.editmode_js%'
+            - '%coreshop.all.opendxp.admin.css%'
+            - '%coreshop.all.opendxp.admin.editmode_css%'
+        tags:
+            - { name: kernel.event_subscriber }
+
+    CoreShop\Component\OpenDxp\Slug\SluggableSluggerInterface: '@CoreShop\Component\OpenDxp\Slug\SluggableSlugger'
+    CoreShop\Component\OpenDxp\Slug\SluggableSlugger:
+        arguments:
+            - '@Symfony\Component\String\Slugger\SluggerInterface'
+
+    CoreShop\Component\OpenDxp\Slug\DataObjectSiteSlugGeneratorInterface: '@CoreShop\Component\OpenDxp\Slug\DataObjectSiteSlugGenerator'
+    CoreShop\Component\OpenDxp\Slug\DataObjectSiteSlugGenerator:
+        arguments:
+            - '@CoreShop\Component\OpenDxp\Slug\SluggableSluggerInterface'
+            - '@event_dispatcher'
+
+    CoreShop\Component\OpenDxp\Slug\DataObjectSlugGeneratorInterface: '@CoreShop\Component\OpenDxp\Slug\DataObjectSlugGenerator'
+    CoreShop\Component\OpenDxp\Slug\DataObjectSlugGenerator:
+        arguments:
+            - '@CoreShop\Component\OpenDxp\Slug\DataObjectSiteSlugGeneratorInterface'
+
+    CoreShop\Bundle\OpenDxpBundle\EventListener\SluggableListener:
+        arguments:
+            - '@CoreShop\Component\OpenDxp\Slug\DataObjectSlugGeneratorInterface'
+        tags:
+            - { name: kernel.event_subscriber }
+
+    CoreShop\Component\OpenDxp\Slug\SluggableLinkGenerator:
+        arguments:
+            - '@OpenDxp\Http\Request\Resolver\SiteResolver'
+            - '@Symfony\Component\HttpFoundation\RequestStack'
+        tags:
+            - { name: coreshop.link_generator, type: sluggable, priority: 20 }
+
+    CoreShop\Component\OpenDxp\Twig\Extension\DataObjectRoutingExtension:
+        tags:
+            - { name: twig.extension }
+
+    CoreShop\Bundle\OpenDxpBundle\Command\AppMigrateCommand:
+        tags:
+            - { name: console.command, command: coreshop:app:migrate }
+
+    CoreShop\Bundle\OpenDxpBundle\Command\AppMigrationGenerateCommand:
+        tags:
+            - { name: console.command, command: coreshop:app:migration:generate }

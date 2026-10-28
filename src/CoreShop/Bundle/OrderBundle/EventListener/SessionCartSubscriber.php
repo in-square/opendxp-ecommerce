@@ -20,7 +20,7 @@ namespace CoreShop\Bundle\OrderBundle\EventListener;
 
 use CoreShop\Component\Order\Context\CartContextInterface;
 use CoreShop\Component\Order\Context\CartNotFoundException;
-use Pimcore\Http\Request\Resolver\PimcoreContextResolver;
+use OpenDxp\Http\Request\Resolver\OpenDxpContextResolver;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Event\ResponseEvent;
@@ -29,7 +29,7 @@ use Symfony\Component\HttpKernel\KernelEvents;
 final class SessionCartSubscriber implements EventSubscriberInterface
 {
     public function __construct(
-        private PimcoreContextResolver $pimcoreContext,
+        private OpenDxpContextResolver $opendxpContext,
         private CartContextInterface $cartContext,
         private string $sessionKeyName,
     ) {
@@ -44,7 +44,7 @@ final class SessionCartSubscriber implements EventSubscriberInterface
 
     public function onKernelResponse(ResponseEvent $event): void
     {
-        if ($this->pimcoreContext->matchesPimcoreContext($event->getRequest(), PimcoreContextResolver::CONTEXT_ADMIN)) {
+        if ($this->opendxpContext->matchesOpenDxpContext($event->getRequest(), OpenDxpContextResolver::CONTEXT_ADMIN)) {
             return;
         }
 

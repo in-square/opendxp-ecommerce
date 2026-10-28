@@ -16,10 +16,10 @@ this is, to add this config:
 
 ```yaml
 core_shop_resource:
-  pimcore:
+  opendxp:
     app.my_product:
       classes:
-        model: Pimcore\Model\DataObject\MyProduct
+        model: OpenDxp\Model\DataObject\MyProduct
         interface: CoreShop\Component\Core\Model\ProductInterface
 ```
 
@@ -27,10 +27,10 @@ Or if it's just a `Purchasable`:
 
 ```yaml
 core_shop_resource:
-  pimcore:
+  opendxp:
     app.my_product:
       classes:
-        model: Pimcore\Model\DataObject\MyProduct
+        model: OpenDxp\Model\DataObject\MyProduct
         interface: CoreShop\Component\Order\Model\PurchasableInterface
 ```
 
@@ -49,16 +49,16 @@ declare(strict_types=1);
 
 namespace App\Model;
 
-use CoreShop\Bundle\ResourceBundle\Attribute\AsPimcoreModel;
+use CoreShop\Bundle\ResourceBundle\Attribute\AsOpenDxpModel;
 use CoreShop\Component\Order\Model\PurchasableInterface;
-use CoreShop\Component\Resource\Pimcore\Model\AbstractPimcoreModel;
+use CoreShop\Component\Resource\OpenDxp\Model\AbstractOpenDxpModel;
 
-#[AsPimcoreModel(
-    pimcoreModel: 'Pimcore\Model\DataObject\MyProduct',
+#[AsOpenDxpModel(
+    opendxpModel: 'OpenDxp\Model\DataObject\MyProduct',
     type: 'object',
     interface: PurchasableInterface::class
 )]
-class MyProduct extends AbstractPimcoreModel implements PurchasableInterface
+class MyProduct extends AbstractOpenDxpModel implements PurchasableInterface
 {
     
 }
@@ -110,7 +110,7 @@ class MyProductPriceCalculator implements PurchasablePriceCalculatorInterface, P
 
     public function getRetailPrice(PurchasableInterface $purchasable, array $context): int
     {
-        if (!$purchasable instanceof \Pimcore\Model\DataObject\MyProduct) {
+        if (!$purchasable instanceof \OpenDxp\Model\DataObject\MyProduct) {
             throw new NoPurchasableRetailPriceFoundException(__CLASS__);
         }
 

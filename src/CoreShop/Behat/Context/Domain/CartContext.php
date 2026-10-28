@@ -27,7 +27,7 @@ use CoreShop\Component\Order\Context\CartContextInterface;
 use CoreShop\Component\Order\Model\AdjustmentInterface;
 use CoreShop\Component\Product\Model\ProductUnitInterface;
 use CoreShop\Component\Taxation\Model\TaxItemInterface;
-use Pimcore\Model\DataObject\Fieldcollection;
+use OpenDxp\Model\DataObject\Fieldcollection;
 use Symfony\Component\Form\FormInterface;
 use Webmozart\Assert\Assert;
 

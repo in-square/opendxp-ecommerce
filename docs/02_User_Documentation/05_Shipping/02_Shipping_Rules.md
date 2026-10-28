@@ -1,6 +1,6 @@
 # Shipping Rules
 
-CoreShop Shipping Rules are a key feature within the CoreShop e-commerce framework on the Pimcore platform, enabling you
+CoreShop Shipping Rules are a key feature within the CoreShop e-commerce framework on the OpenDxp platform, enabling you
 to define shipping costs through customizable rules. These rules can be based on various conditions such as weight,
 price, dimensions, and shipping destination.
 

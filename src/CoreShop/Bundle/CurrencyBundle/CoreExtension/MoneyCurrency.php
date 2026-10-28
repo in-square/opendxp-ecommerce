@@ -18,11 +18,11 @@ declare(strict_types=1);
 
 namespace CoreShop\Bundle\CurrencyBundle\CoreExtension;
 
-use CoreShop\Bundle\ResourceBundle\Pimcore\CacheMarshallerInterface;
+use CoreShop\Bundle\ResourceBundle\OpenDxp\CacheMarshallerInterface;
 use CoreShop\Component\Currency\Model\CurrencyInterface;
 use CoreShop\Component\Currency\Model\Money;
-use Pimcore\Model;
-use Pimcore\Model\DataObject\Concrete;
+use OpenDxp\Model;
+use OpenDxp\Model\DataObject\Concrete;
 
 /**
  * @psalm-suppress InvalidReturnType, InvalidReturnStatement, RedundantCondition
@@ -35,7 +35,7 @@ class MoneyCurrency extends Model\DataObject\ClassDefinition\Data implements
 {
     public string $fieldtype = 'coreShopMoneyCurrency';
 
-    public ?int $width = 0;
+    public int|string|null $width = 0;
 
     public ?float $minValue = 0;
 
@@ -82,22 +82,18 @@ class MoneyCurrency extends Model\DataObject\ClassDefinition\Data implements
         ];
     }
 
-    /**
-     * @return int
-     */
-    public function getWidth()
+    public function getWidth(): int|string|null
     {
         return $this->width;
     }
 
-    /**
-     * @param int $width
-     *
-     * @return $this
-     */
-    public function setWidth($width)
+    public function setWidth(int|string|null $width): static
     {
-        $this->width = $this->getAsIntegerCast($width);
+        if (is_numeric($width)) {
+            $width = (int) $width;
+        }
+
+        $this->width = $width;
 
         return $this;
     }
@@ -337,7 +333,7 @@ class MoneyCurrency extends Model\DataObject\ClassDefinition\Data implements
      */
     protected function getCurrencyById($currencyId)
     {
-        return \Pimcore::getContainer()->get('coreshop.repository.currency')->find($currencyId);
+        return \OpenDxp::getContainer()->get('coreshop.repository.currency')->find($currencyId);
     }
 
     /**
@@ -345,12 +341,12 @@ class MoneyCurrency extends Model\DataObject\ClassDefinition\Data implements
      */
     protected function getEntityManager()
     {
-        return \Pimcore::getContainer()->get('coreshop.manager.currency');
+        return \OpenDxp::getContainer()->get('coreshop.manager.currency');
     }
 
     protected function getDecimalFactor()
     {
-        return \Pimcore::getContainer()->getParameter('coreshop.currency.decimal_factor');
+        return \OpenDxp::getContainer()->getParameter('coreshop.currency.decimal_factor');
     }
 
     /**

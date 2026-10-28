@@ -21,10 +21,10 @@ namespace CoreShop\Bundle\TestBundle\Context\Transform;
 use Behat\Behat\Context\Context;
 use CoreShop\Bundle\TestBundle\Service\ClassStorageInterface;
 use CoreShop\Bundle\TestBundle\Service\SharedStorageInterface;
-use Pimcore\Cache\RuntimeCache;
-use Pimcore\Model\DataObject\ClassDefinition;
-use Pimcore\Model\DataObject\Concrete;
-use Pimcore\Model\DataObject\Fieldcollection\Definition;
+use OpenDxp\Cache\RuntimeCache;
+use OpenDxp\Model\DataObject\ClassDefinition;
+use OpenDxp\Model\DataObject\Concrete;
+use OpenDxp\Model\DataObject\Fieldcollection\Definition;
 use Webmozart\Assert\Assert;
 
 final class ClassContext implements Context
@@ -45,8 +45,8 @@ final class ClassContext implements Context
         /**
          * @psalm-suppress UndefinedConstant
          */
-        $fqcp = sprintf('%s/DataObject/%s.php', PIMCORE_CLASS_DIRECTORY, $name);
-        $fqcn = sprintf('\\Pimcore\\Model\\DataObject\\%s', $name);
+        $fqcp = sprintf('%s/DataObject/%s.php', OPENDXP_CLASS_DIRECTORY, $name);
+        $fqcn = sprintf('\\OpenDxp\\Model\\DataObject\\%s', $name);
 
         if (file_exists($fqcp) && !class_exists($fqcn)) {
             /**
@@ -120,8 +120,8 @@ final class ClassContext implements Context
          */
         RuntimeCache::clear();
 
-        $name = $this->sharedStorage->get('pimcore_definition_name');
-        $class = $this->sharedStorage->get('pimcore_definition_class');
+        $name = $this->sharedStorage->get('opendxp_definition_name');
+        $class = $this->sharedStorage->get('opendxp_definition_class');
 
         if ($class === ClassDefinition::class) {
             return ClassDefinition::getByName($this->classStorage->get($name));

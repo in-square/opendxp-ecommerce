@@ -18,7 +18,7 @@ declare(strict_types=1);
 
 namespace CoreShop\Component\Order\Model;
 
-use Pimcore\Model\DataObject\Fieldcollection;
+use OpenDxp\Model\DataObject\Fieldcollection;
 
 interface AttributesAwareInterface
 {

@@ -19,7 +19,7 @@ declare(strict_types=1);
 namespace CoreShop\Component\Core\Order;
 
 use CoreShop\Component\Order\Model\OrderInterface;
-use Pimcore\Model\Document\Email;
+use OpenDxp\Model\Document\Email;
 
 interface OrderMailProcessorInterface
 {

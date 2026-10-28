@@ -24,8 +24,8 @@ use CoreShop\Bundle\TestBundle\Service\SharedStorageInterface;
 use CoreShop\Component\Core\Model\UserInterface;
 use CoreShop\Component\Resource\Factory\FactoryInterface;
 use CoreShop\Component\User\Repository\UserRepositoryInterface;
-use Pimcore\File;
-use Pimcore\Model\DataObject\Folder;
+use OpenDxp\File;
+use OpenDxp\Model\DataObject\Folder;
 use Webmozart\Assert\Assert;
 
 final class FrontendSecurityContext implements Context
@@ -56,12 +56,12 @@ final class FrontendSecurityContext implements Context
     public function iAmLoggedInCustomer(): void
     {
         $customer = $this->customerFactory->createNew();
-        $customer->setKey(File::getValidFilename('coreshop@pimcore.org'));
+        $customer->setKey(File::getValidFilename('coreshop@opendxp.org'));
         $customer->setParent(Folder::getByPath('/'));
         $customer->setPublished(true);
-        $customer->setEmail('coreshop@pimcore.org');
+        $customer->setEmail('coreshop@opendxp.org');
         $customer->setFirstname('coreshop');
-        $customer->setLastname('pimcore');
+        $customer->setLastname('opendxp');
 //        $customer->setPassword('coreshop');
         $customer->save();
 
@@ -70,8 +70,8 @@ final class FrontendSecurityContext implements Context
          */
         $user = $this->userFactory->createNew();
         $user->setPassword('coreshop');
-        $user->setLoginIdentifier('coreshop@pimcore.org');
-        $user->setKey(File::getValidFilename('coreshop@pimcore.org-user'));
+        $user->setLoginIdentifier('coreshop@opendxp.org');
+        $user->setKey(File::getValidFilename('coreshop@opendxp.org-user'));
         $user->setParent(Folder::getByPath('/'));
         $user->setPublished(true);
         $user->setCustomer($customer);

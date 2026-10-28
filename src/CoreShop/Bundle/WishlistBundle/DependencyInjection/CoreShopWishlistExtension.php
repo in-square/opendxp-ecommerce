@@ -32,10 +32,10 @@ final class CoreShopWishlistExtension extends AbstractModelExtension
 
         $loader->load('services.yml');
 
-        $this->registerPimcoreModels('coreshop', $configs['pimcore'], $container);
+        $this->registerOpenDxpModels('coreshop', $configs['opendxp'], $container);
 
-        if (array_key_exists('pimcore_admin', $configs)) {
-            $this->registerPimcoreResources('coreshop', $configs['pimcore_admin'], $container);
+        if (array_key_exists('opendxp_admin', $configs)) {
+            $this->registerOpenDxpResources('coreshop', $configs['opendxp_admin'], $container);
         }
 
         if (array_key_exists('stack', $configs)) {

@@ -1,0 +1,17 @@
+services:
+    _defaults:
+        public: true
+
+    coreshop.registry.opendxp.document.editable:
+        class: CoreShop\Component\Registry\ServiceRegistry
+        arguments:
+            - CoreShop\Component\OpenDxp\Document\DocumentTagFactoryInterface
+            - document-tag-factories
+        tags:
+            - { name: coreshop.registry, type_hint: opendxpDocumentTags }
+
+    CoreShop\Bundle\OpenDxpBundle\Loader\DependencyInjectionImplementationLoader:
+        arguments:
+            - '@coreshop.registry.opendxp.document.editable'
+        tags:
+            - { name: coreshop.opendxp.implementation_loader.document.editable }

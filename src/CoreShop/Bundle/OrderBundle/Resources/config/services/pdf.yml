@@ -37,9 +37,9 @@ services:
             version: '4.1'
             message: 'The "%service_id%" service is deprecated and will be removed in CoreShop 5.0'
 
-    CoreShop\Bundle\OrderBundle\Renderer\PimcoreOrderDocumentPdfRenderer:
+    CoreShop\Bundle\OrderBundle\Renderer\OpenDxpOrderDocumentPdfRenderer:
         arguments:
-            - '@CoreShop\Component\Pimcore\Print\PrintablePdfRendererInterface'
+            - '@CoreShop\Component\OpenDxp\Print\PrintablePdfRendererInterface'
             - '@CoreShop\Bundle\ThemeBundle\Service\ThemeHelperInterface'
 
     CoreShop\Bundle\OrderBundle\Renderer\AssetOrderDocumentPdfRenderer:

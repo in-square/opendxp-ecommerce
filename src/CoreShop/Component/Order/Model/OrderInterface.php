@@ -27,15 +27,15 @@ use CoreShop\Component\Locale\Model\LocaleAwareInterface;
 use CoreShop\Component\Payment\Model\PayableInterface;
 use CoreShop\Component\Payment\Model\PaymentProviderInterface;
 use CoreShop\Component\Resource\Model\ImmutableInterface;
-use CoreShop\Component\Resource\Pimcore\Model\PimcoreModelInterface;
+use CoreShop\Component\Resource\OpenDxp\Model\OpenDxpModelInterface;
 use CoreShop\Component\StorageList\Model\NameableStorageListInterface;
 use CoreShop\Component\StorageList\Model\StorageListInterface;
 use CoreShop\Component\Store\Model\StoreAwareInterface;
-use Pimcore\Model\DataObject\Fieldcollection;
-use Pimcore\Model\DataObject\Objectbrick;
+use OpenDxp\Model\DataObject\Fieldcollection;
+use OpenDxp\Model\DataObject\Objectbrick;
 
 interface OrderInterface extends
-    PimcoreModelInterface,
+    OpenDxpModelInterface,
     CurrencyAwareInterface,
     StoreAwareInterface,
     LocaleAwareInterface,

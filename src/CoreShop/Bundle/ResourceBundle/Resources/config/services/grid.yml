@@ -1,7 +1,7 @@
 services:
   coreshop.data_object.grid_column_config.operator.factory.resource_field_getter:
-    class: Pimcore\Bundle\AdminBundle\DataObject\GridColumnConfig\Operator\Factory\DefaultOperatorFactory
+    class: OpenDxp\Bundle\AdminBundle\DataObject\GridColumnConfig\Operator\Factory\DefaultOperatorFactory
     arguments:
-      $className: CoreShop\Bundle\ResourceBundle\Pimcore\GridColumnConfig\ResourceFieldGetter
+      $className: CoreShop\Bundle\ResourceBundle\OpenDxp\GridColumnConfig\ResourceFieldGetter
     tags:
-      - { name: pimcore.data_object.grid_column_config.operator_factory, id: coreshop_resource_field_getter }
+      - { name: opendxp.data_object.grid_column_config.operator_factory, id: coreshop_resource_field_getter }

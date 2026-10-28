@@ -28,7 +28,7 @@ use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
 use Faker\Factory;
 use Faker\Provider\Lorem;
-use Pimcore\Tool;
+use OpenDxp\Tool;
 
 class CarrierFixture extends Fixture implements DependentFixtureInterface, FixtureGroupInterface
 {

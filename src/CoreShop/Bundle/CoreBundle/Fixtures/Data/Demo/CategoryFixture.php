@@ -20,14 +20,14 @@ namespace CoreShop\Bundle\CoreBundle\Fixtures\Data\Demo;
 
 use CoreShop\Component\Core\Model\CategoryInterface;
 use CoreShop\Component\Core\Repository\CategoryRepositoryInterface;
-use CoreShop\Component\Pimcore\DataObject\ObjectServiceInterface;
+use CoreShop\Component\OpenDxp\DataObject\ObjectServiceInterface;
 use CoreShop\Component\Resource\Factory\FactoryInterface;
 use CoreShop\Component\Store\Repository\StoreRepositoryInterface;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Bundle\FixturesBundle\FixtureGroupInterface;
 use Doctrine\Persistence\ObjectManager;
-use Pimcore\Model\DataObject\Service;
-use Pimcore\Tool;
+use OpenDxp\Model\DataObject\Service;
+use OpenDxp\Tool;
 
 class CategoryFixture extends Fixture implements FixtureGroupInterface
 {

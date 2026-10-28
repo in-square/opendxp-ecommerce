@@ -1,0 +1,21 @@
+core_shop_open_dxp:
+    opendxp_admin:
+        js:
+            opendxp_extension_multiselect: '/bundles/coreshopopendxp/opendxp/js/ext/MultiSelect.js'
+            opendxp_extension_itemselector: '/bundles/coreshopopendxp/opendxp/js/ext/ItemSelector.js'
+            broker: '/bundles/coreshopopendxp/opendxp/js/broker.js'
+            helpers: '/bundles/coreshopopendxp/opendxp/js/helpers.js'
+            clear_button: '/bundles/coreshopopendxp/opendxp/js/ext/ClearButton.js'
+            core_extension_tag_serializedData: '/bundles/coreshopopendxp/opendxp/js/coreExtension/tags/coreShopSerializedData.js'
+            core_extension_data_serializedData: '/bundles/coreshopopendxp/opendxp/js/coreExtension/data/coreShopSerializedData.js'
+            core_extension_data_dynamic_dropdown: '/bundles/coreshopopendxp/opendxp/js/coreExtension/data/coreShopDynamicDropdown.js'
+            core_extension_data_dynamic_dropdown_multiple: '/bundles/coreshopopendxp/opendxp/js/coreExtension/data/coreShopDynamicDropdownMultiple.js'
+            core_extension_data_itemselector: '/bundles/coreshopopendxp/opendxp/js/coreExtension/data/coreShopItemSelector.js'
+            core_extension_data_superboxselect: '/bundles/coreshopopendxp/opendxp/js/coreExtension/data/coreShopSuperBoxSelect.js'
+            core_extension_tag_dynamic_dropdown: '/bundles/coreshopopendxp/opendxp/js/coreExtension/tags/coreShopDynamicDropdown.js'
+            core_extension_tag_dynamic_dropdown_multiple: '/bundles/coreshopopendxp/opendxp/js/coreExtension/tags/coreShopDynamicDropdownMultiple.js'
+            core_extension_tag_itemselector: '/bundles/coreshopopendxp/opendxp/js/coreExtension/tags/coreShopItemSelector.js'
+            core_extension_tag_superboxselect: '/bundles/coreshopopendxp/opendxp/js/coreExtension/tags/coreShopSuperBoxSelect.js'
+            grid_plugin: '/bundles/coreshopopendxp/opendxp/js/plugin/grid.js'
+        css:
+            opendxp: '/bundles/coreshopopendxp/opendxp/css/opendxp.css'

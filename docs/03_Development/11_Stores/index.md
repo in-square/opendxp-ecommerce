@@ -7,7 +7,7 @@ various storefronts.
 
 ## Leveraging Multi-Store Capabilities
 
-The multi-store feature in CoreShop leverages Pimcore's Multi Site functionality, enabling you to set up distinct stores
+The multi-store feature in CoreShop leverages OpenDxp's Multi Site functionality, enabling you to set up distinct stores
 with their own specific configurations, themes, and product selections. This allows for a high degree of customization
 and flexibility, enabling businesses to:
 
@@ -17,7 +17,7 @@ and flexibility, enabling businesses to:
   content, currency, and payment methods.
 - **Customize Themes and Layouts**: Implement distinct themes and layouts for each store, ensuring a unique and branded
   experience that resonates with the specific audience of each store.
-- **Streamline Management**: Despite the diversity of stores, manage them all from a single Pimcore installation,
+- **Streamline Management**: Despite the diversity of stores, manage them all from a single OpenDxp installation,
   streamlining operations and maintaining consistency in backend processes.
 
 ## CoreShop Store Features

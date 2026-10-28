@@ -20,7 +20,7 @@ namespace CoreShop\Bundle\CoreBundle\EventListener;
 
 use CoreShop\Component\Core\Configuration\ConfigurationServiceInterface;
 use CoreShop\Component\Order\Model\PurchasableInterface;
-use Pimcore\Event\Model\DataObjectEvent;
+use OpenDxp\Event\Model\DataObjectEvent;
 
 final class ProductUpdateEventListener
 {

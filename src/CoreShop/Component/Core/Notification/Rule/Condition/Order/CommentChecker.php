@@ -19,7 +19,7 @@ declare(strict_types=1);
 namespace CoreShop\Component\Core\Notification\Rule\Condition\Order;
 
 use CoreShop\Component\Notification\Rule\Condition\AbstractConditionChecker;
-use Pimcore\Model\Element\Note;
+use OpenDxp\Model\Element\Note;
 
 class CommentChecker extends AbstractConditionChecker
 {

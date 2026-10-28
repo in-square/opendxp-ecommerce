@@ -20,9 +20,9 @@ namespace CoreShop\Behat\Context\Setup;
 
 use Behat\Behat\Context\Context;
 use CoreShop\Bundle\TestBundle\Service\SharedStorageInterface;
-use Pimcore\Db;
-use Pimcore\Model\DataObject\Concrete;
-use Pimcore\Model\Version;
+use OpenDxp\Db;
+use OpenDxp\Model\DataObject\Concrete;
+use OpenDxp\Model\Version;
 
 final class VersionContext implements Context
 {

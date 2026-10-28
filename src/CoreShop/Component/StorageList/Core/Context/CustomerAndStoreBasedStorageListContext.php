@@ -27,7 +27,7 @@ use CoreShop\Component\StorageList\Core\Repository\CustomerAndStoreAwareReposito
 use CoreShop\Component\StorageList\Model\StorageListInterface;
 use CoreShop\Component\Store\Context\StoreContextInterface;
 use CoreShop\Component\Store\Context\StoreNotFoundException;
-use Pimcore\Http\RequestHelper;
+use OpenDxp\Http\RequestHelper;
 
 final class CustomerAndStoreBasedStorageListContext implements StorageListContextInterface
 {

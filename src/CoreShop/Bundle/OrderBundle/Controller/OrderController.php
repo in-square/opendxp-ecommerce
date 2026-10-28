@@ -21,7 +21,7 @@ namespace CoreShop\Bundle\OrderBundle\Controller;
 use Carbon\Carbon;
 use CoreShop\Bundle\OrderBundle\Events;
 use CoreShop\Bundle\OrderBundle\Form\Type\OrderType;
-use CoreShop\Bundle\ResourceBundle\Controller\PimcoreController;
+use CoreShop\Bundle\ResourceBundle\Controller\OpenDxpController;
 use CoreShop\Bundle\WorkflowBundle\History\HistoryLogger;
 use CoreShop\Bundle\WorkflowBundle\Manager\StateMachineManagerInterface;
 use CoreShop\Bundle\WorkflowBundle\StateManager\WorkflowStateInfoManagerInterface;
@@ -48,15 +48,15 @@ use CoreShop\Component\Order\Repository\OrderItemRepositoryInterface;
 use CoreShop\Component\Order\Repository\OrderRepositoryInterface;
 use CoreShop\Component\Order\Repository\OrderShipmentRepositoryInterface;
 use CoreShop\Component\Payment\Repository\PaymentRepositoryInterface;
-use CoreShop\Component\Pimcore\DataObject\DataLoader;
-use CoreShop\Component\Pimcore\DataObject\InheritanceHelper;
-use CoreShop\Component\Pimcore\DataObject\NoteServiceInterface;
+use CoreShop\Component\OpenDxp\DataObject\DataLoader;
+use CoreShop\Component\OpenDxp\DataObject\InheritanceHelper;
+use CoreShop\Component\OpenDxp\DataObject\NoteServiceInterface;
 use CoreShop\Component\Store\Model\StoreInterface;
 use JMS\Serializer\SerializerInterface;
-use Pimcore\Model\DataObject;
-use Pimcore\Model\User;
+use OpenDxp\Model\DataObject;
+use OpenDxp\Model\User;
 use Symfony\Component\DependencyInjection\Attribute\Autowire;
-use Symfony\Component\DependencyInjection\Attribute\TaggedIterator;
+use Symfony\Component\DependencyInjection\Attribute\AutowireIterator;
 use Symfony\Component\EventDispatcher\GenericEvent;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -65,7 +65,7 @@ use Symfony\Component\Workflow\WorkflowInterface;
 use Symfony\Contracts\EventDispatcher\EventDispatcherInterface;
 use Symfony\Contracts\Service\Attribute\SubscribedService;
 
-class OrderController extends PimcoreController
+class OrderController extends OpenDxpController
 {
     public function getStatesAction(Request $request): Response
     {
@@ -78,7 +78,7 @@ class OrderController extends PimcoreController
         $worklows = $this->container->get('workflows');
 
         /**
-         * @var \Pimcore\Security\User\User $user
+         * @var \OpenDxp\Security\User\User $user
          */
         $user = $this->getUser();
         $locale = $user->getUser()->getLanguage();
@@ -184,7 +184,7 @@ class OrderController extends PimcoreController
 
         $type = $this->getParameterFromRequest($request, 'saleType', 'order');
 
-        $orderClassId = (string) $this->getParameter('coreshop.model.order.pimcore_class_name');
+        $orderClassId = (string) $this->getParameter('coreshop.model.order.opendxp_class_name');
         $folderPath = (string) $this->getParameter('coreshop.folder.' . $type);
         $orderClassDefinition = DataObject\ClassDefinition::getByName($orderClassId);
 
@@ -213,7 +213,7 @@ class OrderController extends PimcoreController
         }
 
         /**
-         * @var \Pimcore\Security\User\User $user
+         * @var \OpenDxp\Security\User\User $user
          */
         $user = $this->getUser();
 
@@ -260,7 +260,7 @@ class OrderController extends PimcoreController
                     if ($previewOnly) {
                         $cartProcessor->process($order);
                     } else {
-                        $commentEntity = $this->container->get(NoteServiceInterface::class)->createPimcoreNoteInstance($order, Notes::NOTE_ORDER_BACKEND_UPDATE_SAVE);
+                        $commentEntity = $this->container->get(NoteServiceInterface::class)->createOpenDxpNoteInstance($order, Notes::NOTE_ORDER_BACKEND_UPDATE_SAVE);
                         $commentEntity->setTitle('Order Backend Update');
                         $commentEntity->setDescription('Order has been updated manually from backend');
 
@@ -280,7 +280,7 @@ class OrderController extends PimcoreController
                                 $commentEntity->addData('item_from_' . $index, 'text', $originalCartItem->getQuantity());
                                 $commentEntity->addData('item_to_' . $index, 'text', $orderItem->getQuantity());
 
-                                $itemNote = $this->container->get(NoteServiceInterface::class)->createPimcoreNoteInstance($orderItem, Notes::NOTE_ORDER_BACKEND_UPDATE_SAVE);
+                                $itemNote = $this->container->get(NoteServiceInterface::class)->createOpenDxpNoteInstance($orderItem, Notes::NOTE_ORDER_BACKEND_UPDATE_SAVE);
                                 $itemNote->setTitle('Order Item Backend Update');
                                 $itemNote->setDescription('Order Item has been updated manually from backend');
                                 $itemNote->addData('from', 'text', $originalCartItem->getQuantity());
@@ -350,7 +350,7 @@ class OrderController extends PimcoreController
         $values = [];
         $fullAddress = [];
         $classDefinition = DataObject\ClassDefinition::getByName(
-            (string) $this->getParameter('coreshop.model.address.pimcore_class_name'),
+            (string) $this->getParameter('coreshop.model.address.opendxp_class_name'),
         );
 
         foreach ($classDefinition->getFieldDefinitions() as $fieldDefinition) {
@@ -847,7 +847,7 @@ class OrderController extends PimcoreController
                 new SubscribedService(
                     'workflows',
                     'iterable',
-                    attributes: new TaggedIterator('workflow.state_machine'),
+                    attributes: new AutowireIterator('workflow.state_machine'),
                 ),
                 new SubscribedService('jms_serializer', SerializerInterface::class),
                 AddressFormatterInterface::class,

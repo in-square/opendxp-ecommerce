@@ -16,7 +16,7 @@ Feature: Ability to restore an old after a successful checkout
     And I log out
     Then I add product "Mug" to the cart
     Given I want to log in
-    And I specify the username as "coreshop@pimcore.org"
+    And I specify the username as "coreshop@opendxp.org"
     And I specify the password as "coreshop"
     And I log in
     Given I see the summary of my cart

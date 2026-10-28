@@ -38,12 +38,12 @@ class PaymentProvider extends Select
 
     protected function getRepository()
     {
-        return \Pimcore::getContainer()->get('coreshop.repository.payment_provider');
+        return \OpenDxp::getContainer()->get('coreshop.repository.payment_provider');
     }
 
     protected function getModel(): string
     {
-        return \Pimcore::getContainer()->getParameter('coreshop.model.payment_provider.class');
+        return \OpenDxp::getContainer()->getParameter('coreshop.model.payment_provider.class');
     }
 
     protected function getInterface(): string

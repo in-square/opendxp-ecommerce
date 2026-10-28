@@ -18,8 +18,8 @@ declare(strict_types=1);
 
 namespace CoreShop\Bundle\WorkflowBundle\History;
 
-use CoreShop\Component\Pimcore\DataObject\NoteServiceInterface;
-use Pimcore\Model\DataObject;
+use CoreShop\Component\OpenDxp\DataObject\NoteServiceInterface;
+use OpenDxp\Model\DataObject;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
 class HistoryLogger implements HistoryLoggerInterface
@@ -37,7 +37,7 @@ class HistoryLogger implements HistoryLoggerInterface
         ?string $description = null,
         bool $translate = false,
     ): void {
-        $note = $this->noteService->createPimcoreNoteInstance($object, $this->noteIdentifier);
+        $note = $this->noteService->createOpenDxpNoteInstance($object, $this->noteIdentifier);
 
         $message = strip_tags($message);
 

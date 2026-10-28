@@ -3,15 +3,15 @@
 <div class="col-md-4 col-sm-6 mb-4">
     <div class="d-flex flex-column product-col" {{ coreshop_test_html_attribute('category-products-grid') }}>
         <div class="image">
-            {% if product.image is pimcore_asset_image %}
-                <a href="{{ pimcore_object_path(product) }}">
-                    {{ product.image|pimcore_image_thumbnail_html('coreshop_productList', {'imgAttributes': {'class': 'img-fluid'}}) }}
+            {% if product.image is opendxp_asset_image %}
+                <a href="{{ opendxp_object_path(product) }}">
+                    {{ product.image|opendxp_image_thumbnail_html('coreshop_productList', {'imgAttributes': {'class': 'img-fluid'}}) }}
                 </a>
             {% endif %}
         </div>
         <div class="caption mb-auto">
             <h4>
-                <a href="{{ pimcore_object_path(product) }}" {{ coreshop_test_html_attribute('cat_product-name-grid') }}>{{ product.name }}</a>
+                <a href="{{ opendxp_object_path(product) }}" {{ coreshop_test_html_attribute('cat_product-name-grid') }}>{{ product.name }}</a>
             </h4>
             <div class="description">
                 {{ product.shortDescription }}
@@ -20,7 +20,7 @@
         <div>
             {% set attributeGroups = coreshop_variant_attribute_list_variants(product, true)|sort((a, b) => a.group.sorting <=> b.group.sorting) %}
             {% for attributeGroup in attributeGroups %}
-                {% if attributeGroup.type == "Pimcore\\Model\\DataObject\\CoreShopAttributeColor" %}
+                {% if attributeGroup.type == "OpenDxp\\Model\\DataObject\\CoreShopAttributeColor" %}
                     {% include '@CoreShopFrontend/Product/attributes/detail/_color.html.twig' with { group: attributeGroup } %}
                 {% else %}
                     {% include '@CoreShopFrontend/Product/attributes/detail/_text.html.twig' with { group: attributeGroup } %}

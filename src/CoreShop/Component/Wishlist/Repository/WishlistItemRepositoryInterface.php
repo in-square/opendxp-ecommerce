@@ -18,10 +18,10 @@ declare(strict_types=1);
 
 namespace CoreShop\Component\Wishlist\Repository;
 
-use CoreShop\Component\Resource\Repository\PimcoreRepositoryInterface;
+use CoreShop\Component\Resource\Repository\OpenDxpRepositoryInterface;
 use CoreShop\Component\Wishlist\Model\WishlistItemInterface;
 
-interface WishlistItemRepositoryInterface extends PimcoreRepositoryInterface
+interface WishlistItemRepositoryInterface extends OpenDxpRepositoryInterface
 {
     /**
      * @return WishlistItemInterface[]

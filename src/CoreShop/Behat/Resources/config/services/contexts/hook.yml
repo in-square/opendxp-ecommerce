@@ -4,8 +4,8 @@ services:
 
     coreshop.behat.context.hook.doctrine_orm: '@CoreShop\Bundle\TestBundle\Context\Hook\DoctrineORMContext'
 
-    coreshop.behat.context.hook.pimcore_dao:
-        class: CoreShop\Behat\Context\Hook\PimcoreDaoContext
+    coreshop.behat.context.hook.opendxp_dao:
+        class: CoreShop\Behat\Context\Hook\OpenDxpDaoContext
         arguments:
             - '@kernel'
             - '@coreshop.repository.order'
@@ -13,8 +13,8 @@ services:
         tags:
             - { name: fob.context_service }
 
-    coreshop.behat.context.hook.pimcore_setup:
-        class: CoreShop\Behat\Context\Hook\PimcoreSetupContext
+    coreshop.behat.context.hook.opendxp_setup:
+        class: CoreShop\Behat\Context\Hook\OpenDxpSetupContext
         tags:
             - { name: fob.context_service }
 

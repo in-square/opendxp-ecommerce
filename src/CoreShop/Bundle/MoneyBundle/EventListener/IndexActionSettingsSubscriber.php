@@ -18,8 +18,8 @@ declare(strict_types=1);
 
 namespace CoreShop\Bundle\MoneyBundle\EventListener;
 
-use Pimcore\Bundle\AdminBundle\Event\AdminEvents;
-use Pimcore\Bundle\AdminBundle\Event\IndexActionSettingsEvent;
+use OpenDxp\Bundle\AdminBundle\Event\AdminEvents;
+use OpenDxp\Bundle\AdminBundle\Event\IndexActionSettingsEvent;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 class IndexActionSettingsSubscriber implements EventSubscriberInterface

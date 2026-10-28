@@ -21,9 +21,9 @@ namespace CoreShop\Bundle\MessengerBundle;
 use CoreShop\Bundle\MenuBundle\CoreShopMenuBundle;
 use CoreShop\Bundle\MessengerBundle\DependencyInjection\CompilerPass\FailureReceiverPass;
 use CoreShop\Bundle\MessengerBundle\DependencyInjection\CompilerPass\ReceiverPass;
-use CoreShop\Bundle\PimcoreBundle\CoreShopPimcoreBundle;
-use Pimcore\HttpKernel\Bundle\DependentBundleInterface;
-use Pimcore\HttpKernel\BundleCollection\BundleCollection;
+use CoreShop\Bundle\OpenDxpBundle\CoreShopOpenDxpBundle;
+use OpenDxp\HttpKernel\Bundle\DependentBundleInterface;
+use OpenDxp\HttpKernel\BundleCollection\BundleCollection;
 use Symfony\Component\DependencyInjection\Compiler\PassConfig;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
@@ -32,7 +32,7 @@ final class CoreShopMessengerBundle extends Bundle implements DependentBundleInt
 {
     public static function registerDependentBundles(BundleCollection $collection): void
     {
-        $collection->addBundle(new CoreShopPimcoreBundle(), 3850);
+        $collection->addBundle(new CoreShopOpenDxpBundle(), 3850);
         $collection->addBundle(new CoreShopMenuBundle(), 4000);
     }
 

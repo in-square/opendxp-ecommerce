@@ -1,6 +1,6 @@
 # Stores
 
-In CoreShop, each installation is linked to a default store, typically associated with a Pimcore site. Understanding how
+In CoreShop, each installation is linked to a default store, typically associated with a OpenDxp site. Understanding how
 stores function is crucial for managing different aspects of your e-commerce platform.
 
 ![Stores](img/stores.png)
@@ -10,8 +10,8 @@ stores function is crucial for managing different aspects of your e-commerce pla
 CoreShop's default setup involves one store per domain. This means your main website domain corresponds to your default
 store. If your platform operates across multiple domains, you can assign a separate store to each.
 
-> **Tip:** For more information on managing multiple sites with Pimcore,
-> see [Pimcore Sites](https://pimcore.com/docs/platform/Pimcore/MVC/Routing_and_URLs/Working_with_Sites/).
+> **Tip:** For more information on managing multiple sites with OpenDxp,
+> see [OpenDxp Sites](https://opendxp.com/docs/platform/OpenDxp/MVC/Routing_and_URLs/Working_with_Sites/).
 
 ## Custom Store Locator
 

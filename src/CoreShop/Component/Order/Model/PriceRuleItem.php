@@ -18,10 +18,10 @@ declare(strict_types=1);
 
 namespace CoreShop\Component\Order\Model;
 
-use CoreShop\Component\Resource\Exception\ImplementedByPimcoreException;
-use CoreShop\Component\Resource\Pimcore\Model\AbstractPimcoreFieldcollection;
+use CoreShop\Component\Resource\Exception\ImplementedByOpenDxpException;
+use CoreShop\Component\Resource\OpenDxp\Model\AbstractOpenDxpFieldcollection;
 
-abstract class PriceRuleItem extends AbstractPimcoreFieldcollection implements PriceRuleItemInterface
+abstract class PriceRuleItem extends AbstractOpenDxpFieldcollection implements PriceRuleItemInterface
 {
     public function getId(): ?int
     {
@@ -40,21 +40,21 @@ abstract class PriceRuleItem extends AbstractPimcoreFieldcollection implements P
 
     public function getDiscountNet(): int
     {
-        throw new ImplementedByPimcoreException(__CLASS__, __METHOD__);
+        throw new ImplementedByOpenDxpException(__CLASS__, __METHOD__);
     }
 
     public function setDiscountNet(int $discountNet)
     {
-        throw new ImplementedByPimcoreException(__CLASS__, __METHOD__);
+        throw new ImplementedByOpenDxpException(__CLASS__, __METHOD__);
     }
 
     public function getDiscountGross(): int
     {
-        throw new ImplementedByPimcoreException(__CLASS__, __METHOD__);
+        throw new ImplementedByOpenDxpException(__CLASS__, __METHOD__);
     }
 
     public function setDiscountGross(int $discountGross)
     {
-        throw new ImplementedByPimcoreException(__CLASS__, __METHOD__);
+        throw new ImplementedByOpenDxpException(__CLASS__, __METHOD__);
     }
 }

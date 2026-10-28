@@ -4,10 +4,10 @@ Feature: Adding a object index
   I want to create a new index where a field comes from an fieldcollection
 
   Background:
-    Given there is a pimcore field-collection "Collection"
+    Given there is a opendxp field-collection "Collection"
     And the definition has a input field "name"
     And the definition has a input field "val"
-    And there is a pimcore class "FieldcollectionTest"
+    And there is a opendxp class "FieldcollectionTest"
     And the definition has a field-collection field "collection" for field-collection "Collection"
     And the definition has a checkbox field "enabled"
     And the definition has a localized input field "name"

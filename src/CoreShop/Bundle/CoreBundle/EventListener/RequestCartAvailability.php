@@ -21,7 +21,7 @@ namespace CoreShop\Bundle\CoreBundle\EventListener;
 use CoreShop\Component\Core\Context\ShopperContextInterface;
 use CoreShop\Component\Core\Model\OrderInterface;
 use CoreShop\Component\Order\Manager\CartManagerInterface;
-use Pimcore\Http\RequestHelper;
+use OpenDxp\Http\RequestHelper;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\HttpKernel\Event\RequestEvent;
@@ -31,7 +31,7 @@ final class RequestCartAvailability
     public function __construct(
         private CartManagerInterface $cartManager,
         private ShopperContextInterface $shopperContext,
-        private RequestHelper $pimcoreRequestHelper,
+        private RequestHelper $opendxpRequestHelper,
     ) {
     }
 
@@ -41,7 +41,7 @@ final class RequestCartAvailability
             return;
         }
 
-        if (!$this->pimcoreRequestHelper->isFrontendRequest($event->getRequest())) {
+        if (!$this->opendxpRequestHelper->isFrontendRequest($event->getRequest())) {
             return;
         }
 

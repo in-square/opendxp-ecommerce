@@ -18,7 +18,7 @@ declare(strict_types=1);
 
 namespace CoreShop\Bundle\ResourceBundle\CoreExtension;
 
-use Pimcore\Model\DataObject\ClassDefinition\Data;
+use OpenDxp\Model\DataObject\ClassDefinition\Data;
 
 /**
  * @psalm-suppress InvalidReturnType, InvalidReturnStatement
@@ -53,9 +53,9 @@ class CoreShopRelations extends Data\ManyToManyRelation
         $this->classes = $this->getClasses();
     }
 
-    protected function getCoreShopPimcoreClasses()
+    protected function getCoreShopOpenDxpClasses()
     {
-        return \Pimcore::getContainer()->getParameter('coreshop.all.stack.pimcore_class_names');
+        return \OpenDxp::getContainer()->getParameter('coreshop.all.stack.opendxp_class_names');
     }
 
     public function getParameterTypeDeclaration(): ?string
@@ -73,7 +73,7 @@ class CoreShopRelations extends Data\ManyToManyRelation
         /**
          * @var array $stack
          */
-        $stack = \Pimcore::getContainer()->getParameter('coreshop.all.stack');
+        $stack = \OpenDxp::getContainer()->getParameter('coreshop.all.stack');
 
         return '?\\' . $stack[$this->stack] . '[]';
     }
@@ -83,7 +83,7 @@ class CoreShopRelations extends Data\ManyToManyRelation
         /**
          * @var array $stack
          */
-        $stack = \Pimcore::getContainer()->getParameter('coreshop.all.stack');
+        $stack = \OpenDxp::getContainer()->getParameter('coreshop.all.stack');
 
         return '?\\' . $stack[$this->stack] . '[]';
     }
@@ -94,7 +94,7 @@ class CoreShopRelations extends Data\ManyToManyRelation
             return [];
         }
 
-        $classes = $this->getCoreShopPimcoreClasses()[$this->stack];
+        $classes = $this->getCoreShopOpenDxpClasses()[$this->stack];
         $return = [];
 
         foreach ($classes as $cl) {

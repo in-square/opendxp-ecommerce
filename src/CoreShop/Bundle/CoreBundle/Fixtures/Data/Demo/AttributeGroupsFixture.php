@@ -26,9 +26,9 @@ use CoreShop\Component\Variant\Model\AttributeInterface;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Bundle\FixturesBundle\FixtureGroupInterface;
 use Doctrine\Persistence\ObjectManager;
-use Pimcore\Model\DataObject\Data\RgbaColor;
-use Pimcore\Model\DataObject\Service;
-use Pimcore\Tool;
+use OpenDxp\Model\DataObject\Data\RgbaColor;
+use OpenDxp\Model\DataObject\Service;
+use OpenDxp\Tool;
 
 class AttributeGroupsFixture extends Fixture implements FixtureGroupInterface
 {

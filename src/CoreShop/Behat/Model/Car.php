@@ -18,13 +18,13 @@ declare(strict_types=1);
 
 namespace CoreShop\Behat\Model;
 
-use CoreShop\Bundle\ResourceBundle\Attribute\AsPimcoreModel;
-use CoreShop\Component\Resource\Pimcore\Model\AbstractPimcoreModel;
+use CoreShop\Bundle\ResourceBundle\Attribute\AsOpenDxpModel;
+use CoreShop\Component\Resource\OpenDxp\Model\AbstractOpenDxpModel;
 
-#[AsPimcoreModel(
-    pimcoreModel: 'Pimcore\Model\DataObject\Car',
+#[AsOpenDxpModel(
+    opendxpModel: 'OpenDxp\Model\DataObject\Car',
     type: 'object',
 )]
-class Car extends AbstractPimcoreModel
+class Car extends AbstractOpenDxpModel
 {
 }

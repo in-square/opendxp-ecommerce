@@ -1,8 +1,8 @@
 imports:
     - { resource: ../test/config.yaml }
-    - { resource: '@PimcoreCoreBundle/Resources/config/pimcore/prod.yml' } # loads default dev configuration
-    - { resource: '@PimcoreCoreBundle/Resources/config/pimcore/dev.yml' } # loads default dev configuration
-    - { resource: '@PimcoreCoreBundle/Resources/config/pimcore/test.yml' } # loads default dev configuration
+    - { resource: '@OpenDxpCoreBundle/config/opendxp/prod.yaml' } # loads default prod configuration
+    - { resource: '@OpenDxpCoreBundle/config/opendxp/dev.yaml' } # loads default dev configuration
+    - { resource: '@OpenDxpCoreBundle/config/opendxp/test.yaml' } # loads default test configuration
 
 core_shop_currency:
     money_decimal_precision: 6

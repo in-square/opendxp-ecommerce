@@ -21,7 +21,7 @@ namespace CoreShop\Bundle\ResourceBundle\DataHub\Resolver;
 use CoreShop\Component\Resource\Model\ResourceInterface;
 use CoreShop\Component\Resource\Repository\RepositoryInterface;
 use GraphQL\Type\Definition\ResolveInfo;
-use Pimcore\Model\DataObject\ClassDefinition\Data;
+use OpenDxp\Model\DataObject\ClassDefinition\Data;
 
 class MultiResourceResolver
 {

@@ -207,7 +207,7 @@ services:
             - '@CoreShop\Component\Core\Configuration\ConfigurationServiceInterface'
             - '@CoreShop\Bundle\RuleBundle\Processor\RuleAvailabilityProcessorInterface'
         tags:
-            - { name: pimcore.maintenance.task, type: coreshop_rule_availability }
+            - { name: opendxp.maintenance.task, type: coreshop_rule_availability }
 
     CoreShop\Bundle\CoreBundle\Twig\ValidPriceRulesExtension:
         public: false

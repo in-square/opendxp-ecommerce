@@ -18,15 +18,15 @@ declare(strict_types=1);
 
 namespace CoreShop\Bundle\VariantBundle\EventListener;
 
-use CoreShop\Component\Pimcore\DataObject\InheritanceHelper;
+use CoreShop\Component\OpenDxp\DataObject\InheritanceHelper;
 use CoreShop\Component\Resource\Exception\NiceValidationException;
 use CoreShop\Component\Variant\Model\AttributeInterface;
 use CoreShop\Component\Variant\Model\ProductVariantAwareInterface;
-use Pimcore\Event\DataObjectEvents;
-use Pimcore\Event\Model\DataObjectEvent;
-use Pimcore\Model\DataObject\AbstractObject;
-use Pimcore\Model\Element\ValidationException;
-use Pimcore\Tool;
+use OpenDxp\Event\DataObjectEvents;
+use OpenDxp\Event\Model\DataObjectEvent;
+use OpenDxp\Model\DataObject\AbstractObject;
+use OpenDxp\Model\Element\ValidationException;
+use OpenDxp\Tool;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\Validator\ConstraintViolationInterface;
 use Symfony\Component\Validator\Validator\ValidatorInterface;

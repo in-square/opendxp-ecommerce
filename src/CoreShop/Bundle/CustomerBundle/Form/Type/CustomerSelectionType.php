@@ -18,9 +18,9 @@ declare(strict_types=1);
 
 namespace CoreShop\Bundle\CustomerBundle\Form\Type;
 
-use CoreShop\Bundle\ResourceBundle\Form\Type\PimcoreResourceSelectionType;
+use CoreShop\Bundle\ResourceBundle\Form\Type\OpenDxpResourceSelectionType;
 
-final class CustomerSelectionType extends PimcoreResourceSelectionType
+final class CustomerSelectionType extends OpenDxpResourceSelectionType
 {
     public function getBlockPrefix(): string
     {

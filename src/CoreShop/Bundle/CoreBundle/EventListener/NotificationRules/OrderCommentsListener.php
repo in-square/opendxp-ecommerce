@@ -20,7 +20,7 @@ namespace CoreShop\Bundle\CoreBundle\EventListener\NotificationRules;
 
 use CoreShop\Component\Core\Model\CustomerInterface;
 use CoreShop\Component\Core\Model\OrderInterface;
-use Pimcore\Model\Element\Note;
+use OpenDxp\Model\Element\Note;
 use Symfony\Component\EventDispatcher\GenericEvent;
 use Webmozart\Assert\Assert;
 

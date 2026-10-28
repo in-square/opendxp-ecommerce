@@ -1,2 +1,2 @@
-Pimcore\Model\DataObject\Concrete:
+OpenDxp\Model\DataObject\Concrete:
     exclude: true

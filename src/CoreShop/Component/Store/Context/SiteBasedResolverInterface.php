@@ -19,7 +19,7 @@ declare(strict_types=1);
 namespace CoreShop\Component\Store\Context;
 
 use CoreShop\Component\Store\Model\StoreInterface;
-use Pimcore\Model\Site;
+use OpenDxp\Model\Site;
 
 interface SiteBasedResolverInterface
 {

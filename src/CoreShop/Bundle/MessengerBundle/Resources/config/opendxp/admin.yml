@@ -1,0 +1,8 @@
+core_shop_messenger:
+    opendxp_admin:
+        js:
+            list: '/bundles/coreshopmessenger/opendxp/js/list.js'
+            resource: '/bundles/coreshopmessenger/opendxp/js/resource.js'
+            resource_standalone: '/bundles/coreshopmessenger/opendxp/js/resource_standalone.js'
+        css:
+            index: '/bundles/coreshopmessenger/opendxp/css/messenger.css'

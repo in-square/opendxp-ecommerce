@@ -51,8 +51,8 @@ final class CoreShopShippingExtension extends AbstractModelExtension
 
         $this->registerResources('coreshop', CoreShopResourceBundle::DRIVER_DOCTRINE_ORM, $configs['resources'], $container);
 
-        if (array_key_exists('pimcore_admin', $configs)) {
-            $this->registerPimcoreResources('coreshop', $configs['pimcore_admin'], $container);
+        if (array_key_exists('opendxp_admin', $configs)) {
+            $this->registerOpenDxpResources('coreshop', $configs['opendxp_admin'], $container);
         }
 
         $alias = new Alias($configs['default_resolver']);
@@ -62,7 +62,7 @@ final class CoreShopShippingExtension extends AbstractModelExtension
 
         $bundles = $container->getParameter('kernel.bundles');
 
-        if (array_key_exists('PimcoreDataHubBundle', $bundles)) {
+        if (array_key_exists('OpenDxpDataHubBundle', $bundles)) {
             $loader->load('services/data_hub.yml');
         }
 

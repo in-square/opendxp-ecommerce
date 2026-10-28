@@ -30,7 +30,7 @@ interface ResourceBundleInterface
      * Returns a vector of supported drivers.
      *
      * @see CoreShopResourceBundle::DRIVER_DOCTRINE_ORM
-     * @see CoreShopResourceBundle::DRIVER_PIMCORE
+     * @see CoreShopResourceBundle::DRIVER_OPENDXP
      */
     public function getSupportedDrivers(): array;
 }

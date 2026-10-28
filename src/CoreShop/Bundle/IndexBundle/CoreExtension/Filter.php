@@ -35,12 +35,12 @@ class Filter extends Select
 
     protected function getRepository()
     {
-        return \Pimcore::getContainer()->get('coreshop.repository.filter');
+        return \OpenDxp::getContainer()->get('coreshop.repository.filter');
     }
 
     protected function getModel(): string
     {
-        return \Pimcore::getContainer()->getParameter('coreshop.model.filter.class');
+        return \OpenDxp::getContainer()->getParameter('coreshop.model.filter.class');
     }
 
     protected function getInterface(): string

@@ -16,7 +16,12 @@ services:
     CoreShop\Component\Resource\Metadata\RegistryInterface: '@CoreShop\Component\Resource\Metadata\Registry'
     CoreShop\Component\Resource\Metadata\Registry: ~
 
-    CoreShop\Bundle\ResourceBundle\Pimcore\ObjectManager: ~
+    CoreShop\Bundle\ResourceBundle\OpenDxp\ObjectManager: ~
+
+    CoreShop\Bundle\ResourceBundle\Doctrine\ORM\EntityMerger:
+        arguments:
+            - '@doctrine.orm.entity_manager'
+            - '%coreshop.orm_cascade_merge%'
 
     CoreShop\Bundle\ResourceBundle\Serialization\RelationsHandler:
         arguments:
@@ -27,31 +32,31 @@ services:
             - { name: jms_serializer.handler, type: relation<?>, direction: serialization, format: json, method: serializeRelation }
             - { name: jms_serializer.handler, type: relation<?>, direction: deserialization, format: json, method: deserializeRelation }
 
-    CoreShop\Bundle\ResourceBundle\Serialization\PimcoreObjectHandler:
+    CoreShop\Bundle\ResourceBundle\Serialization\OpenDxpObjectHandler:
         tags:
-            - { name: jms_serializer.handler, type: pimcoreObject, direction: serialization, format: json, method: serializeRelation }
-            - { name: jms_serializer.handler, type: pimcoreObject, direction: deserialization, format: json, method: deserializeRelation }
-            - { name: jms_serializer.handler, type: pimcoreObject<?>, direction: serialization, format: json, method: serializeRelation }
-            - { name: jms_serializer.handler, type: pimcoreObject<?>, direction: deserialization, format: json, method: deserializeRelation }
+            - { name: jms_serializer.handler, type: opendxpObject, direction: serialization, format: json, method: serializeRelation }
+            - { name: jms_serializer.handler, type: opendxpObject, direction: deserialization, format: json, method: deserializeRelation }
+            - { name: jms_serializer.handler, type: opendxpObject<?>, direction: serialization, format: json, method: serializeRelation }
+            - { name: jms_serializer.handler, type: opendxpObject<?>, direction: deserialization, format: json, method: deserializeRelation }
 
-    CoreShop\Bundle\ResourceBundle\Serialization\PimcoreDocumentHandler:
+    CoreShop\Bundle\ResourceBundle\Serialization\OpenDxpDocumentHandler:
         tags:
-            - { name: jms_serializer.handler, type: pimcoreDocument, direction: serialization, format: json, method: serializeRelation }
-            - { name: jms_serializer.handler, type: pimcoreDocument, direction: deserialization, format: json, method: deserializeRelation }
-            - { name: jms_serializer.handler, type: pimcoreDocument<?>, direction: serialization, format: json, method: serializeRelation }
-            - { name: jms_serializer.handler, type: pimcoreDocument<?>, direction: deserialization, format: json, method: deserializeRelation }
+            - { name: jms_serializer.handler, type: opendxpDocument, direction: serialization, format: json, method: serializeRelation }
+            - { name: jms_serializer.handler, type: opendxpDocument, direction: deserialization, format: json, method: deserializeRelation }
+            - { name: jms_serializer.handler, type: opendxpDocument<?>, direction: serialization, format: json, method: serializeRelation }
+            - { name: jms_serializer.handler, type: opendxpDocument<?>, direction: deserialization, format: json, method: deserializeRelation }
 
-    CoreShop\Bundle\ResourceBundle\Serialization\PimcoreAssetHandler:
+    CoreShop\Bundle\ResourceBundle\Serialization\OpenDxpAssetHandler:
         tags:
-            - { name: jms_serializer.handler, type: pimcoreAsset, direction: serialization, format: json, method: serializeRelation }
-            - { name: jms_serializer.handler, type: pimcoreAsset, direction: deserialization, format: json, method: deserializeRelation }
-            - { name: jms_serializer.handler, type: pimcoreAsset<?>, direction: serialization, format: json, method: serializeRelation }
-            - { name: jms_serializer.handler, type: pimcoreAsset<?>, direction: deserialization, format: json, method: deserializeRelation }
+            - { name: jms_serializer.handler, type: opendxpAsset, direction: serialization, format: json, method: serializeRelation }
+            - { name: jms_serializer.handler, type: opendxpAsset, direction: deserialization, format: json, method: deserializeRelation }
+            - { name: jms_serializer.handler, type: opendxpAsset<?>, direction: serialization, format: json, method: serializeRelation }
+            - { name: jms_serializer.handler, type: opendxpAsset<?>, direction: deserialization, format: json, method: deserializeRelation }
 
-    CoreShop\Bundle\ResourceBundle\Serialization\PimcoreSiteHandler:
+    CoreShop\Bundle\ResourceBundle\Serialization\OpenDxpSiteHandler:
         tags:
-            - { name: jms_serializer.handler, type: pimcoreSite, direction: serialization, format: json, method: serializeRelation }
-            - { name: jms_serializer.handler, type: pimcoreSite, direction: deserialization, format: json, method: deserializeRelation }
+            - { name: jms_serializer.handler, type: opendxpSite, direction: serialization, format: json, method: serializeRelation }
+            - { name: jms_serializer.handler, type: opendxpSite, direction: deserialization, format: json, method: deserializeRelation }
 
     CoreShop\Bundle\ResourceBundle\Serialization\CarbonHandler:
         tags:
@@ -60,7 +65,7 @@ services:
     CoreShop\Bundle\ResourceBundle\Controller\AdminController:
         abstract: true
         calls:
-            - [ 'setTokenResolver', [ '@Pimcore\Security\User\TokenStorageUserResolver' ] ]
+            - [ 'setTokenResolver', [ '@OpenDxp\Security\User\TokenStorageUserResolver' ] ]
         arguments:
             - '@service_container'
             - '@CoreShop\Bundle\ResourceBundle\Controller\ViewHandlerInterface'
@@ -69,7 +74,7 @@ services:
     CoreShop\Bundle\ResourceBundle\Controller\ResourceSettingsController:
         parent: CoreShop\Bundle\ResourceBundle\Controller\AdminController
         calls:
-            - [ 'setPimcoreSerializer', [ '@pimcore.serializer' ] ]
+            - [ 'setOpenDxpSerializer', [ '@opendxp.serializer' ] ]
         tags:
             - { name: container.service_subscriber }
 
@@ -77,10 +82,10 @@ services:
         arguments:
             - '@translator'
 
-    CoreShop\Bundle\ResourceBundle\Serialization\Driver\PimcoreDataObjectDriver:
+    CoreShop\Bundle\ResourceBundle\Serialization\Driver\OpenDxpDataObjectDriver:
         decorates: 'jms_serializer.metadata_driver'
         arguments:
-            - '@CoreShop\Bundle\ResourceBundle\Serialization\Driver\PimcoreDataObjectDriver.inner'
+            - '@CoreShop\Bundle\ResourceBundle\Serialization\Driver\OpenDxpDataObjectDriver.inner'
 
     CoreShop\Bundle\ResourceBundle\EventListener\DeepCopySubscriber:
         tags:
@@ -99,25 +104,25 @@ services:
     CoreShop\Component\Resource\Service\FolderCreationService:
         arguments:
             - '@CoreShop\Component\Resource\Metadata\RegistryInterface'
-            - '@CoreShop\Component\Pimcore\DataObject\ObjectServiceInterface'
+            - '@CoreShop\Component\OpenDxp\DataObject\ObjectServiceInterface'
 
     CoreShop\Bundle\ResourceBundle\Slug\ResourceConfigurationSlugGenerator:
-        decorates: 'CoreShop\Component\Pimcore\Slug\DataObjectSlugGeneratorInterface'
+        decorates: 'CoreShop\Component\OpenDxp\Slug\DataObjectSlugGeneratorInterface'
         arguments:
             - '@CoreShop\Bundle\ResourceBundle\Slug\ResourceConfigurationSlugGenerator.inner'
             - '@CoreShop\Component\Resource\Metadata\RegistryInterface'
 
-    CoreShop\Component\Resource\Pimcore\ResourceSlugLinkGenerator:
-        decorates: 'CoreShop\Component\Pimcore\Slug\SluggableLinkGenerator'
+    CoreShop\Component\Resource\OpenDxp\ResourceSlugLinkGenerator:
+        decorates: 'CoreShop\Component\OpenDxp\Slug\SluggableLinkGenerator'
         arguments:
-            - '@CoreShop\Component\Resource\Pimcore\ResourceSlugLinkGenerator.inner'
+            - '@CoreShop\Component\Resource\OpenDxp\ResourceSlugLinkGenerator.inner'
             - '@CoreShop\Component\Resource\Metadata\RegistryInterface'
 
     CoreShop\Bundle\ResourceBundle\Cache\CoreCacheHandlerDecorator:
-        decorates: 'Pimcore\Cache\Core\CoreCacheHandler'
+        decorates: 'OpenDxp\Cache\Core\CoreCacheHandler'
         arguments:
-            - '@pimcore.cache.pool'
-            - '@Pimcore\Cache\Core\WriteLock'
+            - '@opendxp.cache.pool'
+            - '@OpenDxp\Cache\Core\WriteLock'
             - '@event_dispatcher'
         calls:
             - [ setLogger, [ '@logger' ] ]

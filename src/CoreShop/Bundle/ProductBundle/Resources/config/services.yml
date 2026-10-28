@@ -135,14 +135,14 @@ services:
 
     CoreShop\Bundle\ProductBundle\EventListener\CategoryPersistEventListener:
         tags:
-            - { name: kernel.event_listener, event: pimcore.dataobject.preUpdate, method: onPreUpdate }
+            - { name: kernel.event_listener, event: opendxp.dataobject.preUpdate, method: onPreUpdate }
 
     CoreShop\Bundle\ProductBundle\EventListener\ProductDeleteListener:
         arguments:
             - '@coreshop.repository.product_specific_price_rule'
             - '@coreshop.manager.product_specific_price_rule'
         tags:
-            - { name: kernel.event_listener, event: pimcore.dataobject.postDelete, method: onPostDelete }
+            - { name: kernel.event_listener, event: opendxp.dataobject.postDelete, method: onPostDelete }
 
 
 

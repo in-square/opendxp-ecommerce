@@ -21,8 +21,8 @@ namespace CoreShop\Behat\Context\Domain;
 use Behat\Behat\Context\Context;
 use CoreShop\Component\Core\Model\ProductInterface;
 use CoreShop\Component\SEO\SEOPresentationInterface;
-use Pimcore\Twig\Extension\Templating\HeadMeta;
-use Pimcore\Twig\Extension\Templating\HeadTitle;
+use OpenDxp\Twig\Extension\Templating\HeadMeta;
+use OpenDxp\Twig\Extension\Templating\HeadTitle;
 use Webmozart\Assert\Assert;
 
 final class SEOContext implements Context

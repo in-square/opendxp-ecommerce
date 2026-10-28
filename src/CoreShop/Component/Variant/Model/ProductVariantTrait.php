@@ -18,8 +18,8 @@ declare(strict_types=1);
 
 namespace CoreShop\Component\Variant\Model;
 
-use Pimcore\Model\DataObject\AbstractObject;
-use Pimcore\Model\DataObject\Concrete;
+use OpenDxp\Model\DataObject\AbstractObject;
+use OpenDxp\Model\DataObject\Concrete;
 
 trait ProductVariantTrait
 {

@@ -21,8 +21,8 @@ namespace CoreShop\Bundle\ProductBundle\EventListener;
 use CoreShop\Component\Product\Model\ProductInterface;
 use CoreShop\Component\Product\Repository\ProductSpecificPriceRuleRepositoryInterface;
 use Doctrine\ORM\EntityManagerInterface;
-use Pimcore\Event\Model\DataObjectEvent;
-use Pimcore\Event\Model\ElementEventInterface;
+use OpenDxp\Event\Model\DataObjectEvent;
+use OpenDxp\Event\Model\ElementEventInterface;
 
 final class ProductDeleteListener
 {

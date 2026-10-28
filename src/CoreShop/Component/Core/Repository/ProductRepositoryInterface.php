@@ -20,7 +20,7 @@ namespace CoreShop\Component\Core\Repository;
 
 use CoreShop\Component\Product\Repository\ProductRepositoryInterface as BaseProductRepositoryInterface;
 use CoreShop\Component\Store\Model\StoreInterface;
-use Pimcore\Model\DataObject\Listing;
+use OpenDxp\Model\DataObject\Listing;
 
 interface ProductRepositoryInterface extends BaseProductRepositoryInterface
 {

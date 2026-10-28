@@ -21,7 +21,7 @@ CoreShop\Component\Payment\Model\PaymentProvider:
             groups: [Detailed]
         logo:
             expose: true
-            type: pimcoreAsset
+            type: opendxpAsset
             groups: [Detailed]
         translations:
             expose: true

@@ -1,5 +1,5 @@
 @domain @version
-Feature: Support Pimcore Versions
+Feature: Support OpenDxp Versions
 
   Background:
     Given the site operates on a store in "Austria"

@@ -1,7 +1,7 @@
 # SEO Bundle
 
 The SEO Bundle in CoreShop provides tools and services to enhance the search engine optimization capabilities of your
-site. It is designed to work seamlessly with Pimcore's HeadLink and HeadMeta helpers.
+site. It is designed to work seamlessly with OpenDxp's HeadLink and HeadMeta helpers.
 
 ## Installation Process
 
@@ -13,7 +13,7 @@ $ composer require coreshop/seo-bundle:^4.0
 
 ### Activating the Bundle
 
-Enable the bundle inside the kernel or use the Pimcore Extension Manager:
+Enable the bundle inside the kernel or use the OpenDxp Extension Manager:
 
 ```php
 <?php

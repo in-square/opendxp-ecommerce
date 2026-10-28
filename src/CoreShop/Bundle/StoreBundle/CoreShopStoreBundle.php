@@ -24,7 +24,7 @@ use CoreShop\Bundle\ResourceBundle\CoreShopResourceBundle;
 use CoreShop\Bundle\StoreBundle\DependencyInjection\Compiler\CompositeRequestResolverPass;
 use CoreShop\Bundle\StoreBundle\DependencyInjection\Compiler\CompositeStoreContextPass;
 use CoreShop\Bundle\ThemeBundle\CoreShopThemeBundle;
-use Pimcore\HttpKernel\BundleCollection\BundleCollection;
+use OpenDxp\HttpKernel\BundleCollection\BundleCollection;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
 final class CoreShopStoreBundle extends AbstractResourceBundle

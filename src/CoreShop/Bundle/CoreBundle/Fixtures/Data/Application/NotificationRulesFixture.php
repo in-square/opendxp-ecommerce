@@ -23,7 +23,7 @@ use CoreShop\Component\Notification\Repository\NotificationRuleRepositoryInterfa
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Bundle\FixturesBundle\FixtureGroupInterface;
 use Doctrine\Persistence\ObjectManager;
-use Pimcore\Model\Document;
+use OpenDxp\Model\Document;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpKernel\KernelInterface;
 

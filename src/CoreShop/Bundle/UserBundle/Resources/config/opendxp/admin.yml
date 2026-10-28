@@ -1,0 +1,6 @@
+core_shop_user:
+    opendxp_admin:
+        js:
+            resource: '/bundles/coreshopuser/opendxp/js/resource.js'
+        css:
+            usre: '/bundles/coreshopuser/opendxp/css/user.css'

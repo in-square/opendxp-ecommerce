@@ -22,7 +22,7 @@ use CoreShop\Component\Core\Customer\Allocator\CustomerAddressAllocatorInterface
 use CoreShop\Component\Core\Model\CompanyInterface;
 use CoreShop\Component\Core\Model\CustomerInterface;
 use CoreShop\Component\Customer\Repository\CustomerRepositoryInterface;
-use Pimcore\Event\Model\DataObjectEvent;
+use OpenDxp\Event\Model\DataObjectEvent;
 
 final class CustomerCompanyRelationListener
 {

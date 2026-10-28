@@ -1,0 +1,19 @@
+imports:
+    - { resource: workflow.yml }
+    - { resource: admin.yml }
+
+opendxp:
+    objects:
+        class_definitions:
+            data:
+                map:
+                  coreShopPaymentProvider: CoreShop\Bundle\PaymentBundle\CoreExtension\PaymentProvider
+                  coreShopPaymentProviderMultiselect: CoreShop\Bundle\PaymentBundle\CoreExtension\PaymentProviderMultiselect
+
+
+jms_serializer:
+    metadata:
+        directories:
+            coreshop-payment:
+                namespace_prefix: "CoreShop\\Component\\Payment"
+                path: "@CoreShopPaymentBundle/Resources/config/serializer"

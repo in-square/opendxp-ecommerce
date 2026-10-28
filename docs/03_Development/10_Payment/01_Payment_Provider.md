@@ -68,7 +68,7 @@ services:
 
  ```js
 // public/coreshop/js/sofort.js
-pimcore.registerNS('coreshop.provider.gateways.sofort');
+opendxp.registerNS('coreshop.provider.gateways.sofort');
 coreshop.provider.gateways.sofort = Class.create(coreshop.provider.gateways.abstract, {
   getLayout: function (config) {
       // Form layout logic...
@@ -80,10 +80,10 @@ Register the new JavaScript file:
 
 ```yaml
 core_shop_payment:
-  pimcore_admin:
+  opendxp_admin:
     js:
       sofort_gateway: '/coreshop/js/sofort.js'
 ```
 
-After reloading Pimcore, you should see the new Factory available.
+After reloading OpenDxp, you should see the new Factory available.
 

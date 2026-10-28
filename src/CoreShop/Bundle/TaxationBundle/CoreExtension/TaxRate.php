@@ -35,12 +35,12 @@ class TaxRate extends Select
 
     protected function getRepository()
     {
-        return \Pimcore::getContainer()->get('coreshop.repository.tax_rate');
+        return \OpenDxp::getContainer()->get('coreshop.repository.tax_rate');
     }
 
     protected function getModel(): string
     {
-        return \Pimcore::getContainer()->getParameter('coreshop.model.tax_rate.class');
+        return \OpenDxp::getContainer()->getParameter('coreshop.model.tax_rate.class');
     }
 
     protected function getInterface(): string

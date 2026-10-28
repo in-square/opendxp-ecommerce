@@ -18,13 +18,13 @@ declare(strict_types=1);
 
 namespace CoreShop\Bundle\OptimisticEntityLockBundle\Exception;
 
-use Pimcore\Model\DataObject\Concrete;
+use OpenDxp\Model\DataObject\Concrete;
 
 class OptimisticLockException extends \Exception
 {
     public function __construct(
         string $msg,
-        private ?\Pimcore\Model\DataObject\Concrete $entity = null,
+        private ?\OpenDxp\Model\DataObject\Concrete $entity = null,
     ) {
         parent::__construct($msg);
     }

@@ -42,12 +42,12 @@ class CartPriceRule extends Select
 
     protected function getRepository()
     {
-        return \Pimcore::getContainer()->get('coreshop.repository.cart_price_rule');
+        return \OpenDxp::getContainer()->get('coreshop.repository.cart_price_rule');
     }
 
     protected function getModel(): string
     {
-        return \Pimcore::getContainer()->getParameter('coreshop.model.cart_price_rule.class');
+        return \OpenDxp::getContainer()->getParameter('coreshop.model.cart_price_rule.class');
     }
 
     protected function getInterface(): string

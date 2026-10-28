@@ -20,9 +20,9 @@ namespace CoreShop\Component\Order\Repository;
 
 use CoreShop\Component\Order\Model\OrderDocumentInterface;
 use CoreShop\Component\Order\Model\OrderInterface;
-use CoreShop\Component\Resource\Repository\PimcoreRepositoryInterface;
+use CoreShop\Component\Resource\Repository\OpenDxpRepositoryInterface;
 
-interface OrderDocumentRepositoryInterface extends PimcoreRepositoryInterface
+interface OrderDocumentRepositoryInterface extends OpenDxpRepositoryInterface
 {
     /**
      * @return OrderDocumentInterface[]

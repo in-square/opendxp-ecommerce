@@ -20,8 +20,8 @@ namespace CoreShop\Bundle\TestBundle\Context\Setup;
 
 use Behat\Behat\Context\Context;
 use CoreShop\Bundle\TestBundle\Service\SharedStorageInterface;
-use Pimcore\Bundle\NewsletterBundle\Model\Document\Newsletter;
-use Pimcore\Model\Document;
+use OpenDxp\Bundle\NewsletterBundle\Model\Document\Newsletter;
+use OpenDxp\Model\Document;
 
 final class DocumentContext implements Context
 {

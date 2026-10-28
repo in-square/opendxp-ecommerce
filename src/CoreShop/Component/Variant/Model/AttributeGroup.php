@@ -18,9 +18,9 @@ declare(strict_types=1);
 
 namespace CoreShop\Component\Variant\Model;
 
-use CoreShop\Component\Resource\Pimcore\Model\AbstractPimcoreModel;
+use CoreShop\Component\Resource\OpenDxp\Model\AbstractOpenDxpModel;
 
-abstract class AttributeGroup extends AbstractPimcoreModel implements AttributeGroupInterface
+abstract class AttributeGroup extends AbstractOpenDxpModel implements AttributeGroupInterface
 {
     public function getAttributes(): array
     {

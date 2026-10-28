@@ -1,4 +1,4 @@
-FROM pimcore/pimcore:php8.3-debug-latest as dev
+FROM opendxp/opendxp:php8.3-debug-latest as dev
 RUN set -eux; \
     apt-get update; \
     apt-get install -y $PHPIZE_DEPS libxslt1-dev; \
@@ -16,11 +16,6 @@ RUN usermod -u $uid www-data && chown -R www-data:www-data /var/www
 FROM dev as behat
 RUN apt update && \
     apt install -y chromium chromium-driver
-
-# Install Symfony, Pimcore and CoreShop inside Tests container
-# RUN wget https://get.symfony.com/cli/installer -O - | bash
-RUN curl --proto "=https" --tlsv1.2 -sSf -L https://might-redirect.example.com/install.sh | sh
-RUN apt install symfony-cli
 
 ENV PANTHER_NO_SANDBOX=1
 ENV PANTHER_CHROME_ARGUMENTS='--disable-dev-shm-usage'

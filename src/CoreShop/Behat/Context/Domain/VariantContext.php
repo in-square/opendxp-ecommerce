@@ -22,7 +22,7 @@ use Behat\Behat\Context\Context;
 use CoreShop\Bundle\TestBundle\Service\SharedStorageInterface;
 use CoreShop\Component\Core\Model\ProductInterface;
 use CoreShop\Component\Variant\Model\AttributeGroupInterface;
-use Pimcore\Model\DataObject\AbstractObject;
+use OpenDxp\Model\DataObject\AbstractObject;
 use Webmozart\Assert\Assert;
 
 final class VariantContext implements Context

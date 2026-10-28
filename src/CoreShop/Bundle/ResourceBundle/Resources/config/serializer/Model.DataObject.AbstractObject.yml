@@ -1,4 +1,4 @@
-Pimcore\Model\DataObject\AbstractObject:
+OpenDxp\Model\DataObject\AbstractObject:
     exclusion_policy: ALL
     virtual_properties:
         getId:

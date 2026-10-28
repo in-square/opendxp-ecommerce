@@ -2,14 +2,14 @@
 
 ```yaml
 core_shop_product:
-    pimcore:
+    opendxp:
         product:
             path: coreshop/products
             classes:
-                repository: CoreShop\Bundle\CoreBundle\Pimcore\Repository\ProductRepository
-                install_file: '@CoreShopCoreBundle/Resources/install/pimcore/classes/CoreShopProductBundle/CoreShopProduct.json'
-                model: Pimcore\Model\DataObject\CoreShopProduct
+                repository: CoreShop\Bundle\CoreBundle\OpenDxp\Repository\ProductRepository
+                install_file: '@CoreShopCoreBundle/Resources/install/opendxp/classes/CoreShopProductBundle/CoreShopProduct.json'
+                model: OpenDxp\Model\DataObject\CoreShopProduct
                 interface: CoreShop\Component\Product\Model\ProductInterface
-                factory: CoreShop\Component\Resource\Factory\PimcoreFactory
+                factory: CoreShop\Component\Resource\Factory\OpenDxpFactory
                 type: object
 ```

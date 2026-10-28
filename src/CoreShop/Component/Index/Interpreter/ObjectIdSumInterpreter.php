@@ -20,7 +20,7 @@ namespace CoreShop\Component\Index\Interpreter;
 
 use CoreShop\Component\Index\Model\IndexableInterface;
 use CoreShop\Component\Index\Model\IndexColumnInterface;
-use Pimcore\Model\Element\ElementInterface;
+use OpenDxp\Model\Element\ElementInterface;
 
 class ObjectIdSumInterpreter implements InterpreterInterface
 {

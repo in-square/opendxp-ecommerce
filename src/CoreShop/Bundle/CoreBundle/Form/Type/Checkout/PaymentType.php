@@ -28,6 +28,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
 use Symfony\Component\Form\FormInterface;
+use Symfony\Component\Form\FormTypeInterface;
 use Symfony\Component\Form\FormView;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\NotBlank;
@@ -94,9 +95,14 @@ final class PaymentType extends AbstractResourceType
                 continue;
             }
 
+            $configurationType = $this->formTypeRegistry->get($type, 'default');
+            if (!is_string($configurationType) || !is_a($configurationType, FormTypeInterface::class, true)) {
+                throw new \LogicException('The registered payment configuration type must implement FormTypeInterface.');
+            }
+
             $formBuilder = $builder->create(
                 'paymentSettings',
-                $this->formTypeRegistry->get($type, 'default'),
+                $configurationType,
             );
 
             $prototypes[$type] = $formBuilder->getForm();

@@ -22,7 +22,7 @@ use CoreShop\Component\Core\Model\CategoryInterface;
 use CoreShop\Component\Core\Model\ProductInterface;
 use CoreShop\Component\Core\Repository\CategoryRepositoryInterface;
 use CoreShop\Component\Core\Repository\ProductRepositoryInterface;
-use CoreShop\Component\Pimcore\DataObject\ObjectServiceInterface;
+use CoreShop\Component\OpenDxp\DataObject\ObjectServiceInterface;
 use CoreShop\Component\Resource\Factory\FactoryInterface;
 use CoreShop\Component\Resource\Repository\RepositoryInterface;
 use CoreShop\Component\Store\Repository\StoreRepositoryInterface;
@@ -31,9 +31,9 @@ use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Faker\Factory;
 use Faker\Provider\Barcode;
 use Faker\Provider\Lorem;
-use Pimcore\Model\Asset;
-use Pimcore\Model\DataObject\Service;
-use Pimcore\Tool;
+use OpenDxp\Model\Asset;
+use OpenDxp\Model\DataObject\Service;
+use OpenDxp\Tool;
 use Symfony\Component\HttpKernel\KernelInterface;
 
 abstract class AbstractProductFixture extends Fixture implements DependentFixtureInterface
@@ -588,7 +588,7 @@ abstract class AbstractProductFixture extends Fixture implements DependentFixtur
          * @var CategoryInterface $usedCategory
          */
         $usedCategory = $categories[random_int(0, count($categories) - 1)];
-        $folder = \Pimcore\Model\Asset\Service::createFolderByPath(
+        $folder = \OpenDxp\Model\Asset\Service::createFolderByPath(
             sprintf(
                 '/demo/%s/%s',
                 $parentPath,
@@ -615,11 +615,11 @@ abstract class AbstractProductFixture extends Fixture implements DependentFixtur
                 $existingImage->delete();
             }
 
-            $image = new \Pimcore\Model\Asset\Image();
+            $image = new \OpenDxp\Model\Asset\Image();
             $image->setData(file_get_contents($imagePath));
             $image->setParent($folder);
             $image->setFilename($fileName);
-            $image->setFilename(\Pimcore\Model\Asset\Service::getUniqueKey($image));
+            $image->setFilename(\OpenDxp\Model\Asset\Service::getUniqueKey($image));
             $image->save();
 
             $images[] = $image;

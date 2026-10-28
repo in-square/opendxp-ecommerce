@@ -20,14 +20,9 @@ namespace CoreShop\Bundle\CoreBundle\Migrations;
 
 use CoreShop\Bundle\FrontendBundle\CoreShopFrontendBundle;
 use Doctrine\DBAL\Schema\Schema;
-use Doctrine\Migrations\AbstractMigration;
-use Symfony\Component\DependencyInjection\ContainerAwareInterface;
-use Symfony\Component\DependencyInjection\ContainerAwareTrait;
 
-final class Version20241018060845 extends AbstractMigration implements ContainerAwareInterface
+final class Version20241018060845 extends AbstractContainerAwareMigration
 {
-    use ContainerAwareTrait;
-
     public function getDescription(): string
     {
         return 'Enable the CoreShop FrontendBundle in bundles.php';

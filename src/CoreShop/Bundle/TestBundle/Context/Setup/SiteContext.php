@@ -20,8 +20,8 @@ namespace CoreShop\Bundle\TestBundle\Context\Setup;
 
 use Behat\Behat\Context\Context;
 use CoreShop\Bundle\TestBundle\Service\SharedStorageInterface;
-use Pimcore\Model\Document;
-use Pimcore\Model\Site;
+use OpenDxp\Model\Document;
+use OpenDxp\Model\Site;
 
 final class SiteContext implements Context
 {

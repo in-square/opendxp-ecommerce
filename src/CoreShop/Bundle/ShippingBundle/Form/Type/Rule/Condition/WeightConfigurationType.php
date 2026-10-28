@@ -40,13 +40,13 @@ final class WeightConfigurationType extends AbstractType
             ->add('minWeight', NumberType::class, [
                 'constraints' => [
                     new NotBlank(['groups' => $this->validationGroups]),
-                    new Type(['type' => 'numeric', 'groups' => $this->validationGroups]),
+                    new Type(type: 'numeric', groups: $this->validationGroups),
                 ],
             ])
             ->add('maxWeight', NumberType::class, [
                 'constraints' => [
                     new NotBlank(['groups' => $this->validationGroups]),
-                    new Type(['type' => 'numeric', 'groups' => $this->validationGroups]),
+                    new Type(type: 'numeric', groups: $this->validationGroups),
                 ],
             ])
         ;

@@ -19,7 +19,7 @@ declare(strict_types=1);
 namespace CoreShop\Component\StorageList\Context;
 
 use CoreShop\Component\Resource\Factory\FactoryInterface;
-use CoreShop\Component\Resource\Pimcore\Model\AbstractPimcoreModel;
+use CoreShop\Component\Resource\OpenDxp\Model\AbstractOpenDxpModel;
 use CoreShop\Component\StorageList\Model\StorageListInterface;
 
 final class StorageListFactoryContext implements StorageListContextInterface
@@ -36,7 +36,7 @@ final class StorageListFactoryContext implements StorageListContextInterface
          */
         $storageList = $this->storageListFactory->createNew();
 
-        if ($storageList instanceof AbstractPimcoreModel) {
+        if ($storageList instanceof AbstractOpenDxpModel) {
             $storageList->setKey(uniqid());
             $storageList->setPublished(true);
         }

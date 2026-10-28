@@ -1,0 +1,49 @@
+name: coreshop-verification
+
+services:
+    db:
+        image: mariadb:10.11
+        environment:
+            MARIADB_DATABASE: coreshop_test
+            MARIADB_USER: coreshop_test
+            MARIADB_PASSWORD: coreshop_test
+            MARIADB_ROOT_PASSWORD: coreshop_test_root
+        volumes:
+            - database:/var/lib/mysql
+            - ./database-init.sql:/docker-entrypoint-initdb.d/coreshop-tests.sql:ro
+        healthcheck:
+            test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
+            interval: 5s
+            timeout: 5s
+            retries: 20
+
+    php:
+        image: opendxp/opendxp:php8.3-debug-latest
+        working_dir: /app
+        entrypoint: ["sleep", "infinity"]
+        environment:
+            APP_ENV: test
+            OPENDXP_PROJECT_ROOT: /app
+            OPENDXP_KERNEL_CLASS: Kernel
+            OPENDXP_TEST_DB_DSN: "mysql://coreshop_test:coreshop_test@db:3306/coreshop_test?charset=utf8mb4"
+            CORESHOP_MIGRATION_TEST_DSN: "mysql://coreshop_test:coreshop_test@db:3306/coreshop_migration_test?charset=utf8mb4"
+            OPENDXP_INSTALL_MYSQL_HOST_SOCKET: db
+            OPENDXP_INSTALL_MYSQL_PORT: 3306
+            OPENDXP_INSTALL_MYSQL_DATABASE: coreshop_test
+            OPENDXP_INSTALL_MYSQL_USERNAME: coreshop_test
+            OPENDXP_INSTALL_MYSQL_PASSWORD: coreshop_test
+            OPENDXP_INSTALL_ADMIN_USERNAME: admin
+            OPENDXP_INSTALL_ADMIN_PASSWORD: coreshop
+            CORESHOP_SKIP_DB_SETUP: "1"
+            MAILER_DSN: "null://null"
+            XDEBUG_MODE: "off"
+        volumes:
+            - ..:/source:ro
+            - application:/app
+        depends_on:
+            db:
+                condition: service_healthy
+
+volumes:
+    database:
+    application:

@@ -19,7 +19,7 @@ declare(strict_types=1);
 namespace CoreShop\Bundle\ShippingBundle\Form\Type;
 
 use CoreShop\Bundle\ResourceBundle\Form\Type\AbstractResourceType;
-use CoreShop\Bundle\ResourceBundle\Form\Type\PimcoreAssetChoiceType;
+use CoreShop\Bundle\ResourceBundle\Form\Type\OpenDxpAssetChoiceType;
 use CoreShop\Bundle\ResourceBundle\Form\Type\ResourceTranslationsType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -33,7 +33,7 @@ class CarrierType extends AbstractResourceType
             ->add('identifier', TextType::class)
             ->add('trackingUrl', TextType::class)
             ->add('hideFromCheckout', CheckboxType::class)
-            ->add('logo', PimcoreAssetChoiceType::class)
+            ->add('logo', OpenDxpAssetChoiceType::class)
             ->add('taxCalculationStrategy', ShippingTaxCalculationStrategyChoiceType::class)
             ->add('shippingRules', ShippingRuleGroupCollectionType::class)
             ->add('translations', ResourceTranslationsType::class, [

@@ -36,12 +36,12 @@ class State extends Select
 
     protected function getRepository(): RepositoryInterface
     {
-        return \Pimcore::getContainer()->get('coreshop.repository.state');
+        return \OpenDxp::getContainer()->get('coreshop.repository.state');
     }
 
     protected function getModel(): string
     {
-        return \Pimcore::getContainer()->getParameter('coreshop.model.state.class');
+        return \OpenDxp::getContainer()->getParameter('coreshop.model.state.class');
     }
 
     protected function getInterface(): string

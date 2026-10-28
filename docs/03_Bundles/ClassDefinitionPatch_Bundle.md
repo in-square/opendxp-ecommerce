@@ -30,7 +30,7 @@ public function registerBundlesToCollection(BundleCollection $collection)
 
 ### Configuration for Patching
 
-To patch a Pimcore class definition, add a configuration like the following:
+To patch a OpenDxp class definition, add a configuration like the following:
 
 ```yaml
 core_shop_class_definition_patch:
@@ -52,7 +52,7 @@ For patching CoreShop classes, leverage the parameters provided by CoreShop:
 ```yaml
 core_shop_class_definition_patch:
     patches:
-        %coreshop.model.order.pimcore_class_name%:
+        %coreshop.model.order.opendxp_class_name%:
             fields:
                 total2:
                     before: 'total'

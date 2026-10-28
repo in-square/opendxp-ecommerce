@@ -18,11 +18,11 @@ declare(strict_types=1);
 
 namespace CoreShop\Component\Wishlist\Model;
 
-use CoreShop\Component\Resource\Pimcore\Model\AbstractPimcoreModel;
+use CoreShop\Component\Resource\OpenDxp\Model\AbstractOpenDxpModel;
 use CoreShop\Component\Store\Model\StoreAwareTrait;
 use Webmozart\Assert\Assert;
 
-abstract class Wishlist extends AbstractPimcoreModel implements WishlistInterface
+abstract class Wishlist extends AbstractOpenDxpModel implements WishlistInterface
 {
     use StoreAwareTrait;
 

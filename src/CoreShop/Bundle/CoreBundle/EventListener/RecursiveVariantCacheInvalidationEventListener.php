@@ -23,7 +23,7 @@ use CoreShop\Component\Core\Payment\Rule\Condition\ProductsConditionChecker as P
 use CoreShop\Component\Payment\Model\PaymentProviderRuleInterface;
 use CoreShop\Component\Rule\Model\RuleInterface;
 use CoreShop\Component\Shipping\Model\ShippingRuleInterface;
-use Pimcore\Cache;
+use OpenDxp\Cache;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 final class RecursiveVariantCacheInvalidationEventListener implements EventSubscriberInterface

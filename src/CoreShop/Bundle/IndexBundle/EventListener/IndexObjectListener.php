@@ -20,8 +20,8 @@ namespace CoreShop\Bundle\IndexBundle\EventListener;
 
 use CoreShop\Bundle\IndexBundle\Messenger\IndexMessage;
 use CoreShop\Component\Index\Model\IndexableInterface;
-use Pimcore\Event\Model\DataObjectEvent;
-use Pimcore\Event\Model\ElementEventInterface;
+use OpenDxp\Event\Model\DataObjectEvent;
+use OpenDxp\Event\Model\ElementEventInterface;
 use Symfony\Component\Messenger\MessageBusInterface;
 
 final class IndexObjectListener

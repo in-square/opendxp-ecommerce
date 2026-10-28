@@ -21,16 +21,16 @@ namespace CoreShop\Bundle\ResourceBundle;
 use Composer\InstalledVersions;
 use CoreShop\Bundle\ResourceBundle\DependencyInjection\Driver\Exception\UnknownDriverException;
 use Doctrine\Bundle\DoctrineBundle\DependencyInjection\Compiler\DoctrineOrmMappingsPass;
-use Pimcore\Extension\Bundle\Installer\InstallerInterface;
-use Pimcore\Extension\Bundle\PimcoreBundleInterface;
-use Pimcore\HttpKernel\Bundle\DependentBundleInterface;
-use Pimcore\HttpKernel\BundleCollection\BundleCollection;
+use OpenDxp\Extension\Bundle\Installer\InstallerInterface;
+use OpenDxp\Extension\Bundle\OpenDxpBundleInterface;
+use OpenDxp\HttpKernel\Bundle\DependentBundleInterface;
+use OpenDxp\HttpKernel\BundleCollection\BundleCollection;
 use Symfony\Component\Config\Definition\Exception\InvalidConfigurationException;
 use Symfony\Component\DependencyInjection\Container;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
-abstract class AbstractResourceBundle extends Bundle implements PimcoreBundleInterface, ResourceBundleInterface, DependentBundleInterface, ComposerPackageBundleInterface
+abstract class AbstractResourceBundle extends Bundle implements OpenDxpBundleInterface, ResourceBundleInterface, DependentBundleInterface, ComposerPackageBundleInterface
 {
     protected string $mappingFormat = ResourceBundleInterface::MAPPING_XML;
 
@@ -92,6 +92,10 @@ abstract class AbstractResourceBundle extends Bundle implements PimcoreBundleInt
             $bundleName = $this->getPackageName();
 
             if (class_exists(InstalledVersions::class)) {
+                if (InstalledVersions::isInstalled('in-square/opendxp-ecommerce')) {
+                    return InstalledVersions::getPrettyVersion('in-square/opendxp-ecommerce');
+                }
+
                 if (InstalledVersions::isInstalled('coreshop/core-shop')) {
                     return InstalledVersions::getPrettyVersion('coreshop/core-shop');
                 }

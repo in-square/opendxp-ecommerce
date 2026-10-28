@@ -24,7 +24,7 @@ use CoreShop\Bundle\OrderBundle\Factory\AddMultipleToCartFactoryInterface;
 use CoreShop\Bundle\OrderBundle\Factory\AddToCartFactoryInterface;
 use CoreShop\Bundle\OrderBundle\Form\Type\AddMultipleToCartType;
 use CoreShop\Bundle\OrderBundle\Form\Type\EditCartType;
-use CoreShop\Bundle\ResourceBundle\Controller\PimcoreController;
+use CoreShop\Bundle\ResourceBundle\Controller\OpenDxpController;
 use CoreShop\Bundle\ResourceBundle\Form\Helper\ErrorSerializer;
 use CoreShop\Component\Order\Cart\CartModifier;
 use CoreShop\Component\Order\Factory\OrderItemFactoryInterface;
@@ -40,7 +40,7 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException;
 
-class OrderEditController extends PimcoreController
+class OrderEditController extends OpenDxpController
 {
     public function editItemsAction(
         Request $request,

@@ -1,0 +1,32 @@
+core_shop_payment:
+    opendxp_admin:
+        js:
+            resource: '/bundles/coreshoppayment/opendxp/js/resource.js'
+            payment_item: '/bundles/coreshoppayment/opendxp/js/provider/item.js'
+            payment_panel: '/bundles/coreshoppayment/opendxp/js/provider/panel.js'
+            
+            
+            payment_provider_rule_item: '/bundles/coreshoppayment/opendxp/js/paymentproviderrule/item.js'
+            payment_provider_rule_panel: '/bundles/coreshoppayment/opendxp/js/paymentproviderrule/panel.js'
+            payment_provider_rule_action: '/bundles/coreshoppayment/opendxp/js/paymentproviderrule/action.js'
+            payment_provider_rule_condition: '/bundles/coreshoppayment/opendxp/js/paymentproviderrule/condition.js'
+            
+            payment_provider_rule_conditions_amount: '/bundles/coreshoppayment/opendxp/js/paymentproviderrule/conditions/amount.js'
+            payment_provider_rule_conditions_nested: '/bundles/coreshoppayment/opendxp/js/paymentproviderrule/conditions/nested.js'
+            payment_provider_rule_conditions_paymentProviderRule: '/bundles/coreshoppayment/opendxp/js/paymentproviderrule/conditions/paymentProviderRule.js'
+            payment_provider_rule_actions_addition_percent: '/bundles/coreshoppayment/opendxp/js/paymentproviderrule/actions/additionPercent.js'
+            payment_provider_rule_actions_discount_percent: '/bundles/coreshoppayment/opendxp/js/paymentproviderrule/actions/discountPercent.js'
+            payment_provider_rule_actions_paymentProviderRule: '/bundles/coreshoppayment/opendxp/js/paymentproviderrule/actions/paymentProviderRule.js'
+
+
+            payment_gateway_abstract: '/bundles/coreshoppayment/opendxp/js/provider/gateways/abstract.js'
+            payment_gateway_paypal: '/bundles/coreshoppayment/opendxp/js/provider/gateways/paypal_express_checkout.js'
+            payment_gateway_sofort: '/bundles/coreshoppayment/opendxp/js/provider/gateways/sofort.js'
+            core_extension_data_provider: '/bundles/coreshoppayment/opendxp/js/coreExtension/data/coreShopPaymentProvider.js'
+            core_extension_tag_provider: '/bundles/coreshoppayment/opendxp/js/coreExtension/tags/coreShopPaymentProvider.js'
+            core_extension_data_provider_multiselect: '/bundles/coreshoppayment/opendxp/js/coreExtension/data/coreShopPaymentProviderMultiselect.js'
+            core_extension_tag_provider_multiselect: '/bundles/coreshoppayment/opendxp/js/coreExtension/tags/coreShopPaymentProviderMultiselect.js'
+        css:
+            payment: '/bundles/coreshoppayment/opendxp/css/payment.css'
+        editmode_js:
+            core_extension_document_tag_provider: '/bundles/coreshoppayment/opendxp/js/coreExtension/document/coreShopPaymentProvider.js'

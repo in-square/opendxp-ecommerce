@@ -18,10 +18,10 @@ declare(strict_types=1);
 
 namespace CoreShop\Component\User\Model;
 
-use CoreShop\Component\Resource\Pimcore\Model\AbstractPimcoreModel;
-use Pimcore\Model\DataObject\ClassDefinition\Data\Password;
+use CoreShop\Component\Resource\OpenDxp\Model\AbstractOpenDxpModel;
+use OpenDxp\Model\DataObject\ClassDefinition\Data\Password;
 
-abstract class User extends AbstractPimcoreModel implements UserInterface
+abstract class User extends AbstractOpenDxpModel implements UserInterface
 {
     protected ?string $salt = null;
 
@@ -61,7 +61,7 @@ abstract class User extends AbstractPimcoreModel implements UserInterface
      *
      * {@inheritdoc}
      */
-    public function eraseCredentials()
+    public function eraseCredentials(): void
     {
         /** @var Password $field */
         $field = $this->getClass()->getFieldDefinition('password');

@@ -22,9 +22,9 @@ use CoreShop\Bundle\OptimisticEntityLockBundle\Exception\OptimisticLockException
 use CoreShop\Bundle\OptimisticEntityLockBundle\Manager\EntityLockManager;
 use CoreShop\Bundle\OptimisticEntityLockBundle\Model\OptimisticLockedInterface;
 use Doctrine\DBAL\Connection;
-use Pimcore\Event\DataObjectEvents;
-use Pimcore\Event\Model\DataObjectEvent;
-use Pimcore\Model\DataObject\Concrete;
+use OpenDxp\Event\DataObjectEvents;
+use OpenDxp\Event\Model\DataObjectEvent;
+use OpenDxp\Model\DataObject\Concrete;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 class LockListener implements EventSubscriberInterface

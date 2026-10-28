@@ -24,7 +24,7 @@ improve user experience and data collection.
 ## Extending Data Objects
 
 Data objects in CoreShop are central to managing product information, customer data, and more. This section covers how
-to extend these Pimcore data objects, enabling you to add custom attributes, change object behaviors, or integrate with
+to extend these OpenDxp data objects, enabling you to add custom attributes, change object behaviors, or integrate with
 external systems.
 
 - [Extending CoreShop DataObjects](03_Extend_CoreShop_DataObjects.md)

@@ -20,9 +20,9 @@ namespace CoreShop\Bundle\VariantBundle\Service;
 
 use CoreShop\Component\Variant\Model\AttributeInterface;
 use CoreShop\Component\Variant\Model\ProductVariantAwareInterface;
-use Pimcore\Model\DataObject;
-use Pimcore\Model\DataObject\AbstractObject;
-use Pimcore\Tool;
+use OpenDxp\Model\DataObject;
+use OpenDxp\Model\DataObject\AbstractObject;
+use OpenDxp\Tool;
 
 class VariantGeneratorService implements VariantGeneratorServiceInterface
 {

@@ -19,9 +19,9 @@ declare(strict_types=1);
 namespace CoreShop\Component\Customer\Repository;
 
 use CoreShop\Component\Customer\Model\CustomerInterface;
-use CoreShop\Component\Resource\Repository\PimcoreRepositoryInterface;
+use CoreShop\Component\Resource\Repository\OpenDxpRepositoryInterface;
 
-interface CustomerRepositoryInterface extends PimcoreRepositoryInterface
+interface CustomerRepositoryInterface extends OpenDxpRepositoryInterface
 {
     public function findByNewsletterToken(string $newsletterToken): ?CustomerInterface;
 

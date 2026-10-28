@@ -35,12 +35,12 @@ class TaxRuleGroup extends Select
 
     protected function getRepository()
     {
-        return \Pimcore::getContainer()->get('coreshop.repository.tax_rule_group');
+        return \OpenDxp::getContainer()->get('coreshop.repository.tax_rule_group');
     }
 
     protected function getModel(): string
     {
-        return \Pimcore::getContainer()->getParameter('coreshop.model.tax_rule_group.class');
+        return \OpenDxp::getContainer()->getParameter('coreshop.model.tax_rule_group.class');
     }
 
     protected function getInterface(): string

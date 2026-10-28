@@ -17,12 +17,12 @@ services:
         arguments:
             - '@twig'
             - '%coreshop.menu.json.template%'
-            - '@CoreShop\Bundle\MenuBundle\Guard\PimcoreGuard'
+            - '@CoreShop\Bundle\MenuBundle\Guard\OpenDxpGuard'
             - {}
         tags:
             - { name: knp_menu.renderer, alias: json }
 
-    CoreShop\Bundle\MenuBundle\Guard\PimcoreGuard:
+    CoreShop\Bundle\MenuBundle\Guard\OpenDxpGuard:
         arguments:
             - '@security.token_storage'
 
@@ -37,6 +37,6 @@ services:
         tags:
             - { name: controller.service_arguments }
 
-    CoreShop\Bundle\MenuBundle\EventListener\PimcoreAdminListener:
+    CoreShop\Bundle\MenuBundle\EventListener\OpenDxpAdminListener:
         tags:
             - { name: kernel.event_subscriber }

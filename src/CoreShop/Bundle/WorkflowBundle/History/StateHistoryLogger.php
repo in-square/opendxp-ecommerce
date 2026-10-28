@@ -18,8 +18,8 @@ declare(strict_types=1);
 
 namespace CoreShop\Bundle\WorkflowBundle\History;
 
-use CoreShop\Component\Pimcore\DataObject\NoteServiceInterface;
-use Pimcore\Model\DataObject\Concrete;
+use CoreShop\Component\OpenDxp\DataObject\NoteServiceInterface;
+use OpenDxp\Model\DataObject\Concrete;
 use Symfony\Component\Workflow\Event\Event;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
@@ -46,7 +46,7 @@ final class StateHistoryLogger implements StateHistoryLoggerInterface
         $fromValue = 'coreshop_workflow_state_' . $event->getWorkflowName() . '_' . $from;
         $toValue = 'coreshop_workflow_state_' . $event->getWorkflowName() . '_' . $to;
 
-        $note = $this->noteService->createPimcoreNoteInstance($object, $this->noteIdentifier);
+        $note = $this->noteService->createOpenDxpNoteInstance($object, $this->noteIdentifier);
         $note->setTitle('coreshop_history_change');
         $note->setDescription(
             sprintf(

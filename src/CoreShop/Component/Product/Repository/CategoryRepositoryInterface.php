@@ -19,9 +19,9 @@ declare(strict_types=1);
 namespace CoreShop\Component\Product\Repository;
 
 use CoreShop\Component\Product\Model\CategoryInterface;
-use CoreShop\Component\Resource\Repository\PimcoreRepositoryInterface;
+use CoreShop\Component\Resource\Repository\OpenDxpRepositoryInterface;
 
-interface CategoryRepositoryInterface extends PimcoreRepositoryInterface
+interface CategoryRepositoryInterface extends OpenDxpRepositoryInterface
 {
     /**
      * @return CategoryInterface[]

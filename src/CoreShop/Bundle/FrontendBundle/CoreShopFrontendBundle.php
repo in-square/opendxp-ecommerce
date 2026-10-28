@@ -22,13 +22,13 @@ use Composer\InstalledVersions;
 use CoreShop\Bundle\CoreBundle\CoreShopCoreBundle;
 use CoreShop\Bundle\FrontendBundle\DependencyInjection\CompilerPass\FrontendInstallerPass;
 use CoreShop\Bundle\FrontendBundle\DependencyInjection\CompilerPass\RegisterFrontendControllerPass;
-use Pimcore\Extension\Bundle\AbstractPimcoreBundle;
-use Pimcore\HttpKernel\Bundle\DependentBundleInterface;
-use Pimcore\HttpKernel\BundleCollection\BundleCollection;
+use OpenDxp\Extension\Bundle\AbstractOpenDxpBundle;
+use OpenDxp\HttpKernel\Bundle\DependentBundleInterface;
+use OpenDxp\HttpKernel\BundleCollection\BundleCollection;
 use Symfony\Component\DependencyInjection\Compiler\PassConfig;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
-final class CoreShopFrontendBundle extends AbstractPimcoreBundle implements DependentBundleInterface
+final class CoreShopFrontendBundle extends AbstractOpenDxpBundle implements DependentBundleInterface
 {
     public static function registerDependentBundles(BundleCollection $collection): void
     {
@@ -67,6 +67,10 @@ final class CoreShopFrontendBundle extends AbstractPimcoreBundle implements Depe
         $bundleName = 'coreshop/frontend-bundle';
 
         if (class_exists(InstalledVersions::class)) {
+            if (InstalledVersions::isInstalled('in-square/opendxp-ecommerce')) {
+                return InstalledVersions::getPrettyVersion('in-square/opendxp-ecommerce');
+            }
+
             if (InstalledVersions::isInstalled('coreshop/core-shop')) {
                 return InstalledVersions::getPrettyVersion('coreshop/core-shop');
             }

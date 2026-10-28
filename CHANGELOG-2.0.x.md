@@ -16,9 +16,9 @@
 
 ## 2.0.9
  - Bugs:
-   - [Pimcore] fix stan tests on 2.0 (https://github.com/coreshop/CoreShop/pull/998)
-   - [CurrencyBundle] fix for money-currency editable when data comes from pimcore editmode (https://github.com/coreshop/CoreShop/pull/1023)
-   - [PimcoreBundle] use reflection to get class methods (https://github.com/coreshop/CoreShop/pull/1038)
+   - [OpenDxp] fix stan tests on 2.0 (https://github.com/coreshop/CoreShop/pull/998)
+   - [CurrencyBundle] fix for money-currency editable when data comes from opendxp editmode (https://github.com/coreshop/CoreShop/pull/1023)
+   - [OpenDxpBundle] use reflection to get class methods (https://github.com/coreshop/CoreShop/pull/1038)
    - [CoreExtensions] don't allow any diff until properly implemented (https://github.com/coreshop/CoreShop/pull/1050)
    - [ProductBundle] specific price rules: keep id on save (https://github.com/coreshop/CoreShop/pull/1045)
    - [TrackingBundle] fix total tax in tag manager tracker (https://github.com/coreshop/CoreShop/pull/1053) @solverat 
@@ -27,7 +27,7 @@
    - [ResourceBundle] fix resource-select options (https://github.com/coreshop/CoreShop/pull/1077)
    - [Tests] fix stan and travis tests (https://github.com/coreshop/CoreShop/pull/1078) 
    - [Docs] Fix extend docs (https://github.com/coreshop/CoreShop/pull/1082)
-   - [PimcoreBundle] embedd CoreExtension - Protected members are available only via getters (https://github.com/coreshop/CoreShop/pull/1089) @rishadomar
+   - [OpenDxpBundle] embedd CoreExtension - Protected members are available only via getters (https://github.com/coreshop/CoreShop/pull/1089) @rishadomar
    - [IndexBundle] fix order-direction now serialized properly (https://github.com/coreshop/CoreShop/pull/1097)  
    - [All] Fixing Configuration Keys (https://github.com/coreshop/CoreShop/pull/1100) @khusseini 
    - [FrontendBundle] CategoryController perPage Configuration fix (https://github.com/coreshop/CoreShop/pull/1105)
@@ -40,7 +40,7 @@
 
 ## 2.0.8
  - Bug:
-   - [Pimcore] Make CoreShop compatible with Pimcore 5.8.0 (https://github.com/coreshop/CoreShop/pull/977)
+   - [OpenDxp] Make CoreShop compatible with OpenDxp 5.8.0 (https://github.com/coreshop/CoreShop/pull/977)
    - [Order] remove wrong type hints (https://github.com/coreshop/CoreShop/pull/978)
    - [Core] fix setting customer and persisting cart on user login (https://github.com/coreshop/CoreShop/pull/980)
    
@@ -65,7 +65,7 @@
    - [Adjustments] in the classes "CoreShopOrderItem", "CoreShopQuoteItem", was a typo `basePdjustmentItems` instead of `baseAdjustmentItems`. Please manually rename them to `baseAdjustmentItems`
    - [ProductBundle] Fix extjs layout crash price rule is inactive (https://github.com/coreshop/CoreShop/pull/908)
    - [FrontendBundle] fix address creation redirect (https://github.com/coreshop/CoreShop/pull/910)
-   - [StorageList] Storage List and Storage List Item is not a Pimcore Object (https://github.com/coreshop/CoreShop/pull/907)
+   - [StorageList] Storage List and Storage List Item is not a OpenDxp Object (https://github.com/coreshop/CoreShop/pull/907)
    - [Order] fix typo in OrderItem and QuoteItem (https://github.com/coreshop/CoreShop/pull/906)
    - [NotificationBundle] fix typo in serializer namespace declaration (https://github.com/coreshop/CoreShop/pull/901)
    - [CoreBundle] fix notification rule setting for order mail action (https://github.com/coreshop/CoreShop/pull/886)
@@ -73,7 +73,7 @@
    - [Core] fix not passing full configuration in store based email (https://github.com/coreshop/CoreShop/pull/917)
    - [Core] fix copying object brick data from cart to sale (https://github.com/coreshop/CoreShop/pull/918)
    - [CoreBundle/OrderBundle] KernelResponse Event should ignore Profile Toolbar (https://github.com/coreshop/CoreShop/pull/919)
-   - [Pimcore] Make CoreShop compatible with Pimcore 5.7.2 (https://github.com/coreshop/CoreShop/pull/914)
+   - [OpenDxp] Make CoreShop compatible with OpenDxp 5.7.2 (https://github.com/coreshop/CoreShop/pull/914)
    
  - Features:
    - [FrontendBundle] make private method protected (https://github.com/coreshop/CoreShop/pull/890)
@@ -86,8 +86,8 @@
      - `CoreShop\Bundle\OrderBundle\Workflow\OrderStateHistoryLogger` has been deprecated, use `CoreShop\Bundle\WorkflowBundle\History\StateHistoryLoggerInterface` instead
      - `CoreShop\Bundle\OrderBundle\Workflow\WorkflowStateManager` has been deprecated, use `CoreShop\Bundle\WorkflowBundle\StateManager\WorkflowStateInfoManagerInterface` instead
  - Bugs
-   - [PimcoreBundle] Make embedded classes work for Pimcore 5.6 (https://github.com/coreshop/CoreShop/pull/867)
-   - [All] Make CoreShop 2.0.x compatible with Pimcore 5.7 (https://github.com/coreshop/CoreShop/pull/869)
+   - [OpenDxpBundle] Make embedded classes work for OpenDxp 5.6 (https://github.com/coreshop/CoreShop/pull/867)
+   - [All] Make CoreShop 2.0.x compatible with OpenDxp 5.7 (https://github.com/coreshop/CoreShop/pull/869)
    - [All] fix PHP5 sort issues by removing them (https://github.com/coreshop/CoreShop/issues/840)
    - [Shipping] if cart has no shippables, don't force carriage calculation (https://github.com/coreshop/CoreShop/pull/863)
    - [Checkout] validate cart before submitting the order (https://github.com/coreshop/CoreShop/pull/858)
@@ -106,9 +106,9 @@
  - Features:
    - [Reports] Reports Grid Sorting (https://github.com/coreshop/CoreShop/pull/828)
    - [Reports] Add Paginator To All Reports (https://github.com/coreshop/CoreShop/pull/826)
-   - [Pimcore] introduce twig placeholder (https://github.com/coreshop/CoreShop/pull/827)
-   - [Resource] add serialization for pimcore types (https://github.com/coreshop/CoreShop/pull/818)
-   - [Resource] add more doctrine-pimcore-types (https://github.com/coreshop/CoreShop/pull/816)
+   - [OpenDxp] introduce twig placeholder (https://github.com/coreshop/CoreShop/pull/827)
+   - [Resource] add serialization for opendxp types (https://github.com/coreshop/CoreShop/pull/818)
+   - [Resource] add more doctrine-opendxp-types (https://github.com/coreshop/CoreShop/pull/816)
 
  - Bugs:
    - [Order] fix code-generator length (https://github.com/coreshop/CoreShop/pull/833)
@@ -121,30 +121,30 @@
 ## 2.0.3
  - Features:
    - [All] Replace intval with int cast (https://github.com/coreshop/CoreShop/pull/805)
-   - [Core] Store Price Dirty Detection if installed Pimcore Version >= 5.5 (https://github.com/coreshop/CoreShop/pull/807)
+   - [Core] Store Price Dirty Detection if installed OpenDxp Version >= 5.5 (https://github.com/coreshop/CoreShop/pull/807)
    - [Core] Allow Variants in Product Rule Conditions (https://github.com/coreshop/CoreShop/pull/794)
    - [Core] Add Event for Settings (https://github.com/coreshop/CoreShop/pull/785)
    - [Core] Extract CartItem Processor (https://github.com/coreshop/CoreShop/pull/784)
    - [Core] Decouple Shipping Calculator from Cart (https://github.com/coreshop/CoreShop/pull/783)
-   - [Order] extract DataLoader into Pimcore Component (https://github.com/coreshop/CoreShop/pull/782)
-   - [Order] rename Pimcore Grid Operators to be more CoreShop specific (https://github.com/coreshop/CoreShop/pull/787)
+   - [Order] extract DataLoader into OpenDxp Component (https://github.com/coreshop/CoreShop/pull/782)
+   - [Order] rename OpenDxp Grid Operators to be more CoreShop specific (https://github.com/coreshop/CoreShop/pull/787)
    - [Order] Check also for CurrencyAwareInterface in PriceFormatter Gird Operator (https://github.com/coreshop/CoreShop/pull/788) 
    - [Index] Introduce Iterator Interpreter (https://github.com/coreshop/CoreShop/pull/802)
    - [Index] Introduce new Abstract function in AbstractWorker to allow handling of array data (https://github.com/coreshop/CoreShop/pull/803)
-   - [Pimcore] add object_method twig function (https://github.com/coreshop/CoreShop/pull/809)
+   - [OpenDxp] add object_method twig function (https://github.com/coreshop/CoreShop/pull/809)
  - Bugs:
    - [Core] Fix Gift Cart Price Rule Action (https://github.com/coreshop/CoreShop/pull/796)
    - [Core] Fix Invoice WKHTML Settings (https://github.com/coreshop/CoreShop/pull/786)
    - [Core] Rule Conditions: Check on type (https://github.com/coreshop/CoreShop/pull/779)
    - [Core] Add Translation for Adjustments (https://github.com/coreshop/CoreShop/pull/774)
-   - [Pimcore] allow spaces in DynamicDropdown (https://github.com/coreshop/CoreShop/pull/781)
+   - [OpenDxp] allow spaces in DynamicDropdown (https://github.com/coreshop/CoreShop/pull/781)
    
 # 2.0.2
- - Pimcore:
-   - This release makes CoreShop compatible with Pimcore 5.6.0 (https://github.com/coreshop/CoreShop/pull/762)
+ - OpenDxp:
+   - This release makes CoreShop compatible with OpenDxp 5.6.0 (https://github.com/coreshop/CoreShop/pull/762)
  - Features:
    - [Core] Adds a new CoreShop JS Event to add custom Menu Items to the CoreShop Menu (https://github.com/coreshop/CoreShop/pull/765)
-   - [Resource] [ResourceBundle] add JMS Serializer Handler for Pimcore Objects (https://github.com/coreshop/CoreShop/pull/766)
+   - [Resource] [ResourceBundle] add JMS Serializer Handler for OpenDxp Objects (https://github.com/coreshop/CoreShop/pull/766)
  - Bugs:
   - [Tracking] Fixes a Bug in the Tracking Manager when a Product does not have any categories applied (https://github.com/coreshop/CoreShop/pull/767)
  
@@ -169,8 +169,8 @@
  - Completely remove FOSRestBundle, you still can use it, but you need to install it yourself. CoreShop only used the BodyListener to decode POST/PUT Requests, this Listener is now added by CoreShop if FOSRestBundle is not installed.
 
 ## 2.0.0-beta.3 to 2.0.0-beta.4
- - **BC break**: All occurrences of parameters `coreshop.all.stack.pimcore_class_ids`, `"application".model."class".pimcore_class_id`, `coreshop.all.pimcore_classes.ids` have been removed. Inject the corresponding Repository and use `classId` function instead
- - **Pimcore**: CoreShop now requires at least Pimcore 5.4.0. You need to update Pimcore to the at least 5.4.0 in order to use/update CoreShop.
+ - **BC break**: All occurrences of parameters `coreshop.all.stack.opendxp_class_ids`, `"application".model."class".opendxp_class_id`, `coreshop.all.opendxp_classes.ids` have been removed. Inject the corresponding Repository and use `classId` function instead
+ - **OpenDxp**: CoreShop now requires at least OpenDxp 5.4.0. You need to update OpenDxp to the at least 5.4.0 in order to use/update CoreShop.
 
 ### Product Price Calculation
 In order to allow custom price calculation on API Level, we changed the way CoreShop calculates product prices by introducing a new parameter to every PriceCalculation Interface. Price Calculator Conditions are not anymore using a Live context, instead it gets passed via API.
@@ -321,8 +321,8 @@ After you have migrated to the latest version you also have to remove them:
 
  - **BC break** Shipment / Invoice Creation via API changed
     - Before adding a new Shipment / Invoice you need to dispatch a request state to your order. 
- - **BC break** getName in `CoreShop\Component\Index\Model\IndexableInterface` has been changed to `getIndexableName` as `getName` could eventually conflict with a non localized Pimcore Field
- - **BC break** getEnabled in `CoreShop\Component\Index\Model\IndexableInterface` has been changed to `getIndexableEnabled` as `getEnabled` could eventually conflict with a localized Pimcore Field
+ - **BC break** getName in `CoreShop\Component\Index\Model\IndexableInterface` has been changed to `getIndexableName` as `getName` could eventually conflict with a non localized OpenDxp Field
+ - **BC break** getEnabled in `CoreShop\Component\Index\Model\IndexableInterface` has been changed to `getIndexableEnabled` as `getEnabled` could eventually conflict with a localized OpenDxp Field
 
 ## 2.0.0-beta.1 to 2.0.0-beta.2
  - Link Generator implemented. If you want to use nice urls, you need to add the link generator service:
@@ -343,7 +343,7 @@ After you have migrated to the latest version you also have to remove them:
     - `CoreShop\Component\Index\Interpreter\LocalizedInterpreterInterface`: public function interpretForLanguage($language, $value, IndexableInterface $object, IndexColumnInterface $config);
     - `CoreShop\Component\Index\Interpreter\RelationInterpreterInterface`: public function interpretRelational($value, IndexableInterface $indexable, IndexColumnInterface $config);
 
- - **BC break** CoreShop now takes advantage of the dependent bundle feature introduced in Pimcore 5.1.2. Therefore,
+ - **BC break** CoreShop now takes advantage of the dependent bundle feature introduced in OpenDxp 5.1.2. Therefore,
  all bundles are now automatically loaded. This is a BC break, as when updating, you might run into issues.
  To solve the issues, check following things:
     - remove `RegisterBundles` entry from `app/AppKernel.php`
@@ -359,7 +359,7 @@ After you have migrated to the latest version you also have to remove them:
 ## 2.0.0-alpha.3 to 2.0.0-alpha.4
  - **BC break** decoupled MoneyBundle from CurrencyBundle, therefore the Twig Extension for Money Conversion went to the CurrencyBundle. Therefore the name of that extension was renamed from
    **coreshop_convert_money** to **coreshop_convert_currency**. If you use it directly in your code, please rename all of them.
- - Deprecated CoreShopAdminBundle which responsability was only handling installation and deliviering pimcore resources like JS and CSS files.
+ - Deprecated CoreShopAdminBundle which responsability was only handling installation and deliviering opendxp resources like JS and CSS files.
     * Installation has been moved to CoreShopCoreBundle
     * Delivering of resources is now handled by CoreShopResourceBundle, this also makes it easier to use CoreShop Bundles without handling resources yourself.
 

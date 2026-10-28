@@ -38,7 +38,7 @@ Differentiate products based on their type for targeted analysis:
 |:-------------------|:---------------------------------------------------------------------------------------------------------------|
 | Main Products      | Displays only products without variant inclusion.                                                              |
 | Variants           | Shows only variant product types.                                                                              |
-| Container Products | Summarizes products and their child-products. Note: Ignored in report if the main pimcore objects are deleted. |
+| Container Products | Summarizes products and their child-products. Note: Ignored in report if the main opendxp objects are deleted. |
 
 ## Key Grid Fields
 

@@ -1,0 +1,12 @@
+core_shop_product_quantity_price_rules:
+    opendxp_admin:
+        js:
+            product_quantity_price_rules_clipboard: '/bundles/coreshopproductquantitypricerules/opendxp/js/clipboardManager.js'
+            product_quantity_price_rules_core_extension_data: '/bundles/coreshopproductquantitypricerules/opendxp/js/coreExtension/data/coreShopProductQuantityPriceRules.js'
+            product_quantity_price_rules_core_extension_tag: '/bundles/coreshopproductquantitypricerules/opendxp/js/coreExtension/tags/coreShopProductQuantityPriceRules.js'
+            product_quantity_price_rules_data_item: '/bundles/coreshopproductquantitypricerules/opendxp/js/productQuantityPriceRules/object/item.js'
+            product_quantity_price_rules_data_ranges: '/bundles/coreshopproductquantitypricerules/opendxp/js/productQuantityPriceRules/ranges.js'
+            product_quantity_price_rules_data_condition: '/bundles/coreshopproductquantitypricerules/opendxp/js/productQuantityPriceRules/condition.js'
+            product_quantity_price_rules_data_condition_nested: '/bundles/coreshopproductquantitypricerules/opendxp/js/productQuantityPriceRules/conditions/nested.js'
+        css:
+            product_quantity_price_rules: '/bundles/coreshopproductquantitypricerules/opendxp/css/product-quanity-price-rules.css'

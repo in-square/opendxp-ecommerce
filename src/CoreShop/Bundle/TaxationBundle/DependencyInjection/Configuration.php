@@ -28,7 +28,7 @@ use CoreShop\Bundle\TaxationBundle\Form\Type\TaxRateType;
 use CoreShop\Bundle\TaxationBundle\Form\Type\TaxRuleGroupType;
 use CoreShop\Bundle\TaxationBundle\Form\Type\TaxRuleType;
 use CoreShop\Component\Resource\Factory\Factory;
-use CoreShop\Component\Resource\Factory\PimcoreFactory;
+use CoreShop\Component\Resource\Factory\OpenDxpFactory;
 use CoreShop\Component\Resource\Factory\TranslatableFactory;
 use CoreShop\Component\Taxation\Model\TaxItemInterface;
 use CoreShop\Component\Taxation\Model\TaxRate;
@@ -52,7 +52,7 @@ final class Configuration implements ConfigurationInterface
         $rootNode = $treeBuilder->getRootNode();
 
         $this->addModelsSection($rootNode);
-        $this->addPimcoreResourcesSection($rootNode);
+        $this->addOpenDxpResourcesSection($rootNode);
 
         return $treeBuilder;
     }
@@ -140,7 +140,7 @@ final class Configuration implements ConfigurationInterface
                         ->end()
                     ->end()
                 ->end()
-                ->arrayNode('pimcore')
+                ->arrayNode('opendxp')
                     ->addDefaultsIfNotSet()
                     ->children()
                         ->arrayNode('tax_item')
@@ -150,12 +150,12 @@ final class Configuration implements ConfigurationInterface
                                 ->arrayNode('classes')
                                     ->addDefaultsIfNotSet()
                                     ->children()
-                                        ->scalarNode('model')->defaultValue('Pimcore\Model\DataObject\Fieldcollection\Data\CoreShopTaxItem')->cannotBeEmpty()->end()
+                                        ->scalarNode('model')->defaultValue('OpenDxp\Model\DataObject\Fieldcollection\Data\CoreShopTaxItem')->cannotBeEmpty()->end()
                                         ->scalarNode('interface')->defaultValue(TaxItemInterface::class)->cannotBeEmpty()->end()
-                                        ->scalarNode('factory')->defaultValue(PimcoreFactory::class)->cannotBeEmpty()->end()
+                                        ->scalarNode('factory')->defaultValue(OpenDxpFactory::class)->cannotBeEmpty()->end()
                                         ->scalarNode('repository')->cannotBeEmpty()->end()
-                                        ->scalarNode('install_file')->defaultValue('@CoreShopTaxationBundle/Resources/install/pimcore/fieldcollections/CoreShopTaxItem.json')->end()
-                                        ->scalarNode('type')->defaultValue(CoreShopResourceBundle::PIMCORE_MODEL_TYPE_FIELD_COLLECTION)->cannotBeOverwritten(true)->end()
+                                        ->scalarNode('install_file')->defaultValue('@CoreShopTaxationBundle/Resources/install/opendxp/fieldcollections/CoreShopTaxItem.json')->end()
+                                        ->scalarNode('type')->defaultValue(CoreShopResourceBundle::OPENDXP_MODEL_TYPE_FIELD_COLLECTION)->cannotBeOverwritten(true)->end()
                                     ->end()
                                 ->end()
                             ->end()
@@ -166,10 +166,10 @@ final class Configuration implements ConfigurationInterface
         ;
     }
 
-    private function addPimcoreResourcesSection(ArrayNodeDefinition $node): void
+    private function addOpenDxpResourcesSection(ArrayNodeDefinition $node): void
     {
         $node->children()
-            ->arrayNode('pimcore_admin')
+            ->arrayNode('opendxp_admin')
                 ->addDefaultsIfNotSet()
                 ->children()
                     ->arrayNode('js')

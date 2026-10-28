@@ -124,7 +124,7 @@ services:
         tags:
             - { name: fob.context_service }
 
-    coreshop.behat.context.domain.pimcore_class: '@CoreShop\Bundle\TestBundle\Context\Domain\ClassContext'
+    coreshop.behat.context.domain.opendxp_class: '@CoreShop\Bundle\TestBundle\Context\Domain\ClassContext'
 
     coreshop.behat.context.domain.order:
         class: CoreShop\Behat\Context\Domain\OrderContext
@@ -144,8 +144,8 @@ services:
         class: CoreShop\Behat\Context\Domain\SEOContext
         arguments:
             - '@CoreShop\Component\SEO\SEOPresentationInterface'
-            - '@Pimcore\Twig\Extension\Templating\HeadTitle'
-            - '@Pimcore\Twig\Extension\Templating\HeadMeta'
+            - '@OpenDxp\Twig\Extension\Templating\HeadTitle'
+            - '@OpenDxp\Twig\Extension\Templating\HeadMeta'
         tags:
             - { name: fob.context_service }
 
@@ -156,7 +156,7 @@ services:
         tags:
             - { name: fob.context_service }
 
-    coreshop.behat.context.domain.pimcore: '@CoreShop\Bundle\TestBundle\Context\Domain\PimcoreContext'
+    coreshop.behat.context.domain.opendxp: '@CoreShop\Bundle\TestBundle\Context\Domain\OpenDxpContext'
 
     coreshop.behat.context.domain.filter:
         class: CoreShop\Behat\Context\Domain\FilterContext

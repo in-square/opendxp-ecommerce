@@ -37,8 +37,8 @@ splits:
     - { prefix: src/CoreShop/Bundle/PayumBundle, target: 'https://${GH_TOKEN}@github.com/coreshop/PayumBundle.git' }
     - { prefix: src/CoreShop/Component/PayumPayment, target: 'https://${GH_TOKEN}@github.com/coreshop/PayumPayment.git' }
     - { prefix: src/CoreShop/Bundle/PayumPaymentBundle, target: 'https://${GH_TOKEN}@github.com/coreshop/PayumPaymentBundle.git' }
-    - { prefix: src/CoreShop/Component/Pimcore, target: 'https://${GH_TOKEN}@github.com/coreshop/Pimcore.git' }
-    - { prefix: src/CoreShop/Bundle/PimcoreBundle, target: 'https://${GH_TOKEN}@github.com/coreshop/PimcoreBundle.git' }
+    - { prefix: src/CoreShop/Component/OpenDxp, target: 'https://${GH_TOKEN}@github.com/coreshop/OpenDxp.git' }
+    - { prefix: src/CoreShop/Bundle/OpenDxpBundle, target: 'https://${GH_TOKEN}@github.com/coreshop/OpenDxpBundle.git' }
     - { prefix: src/CoreShop/Component/Product, target: 'https://${GH_TOKEN}@github.com/coreshop/Product.git' }
     - { prefix: src/CoreShop/Bundle/ProductBundle, target: 'https://${GH_TOKEN}@github.com/coreshop/ProductBundle.git' }
     - { prefix: src/CoreShop/Component/ProductQuantityPriceRules, target: 'https://${GH_TOKEN}@github.com/coreshop/ProductQuantityPriceRules.git' }

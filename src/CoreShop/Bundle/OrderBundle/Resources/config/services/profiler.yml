@@ -6,6 +6,6 @@ services:
         arguments:
             - '@CoreShop\Component\Order\Context\CartContextInterface'
             - '@CoreShop\Component\Locale\Context\LocaleContextInterface'
-            - '@Pimcore\Http\Request\Resolver\PimcoreContextResolver'
+            - '@OpenDxp\Http\Request\Resolver\OpenDxpContextResolver'
         tags:
             - { name: data_collector, template: '@CoreShopOrder/Collector/cart.html.twig', id: coreshop.cart_collector }

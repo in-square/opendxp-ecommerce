@@ -29,7 +29,7 @@ services:
 
     CoreShop\Bundle\CoreBundle\EventListener\Order\OrderMailNoteEventListener:
         arguments:
-            - '@CoreShop\Component\Pimcore\DataObject\NoteServiceInterface'
+            - '@CoreShop\Component\OpenDxp\DataObject\NoteServiceInterface'
         tags:
             - { name: kernel.event_listener, event: coreshop.mail.post_send, method: onOrderMailSent }
 
@@ -37,23 +37,23 @@ services:
         arguments:
             - '@CoreShop\Component\Core\Configuration\ConfigurationServiceInterface'
         tags:
-            - { name: kernel.event_listener, event: pimcore.dataobject.postUpdate, method: storeConfigurationThatProductChanged }
+            - { name: kernel.event_listener, event: opendxp.dataobject.postUpdate, method: storeConfigurationThatProductChanged }
 
     CoreShop\Bundle\CoreBundle\EventListener\ProductAvailabilityEventListener:
         arguments:
             - '@coreshop.repository.order_item'
             - '@doctrine.dbal.default_connection'
         tags:
-            - { name: kernel.event_listener, event: pimcore.dataobject.preUpdate, method: preUpdateListener }
-            - { name: kernel.event_listener, event: pimcore.dataobject.postUpdate, method: postUpdateListener }
-            - { name: kernel.event_listener, event: pimcore.dataobject.postDelete, method: postDeleteListener }
+            - { name: kernel.event_listener, event: opendxp.dataobject.preUpdate, method: preUpdateListener }
+            - { name: kernel.event_listener, event: opendxp.dataobject.postUpdate, method: postUpdateListener }
+            - { name: kernel.event_listener, event: opendxp.dataobject.postDelete, method: postDeleteListener }
 
     CoreShop\Bundle\CoreBundle\EventListener\RequestCartRecalculation:
         arguments:
            - '@CoreShop\Component\Order\Manager\CartManagerInterface'
            - '@CoreShop\Component\Core\Context\ShopperContextInterface'
            - '@CoreShop\Component\Core\Configuration\ConfigurationServiceInterface'
-           - '@Pimcore\Http\RequestHelper'
+           - '@OpenDxp\Http\RequestHelper'
         tags:
             - { name: kernel.event_listener, event: kernel.request, method: checkPriceRuleState, priority: 0 }
 
@@ -61,7 +61,7 @@ services:
         arguments:
            - '@CoreShop\Component\Order\Manager\CartManagerInterface'
            - '@CoreShop\Component\Core\Context\ShopperContextInterface'
-           - '@Pimcore\Http\RequestHelper'
+           - '@OpenDxp\Http\RequestHelper'
         tags:
             - { name: kernel.event_listener, event: kernel.request, method: checkCartAvailability, priority: 7 }
 
@@ -69,16 +69,16 @@ services:
         arguments:
             - '@coreshop.repository.order'
         tags:
-            - { name: kernel.event_listener, event: pimcore.dataobject.preDelete, method: checkCustomerOrdersBeforeDeletion }
-            - { name: kernel.event_listener, event: pimcore.dataobject.deleteInfo, method: checkCustomerDeletionAllowed }
+            - { name: kernel.event_listener, event: opendxp.dataobject.preDelete, method: checkCustomerOrdersBeforeDeletion }
+            - { name: kernel.event_listener, event: opendxp.dataobject.deleteInfo, method: checkCustomerDeletionAllowed }
 
     CoreShop\Bundle\CoreBundle\EventListener\CustomerSecurityValidationListener:
         arguments:
-            - '@Pimcore\Http\RequestHelper'
+            - '@OpenDxp\Http\RequestHelper'
             - '@coreshop.repository.customer'
             - '%coreshop.model.customer.class%'
         tags:
-            - { name: kernel.event_listener, event: pimcore.dataobject.preUpdate, method: checkCustomerSecurityDataBeforeUpdate }
+            - { name: kernel.event_listener, event: opendxp.dataobject.preUpdate, method: checkCustomerSecurityDataBeforeUpdate }
 
     CoreShop\Bundle\CoreBundle\EventListener\QuantityRangeUnitValidationListener:
         arguments:

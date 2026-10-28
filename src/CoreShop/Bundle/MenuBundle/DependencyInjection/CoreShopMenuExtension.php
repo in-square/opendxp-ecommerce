@@ -21,13 +21,13 @@ namespace CoreShop\Bundle\MenuBundle\DependencyInjection;
 use CoreShop\Bundle\MenuBundle\Attribute\AsMenuBuilder;
 use CoreShop\Bundle\MenuBundle\Builder\MenuBuilderInterface;
 use CoreShop\Bundle\MenuBundle\DependencyInjection\CompilerPass\MenuBuilderPass;
-use CoreShop\Bundle\PimcoreBundle\DependencyInjection\Extension\AbstractPimcoreExtension;
+use CoreShop\Bundle\OpenDxpBundle\DependencyInjection\Extension\AbstractOpenDxpExtension;
 use CoreShop\Component\Registry\Autoconfiguration;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
 
-final class CoreShopMenuExtension extends AbstractPimcoreExtension
+final class CoreShopMenuExtension extends AbstractOpenDxpExtension
 {
     public function load(array $configs, ContainerBuilder $container): void
     {

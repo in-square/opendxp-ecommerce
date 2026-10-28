@@ -57,7 +57,7 @@ services:
 
     CoreShop\Bundle\OrderBundle\EventListener\Grid\CartFilterListener:
         tags:
-            - { name: kernel.event_listener, event: pimcore.admin.object.list.beforeListLoad, method: checkObjectList }
+            - { name: kernel.event_listener, event: opendxp.admin.object.list.beforeListLoad, method: checkObjectList }
 
 
     CoreShop\Bundle\OrderBundle\Form\Type\CartListChoiceType:

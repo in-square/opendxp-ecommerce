@@ -24,8 +24,8 @@ use CoreShop\Component\Core\Configuration\ConfigurationService;
 use CoreShop\Component\Core\Model\CategoryInterface;
 use CoreShop\Component\Core\Model\StoreInterface;
 use CoreShop\Component\Resource\Factory\FactoryInterface;
-use Pimcore\File;
-use Pimcore\Model\DataObject\Folder;
+use OpenDxp\File;
+use OpenDxp\Model\DataObject\Folder;
 
 final class CategoryContext implements Context
 {

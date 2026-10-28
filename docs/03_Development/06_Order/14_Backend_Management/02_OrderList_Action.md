@@ -26,8 +26,8 @@ namespace App\CoreShop\OrderList\Action;
 
 use CoreShop\Component\Order\Repository\OrderShipmentRepositoryInterface;
 use CoreShop\Bundle\WorkflowBundle\Manager\StateMachineManagerInterface;
-use CoreShop\Component\Pimcore\DataObject\Grid\GridActionInterface;
-use Pimcore\Model\DataObject\CoreShopOrder;
+use CoreShop\Component\OpenDxp\DataObject\Grid\GridActionInterface;
+use OpenDxp\Model\DataObject\CoreShopOrder;
 
 class DemoAction implements GridActionInterface
 {

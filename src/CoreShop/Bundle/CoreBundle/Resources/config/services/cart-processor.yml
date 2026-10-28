@@ -92,7 +92,7 @@ services:
             - '@CoreShop\Component\Order\Cart\CartContextResolverInterface'
             - '@coreshop.factory.adjustment'
             - '@CoreShop\Component\Payment\Checker\PaymentProviderRuleCheckerInterface'
-            - '@Pimcore\Translation\Translator'
+            - '@OpenDxp\Translation\Translator'
         tags:
             - { name: coreshop.cart_processor, priority: 300 }
 

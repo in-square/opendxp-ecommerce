@@ -9,7 +9,7 @@
             <li class="breadcrumb-item"><a href="{{ path('coreshop_index') }}">{{ 'coreshop.ui.home'|trans }}</a></li>
             {% if product.categories|length > 0 %}
                 {% for cat in product.categories|first.hierarchy %}
-                    <li class="breadcrumb-item"><a href="{{ pimcore_object_path(cat) }}">{{ cat.name }}</a></li>
+                    <li class="breadcrumb-item"><a href="{{ opendxp_object_path(cat) }}">{{ cat.name }}</a></li>
                 {% endfor %}
             {% endif %}
             <li class="breadcrumb-item active">{{ product.name }}</li>
@@ -19,15 +19,15 @@
     <div class="row product-info">
 
         <div class="col-sm-5 images-block">
-            {% if product.image is pimcore_asset_image %}
-                {{ product.image|pimcore_image_thumbnail_html("coreshop_productDetail", {'imgAttributes': {'class': 'img-fluid img-thumbnail'}}) }}
+            {% if product.image is opendxp_asset_image %}
+                {{ product.image|opendxp_image_thumbnail_html("coreshop_productDetail", {'imgAttributes': {'class': 'img-fluid img-thumbnail'}}) }}
             {% endif %}
 
             {% if product.images|length > 0 %}
                 <div class="row">
                     {% for image in product.images %}
                         <div class="col-12 col-sm-6">
-                            {{ image|pimcore_image_thumbnail_html("coreshop_productDetailThumbnail", {'imgAttributes': {'class': 'img-fluid img-thumbnail'}}) }}
+                            {{ image|opendxp_image_thumbnail_html("coreshop_productDetailThumbnail", {'imgAttributes': {'class': 'img-fluid img-thumbnail'}}) }}
                         </div>
                     {% endfor %}
                 </div>

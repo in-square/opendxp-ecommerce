@@ -1,6 +1,6 @@
 @domain @filter
 Feature: To get more performance out of the index, we can also load the raw result
-  without needing pimcore's data objects
+  without needing opendxp's data objects
 
   Background:
     Given the site operates on a store in "Austria"

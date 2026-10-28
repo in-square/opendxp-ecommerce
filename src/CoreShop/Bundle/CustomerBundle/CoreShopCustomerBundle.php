@@ -22,8 +22,8 @@ use CoreShop\Bundle\CustomerBundle\DependencyInjection\Compiler\CompositeCustome
 use CoreShop\Bundle\CustomerBundle\DependencyInjection\Compiler\CompositeRequestResolverPass;
 use CoreShop\Bundle\ResourceBundle\AbstractResourceBundle;
 use CoreShop\Bundle\ResourceBundle\CoreShopResourceBundle;
-use Pimcore\Bundle\NewsletterBundle\PimcoreNewsletterBundle;
-use Pimcore\HttpKernel\BundleCollection\BundleCollection;
+use OpenDxp\Bundle\NewsletterBundle\OpenDxpNewsletterBundle;
+use OpenDxp\HttpKernel\BundleCollection\BundleCollection;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
 final class CoreShopCustomerBundle extends AbstractResourceBundle
@@ -39,7 +39,7 @@ final class CoreShopCustomerBundle extends AbstractResourceBundle
     {
         parent::registerDependentBundles($collection);
 
-        $collection->addBundle(new PimcoreNewsletterBundle(), 10);
+        $collection->addBundle(new OpenDxpNewsletterBundle(), 10);
     }
 
     public function build(ContainerBuilder $container): void

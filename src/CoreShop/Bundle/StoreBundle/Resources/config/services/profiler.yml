@@ -6,7 +6,7 @@ services:
         arguments:
             - '@coreshop.repository.store'
             - '@CoreShop\Component\Store\Context\StoreContextInterface'
-            - '@Pimcore\Http\Request\Resolver\PimcoreContextResolver'
+            - '@OpenDxp\Http\Request\Resolver\OpenDxpContextResolver'
             - false
         tags:
             - { name: data_collector, template: '@CoreShopStore/Collector/store.html.twig', id: coreshop.store_collector }

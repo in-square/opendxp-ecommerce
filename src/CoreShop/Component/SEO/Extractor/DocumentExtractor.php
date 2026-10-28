@@ -19,7 +19,7 @@ declare(strict_types=1);
 namespace CoreShop\Component\SEO\Extractor;
 
 use CoreShop\Component\SEO\Model\SEOMetadataInterface;
-use Pimcore\Model\Document\Page;
+use OpenDxp\Model\Document\Page;
 use Webmozart\Assert\Assert;
 
 final class DocumentExtractor implements ExtractorInterface

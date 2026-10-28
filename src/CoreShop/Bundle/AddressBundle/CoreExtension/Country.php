@@ -36,12 +36,12 @@ class Country extends Select
 
     protected function getRepository(): CountryRepositoryInterface
     {
-        return \Pimcore::getContainer()->get('coreshop.repository.country');
+        return \OpenDxp::getContainer()->get('coreshop.repository.country');
     }
 
     protected function getModel(): string
     {
-        return \Pimcore::getContainer()->getParameter('coreshop.model.country.class');
+        return \OpenDxp::getContainer()->getParameter('coreshop.model.country.class');
     }
 
     protected function getInterface(): string

@@ -23,7 +23,7 @@ use CoreShop\Bundle\WorkflowBundle\History\HistoryLoggerInterface;
 use CoreShop\Component\Order\OrderTransitions;
 use CoreShop\Component\Order\Repository\OrderRepositoryInterface;
 use CoreShop\Component\StorageList\Expiration\StorageListExpirationInterface;
-use Pimcore\Model\DataObject\Concrete;
+use OpenDxp\Model\DataObject\Concrete;
 
 final class OrderExpiration implements StorageListExpirationInterface
 {

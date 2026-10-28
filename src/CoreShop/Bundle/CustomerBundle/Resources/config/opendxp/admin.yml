@@ -1,0 +1,8 @@
+core_shop_customer:
+    opendxp_admin:
+        js:
+            resource: '/bundles/coreshopcustomer/opendxp/js/resource.js'
+            customer_list: '/bundles/coreshopcustomer/opendxp/js/customer/list.js'
+            customer_group_list: '/bundles/coreshopcustomer/opendxp/js/customer_group/list.js'
+        css:
+            customer: '/bundles/coreshopcustomer/opendxp/css/customer.css'

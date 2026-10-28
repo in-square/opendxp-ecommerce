@@ -20,7 +20,7 @@ namespace CoreShop\Bundle\OptimisticEntityLockBundle\Manager;
 
 use CoreShop\Bundle\OptimisticEntityLockBundle\Exception\OptimisticLockException;
 use CoreShop\Bundle\OptimisticEntityLockBundle\Model\OptimisticLockedInterface;
-use Pimcore\Model\DataObject\Concrete;
+use OpenDxp\Model\DataObject\Concrete;
 
 final class EntityLockManager implements EntityLockManagerInterface
 {

@@ -7,13 +7,12 @@
             <generator strategy="AUTO"/>
         </id>
 
-        <field name="product" column="product" type="pimcoreObject" unique="true"/>
+        <field name="product" column="product" type="opendxpObject" unique="true"/>
 
         <one-to-one field="defaultUnitDefinition" target-entity="CoreShop\Component\Product\Model\ProductUnitDefinitionInterface" fetch="EAGER">
             <join-column name="default_unit_definition" referenced-column-name="id" on-delete="SET NULL"/>
             <cascade>
                 <cascade-persist/>
-                <cascade-merge/>
             </cascade>
         </one-to-one>
 

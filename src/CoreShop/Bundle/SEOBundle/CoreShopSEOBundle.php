@@ -20,10 +20,10 @@ namespace CoreShop\Bundle\SEOBundle;
 
 use Composer\InstalledVersions;
 use CoreShop\Bundle\SEOBundle\DependencyInjection\Compiler\ExtractorRegistryServicePass;
-use Pimcore\Extension\Bundle\AbstractPimcoreBundle;
+use OpenDxp\Extension\Bundle\AbstractOpenDxpBundle;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
-final class CoreShopSEOBundle extends AbstractPimcoreBundle
+final class CoreShopSEOBundle extends AbstractOpenDxpBundle
 {
     public function build(ContainerBuilder $container): void
     {
@@ -56,6 +56,10 @@ final class CoreShopSEOBundle extends AbstractPimcoreBundle
         $bundleName = 'coreshop/seo-bundle';
 
         if (class_exists(InstalledVersions::class)) {
+            if (InstalledVersions::isInstalled('in-square/opendxp-ecommerce')) {
+                return InstalledVersions::getPrettyVersion('in-square/opendxp-ecommerce');
+            }
+
             if (InstalledVersions::isInstalled('coreshop/core-shop')) {
                 return InstalledVersions::getPrettyVersion('coreshop/core-shop');
             }

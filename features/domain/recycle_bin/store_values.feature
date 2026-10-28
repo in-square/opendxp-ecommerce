@@ -1,5 +1,5 @@
 @domain @recycle_bin
-Feature: In order to support Pimcore Recycle Bin, we have to serialize Store Values and merge them back
+Feature: In order to support OpenDxp Recycle Bin, we have to serialize Store Values and merge them back
 
   Background:
     Given the site operates on a store in "Austria"

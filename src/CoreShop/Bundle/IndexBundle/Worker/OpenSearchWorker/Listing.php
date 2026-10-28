@@ -23,7 +23,7 @@ use CoreShop\Bundle\IndexBundle\Worker\OpenSearchWorker;
 use CoreShop\Component\Index\Condition\ConditionInterface;
 use CoreShop\Component\Index\Listing\ListingInterface;
 use CoreShop\Component\Index\Worker\WorkerInterface;
-use Pimcore\Model\DataObject\Concrete;
+use OpenDxp\Model\DataObject\Concrete;
 
 class Listing extends AbstractListing
 {

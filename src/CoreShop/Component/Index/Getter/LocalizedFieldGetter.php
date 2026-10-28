@@ -20,7 +20,7 @@ namespace CoreShop\Component\Index\Getter;
 
 use CoreShop\Component\Index\Model\IndexableInterface;
 use CoreShop\Component\Index\Model\IndexColumnInterface;
-use CoreShop\Component\Pimcore\DataObject\LocaleFallbackHelper;
+use CoreShop\Component\OpenDxp\DataObject\LocaleFallbackHelper;
 use CoreShop\Component\Resource\Translation\Provider\TranslationLocaleProviderInterface;
 
 class LocalizedFieldGetter implements GetterInterface

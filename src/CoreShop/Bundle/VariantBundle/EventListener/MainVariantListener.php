@@ -19,10 +19,10 @@ declare(strict_types=1);
 namespace CoreShop\Bundle\VariantBundle\EventListener;
 
 use CoreShop\Component\Variant\Model\ProductVariantAwareInterface;
-use Pimcore\Event\DataObjectEvents;
-use Pimcore\Event\Model\DataObjectEvent;
-use Pimcore\Model\DataObject\AbstractObject;
-use Pimcore\Model\DataObject\Concrete;
+use OpenDxp\Event\DataObjectEvents;
+use OpenDxp\Event\Model\DataObjectEvent;
+use OpenDxp\Model\DataObject\AbstractObject;
+use OpenDxp\Model\DataObject\Concrete;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 final class MainVariantListener implements EventSubscriberInterface

@@ -21,8 +21,8 @@ namespace CoreShop\Component\Core\Customer\Address;
 use CoreShop\Component\Core\Customer\Allocator\CustomerAddressAllocatorInterface;
 use CoreShop\Component\Customer\Model\CompanyInterface;
 use CoreShop\Component\Customer\Model\CustomerInterface;
-use Pimcore\Model\DataObject\ClassDefinition\Data;
-use Pimcore\Model\DataObject\ClassDefinition\DynamicOptionsProvider\SelectOptionsProviderInterface;
+use OpenDxp\Model\DataObject\ClassDefinition\Data;
+use OpenDxp\Model\DataObject\ClassDefinition\DynamicOptionsProvider\SelectOptionsProviderInterface;
 
 final class AddressAccessOptionsProvider implements SelectOptionsProviderInterface
 {

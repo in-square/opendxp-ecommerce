@@ -29,7 +29,7 @@ public function registerBundlesToCollection(BundleCollection $collection)
 
 ## Usage Instructions
 
-The Money Bundle introduces a core extension in Pimcore, allowing you to store currency values as integers. This
+The Money Bundle introduces a core extension in OpenDxp, allowing you to store currency values as integers. This
 approach ensures precision and consistency in financial data handling.
 
 ### Twig Extension for Money Formatting

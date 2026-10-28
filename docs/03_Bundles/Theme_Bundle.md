@@ -1,6 +1,6 @@
 # Theme Bundle
 
-The CoreShop Theme Bundle offers a flexible and extensible approach to managing multiple themes within a Pimcore
+The CoreShop Theme Bundle offers a flexible and extensible approach to managing multiple themes within a OpenDxp
 installation.
 
 ## Installation Process
@@ -35,16 +35,16 @@ By default, no Theme Resolver is enabled. You can enable one or more resolvers i
 ```yaml
 core_shop_theme:
     default_resolvers:
-      pimcore_site: true
-      pimcore_document_property: true
+      opendxp_site: true
+      opendxp_document_property: true
 ```
 
 ### Theme Resolvers
 
-1. **Pimcore Site**: Resolves the theme based on the key of the root document of a Pimcore site. For example, if the
+1. **OpenDxp Site**: Resolves the theme based on the key of the root document of a OpenDxp site. For example, if the
    site's root document is named "demo," it looks for a theme with the same name.
 
-2. **Pimcore Document Property**: Resolves the theme based on a document property of the site, specifically the property
+2. **OpenDxp Document Property**: Resolves the theme based on a document property of the site, specifically the property
    named "theme."
 
 ### Implementing Custom Resolvers

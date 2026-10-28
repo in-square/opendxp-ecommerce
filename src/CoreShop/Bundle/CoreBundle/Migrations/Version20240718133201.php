@@ -19,15 +19,10 @@ declare(strict_types=1);
 namespace CoreShop\Bundle\CoreBundle\Migrations;
 
 use Doctrine\DBAL\Schema\Schema;
-use Doctrine\Migrations\AbstractMigration;
-use Pimcore\Bundle\WebToPrintBundle\Installer;
-use Symfony\Component\DependencyInjection\ContainerAwareInterface;
-use Symfony\Component\DependencyInjection\ContainerAwareTrait;
+use OpenDxp\Bundle\WebToPrintBundle\Installer;
 
-final class Version20240718133201 extends AbstractMigration implements ContainerAwareInterface
+final class Version20240718133201 extends AbstractContainerAwareMigration
 {
-    use ContainerAwareTrait;
-
     public function getDescription(): string
     {
         return '';

@@ -2,7 +2,7 @@
 Feature: Having the ability to inherit store values
 
   Background:
-    Given I enable pimcore inheritance
+    Given I enable opendxp inheritance
     And I enable inheritance for class "CoreShopProduct"
     And I enable variants for class "CoreShopProduct"
     And the site operates on a store in "Austria"

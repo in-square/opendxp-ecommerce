@@ -1,11 +1,9 @@
 <?php
 
 return [
-    Pimcore\Bundle\SimpleBackendSearchBundle\PimcoreSimpleBackendSearchBundle::class => ['all' => true],
-    Pimcore\Bundle\SeoBundle\PimcoreSeoBundle::class => ['all' => true],
-    Pimcore\Bundle\TinymceBundle\PimcoreTinymceBundle::class => ['all' => true],
-    Pimcore\Bundle\ApplicationLoggerBundle\PimcoreApplicationLoggerBundle::class => ['all' => true],
-    Pimcore\Bundle\StaticRoutesBundle\PimcoreStaticRoutesBundle::class => ['all' => true],
-    Pimcore\Bundle\NewsletterBundle\PimcoreNewsletterBundle::class => ['all' => true],
-    Pimcore\Bundle\OpenSearchClientBundle\PimcoreOpenSearchClientBundle::class => ['all' => true],
+    OpenDxp\Bundle\SimpleBackendSearchBundle\OpenDxpSimpleBackendSearchBundle::class => ['all' => true],
+    OpenDxp\Bundle\SeoBundle\OpenDxpSeoBundle::class => ['all' => true],
+    OpenDxp\Bundle\TinymceBundle\OpenDxpTinymceBundle::class => ['all' => true],
+    OpenDxp\Bundle\ApplicationLoggerBundle\OpenDxpApplicationLoggerBundle::class => ['all' => true],
+    OpenDxp\Bundle\StaticRoutesBundle\OpenDxpStaticRoutesBundle::class => ['all' => true],
 ];

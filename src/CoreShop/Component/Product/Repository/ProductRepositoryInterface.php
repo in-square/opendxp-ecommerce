@@ -18,8 +18,8 @@ declare(strict_types=1);
 
 namespace CoreShop\Component\Product\Repository;
 
-use CoreShop\Component\Resource\Repository\PimcoreRepositoryInterface;
+use CoreShop\Component\Resource\Repository\OpenDxpRepositoryInterface;
 
-interface ProductRepositoryInterface extends PimcoreRepositoryInterface
+interface ProductRepositoryInterface extends OpenDxpRepositoryInterface
 {
 }

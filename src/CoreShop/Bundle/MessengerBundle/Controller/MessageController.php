@@ -25,7 +25,7 @@ use Symfony\Component\HttpFoundation\Request;
 /**
  * @psalm-suppress InternalClass
  */
-class MessageController extends \Pimcore\Bundle\AdminBundle\Controller\AdminAbstractController
+class MessageController extends \OpenDxp\Bundle\AdminBundle\Controller\AdminAbstractController
 {
     public function deleteStoredMessageAction(Request $request, FailedMessageRejecter $failedMessageRejecter)
     {

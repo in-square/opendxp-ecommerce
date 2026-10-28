@@ -13,18 +13,21 @@
             <directory name="src/CoreShop/Component/Resource/DataHub" />
             <directory name="src/CoreShop/Bundle/*/DataHub" />
             <directory name="src/CoreShop/Bundle/*/CoreExtension" />
-            <directory name="src/CoreShop/Bundle/*/Pimcore/GridColumnConfig" />
+            <directory name="src/CoreShop/Bundle/*/OpenDxp/GridColumnConfig" />
             <directory name="src/CoreShop/Bundle/*/Migrations" />
             <directory name="src/CoreShop/Bundle/*/Fixtures" />
             <directory name="src/CoreShop/Behat" />
 
             <directory name="src/CoreShop/Bundle/FrontendBundle" />
             <directory name="src/CoreShop/Bundle/IndexBundle/ProcessManager" />
+            <file name="src/CoreShop/Bundle/IndexBundle/Worker/OpenSearchWorker.php" />
+            <directory name="src/CoreShop/Bundle/IndexBundle/Worker/OpenSearchWorker" />
             <directory name="vendor" />
         </ignoreFiles>
     </projectFiles>
 
     <issueHandlers>
+        <MissingClassConstType errorLevel="info" />
         <RiskyCast>
             <errorLevel type="info">
                 <directory name="src/CoreShop/*" />
@@ -59,12 +62,16 @@
                 <referencedClass name="Symfony\Component\Security\Core\Role\Role" />
                 <referencedClass name="Symfony\Component\Translation\TranslatorInterface" />
                 <referencedClass name="Symfony\Bundle\WebServerBundle\WebServerBundle" />
-                <referencedClass name="Pimcore\Event\BundleManagerEvents" />
-                <referencedClass name="Pimcore\Event\Model\DataObjectDeleteInfoEvent" />
-                <referencedClass name="Pimcore\Event\AdminEvents" />
-                <referencedClass name="Pimcore\Bundle\AdminBundle\Security\User\TokenStorageUserResolver" />
-                <referencedClass name="Pimcore\Bundle\AdminBundle\Controller\AdminController" />
-                <referencedClass name="Pimcore\Bundle\AdminBundle\Security\User\User" />
+                <referencedClass name="OpenDxp\Event\BundleManagerEvents" />
+                <referencedClass name="OpenDxp\Event\Model\DataObjectDeleteInfoEvent" />
+                <referencedClass name="OpenDxp\Event\AdminEvents" />
+                <referencedClass name="OpenDxp\Bundle\AdminBundle\Security\User\TokenStorageUserResolver" />
+                <referencedClass name="OpenDxp\Bundle\AdminBundle\Controller\AdminController" />
+                <referencedClass name="OpenDxp\Bundle\AdminBundle\Security\User\User" />
+            </errorLevel>
+            <errorLevel type="info">
+                <file name="src/CoreShop/Bundle/OrderBundle/Doctrine/ORM/CartPriceRuleVoucherRepository.php" />
+                <file name="src/CoreShop/Component/Order/Repository/CartPriceRuleVoucherRepositoryInterface.php" />
             </errorLevel>
         </DeprecatedClass>
         <DeprecatedInterface>
@@ -72,10 +79,10 @@
                 <referencedClass name="Doctrine\Common\Persistence\ObjectManager" />
                 <referencedClass name="Doctrine\Common\Persistence\ObjectRepository" />
                 <referencedClass name="Symfony\Component\Security\Core\User\AdvancedUserInterface" />
-                <referencedClass name="Pimcore\Bundle\AdminBundle\Controller\AdminControllerInterface" />
+                <referencedClass name="OpenDxp\Bundle\AdminBundle\Controller\AdminControllerInterface" />
                 <referencedClass name="Symfony\Component\DependencyInjection\ContainerAwareInterface" />
                 <referencedClass name="Payum\Core\Security\GenericTokenFactoryInterface" />
-                <referencedClass name="Pimcore\Model\DataObject\ClassDefinition\DynamicOptionsProvider\MultiSelectOptionsProviderInterface" />
+                <referencedClass name="OpenDxp\Model\DataObject\ClassDefinition\DynamicOptionsProvider\MultiSelectOptionsProviderInterface" />
                 <referencedClass name="CoreShop\Bundle\OrderBundle\Renderer\Pdf\PdfRendererInterface" />
             </errorLevel>
         </DeprecatedInterface>
@@ -90,8 +97,8 @@
                 <referencedMethod name="Symfony\Component\Intl\Intl::getRegionBundle" />
                 <referencedMethod name="Symfony\Component\HttpKernel\Event\GetResponseForExceptionEvent::getException" />
                 <referencedMethod name="Symfony\Bundle\FrameworkBundle\Controller\AbstractController::get" />
-                <referencedMethod name="Pimcore\Bundle\AdminBundle\Controller\AdminController::decodeJson" />
-                <referencedMethod name="Pimcore\Bundle\AdminBundle\Controller\AdminController::getAdminUser" />
+                <referencedMethod name="OpenDxp\Bundle\AdminBundle\Controller\AdminController::decodeJson" />
+                <referencedMethod name="OpenDxp\Bundle\AdminBundle\Controller\AdminController::getAdminUser" />
                 <referencedMethod name="Doctrine\DBAL\Query\QueryBuilder::getQueryPart" />
             </errorLevel>
         </DeprecatedMethod>
@@ -112,13 +119,13 @@
             <errorLevel type="info">
                 <referencedMethod name="Symfony\Bundle\SecurityBundle\Security\_FirewallMap::getFirewallConfig" />
                 <referencedMethod name="Symfony\Component\Workflow\Registry::get" />
-                <referencedMethod name="Pimcore\File::getValidFilename" />
+                <referencedMethod name="OpenDxp\File::getValidFilename" />
             </errorLevel>
         </InternalMethod>
 
         <InternalClass>
             <errorLevel type="info">
-                <referencedClass name="Pimcore\File" />
+                <referencedClass name="OpenDxp\File" />
             </errorLevel>
         </InternalClass>
 
@@ -202,34 +209,21 @@
                 <referencedConstant name="CoreShop\Component\Core\Model\Payment::STATE_CANCELLED" />
                 <referencedConstant name="CoreShop\Component\Core\Model\Payment::STATE_REFUNDED" />
                 <referencedConstant name="CoreShop\Component\Core\Model\Payment::STATE_UNKNOWN" />
-                <referencedConstant name="CoreShop\Bundle\CoreBundle\Pimcore\Repository\WishlistRepository::ORDER_ASCENDING" />
-                <referencedConstant name="CoreShop\Bundle\StorageListBundle\Pimcore\Repository\PimcoreStorageListRepository::ORDER_ASCENDING" />
-                <referencedConstant name="CoreShop\Bundle\WishlistBundle\Pimcore\Repository\WishlistRepository::ORDER_ASCENDING" />
-                <referencedConstant name="CoreShop\Bundle\OrderBundle\Pimcore\Repository\OrderRepository::ORDER_ASCENDING" />
+                <referencedConstant name="CoreShop\Bundle\CoreBundle\OpenDxp\Repository\WishlistRepository::ORDER_ASCENDING" />
+                <referencedConstant name="CoreShop\Bundle\StorageListBundle\OpenDxp\Repository\OpenDxpStorageListRepository::ORDER_ASCENDING" />
+                <referencedConstant name="CoreShop\Bundle\WishlistBundle\OpenDxp\Repository\WishlistRepository::ORDER_ASCENDING" />
+                <referencedConstant name="CoreShop\Bundle\OrderBundle\OpenDxp\Repository\OrderRepository::ORDER_ASCENDING" />
                 <referencedConstant name="CoreShop\Bundle\ProductQuantityPriceRulesBundle\Doctrine\ORM\ProductQuantityPriceRuleRepository::ORDER_ASCENDING" />
-                <referencedConstant name="CoreShop\Bundle\CoreBundle\Pimcore\Repository\WishlistRepository::ORDER_DESCENDING" />
-                <referencedConstant name="CoreShop\Bundle\StorageListBundle\Pimcore\Repository\PimcoreStorageListRepository::ORDER_DESCENDING" />
-                <referencedConstant name="CoreShop\Bundle\WishlistBundle\Pimcore\Repository\WishlistRepository::ORDER_DESCENDING" />
-                <referencedConstant name="CoreShop\Bundle\OrderBundle\Pimcore\Repository\OrderRepository::ORDER_DESCENDING" />
+                <referencedConstant name="CoreShop\Bundle\CoreBundle\OpenDxp\Repository\WishlistRepository::ORDER_DESCENDING" />
+                <referencedConstant name="CoreShop\Bundle\StorageListBundle\OpenDxp\Repository\OpenDxpStorageListRepository::ORDER_DESCENDING" />
+                <referencedConstant name="CoreShop\Bundle\WishlistBundle\OpenDxp\Repository\WishlistRepository::ORDER_DESCENDING" />
+                <referencedConstant name="CoreShop\Bundle\OrderBundle\OpenDxp\Repository\OrderRepository::ORDER_DESCENDING" />
                 <referencedConstant name="CoreShop\Bundle\ProductQuantityPriceRulesBundle\Doctrine\ORM\ProductQuantityPriceRuleRepository::ORDER_DESCENDING" />
             </errorLevel>
         </AmbiguousConstantInheritance>
 
         <!-- level 5 issues - should be avoided at mosts costs... -->
 
-        <TooManyArguments>
-            <errorLevel type="info">
-                <referencedFunction name="Symfony\Contracts\EventDispatcher\EventDispatcherInterface::dispatch" />
-                <referencedFunction name="Symfony\Component\HttpKernel\Config\FileLocator::__construct" />
-                <referencedFunction name="Symfony\Contracts\EventDispatcher\EventDispatcherInterface::dispatch" />
-                <referencedFunction name="Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken::__construct" /> <!-- removed parameter in Symfony 5.4 -->
-            </errorLevel>
-            <errorLevel type="suppress">
-                <referencedFunction name="Doctrine\ORM\Query\Expr::andX" />
-                <referencedFunction name="Doctrine\ORM\Query\Expr::orX" />
-                <referencedFunction name="Symfony\Component\Serializer\Attribute\SerializedName::__construct" />
-            </errorLevel>
-        </TooManyArguments>
 
         <!-- level 6 issues - really bad things -->
 

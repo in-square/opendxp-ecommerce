@@ -12,7 +12,7 @@
         </id>
 
         <field name="fieldName" column="fieldName" type="string"/>
-        <field name="product" column="product" type="pimcoreObject"/>
+        <field name="product" column="product" type="opendxpObject"/>
         <field name="price" column="price" type="bigintInteger"/>
 
         <many-to-one field="taxRule" target-entity="CoreShop\Component\Taxation\Model\TaxRuleGroupInterface">

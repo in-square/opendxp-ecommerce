@@ -20,7 +20,7 @@ namespace CoreShop\Bundle\TestBundle\Context\Transform;
 
 use Behat\Behat\Context\Context;
 use CoreShop\Bundle\TestBundle\Service\SharedStorageInterface;
-use Pimcore\Model\Site;
+use OpenDxp\Model\Site;
 use Webmozart\Assert\Assert;
 
 final class SiteContext implements Context

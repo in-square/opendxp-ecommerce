@@ -19,7 +19,7 @@ declare(strict_types=1);
 namespace CoreShop\Bundle\FrontendBundle\Controller;
 
 use CoreShop\Component\Core\Model\OrderInterface;
-use Pimcore\Http\Request\Resolver\EditmodeResolver;
+use OpenDxp\Http\Request\Resolver\EditmodeResolver;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Contracts\Service\Attribute\SubscribedService;

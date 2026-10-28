@@ -2,10 +2,10 @@ services:
     _defaults:
         public: true
 
-    CoreShop\Bundle\ResourceBundle\Form\DataTransformer\PimcoreAssetDataTransformer: ~
+    CoreShop\Bundle\ResourceBundle\Form\DataTransformer\OpenDxpAssetDataTransformer: ~
 
-    CoreShop\Bundle\ResourceBundle\Form\Type\PimcoreAssetChoiceType:
+    CoreShop\Bundle\ResourceBundle\Form\Type\OpenDxpAssetChoiceType:
         arguments:
-            - '@CoreShop\Bundle\ResourceBundle\Form\DataTransformer\PimcoreAssetDataTransformer'
+            - '@CoreShop\Bundle\ResourceBundle\Form\DataTransformer\OpenDxpAssetDataTransformer'
         tags:
             - { name: form.type }

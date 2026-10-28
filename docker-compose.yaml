@@ -20,15 +20,15 @@ x-php: &php
     # See: https://xdebug.org/docs/all_settings#client_host
     XDEBUG_CONFIG: client_host=host.docker.internal
     COMPOSER_HOME: /var/www/html
-    PIMCORE_DB_DSN: "mysql://pimcore:pimcore@db:3306/pimcore"
-    PIMCORE_INSTALL_ADMIN_USERNAME: "admin"
-    PIMCORE_INSTALL_ADMIN_PASSWORD: "admin"
-    PIMCORE_INSTALL_MYSQL_HOST_SOCKET: "db"
-    PIMCORE_INSTALL_MYSQL_USERNAME: "pimcore"
-    PIMCORE_INSTALL_MYSQL_PASSWORD: "pimcore"
-    PIMCORE_INSTALL_MYSQL_DATABASE: "pimcore"
-    PIMCORE_INSTALL_MYSQL_PORT: "3306"
-    PIMCORE_INSTALL_INSTALL_BUNDLES: "PimcoreApplicationLoggerBundle,PimcoreCustomReportsBundle,PimcoreGlossaryBundle,PimcoreSeoBundle,PimcoreSimpleBackendSearchBundle,PimcoreStaticRoutesBundle,PimcoreTinymceBundle,PimcoreUuidBundle,PimcoreWordExportBundle,PimcoreXliffBundle"
+    OPENDXP_DB_DSN: "mysql://opendxp:opendxp@db:3306/opendxp"
+    OPENDXP_INSTALL_ADMIN_USERNAME: "admin"
+    OPENDXP_INSTALL_ADMIN_PASSWORD: "admin"
+    OPENDXP_INSTALL_MYSQL_HOST_SOCKET: "db"
+    OPENDXP_INSTALL_MYSQL_USERNAME: "opendxp"
+    OPENDXP_INSTALL_MYSQL_PASSWORD: "opendxp"
+    OPENDXP_INSTALL_MYSQL_DATABASE: "opendxp"
+    OPENDXP_INSTALL_MYSQL_PORT: "3306"
+    OPENDXP_INSTALL_INSTALL_BUNDLES: "OpenDxpApplicationLoggerBundle,OpenDxpCustomReportsBundle,OpenDxpGlossaryBundle,OpenDxpSeoBundle,OpenDxpSimpleBackendSearchBundle,OpenDxpStaticRoutesBundle,OpenDxpTinymceBundle,OpenDxpUuidBundle,OpenDxpWordExportBundle,OpenDxpXliffBundle"
   extra_hosts:
     - "host.docker.internal:host-gateway"
 
@@ -42,9 +42,9 @@ services:
       - db:/var/lib/mysql
     environment:
       - MYSQL_ROOT_PASSWORD=ROOT
-      - MYSQL_DATABASE=pimcore
-      - MYSQL_USER=pimcore
-      - MYSQL_PASSWORD=pimcore
+      - MYSQL_DATABASE=opendxp
+      - MYSQL_USER=opendxp
+      - MYSQL_PASSWORD=opendxp
     expose:
       - "3306"
 
@@ -84,15 +84,17 @@ services:
     depends_on:
       - db
     environment:
-      PIMCORE_TEST_DB_DSN: "mysql://root:ROOT@coreshop4.1-db/coreshop4_1___behat"
-      PIMCORE_KERNEL_CLASS: 'Kernel'
+      OPENDXP_TEST_DB_DSN: "mysql://root:ROOT@coreshop4.1-db/coreshop4_1___behat"
+      OPENDXP_KERNEL_CLASS: 'Kernel'
     command:
       - bash
       - -c
       - |
         set -e;
         vendor/bin/bdi detect drivers;
-        symfony server:start --port=9080 --dir=public --no-tls -d;
+        mkdir -p var/log;
+        php -S 127.0.0.1:9080 -t public tests/http-router.php > var/log/behat-web.log 2>&1 &
+        timeout 20s sh -c 'until curl --silent --max-time 1 --output /dev/null http://127.0.0.1:9080/index_test.php; do sleep 0.2; done' || { echo 'Behat web server did not start' >&2; exit 1; };
         CORESHOP_SKIP_DB_SETUP=1 PANTHER_EXTERNAL_BASE_URI=http://127.0.0.1:9080/index_test.php PANTHER_NO_HEADLESS=0 php -d memory_limit=-1 vendor/bin/behat -c behat.yml.dist -p ui
 
   gotenberg:

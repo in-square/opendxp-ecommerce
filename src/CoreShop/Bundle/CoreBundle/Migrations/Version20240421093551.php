@@ -20,7 +20,7 @@ namespace CoreShop\Bundle\CoreBundle\Migrations;
 
 use Doctrine\DBAL\Schema\Schema;
 use Doctrine\Migrations\AbstractMigration;
-use Pimcore\Model\User\Permission\Definition;
+use OpenDxp\Model\User\Permission\Definition;
 
 final class Version20240421093551 extends AbstractMigration
 {

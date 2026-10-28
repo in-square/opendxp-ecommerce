@@ -19,7 +19,7 @@ declare(strict_types=1);
 namespace CoreShop\Component\StorageList\Maintenance;
 
 use CoreShop\Component\StorageList\Expiration\StorageListExpirationInterface;
-use Pimcore\Maintenance\TaskInterface;
+use OpenDxp\Maintenance\TaskInterface;
 
 final class ExpireTask implements TaskInterface
 {

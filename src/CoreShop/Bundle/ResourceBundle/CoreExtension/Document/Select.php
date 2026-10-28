@@ -20,7 +20,7 @@ namespace CoreShop\Bundle\ResourceBundle\CoreExtension\Document;
 
 use CoreShop\Component\Resource\Model\ResourceInterface;
 use CoreShop\Component\Resource\Repository\RepositoryInterface;
-use Pimcore\Model\Document\Editable;
+use OpenDxp\Model\Document\Editable;
 
 /**
  * @psalm-suppress InvalidReturnType, InvalidReturnStatement
@@ -124,7 +124,7 @@ class Select extends Editable
 
     private function getRepository(): RepositoryInterface
     {
-        $repo = \Pimcore::getContainer()->get($this->repositoryName);
+        $repo = \OpenDxp::getContainer()->get($this->repositoryName);
 
         if (!$repo instanceof RepositoryInterface) {
             throw new \InvalidArgumentException(sprintf('Repository with Identifier %s not found or not public', $this->repositoryName));

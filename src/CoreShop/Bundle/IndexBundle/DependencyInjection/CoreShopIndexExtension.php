@@ -85,11 +85,11 @@ final class CoreShopIndexExtension extends AbstractModelExtension
             $loader->load('services/installer.yml');
         }
 
-        if (array_key_exists('PimcoreDataHubBundle', $bundles)) {
+        if (array_key_exists('OpenDxpDataHubBundle', $bundles)) {
             $loader->load('services/data_hub.yml');
         }
 
-        $this->registerPimcoreResources('coreshop', $configs['pimcore_admin'], $container);
+        $this->registerOpenDxpResources('coreshop', $configs['opendxp_admin'], $container);
 
         $container->getDefinition(MysqlWorker::class)->setArgument(
             7,

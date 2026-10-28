@@ -24,7 +24,7 @@ use CoreShop\Component\Core\Report\ReportInterface;
 use CoreShop\Component\Currency\Formatter\MoneyFormatterInterface;
 use CoreShop\Component\Locale\Context\LocaleContextInterface;
 use CoreShop\Component\Order\OrderSaleStates;
-use CoreShop\Component\Resource\Repository\PimcoreRepositoryInterface;
+use CoreShop\Component\Resource\Repository\OpenDxpRepositoryInterface;
 use CoreShop\Component\Resource\Repository\RepositoryInterface;
 use Doctrine\DBAL\Connection;
 use Symfony\Component\HttpFoundation\ParameterBag;
@@ -38,9 +38,9 @@ class CategoriesReport implements ReportInterface
         private Connection $db,
         private MoneyFormatterInterface $moneyFormatter,
         private LocaleContextInterface $localeService,
-        private PimcoreRepositoryInterface $orderRepository,
-        private PimcoreRepositoryInterface $categoryRepository,
-        private PimcoreRepositoryInterface $orderItemRepository,
+        private OpenDxpRepositoryInterface $orderRepository,
+        private OpenDxpRepositoryInterface $categoryRepository,
+        private OpenDxpRepositoryInterface $orderItemRepository,
     ) {
     }
 

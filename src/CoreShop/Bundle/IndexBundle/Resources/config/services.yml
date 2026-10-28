@@ -2,7 +2,7 @@ imports:
     - { resource: services/form.yml }
     - { resource: services/listeners.yml }
     - { resource: services/commands.yml }
-    - { resource: services/pimcore.yml }
+    - { resource: services/opendxp.yml }
     - { resource: services/condition_renderer.yml }
     - { resource: services/order_renderer.yml }
     - { resource: services/messenger.yml }

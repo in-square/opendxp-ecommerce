@@ -35,12 +35,12 @@ class Currency extends Select
 
     protected function getRepository()
     {
-        return \Pimcore::getContainer()->get('coreshop.repository.currency');
+        return \OpenDxp::getContainer()->get('coreshop.repository.currency');
     }
 
     protected function getModel(): string
     {
-        return \Pimcore::getContainer()->getParameter('coreshop.model.currency.class');
+        return \OpenDxp::getContainer()->getParameter('coreshop.model.currency.class');
     }
 
     protected function getInterface(): string

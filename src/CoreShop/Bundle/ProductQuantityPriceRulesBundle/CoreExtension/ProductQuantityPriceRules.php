@@ -22,7 +22,7 @@ use CoreShop\Bundle\ProductQuantityPriceRulesBundle\Event\ProductQuantityPriceRu
 use CoreShop\Bundle\ProductQuantityPriceRulesBundle\Form\Type\ProductQuantityPriceRuleType;
 use CoreShop\Bundle\ResourceBundle\CoreExtension\TempEntityManagerTrait;
 use CoreShop\Bundle\ResourceBundle\Doctrine\ORM\EntityMerger;
-use CoreShop\Bundle\ResourceBundle\Pimcore\CacheMarshallerInterface;
+use CoreShop\Bundle\ResourceBundle\OpenDxp\CacheMarshallerInterface;
 use CoreShop\Component\ProductQuantityPriceRules\Events;
 use CoreShop\Component\ProductQuantityPriceRules\Model\ProductQuantityPriceRuleInterface;
 use CoreShop\Component\ProductQuantityPriceRules\Model\QuantityRangeInterface;
@@ -33,8 +33,8 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\EntityManager;
 use JMS\Serializer\DeserializationContext;
 use JMS\Serializer\SerializationContext;
-use Pimcore\Model\DataObject\ClassDefinition\Data;
-use Pimcore\Model\DataObject\Concrete;
+use OpenDxp\Model\DataObject\ClassDefinition\Data;
+use OpenDxp\Model\DataObject\Concrete;
 use Symfony\Contracts\EventDispatcher\EventDispatcherInterface;
 use Webmozart\Assert\Assert;
 
@@ -364,7 +364,7 @@ class ProductQuantityPriceRules extends Data implements
         return $prices;
     }
 
-    public function save(Concrete|\Pimcore\Model\DataObject\Objectbrick\Data\AbstractData|\Pimcore\Model\DataObject\Fieldcollection\Data\AbstractData|\Pimcore\Model\DataObject\Localizedfield $object, array $params = []): void
+    public function save(Concrete|\OpenDxp\Model\DataObject\Objectbrick\Data\AbstractData|\OpenDxp\Model\DataObject\Fieldcollection\Data\AbstractData|\OpenDxp\Model\DataObject\Localizedfield $object, array $params = []): void
     {
         if (!$object instanceof QuantityRangePriceAwareInterface) {
             return;
@@ -374,7 +374,7 @@ class ProductQuantityPriceRules extends Data implements
             return;
         }
 
-        $entityMerger = new EntityMerger($this->getEntityManager());
+        $entityMerger = $this->getEntityMerger();
         $existingQuantityPriceRules = $object->getObjectVar($this->getName());
         $all = $this->load($object, ['force' => true]);
         $founds = [];
@@ -401,7 +401,7 @@ class ProductQuantityPriceRules extends Data implements
         $this->getEntityManager()->flush();
     }
 
-    public function load(Concrete|\Pimcore\Model\DataObject\Objectbrick\Data\AbstractData|\Pimcore\Model\DataObject\Fieldcollection\Data\AbstractData|\Pimcore\Model\DataObject\Localizedfield $object, array $params = []): mixed
+    public function load(Concrete|\OpenDxp\Model\DataObject\Objectbrick\Data\AbstractData|\OpenDxp\Model\DataObject\Fieldcollection\Data\AbstractData|\OpenDxp\Model\DataObject\Localizedfield $object, array $params = []): mixed
     {
         if (isset($params['force']) && $params['force']) {
             return $this->getProductQuantityPriceRuleRepository()->findForProduct($object);
@@ -410,7 +410,7 @@ class ProductQuantityPriceRules extends Data implements
         return null;
     }
 
-    public function delete(Concrete|\Pimcore\Model\DataObject\Objectbrick\Data\AbstractData|\Pimcore\Model\DataObject\Fieldcollection\Data\AbstractData|\Pimcore\Model\DataObject\Localizedfield $object, array $params = []): void
+    public function delete(Concrete|\OpenDxp\Model\DataObject\Objectbrick\Data\AbstractData|\OpenDxp\Model\DataObject\Fieldcollection\Data\AbstractData|\OpenDxp\Model\DataObject\Localizedfield $object, array $params = []): void
     {
         if ($object instanceof QuantityRangePriceAwareInterface) {
             $all = $this->load($object, ['force' => true]);
@@ -438,7 +438,7 @@ class ProductQuantityPriceRules extends Data implements
     /**
      * @return ProductQuantityPriceRuleInterface
      *
-     * @throws \Doctrine\ORM\ORMException
+     * @throws \Doctrine\ORM\Exception\ORMException
      */
     protected function checkForRangeOrphans(EntityManager $entityManager, ProductQuantityPriceRuleInterface $storedRule, array $currentRule)
     {
@@ -474,7 +474,7 @@ class ProductQuantityPriceRules extends Data implements
         return $storedRule;
     }
 
-    public function getForCsvExport(Concrete|\Pimcore\Model\DataObject\Objectbrick\Data\AbstractData|\Pimcore\Model\DataObject\Fieldcollection\Data\AbstractData|\Pimcore\Model\DataObject\Localizedfield $object, array $params = []): string
+    public function getForCsvExport(Concrete|\OpenDxp\Model\DataObject\Objectbrick\Data\AbstractData|\OpenDxp\Model\DataObject\Fieldcollection\Data\AbstractData|\OpenDxp\Model\DataObject\Localizedfield $object, array $params = []): string
     {
         return '';
     }
@@ -484,7 +484,7 @@ class ProductQuantityPriceRules extends Data implements
      */
     private function getContainer()
     {
-        return \Pimcore::getContainer();
+        return \OpenDxp::getContainer();
     }
 
     /**
@@ -492,7 +492,7 @@ class ProductQuantityPriceRules extends Data implements
      */
     private function getEventDispatcher()
     {
-        return \Pimcore::getContainer()->get('event_dispatcher');
+        return \OpenDxp::getContainer()->get('event_dispatcher');
     }
 
     /**
@@ -525,6 +525,11 @@ class ProductQuantityPriceRules extends Data implements
     private function getEntityManager()
     {
         return $this->getContainer()->get('doctrine.orm.entity_manager');
+    }
+
+    private function getEntityMerger(): EntityMerger
+    {
+        return $this->getContainer()->get(EntityMerger::class);
     }
 
     /**

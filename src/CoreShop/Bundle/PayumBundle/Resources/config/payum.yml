@@ -1,0 +1,49 @@
+services:
+    Payum\Bundle\PayumBundle\Controller\AuthorizeController:
+        class: Payum\Bundle\PayumBundle\Controller\AuthorizeController
+        public: true
+        arguments: ['@payum']
+        calls: [[setContainer, ['@service_container']]]
+        tags: [container.service_subscriber]
+
+    Payum\Bundle\PayumBundle\Controller\CancelController:
+        class: Payum\Bundle\PayumBundle\Controller\CancelController
+        public: true
+        arguments: ['@payum']
+        calls: [[setContainer, ['@service_container']]]
+        tags: [container.service_subscriber]
+
+    Payum\Bundle\PayumBundle\Controller\CaptureController:
+        class: Payum\Bundle\PayumBundle\Controller\CaptureController
+        public: true
+        arguments: ['@payum']
+        calls: [[setContainer, ['@service_container']]]
+        tags: [container.service_subscriber]
+
+    Payum\Bundle\PayumBundle\Controller\NotifyController:
+        class: Payum\Bundle\PayumBundle\Controller\NotifyController
+        public: true
+        arguments: ['@payum']
+        calls: [[setContainer, ['@service_container']]]
+        tags: [container.service_subscriber]
+
+    Payum\Bundle\PayumBundle\Controller\PayoutController:
+        class: Payum\Bundle\PayumBundle\Controller\PayoutController
+        public: true
+        arguments: ['@payum']
+        calls: [[setContainer, ['@service_container']]]
+        tags: [container.service_subscriber]
+
+    Payum\Bundle\PayumBundle\Controller\RefundController:
+        class: Payum\Bundle\PayumBundle\Controller\RefundController
+        public: true
+        arguments: ['@payum']
+        calls: [[setContainer, ['@service_container']]]
+        tags: [container.service_subscriber]
+
+    Payum\Bundle\PayumBundle\Controller\SyncController:
+        class: Payum\Bundle\PayumBundle\Controller\SyncController
+        public: true
+        arguments: ['@payum']
+        calls: [[setContainer, ['@service_container']]]
+        tags: [container.service_subscriber]

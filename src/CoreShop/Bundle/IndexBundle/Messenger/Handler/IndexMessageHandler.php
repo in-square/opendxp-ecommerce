@@ -21,10 +21,10 @@ namespace CoreShop\Bundle\IndexBundle\Messenger\Handler;
 use CoreShop\Bundle\IndexBundle\Messenger\IndexMessage;
 use CoreShop\Component\Index\Model\IndexableInterface;
 use CoreShop\Component\Index\Service\IndexUpdaterServiceInterface;
-use CoreShop\Component\Pimcore\DataObject\InheritanceHelper;
-use Pimcore\Model\DataObject\AbstractObject;
-use Pimcore\Model\DataObject\ClassDefinition;
-use Pimcore\Model\DataObject\Concrete;
+use CoreShop\Component\OpenDxp\DataObject\InheritanceHelper;
+use OpenDxp\Model\DataObject\AbstractObject;
+use OpenDxp\Model\DataObject\ClassDefinition;
+use OpenDxp\Model\DataObject\Concrete;
 use Symfony\Component\Messenger\Exception\UnrecoverableMessageHandlingException;
 
 class IndexMessageHandler

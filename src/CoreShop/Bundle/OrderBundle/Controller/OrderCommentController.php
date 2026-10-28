@@ -18,20 +18,20 @@ declare(strict_types=1);
 
 namespace CoreShop\Bundle\OrderBundle\Controller;
 
-use CoreShop\Bundle\ResourceBundle\Controller\PimcoreController;
+use CoreShop\Bundle\ResourceBundle\Controller\OpenDxpController;
 use CoreShop\Component\Order\Model\OrderInterface;
 use CoreShop\Component\Order\Notes;
 use CoreShop\Component\Order\Repository\OrderRepositoryInterface;
-use CoreShop\Component\Pimcore\DataObject\NoteServiceInterface;
-use CoreShop\Component\Resource\Repository\PimcoreRepositoryInterface;
-use Pimcore\Model\Element\Note;
-use Pimcore\Model\User;
+use CoreShop\Component\OpenDxp\DataObject\NoteServiceInterface;
+use CoreShop\Component\Resource\Repository\OpenDxpRepositoryInterface;
+use OpenDxp\Model\Element\Note;
+use OpenDxp\Model\User;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Contracts\EventDispatcher\EventDispatcherInterface;
 use Symfony\Contracts\Service\Attribute\SubscribedService;
 
-class OrderCommentController extends PimcoreController
+class OrderCommentController extends OpenDxpController
 {
     public function listAction(Request $request): JsonResponse
     {
@@ -72,7 +72,7 @@ class OrderCommentController extends PimcoreController
 
         try {
             $objectNoteService = $this->container->get(NoteServiceInterface::class);
-            $commentEntity = $objectNoteService->createPimcoreNoteInstance($order, Notes::NOTE_ORDER_COMMENT);
+            $commentEntity = $objectNoteService->createOpenDxpNoteInstance($order, Notes::NOTE_ORDER_COMMENT);
             $commentEntity->setTitle('Order Comment');
             $commentEntity->setDescription(nl2br($comment));
             $commentEntity->addData('submitAsEmail', 'bool', $submitAsEmail);
@@ -99,7 +99,7 @@ class OrderCommentController extends PimcoreController
         return $this->viewHandler->handle(['success' => true]);
     }
 
-    private function getOrderRepository(): PimcoreRepositoryInterface
+    private function getOrderRepository(): OpenDxpRepositoryInterface
     {
         return $this->container->get('coreshop.repository.order');
     }

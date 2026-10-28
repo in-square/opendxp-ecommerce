@@ -20,7 +20,7 @@ namespace CoreShop\Bundle\VariantBundle\Validator\Constraints;
 
 use CoreShop\Component\Variant\Model\AttributeGroupInterface;
 use CoreShop\Component\Variant\Model\AttributeInterface;
-use Pimcore\Model\DataObject;
+use OpenDxp\Model\DataObject;
 use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\ConstraintValidator;
 use Webmozart\Assert\Assert;

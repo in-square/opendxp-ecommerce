@@ -22,7 +22,7 @@ use Carbon\Carbon;
 use CoreShop\Component\Core\Model\StoreInterface;
 use CoreShop\Component\Core\Report\ReportInterface;
 use CoreShop\Component\Order\OrderSaleStates;
-use CoreShop\Component\Resource\Repository\PimcoreRepositoryInterface;
+use CoreShop\Component\Resource\Repository\OpenDxpRepositoryInterface;
 use CoreShop\Component\Resource\Repository\RepositoryInterface;
 use CoreShop\Component\Shipping\Model\CarrierInterface;
 use Doctrine\DBAL\Connection;
@@ -36,7 +36,7 @@ class CarriersReport implements ReportInterface
         private RepositoryInterface $storeRepository,
         private Connection $db,
         private RepositoryInterface $carrierRepository,
-        private PimcoreRepositoryInterface $orderRepository,
+        private OpenDxpRepositoryInterface $orderRepository,
     ) {
     }
 

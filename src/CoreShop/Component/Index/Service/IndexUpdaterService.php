@@ -24,7 +24,7 @@ use CoreShop\Component\Index\Worker\WorkerDeleteableByIdInterface;
 use CoreShop\Component\Index\Worker\WorkerInterface;
 use CoreShop\Component\Registry\ServiceRegistryInterface;
 use CoreShop\Component\Resource\Repository\RepositoryInterface;
-use Pimcore\Model\DataObject\Concrete;
+use OpenDxp\Model\DataObject\Concrete;
 use Psr\Log\InvalidArgumentException;
 
 final class IndexUpdaterService implements IndexUpdaterServiceInterface

@@ -1,4 +1,4 @@
-Pimcore\Model\DataObject\Localizedfield:
+OpenDxp\Model\DataObject\Localizedfield:
     exclusion_policy: ALL
     xml_root_name: localizedfields
     properties:

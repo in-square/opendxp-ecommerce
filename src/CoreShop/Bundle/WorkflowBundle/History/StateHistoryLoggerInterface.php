@@ -18,7 +18,7 @@ declare(strict_types=1);
 
 namespace CoreShop\Bundle\WorkflowBundle\History;
 
-use Pimcore\Model\DataObject\Concrete;
+use OpenDxp\Model\DataObject\Concrete;
 use Symfony\Component\Workflow\Event\Event;
 
 interface StateHistoryLoggerInterface

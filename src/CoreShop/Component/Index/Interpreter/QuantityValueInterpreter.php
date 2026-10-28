@@ -20,7 +20,7 @@ namespace CoreShop\Component\Index\Interpreter;
 
 use CoreShop\Component\Index\Model\IndexableInterface;
 use CoreShop\Component\Index\Model\IndexColumnInterface;
-use Pimcore\Model\DataObject\Data\QuantityValue;
+use OpenDxp\Model\DataObject\Data\QuantityValue;
 
 class QuantityValueInterpreter implements InterpreterInterface
 {

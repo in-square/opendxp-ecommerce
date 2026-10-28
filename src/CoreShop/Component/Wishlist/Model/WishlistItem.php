@@ -18,13 +18,13 @@ declare(strict_types=1);
 
 namespace CoreShop\Component\Wishlist\Model;
 
-use CoreShop\Component\Resource\Exception\ImplementedByPimcoreException;
-use CoreShop\Component\Resource\Pimcore\Model\AbstractPimcoreModel;
+use CoreShop\Component\Resource\Exception\ImplementedByOpenDxpException;
+use CoreShop\Component\Resource\OpenDxp\Model\AbstractOpenDxpModel;
 use CoreShop\Component\StorageList\Model\StorageListInterface;
 use CoreShop\Component\StorageList\Model\StorageListItemInterface;
 use Webmozart\Assert\Assert;
 
-abstract class WishlistItem extends AbstractPimcoreModel implements WishlistItemInterface
+abstract class WishlistItem extends AbstractOpenDxpModel implements WishlistItemInterface
 {
     public function getStorageList(): StorageListInterface
     {
@@ -43,12 +43,12 @@ abstract class WishlistItem extends AbstractPimcoreModel implements WishlistItem
 
     public function getWishlist(): ?WishlistInterface
     {
-        throw new ImplementedByPimcoreException(__CLASS__, __METHOD__);
+        throw new ImplementedByOpenDxpException(__CLASS__, __METHOD__);
     }
 
     public function setWishlist(WishlistInterface $wishlist)
     {
-        throw new ImplementedByPimcoreException(__CLASS__, __METHOD__);
+        throw new ImplementedByOpenDxpException(__CLASS__, __METHOD__);
     }
 
     public function equals(StorageListItemInterface $storageListItem): bool

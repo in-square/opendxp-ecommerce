@@ -20,10 +20,10 @@ namespace CoreShop\Bundle\CoreBundle\EventListener;
 
 use CoreShop\Component\Core\Model\CustomerInterface;
 use CoreShop\Component\Customer\Repository\CustomerRepositoryInterface;
-use Pimcore\Event\Model\DataObjectEvent;
-use Pimcore\Http\RequestHelper;
-use Pimcore\Model\DataObject\Listing;
-use Pimcore\Model\Element\ValidationException;
+use OpenDxp\Event\Model\DataObjectEvent;
+use OpenDxp\Http\RequestHelper;
+use OpenDxp\Model\DataObject\Listing;
+use OpenDxp\Model\Element\ValidationException;
 
 final class CustomerSecurityValidationListener
 {

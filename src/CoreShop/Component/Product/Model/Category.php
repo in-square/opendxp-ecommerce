@@ -18,10 +18,10 @@ declare(strict_types=1);
 
 namespace CoreShop\Component\Product\Model;
 
-use CoreShop\Component\Resource\Pimcore\Model\AbstractPimcoreModel;
-use Pimcore\Model\DataObject\Listing;
+use CoreShop\Component\Resource\OpenDxp\Model\AbstractOpenDxpModel;
+use OpenDxp\Model\DataObject\Listing;
 
-abstract class Category extends AbstractPimcoreModel implements CategoryInterface
+abstract class Category extends AbstractOpenDxpModel implements CategoryInterface
 {
     public function getChildCategories(): Listing
     {

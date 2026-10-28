@@ -19,7 +19,7 @@ declare(strict_types=1);
 namespace CoreShop\Bundle\TestBundle\Context\Transform;
 
 use Behat\Behat\Context\Context;
-use Pimcore\Model\DataObject\Data\RgbaColor;
+use OpenDxp\Model\DataObject\Data\RgbaColor;
 
 final class RgbaColorContext implements Context
 {

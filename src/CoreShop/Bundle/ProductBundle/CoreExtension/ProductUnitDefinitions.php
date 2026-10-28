@@ -21,7 +21,7 @@ namespace CoreShop\Bundle\ProductBundle\CoreExtension;
 use CoreShop\Bundle\ProductBundle\Form\Type\Unit\ProductUnitDefinitionsType;
 use CoreShop\Bundle\ResourceBundle\CoreExtension\TempEntityManagerTrait;
 use CoreShop\Bundle\ResourceBundle\Doctrine\ORM\EntityMerger;
-use CoreShop\Bundle\ResourceBundle\Pimcore\CacheMarshallerInterface;
+use CoreShop\Bundle\ResourceBundle\OpenDxp\CacheMarshallerInterface;
 use CoreShop\Component\Product\Model\ProductInterface;
 use CoreShop\Component\Product\Model\ProductUnitDefinitionInterface;
 use CoreShop\Component\Product\Model\ProductUnitDefinitionsInterface;
@@ -31,10 +31,10 @@ use CoreShop\Component\Resource\Factory\RepositoryFactoryInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use JMS\Serializer\DeserializationContext;
 use JMS\Serializer\SerializationContext;
-use Pimcore\Model;
-use Pimcore\Model\DataObject\ClassDefinition\Data;
-use Pimcore\Model\DataObject\Concrete;
-use Pimcore\Model\DataObject\LazyLoadedFieldsInterface;
+use OpenDxp\Model;
+use OpenDxp\Model\DataObject\ClassDefinition\Data;
+use OpenDxp\Model\DataObject\Concrete;
+use OpenDxp\Model\DataObject\LazyLoadedFieldsInterface;
 use Webmozart\Assert\Assert;
 
 /**
@@ -53,10 +53,7 @@ class ProductUnitDefinitions extends Data implements
 
     public string $fieldtype = 'coreShopProductUnitDefinitions';
 
-    /**
-     * @var int
-     */
-    public $width;
+    public int|string|null $width = null;
 
     /**
      * @var int
@@ -90,22 +87,18 @@ class ProductUnitDefinitions extends Data implements
         return '?\\' . ProductUnitDefinitionsInterface::class;
     }
 
-    /**
-     * @return int
-     */
-    public function getWidth()
+    public function getWidth(): int|string|null
     {
         return $this->width;
     }
 
-    /**
-     * @param int $width
-     *
-     * @return $this
-     */
-    public function setWidth($width)
+    public function setWidth(int|string|null $width): static
     {
-        $this->width = $this->getAsIntegerCast($width);
+        if (is_numeric($width)) {
+            $width = (int) $width;
+        }
+
+        $this->width = $width;
 
         return $this;
     }
@@ -161,7 +154,7 @@ class ProductUnitDefinitions extends Data implements
 //        $code .= 'public function get'.ucfirst($key).' () {'."\n";
 //        $code .= "\t".'$this->'.$key.' = $this->getClass()->getFieldDefinition("'.$key.'")->preGetData($this);'."\n";
 //        $code .= "\t".'$data = $this->'.$key.";\n";
-//        $code .= "\t".'if(\Pimcore\Model\DataObject::doGetInheritedValues() && $this->getClass()->getFieldDefinition("'.$key.'")->isEmpty($data)) {'."\n";
+//        $code .= "\t".'if(\OpenDxp\Model\DataObject::doGetInheritedValues() && $this->getClass()->getFieldDefinition("'.$key.'")->isEmpty($data)) {'."\n";
 //        $code .= "\t\t".'try {'."\n";
 //        $code .= "\t\t\t".'return $this->getValueFromParent("'.$key.'");'."\n";
 //        $code .= "\t\t".'} catch (InheritanceParentNotFoundException $e) {'."\n";
@@ -360,7 +353,7 @@ class ProductUnitDefinitions extends Data implements
         $productUnitDefinitions = $object->getObjectVar($this->getName());
 
         if ($productUnitDefinitions instanceof ProductUnitDefinitionsInterface) {
-            $entityMerger = new EntityMerger($this->getEntityManager());
+            $entityMerger = $this->getEntityMerger();
             $entityMerger->merge($productUnitDefinitions);
 
             $productUnitDefinitions->setProduct($object);
@@ -532,7 +525,12 @@ class ProductUnitDefinitions extends Data implements
      */
     private function getEntityManager()
     {
-        return \Pimcore::getContainer()->get('doctrine.orm.entity_manager');
+        return \OpenDxp::getContainer()->get('doctrine.orm.entity_manager');
+    }
+
+    private function getEntityMerger(): EntityMerger
+    {
+        return \OpenDxp::getContainer()->get(EntityMerger::class);
     }
 
     /**
@@ -540,7 +538,7 @@ class ProductUnitDefinitions extends Data implements
      */
     private function getFormFactory()
     {
-        return \Pimcore::getContainer()->get('coreshop.form.factory');
+        return \OpenDxp::getContainer()->get('coreshop.form.factory');
     }
 
     /**
@@ -548,7 +546,7 @@ class ProductUnitDefinitions extends Data implements
      */
     protected function getProductUnitDefinitionsRepository()
     {
-        return \Pimcore::getContainer()->get('coreshop.repository.product_unit_definitions');
+        return \OpenDxp::getContainer()->get('coreshop.repository.product_unit_definitions');
     }
 
     /**
@@ -556,7 +554,7 @@ class ProductUnitDefinitions extends Data implements
      */
     protected function getProductUnitDefinitionsRepositoryFactory()
     {
-        return \Pimcore::getContainer()->get('coreshop.repository.factory.product_unit_definitions');
+        return \OpenDxp::getContainer()->get('coreshop.repository.factory.product_unit_definitions');
     }
 
     /**
@@ -564,6 +562,6 @@ class ProductUnitDefinitions extends Data implements
      */
     private function getSerializer()
     {
-        return \Pimcore::getContainer()->get('jms_serializer');
+        return \OpenDxp::getContainer()->get('jms_serializer');
     }
 }

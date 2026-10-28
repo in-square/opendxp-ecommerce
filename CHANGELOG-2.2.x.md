@@ -13,7 +13,7 @@
    - [FrontendBundle] Password reset: Clearer form labels (https://github.com/coreshop/CoreShop/pull/1855)
    - [ResourceBundle] Fatal error when saving object with product-specific prices -> EntityMerger got object of wrong class (https://github.com/coreshop/CoreShop/pull/1864)
    - [ProductBundle] Add isEqual() for product-specific price (https://github.com/coreshop/CoreShop/pull/1844)
-   - [Pimcore] Fix delete icons in Pimcore backend (https://github.com/coreshop/CoreShop/pull/1885)
+   - [OpenDxp] Fix delete icons in OpenDxp backend (https://github.com/coreshop/CoreShop/pull/1885)
 
 ## 2.2.11
  - Bugs:
@@ -35,7 +35,7 @@
      - [Docs] Fixed typo (https://github.com/coreshop/CoreShop/pull/1608)
      - [FrontendBundle] clear password reset hash after reset (https://github.com/coreshop/CoreShop/pull/1631)
      - [ShippingBundle] fix configuration (https://github.com/coreshop/CoreShop/pull/1632)
-     - [PimcoreBundle] fix missing Multiselect (https://github.com/coreshop/CoreShop/pull/1614)
+     - [OpenDxpBundle] fix missing Multiselect (https://github.com/coreshop/CoreShop/pull/1614)
      - [Fixtures] fix region_short for address format (https://github.com/coreshop/CoreShop/pull/1636)
      - [Docs] Add missing process conditions in docs (https://github.com/coreshop/CoreShop/pull/1643)
      - [FrontendBundle] fix having unique form-ids for cart add (https://github.com/coreshop/CoreShop/pull/1648)
@@ -46,12 +46,12 @@
      - [CoreBundle] remove zones from shipping rules installer (https://github.com/coreshop/CoreShop/pull/1664)
      - [IndexBundle] add feature to rename tables when index get's renamed (https://github.com/coreshop/CoreShop/pull/1663)
      - [FrontendBundle] Print cart price rule label instead name if available (https://github.com/coreshop/CoreShop/pull/1668)
-     - [Tests] Add Pimcore ~6.9.0 in behat test matrix (https://github.com/coreshop/CoreShop/pull/1670)
+     - [Tests] Add OpenDxp ~6.9.0 in behat test matrix (https://github.com/coreshop/CoreShop/pull/1670)
      - [CoreBundle] Use right permission for tax rate (https://github.com/coreshop/CoreShop/pull/1681)
      - [SEO] Add thumbnail definition coreshop_seo (https://github.com/coreshop/CoreShop/pull/1688)
      - [Core] Fix: ProductRepository: Added missing placeholder (https://github.com/coreshop/CoreShop/pull/1708)
      - [Docs] Quantity Price Rules (https://github.com/coreshop/CoreShop/pull/1716)
-     - [PimcoreBundle] super-select box readonly (https://github.com/coreshop/CoreShop/pull/1739)
+     - [OpenDxpBundle] super-select box readonly (https://github.com/coreshop/CoreShop/pull/1739)
      
  - Feature:
      - [ProductQuantityPriceRules] add interface for QuantityPriceFetcher and QuantityRuleFetcher (https://github.com/coreshop/CoreShop/pull/1628)
@@ -61,14 +61,14 @@
  - Bugs:
      - [ResourceBundle] fix compatibility with Doctrine EventSubscriber (https://github.com/coreshop/CoreShop/pull/1580)
      - [All] replace all usages of href with manyToOneRelation and multihref with manyToManyRelation (https://github.com/coreshop/CoreShop/pull/1576)
-     - [OptimisticEntityLockBundle] fix version for Pimcore Extensions UI (https://github.com/coreshop/CoreShop/pull/1577)
+     - [OptimisticEntityLockBundle] fix version for OpenDxp Extensions UI (https://github.com/coreshop/CoreShop/pull/1577)
      - [Models] strict defining of model trait methods (https://github.com/coreshop/CoreShop/pull/1578)
      - [ProductBundle] use full unit definition label in choice field (https://github.com/coreshop/CoreShop/pull/1569)
      - [ResourceBundle] check if instance is null before calling class_implements (https://github.com/coreshop/CoreShop/pull/1566)
      - [Admin] use form.Panel instead of form.FieldSet (panel supports isDirty) (https://github.com/coreshop/CoreShop/pull/1561)
-     - [Resource] Provide Pimcore driver for Stack Repository (https://github.com/coreshop/CoreShop/pull/1567)
+     - [Resource] Provide OpenDxp driver for Stack Repository (https://github.com/coreshop/CoreShop/pull/1567)
      - [StoreBundle] fix cached store context decoration (https://github.com/coreshop/CoreShop/pull/1565)
-     - [Mailer] remove usages of PimcoreBundle\MailerInterface and fix interface deprecation (https://github.com/coreshop/CoreShop/pull/1568)
+     - [Mailer] remove usages of OpenDxpBundle\MailerInterface and fix interface deprecation (https://github.com/coreshop/CoreShop/pull/1568)
    
 ## 2.2.8
  - Bugs:
@@ -76,8 +76,8 @@
 
 ## 2.2.7
  - Features:
-     - [OptimisticLock] allow to optimistically lock Pimcore DataObjects (https://github.com/coreshop/CoreShop/pull/1537)
-     - [Pimcore] introduce DataObjectBatchListing (https://github.com/coreshop/CoreShop/pull/1519)
+     - [OptimisticLock] allow to optimistically lock OpenDxp DataObjects (https://github.com/coreshop/CoreShop/pull/1537)
+     - [OpenDxp] introduce DataObjectBatchListing (https://github.com/coreshop/CoreShop/pull/1519)
 
  - Bugs:
      - [Payment] Concurrency issues (https://github.com/coreshop/CoreShop/issues/1536, https://github.com/coreshop/CoreShop/pull/1549)
@@ -116,7 +116,7 @@
      - [ProductBundle] fix persistance of spefiic-product-price-rule label (https://github.com/coreshop/CoreShop/pull/1472)
      - [OrderBundle] remove 'applyOn' from DiscountPercent and SurchagePercent (https://github.com/coreshop/CoreShop/pull/1479)
      - [QPR] Wrong Pseudo-Price in Grid-View (https://github.com/coreshop/CoreShop/issues/1488)
-     - [Pimcore] fix hasDefinition with pimcore.implementation_loader.document.tag (https://github.com/coreshop/CoreShop/pull/1490)
+     - [OpenDxp] fix hasDefinition with opendxp.implementation_loader.document.tag (https://github.com/coreshop/CoreShop/pull/1490)
      - [OrderBundle, LocaleBundle] fix backend order-creation localeCode selection (https://github.com/coreshop/CoreShop/pull/1481)
      - [CoreBundle] fix setting price-values for inherited store-values (https://github.com/coreshop/CoreShop/pull/1491)
      - [CoreBundle] don't set product for store-values on pre-get-data (https://github.com/coreshop/CoreShop/pull/1492)
@@ -129,7 +129,7 @@
  - Bugs:
     - [CoreBundle] Don't validate maximum or minimum order quantity when value is 0 (https://github.com/coreshop/CoreShop/issues/1467, https://github.com/coreshop/CoreShop/pull/1468)
     - [Specific Price Rule] Unable to edit saved rule (https://github.com/coreshop/CoreShop/issues/1437, https://github.com/coreshop/CoreShop/pull/1452)
-    - [Pimcore] Fix Ext Item Selector (https://github.com/coreshop/CoreShop/pull/1465)
+    - [OpenDxp] Fix Ext Item Selector (https://github.com/coreshop/CoreShop/pull/1465)
     - [Core, Order] fix surchage amount processor and remove apply-on (https://github.com/coreshop/CoreShop/pull/1462)
     - [All] fix for copying data-objects with complex doctrine entities (https://github.com/coreshop/CoreShop/pull/1404)
     - [CoreBundle] fix installation of address format (https://github.com/coreshop/CoreShop/pull/1455, https://github.com/coreshop/CoreShop/issues/1432)
@@ -175,14 +175,14 @@
  - Bugs:
     - [CoreBundle] fix registration service (https://github.com/coreshop/CoreShop/pull/1391)
     - [CoreBundle] fix validation groups (https://github.com/coreshop/CoreShop/pull/1390)
-    - [PimcoreBundle] Dynamic Dropdowns Issues (https://github.com/coreshop/CoreShop/issues/1380, https://github.com/coreshop/CoreShop/pull/1382)
+    - [OpenDxpBundle] Dynamic Dropdowns Issues (https://github.com/coreshop/CoreShop/issues/1380, https://github.com/coreshop/CoreShop/pull/1382)
     - [FrontendBundle] revert url-forward, doesn't work for all cases  (https://github.com/coreshop/CoreShop/pull/1386, https://github.com/coreshop/CoreShop/issues/1383)
     
 ## 2.2.0
  - Features:
     - [Order] don't allow order-revise when completed payment has been made (https://github.com/coreshop/CoreShop/pull/1334)
     - [Order] persist internal cancellation reasons (https://github.com/coreshop/CoreShop/pull/1333)
-    - [Pimcore] require min 6.6 (https://github.com/coreshop/CoreShop/pull/1338)
+    - [OpenDxp] require min 6.6 (https://github.com/coreshop/CoreShop/pull/1338)
     - [GithubAction] add stan test (https://github.com/coreshop/CoreShop/pull/1341)
     - [OrderBundle] show price rules without tax in backend (https://github.com/coreshop/CoreShop/pull/1346)
     - [ThemeBundle] introduce theme inheritance (https://github.com/coreshop/CoreShop/pull/1353, https://github.com/coreshop/CoreShop/pull/1359)
@@ -191,16 +191,16 @@
     - [FrontendBundle] allow preview from admin-mode and redirect to right URL if wrong (https://github.com/coreshop/CoreShop/pull/1367)
     
  - Bugs:
-    - [SecurityValidator] only trigger when Pimcore Frontend request (https://github.com/coreshop/CoreShop/pull/1339)
-    - [PimcoreBundle] Fix loading dynamic dropdown options (https://github.com/coreshop/CoreShop/pull/1340)
-    - [PimcoreBundle] fix dynamic dropdown extensions (https://github.com/coreshop/CoreShop/pull/1337)
-    - [PimcoreBundle] Fix data persistence for class definition and database (https://github.com/coreshop/CoreShop/pull/1343)
-    - [PimcoreBundle] add dependency resolving (https://github.com/coreshop/CoreShop/pull/1348)
+    - [SecurityValidator] only trigger when OpenDxp Frontend request (https://github.com/coreshop/CoreShop/pull/1339)
+    - [OpenDxpBundle] Fix loading dynamic dropdown options (https://github.com/coreshop/CoreShop/pull/1340)
+    - [OpenDxpBundle] fix dynamic dropdown extensions (https://github.com/coreshop/CoreShop/pull/1337)
+    - [OpenDxpBundle] Fix data persistence for class definition and database (https://github.com/coreshop/CoreShop/pull/1343)
+    - [OpenDxpBundle] add dependency resolving (https://github.com/coreshop/CoreShop/pull/1348)
     - [CoreBundle] add missing alias for taxed product price calculator (https://github.com/coreshop/CoreShop/pull/1355)
     - [Migration] move migration before other migration in order to avoid missing db columns (https://github.com/coreshop/CoreShop/pull/1356)
     - [Payment] Revert "decouple Payment from Payum and consider decimal factor" (https://github.com/coreshop/CoreShop/pull/1358)
-    - [Pimcore] fix getDataForEditmode (https://github.com/coreshop/CoreShop/pull/1361)
-    - [ThemeBundle] fix pimcore bc-break (https://github.com/coreshop/CoreShop/pull/1363)
+    - [OpenDxp] fix getDataForEditmode (https://github.com/coreshop/CoreShop/pull/1361)
+    - [ThemeBundle] fix opendxp bc-break (https://github.com/coreshop/CoreShop/pull/1363)
     - [Product] serialize stopPropogation property (https://github.com/coreshop/CoreShop/pull/1365)
     - [Product] fix null value for pricing (https://github.com/coreshop/CoreShop/pull/1370)
     - [ResourceBundle] ignore length for name of CoreShop doctrine assets (also fixes the error on cancel) (https://github.com/coreshop/CoreShop/pull/1369)
@@ -211,7 +211,7 @@
  - Features:
     - [IndexBundle] allow configuring if versions should be indexed or not (https://github.com/coreshop/CoreShop/pull/1303)
     - [IndexBundle] add possibility to store extra information into relational table (https://github.com/coreshop/CoreShop/pull/1306)
-    - [Pimcore] Compatibility with Pimcore 6.5.3 (https://github.com/coreshop/CoreShop/pull/1310)
+    - [OpenDxp] Compatibility with OpenDxp 6.5.3 (https://github.com/coreshop/CoreShop/pull/1310)
     - [Shipping] Calculate shipping tax using cart items (https://github.com/coreshop/CoreShop/pull/1283)
     - [Doctrine] remove usage of deprecated merge (https://github.com/coreshop/CoreShop/pull/1314)
     - [Docs] Add Documentation for Unit Definitions (https://github.com/coreshop/CoreShop/pull/1312)
@@ -229,12 +229,12 @@
 ## 2.2.0
  - Features:
     - [Core] Implement Username/Email Login Identifier @solverat (https://github.com/coreshop/CoreShop/issues/1290, https://github.com/coreshop/CoreShop/pull/1291)
-    - [Pimcore] require min Pimcore 6.5 (https://github.com/coreshop/CoreShop/pull/1286)
+    - [OpenDxp] require min OpenDxp 6.5 (https://github.com/coreshop/CoreShop/pull/1286)
     - [Core] Company - Customer Workflow @solverat (https://github.com/coreshop/CoreShop/issues/1266, https://github.com/coreshop/CoreShop/pull/1284)
     - [Scrutinizer] remove unused-code (https://github.com/coreshop/CoreShop/pull/1226)
     - [STAN] fixes (https://github.com/coreshop/CoreShop/pull/1239)
     - [PHPStan] level-3 (https://github.com/coreshop/CoreShop/pull/1220)
-    - [Pimcore] remove pimcore bc layers (https://github.com/coreshop/CoreShop/pull/1221)
+    - [OpenDxp] remove opendxp bc layers (https://github.com/coreshop/CoreShop/pull/1221)
     - [CoreBundle] support version marshall und unmarshall to merge with existing data (https://github.com/coreshop/CoreShop/pull/1145)
  - Bugs:
     - [CoreExtensions] fix issue with CoreShop CoreExtensions Recycle Bin (https://github.com/coreshop/CoreShop/pull/1254)

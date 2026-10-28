@@ -1,6 +1,6 @@
 # Index Bundle
 
-The Index Bundle integrates the Index Component into Symfony and Doctrine, offering tools for indexing Pimcore models,
+The Index Bundle integrates the Index Component into Symfony and Doctrine, offering tools for indexing OpenDxp models,
 managing filters, and creating conditions. It includes ListingServices and FilterServices.
 
 ## Installation Process
@@ -51,7 +51,7 @@ namespace App\Model;
 
 use CoreShop\Component\Index\Model\IndexableInterface;
 
-class MyPimcoreDataObject implements IndexableInterface
+class MyOpenDxpDataObject implements IndexableInterface
 {
     // Defines if the Indexable is enabled for the given Index
     public function getIndexableEnabled(IndexInterface $index): bool 
@@ -73,7 +73,7 @@ class MyPimcoreDataObject implements IndexableInterface
 }
 ```
 
-Ensure that `App\Model\MyPimcoreDataObject` is set as your parent class for your Pimcore Data-Object.
+Ensure that `App\Model\MyOpenDxpDataObject` is set as your parent class for your OpenDxp Data-Object.
 
 ### Retrieving Listings from an Index
 

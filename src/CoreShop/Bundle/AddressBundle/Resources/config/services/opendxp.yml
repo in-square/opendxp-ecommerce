@@ -1,0 +1,30 @@
+services:
+    _defaults:
+        public: true
+
+    coreshop.opendxp.document.editable.country:
+        class: CoreShop\Component\Resource\OpenDxp\ResourceDocumentTagFactory
+        arguments:
+            - 'CoreShop\Bundle\ResourceBundle\CoreExtension\Document\Select'
+            - 'coreshop.repository.country'
+            - 'name'
+        tags:
+            - { name: coreshop.opendxp.document.editable, type: coreshop_country }
+
+    coreshop.opendxp.document.editable.state:
+        class: CoreShop\Component\Resource\OpenDxp\ResourceDocumentTagFactory
+        arguments:
+            - 'CoreShop\Bundle\ResourceBundle\CoreExtension\Document\Select'
+            - 'coreshop.repository.state'
+            - 'name'
+        tags:
+            - { name: coreshop.opendxp.document.editable, type: coreshop_state }
+
+    coreshop.opendxp.document.editable.zone:
+        class: CoreShop\Component\Resource\OpenDxp\ResourceDocumentTagFactory
+        arguments:
+            - 'CoreShop\Bundle\ResourceBundle\CoreExtension\Document\Select'
+            - 'coreshop.repository.zone'
+            - 'name'
+        tags:
+            - { name: coreshop.opendxp.document.editable, type: coreshop_zone }

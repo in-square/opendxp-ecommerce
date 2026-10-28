@@ -45,10 +45,10 @@ services:
         tags:
             - { name: validator.constraint_validator, alias: coreshop_variant_valid_attributes }
 
-    CoreShop\Bundle\VariantBundle\Pimcore\VariantLinkGenerator:
-        decorates: 'CoreShop\Component\Pimcore\DataObject\CompositeLinkGenerator'
+    CoreShop\Bundle\VariantBundle\OpenDxp\VariantLinkGenerator:
+        decorates: 'CoreShop\Component\OpenDxp\DataObject\CompositeLinkGenerator'
         arguments:
-            - '@CoreShop\Bundle\VariantBundle\Pimcore\VariantLinkGenerator.inner'
+            - '@CoreShop\Bundle\VariantBundle\OpenDxp\VariantLinkGenerator.inner'
             - '%coreshop.variant.redirect_to_main_variant%'
 
     CoreShop\Bundle\VariantBundle\Controller\VariantController:
@@ -67,6 +67,6 @@ services:
     CoreShop\Bundle\VariantBundle\Messenger\Handler\CreateVariantMessageHandler:
         arguments:
             - '@CoreShop\Bundle\VariantBundle\Service\VariantGeneratorServiceInterface'
-            - '@Pimcore\Model\Notification\Service\NotificationService'
+            - '@OpenDxp\Model\Notification\Service\NotificationService'
         tags:
             - { name: messenger.message_handler }

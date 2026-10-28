@@ -1,0 +1,6 @@
+core_shop_user:
+    opendxp:
+        user:
+            classes:
+                interface: CoreShop\Component\Core\Model\UserInterface
+                install_file: '@CoreShopCoreBundle/Resources/install/opendxp/classes/CoreShopUserBundle/CoreShopUser.json'

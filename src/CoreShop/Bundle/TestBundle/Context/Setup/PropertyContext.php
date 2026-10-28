@@ -20,8 +20,8 @@ namespace CoreShop\Bundle\TestBundle\Context\Setup;
 
 use Behat\Behat\Context\Context;
 use CoreShop\Bundle\TestBundle\Service\SharedStorageInterface;
-use Pimcore\Model\DataObject\Concrete;
-use Pimcore\Model\Element\ElementInterface;
+use OpenDxp\Model\DataObject\Concrete;
+use OpenDxp\Model\Element\ElementInterface;
 
 class PropertyContext implements Context
 {

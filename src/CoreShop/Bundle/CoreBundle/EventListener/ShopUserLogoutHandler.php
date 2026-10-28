@@ -21,17 +21,10 @@ namespace CoreShop\Bundle\CoreBundle\EventListener;
 use CoreShop\Component\Core\Model\StoreInterface;
 use CoreShop\Component\Store\Context\StoreContextInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\RouterInterface;
 use Symfony\Component\Security\Http\Event\LogoutEvent;
-use Symfony\Component\Security\Http\Logout\LogoutSuccessHandlerInterface;
 
-/**
- * TOOD: Refactor https://symfony.com/blog/new-in-symfony-5-1-simpler-logout-customization
- */
-
-/** @psalm-suppress DeprecatedInterface */
-final class ShopUserLogoutHandler /*implements LogoutSuccessHandlerInterface*/
+final class ShopUserLogoutHandler
 {
     public function __construct(
         private RouterInterface $router,
@@ -40,7 +33,7 @@ final class ShopUserLogoutHandler /*implements LogoutSuccessHandlerInterface*/
     ) {
     }
 
-    public function onLogoutSuccess(LogoutEvent $event): Response
+    public function onLogoutSuccess(LogoutEvent $event): void
     {
         $request = $event->getRequest();
         $store = $this->storeContext->getStore();
@@ -49,6 +42,6 @@ final class ShopUserLogoutHandler /*implements LogoutSuccessHandlerInterface*/
             $request->getSession()->remove('coreshop.cart.' . $store->getId());
         }
 
-        return new RedirectResponse($this->router->generate($this->routeName, ['_locale' => $request->getLocale()]));
+        $event->setResponse(new RedirectResponse($this->router->generate($this->routeName, ['_locale' => $request->getLocale()])));
     }
 }

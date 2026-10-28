@@ -19,8 +19,8 @@ declare(strict_types=1);
 namespace CoreShop\Bundle\ResourceBundle\Validator\Constraints;
 
 use CoreShop\Component\Resource\Exception\UnexpectedTypeException;
-use Pimcore\Model\DataObject;
-use Pimcore\Model\DataObject\Concrete;
+use OpenDxp\Model\DataObject;
+use OpenDxp\Model\DataObject\Concrete;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\ExpressionLanguage\ExpressionLanguage;
 use Symfony\Component\Validator\Constraint;

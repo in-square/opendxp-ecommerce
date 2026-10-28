@@ -18,8 +18,8 @@ declare(strict_types=1);
 
 namespace CoreShop\Bundle\TrackingBundle\Resolver;
 
-use Pimcore\Bundle\GoogleMarketingBundle\Config\ConfigProvider;
-use Pimcore\Bundle\GoogleMarketingBundle\SiteId\SiteIdProvider;
+use OpenDxp\Bundle\GoogleMarketingBundle\Config\ConfigProvider;
+use OpenDxp\Bundle\GoogleMarketingBundle\SiteId\SiteIdProvider;
 
 class ConfigResolver implements ConfigResolverInterface
 {

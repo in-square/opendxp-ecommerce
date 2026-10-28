@@ -19,9 +19,9 @@ declare(strict_types=1);
 namespace CoreShop\Component\Order\Repository;
 
 use CoreShop\Component\Order\Model\OrderItemInterface;
-use CoreShop\Component\Resource\Repository\PimcoreRepositoryInterface;
+use CoreShop\Component\Resource\Repository\OpenDxpRepositoryInterface;
 
-interface OrderItemRepositoryInterface extends PimcoreRepositoryInterface
+interface OrderItemRepositoryInterface extends OpenDxpRepositoryInterface
 {
     /**
      * @return OrderItemInterface[]

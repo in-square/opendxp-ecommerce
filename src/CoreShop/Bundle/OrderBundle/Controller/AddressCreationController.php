@@ -21,18 +21,18 @@ namespace CoreShop\Bundle\OrderBundle\Controller;
 use CoreShop\Bundle\OrderBundle\Event\AdminAddressCreationEvent;
 use CoreShop\Bundle\OrderBundle\Events;
 use CoreShop\Bundle\OrderBundle\Form\Type\AdminAddressCreationType;
-use CoreShop\Bundle\ResourceBundle\Controller\PimcoreController;
+use CoreShop\Bundle\ResourceBundle\Controller\OpenDxpController;
 use CoreShop\Bundle\ResourceBundle\Form\Helper\ErrorSerializer;
 use CoreShop\Component\Address\Model\AddressesAwareInterface;
 use CoreShop\Component\Address\Model\AddressInterface;
 use CoreShop\Component\Customer\Model\CustomerInterface;
-use CoreShop\Component\Pimcore\DataObject\ObjectServiceInterface;
+use CoreShop\Component\OpenDxp\DataObject\ObjectServiceInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Contracts\EventDispatcher\EventDispatcherInterface;
 use Symfony\Contracts\Service\Attribute\SubscribedService;
 
-class AddressCreationController extends PimcoreController
+class AddressCreationController extends OpenDxpController
 {
     public function createAddressAction(
         Request $request,

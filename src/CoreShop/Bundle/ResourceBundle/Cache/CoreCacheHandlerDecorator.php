@@ -18,9 +18,9 @@ declare(strict_types=1);
 
 namespace CoreShop\Bundle\ResourceBundle\Cache;
 
-use CoreShop\Bundle\ResourceBundle\Pimcore\CacheMarshallerInterface;
-use Pimcore\Cache\Core\CoreCacheHandler;
-use Pimcore\Model\DataObject\Concrete;
+use CoreShop\Bundle\ResourceBundle\OpenDxp\CacheMarshallerInterface;
+use OpenDxp\Cache\Core\CoreCacheHandler;
+use OpenDxp\Model\DataObject\Concrete;
 
 /**
  * @psalm-suppress InternalClass

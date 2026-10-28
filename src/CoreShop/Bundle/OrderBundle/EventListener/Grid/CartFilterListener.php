@@ -18,7 +18,7 @@ declare(strict_types=1);
 
 namespace CoreShop\Bundle\OrderBundle\EventListener\Grid;
 
-use Pimcore\Model\DataObject;
+use OpenDxp\Model\DataObject;
 use Symfony\Component\EventDispatcher\GenericEvent;
 
 final class CartFilterListener

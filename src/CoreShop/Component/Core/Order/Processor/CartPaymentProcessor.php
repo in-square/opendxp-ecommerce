@@ -25,7 +25,7 @@ use CoreShop\Component\Order\Model\OrderInterface;
 use CoreShop\Component\Order\Processor\CartProcessorInterface;
 use CoreShop\Component\Payment\Calculator\PaymentProviderRulePriceCalculatorInterface;
 use CoreShop\Component\Payment\Checker\PaymentProviderRuleCheckerInterface;
-use Pimcore\Translation\Translator;
+use OpenDxp\Translation\Translator;
 
 final class CartPaymentProcessor implements CartProcessorInterface
 {

@@ -20,9 +20,9 @@ namespace CoreShop\Bundle\IndexBundle\EventListener;
 
 use CoreShop\Bundle\IndexBundle\Messenger\IndexDeleteMessage;
 use CoreShop\Component\Index\Model\IndexableInterface;
-use Pimcore\Event\Model\DataObjectEvent;
-use Pimcore\Event\Model\ElementEventInterface;
-use Pimcore\Model\DataObject;
+use OpenDxp\Event\Model\DataObjectEvent;
+use OpenDxp\Event\Model\ElementEventInterface;
+use OpenDxp\Model\DataObject;
 use Symfony\Component\Messenger\MessageBusInterface;
 
 final class IndexDeleteObjectListener

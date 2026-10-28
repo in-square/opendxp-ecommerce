@@ -34,7 +34,7 @@ final class CoreShopSetupContext implements Context
     /**
      * @BeforeSuite
      */
-    public static function setupPimcore(): void
+    public static function setupOpenDxp(): void
     {
         if (getenv('CORESHOP_SKIP_DB_SETUP')) {
             return;

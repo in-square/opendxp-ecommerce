@@ -19,8 +19,8 @@ declare(strict_types=1);
 namespace CoreShop\Bundle\StoreBundle\CoreExtension;
 
 use CoreShop\Bundle\StoreBundle\Doctrine\ORM\StoreRepository;
-use Pimcore\Model\DataObject\ClassDefinition\Data;
-use Pimcore\Model\DataObject\ClassDefinition\DynamicOptionsProvider\SelectOptionsProviderInterface;
+use OpenDxp\Model\DataObject\ClassDefinition\Data;
+use OpenDxp\Model\DataObject\ClassDefinition\DynamicOptionsProvider\SelectOptionsProviderInterface;
 
 class StoreOptionProvider implements SelectOptionsProviderInterface
 {

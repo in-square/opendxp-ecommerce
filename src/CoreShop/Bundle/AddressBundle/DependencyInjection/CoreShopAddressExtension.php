@@ -44,10 +44,10 @@ final class CoreShopAddressExtension extends AbstractModelExtension
             $configs['resources'],
             $container,
         );
-        $this->registerPimcoreModels('coreshop', $configs['pimcore'], $container);
+        $this->registerOpenDxpModels('coreshop', $configs['opendxp'], $container);
 
-        if (array_key_exists('pimcore_admin', $configs)) {
-            $this->registerPimcoreResources('coreshop', $configs['pimcore_admin'], $container);
+        if (array_key_exists('opendxp_admin', $configs)) {
+            $this->registerOpenDxpResources('coreshop', $configs['opendxp_admin'], $container);
         }
 
         if (array_key_exists('stack', $configs)) {
@@ -56,7 +56,7 @@ final class CoreShopAddressExtension extends AbstractModelExtension
 
         $bundles = $container->getParameter('kernel.bundles');
 
-        if (array_key_exists('PimcoreDataHubBundle', $bundles)) {
+        if (array_key_exists('OpenDxpDataHubBundle', $bundles)) {
             $loader->load('services/data_hub.yml');
         }
 

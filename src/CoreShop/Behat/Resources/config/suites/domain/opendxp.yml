@@ -1,0 +1,20 @@
+default:
+    suites:
+        domain_opendxp:
+            contexts:
+                - coreshop.behat.context.hook.opendxp_setup
+                - coreshop.behat.context.hook.coreshop_setup
+
+                - CoreShop\Bundle\TestBundle\Context\Hook\DoctrineORMContext
+                - coreshop.behat.context.hook.opendxp_dao
+
+                - CoreShop\Bundle\TestBundle\Context\Transform\SharedStorageContext
+                - CoreShop\Bundle\TestBundle\Context\Transform\ClassContext
+
+                - CoreShop\Bundle\TestBundle\Context\Setup\ClassContext
+
+                - CoreShop\Bundle\TestBundle\Context\Domain\ClassContext
+                - CoreShop\Bundle\TestBundle\Context\Domain\OpenDxpContext
+                - coreshop.behat.context.domain.resource
+            filters:
+                tags: "@domain&&@opendxp"

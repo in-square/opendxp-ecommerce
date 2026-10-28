@@ -18,12 +18,12 @@ declare(strict_types=1);
 
 namespace CoreShop\Component\Product\Model;
 
-use CoreShop\Component\Pimcore\Slug\KeyableSluggableInterface;
-use CoreShop\Component\Pimcore\Slug\SluggableInterface;
-use CoreShop\Component\Resource\Pimcore\Model\PimcoreModelInterface;
-use Pimcore\Model\DataObject\Listing;
+use CoreShop\Component\OpenDxp\Slug\KeyableSluggableInterface;
+use CoreShop\Component\OpenDxp\Slug\SluggableInterface;
+use CoreShop\Component\Resource\OpenDxp\Model\OpenDxpModelInterface;
+use OpenDxp\Model\DataObject\Listing;
 
-interface CategoryInterface extends PimcoreModelInterface, SluggableInterface, KeyableSluggableInterface
+interface CategoryInterface extends OpenDxpModelInterface, SluggableInterface, KeyableSluggableInterface
 {
     public function getId(): ?int;
 

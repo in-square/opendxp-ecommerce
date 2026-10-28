@@ -20,8 +20,8 @@ namespace CoreShop\Bundle\ResourceBundle\DataHub\QueryType;
 
 use CoreShop\Bundle\ResourceBundle\DataHub\Resolver\ResourceResolver;
 use GraphQL\Type\Definition\Type;
-use Pimcore\Bundle\DataHubBundle\GraphQL\DataObjectQueryFieldConfigGenerator\Input;
-use Pimcore\Model\DataObject\ClassDefinition\Data;
+use OpenDxp\Bundle\DataHubBundle\GraphQL\DataObjectQueryFieldConfigGenerator\Input;
+use OpenDxp\Model\DataObject\ClassDefinition\Data;
 
 class Select extends Input
 {

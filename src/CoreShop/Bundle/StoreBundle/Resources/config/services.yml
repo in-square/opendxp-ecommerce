@@ -2,7 +2,7 @@ imports:
     - { resource: services/form.yml }
     - { resource: services/profiler.yml }
     - { resource: services/theme.yml }
-    - { resource: services/pimcore.yml }
+    - { resource: services/opendxp.yml }
 
 services:
     _defaults:
@@ -38,16 +38,16 @@ services:
     CoreShop\Component\Store\Context\RequestBased\CompositeRequestResolver:
         public: false
 
-    CoreShop\Component\Store\Context\RequestBased\PimcoreAdminSiteBasedRequestResolver:
+    CoreShop\Component\Store\Context\RequestBased\OpenDxpAdminSiteBasedRequestResolver:
         public: false
         arguments:
             - '@CoreShop\Component\Store\Context\SiteBasedResolverInterface'
-            - '@Pimcore\Http\RequestHelper'
-            - '@Pimcore\Model\Document\Service'
+            - '@OpenDxp\Http\RequestHelper'
+            - '@OpenDxp\Model\Document\Service'
         tags:
             - { name: coreshop.context.store.request_based.resolver, priority: 200 }
 
-    CoreShop\Component\Store\Context\RequestBased\PimcoreAreaBrickRenderResolver:
+    CoreShop\Component\Store\Context\RequestBased\OpenDxpAreaBrickRenderResolver:
         public: false
         arguments:
             - '@CoreShop\Component\Store\Context\SiteBasedResolverInterface'

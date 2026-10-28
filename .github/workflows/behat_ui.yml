@@ -1,22 +1,26 @@
 name: Behat UI
 on:
   push:
-    branches: [ '4.0', '4.1','next' ]
     paths:
       - 'composer.json'
       - 'features/**'
       - 'behat.yml.dist'
       - '*.php'
       - 'src/**'
+      - 'config/**'
+      - 'tests/**'
+      - '.github/workflows/**'
 
   pull_request:
-    branches: [ '4.0', '4.1','next' ]
     paths:
       - 'composer.json'
       - 'features/**'
       - 'behat.yml.dist'
       - '*.php'
       - 'src/**'
+      - 'config/**'
+      - 'tests/**'
+      - '.github/workflows/**'
   release:
     types: [ created ]
   schedule:
@@ -28,26 +32,26 @@ jobs:
     env:
       APP_ENV: "test"
       CORESHOP_SKIP_DB_SETUP: "1"
-      PIMCORE_TEST_DB_DSN: "mysql://root:root@127.0.0.1:3306/coreshop_test"
-      PIMCORE_INSTALL_ADMIN_USERNAME: "admin"
-      PIMCORE_INSTALL_ADMIN_PASSWORD: "admin"
-      PIMCORE_INSTALL_MYSQL_HOST_SOCKET: "127.0.0.1"
-      PIMCORE_INSTALL_MYSQL_USERNAME: "root"
-      PIMCORE_INSTALL_MYSQL_PASSWORD: "root"
-      PIMCORE_INSTALL_MYSQL_DATABASE: "coreshop_test"
-      PIMCORE_INSTALL_MYSQL_PORT: "3306"
+      OPENDXP_TEST_DB_DSN: "mysql://root:root@127.0.0.1:3306/coreshop_test"
+      OPENDXP_INSTALL_ADMIN_USERNAME: "admin"
+      OPENDXP_INSTALL_ADMIN_PASSWORD: "coreshop"
+      OPENDXP_INSTALL_MYSQL_HOST_SOCKET: "127.0.0.1"
+      OPENDXP_INSTALL_MYSQL_USERNAME: "root"
+      OPENDXP_INSTALL_MYSQL_PASSWORD: "root"
+      OPENDXP_INSTALL_MYSQL_DATABASE: "coreshop_test"
+      OPENDXP_INSTALL_MYSQL_PORT: "3306"
       PANTHER_EXTERNAL_BASE_URI: "http://localhost:9080/index_test.php"
-      PIMCORE_KERNEL_CLASS: 'Kernel'
+      PANTHER_NO_SANDBOX: "1"
+      PANTHER_NO_HEADLESS: "0"
+      XDEBUG_MODE: "off"
+      OPENDXP_KERNEL_CLASS: 'Kernel'
 
     strategy:
       matrix:
-        php: [ 8.1, 8.2 ]
-        pimcore: [ ~11.5 ]
+        php: [ 8.3 ]
+        opendxp: [ '~1.3.0', '^1.3' ]
         jms: [ ^4.0, ^5.0 ]
         dependencies: [ highest ]
-        exclude:
-          - php: 8.1
-            dependencies: lowest
 
     services:
       database:
@@ -57,7 +61,7 @@ jobs:
         ports:
           - 3306:3306
         options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
-    name: "${{ matrix.pimcore }}, PHP ${{ matrix.php }}, Deps ${{ matrix.dependencies }}, JMS ${{ matrix.jms }}"
+    name: "${{ matrix.opendxp }}, PHP ${{ matrix.php }}, Deps ${{ matrix.dependencies }}, JMS ${{ matrix.jms }}"
 
     steps:
     - uses: actions/checkout@v4
@@ -70,7 +74,7 @@ jobs:
       uses: shivammathur/setup-php@v2
       with:
         php-version: ${{ matrix.php }}
-        ini-values: display_errors=On, display_startup_errors=On, error_reporting=32767
+        ini-values: memory_limit=512M, display_errors=On, display_startup_errors=On, error_reporting=32767
         extensions: intl, gd, simpleXML, dom, exif, fileinfo, iconv, mbstring, mysqli, pdo_mysql, zip, zlib
         tools: symfony
 
@@ -95,8 +99,8 @@ jobs:
     - name: jms/serializer-bundle
       run: composer require "jms/serializer-bundle:${{ matrix.jms }}" --no-update --no-scripts
 
-    - name: pimcore/pimcore
-      run: composer req pimcore/pimcore:${{ matrix.pimcore }} --no-interaction --no-scripts --no-update
+    - name: open-dxp/opendxp
+      run: composer req open-dxp/opendxp:${{ matrix.opendxp }} --no-interaction --no-scripts --no-update
 
     - if: matrix.dependencies == 'highest'
       name: Install dependencies highest
@@ -112,8 +116,8 @@ jobs:
     - name: Assets Install
       run: bin/console assets:install --symlink
 
-    - name: Install Pimcore
-      run: PIMCORE_KERNEL_CLASS=Kernel vendor/bin/pimcore-install --env=test --skip-database-config
+    - name: Install OpenDxp
+      run: OPENDXP_KERNEL_CLASS=Kernel vendor/bin/opendxp-install --env=test --skip-database-config
 
     - name: Install CoreShop
       run: |
@@ -129,11 +133,21 @@ jobs:
     - name: Run Behat
       run: vendor/bin/behat --strict --no-interaction -vvv -f progress --config behat.yml.dist -p ui
 
+    - name: Run OpenDXP admin Behat
+      env:
+        PANTHER_EXTERNAL_BASE_URI: "http://localhost:9080"
+      run: vendor/bin/behat --strict --no-interaction -vvv -f progress --config behat.yml.dist -p ui_opendxp
+
+    - name: Run decimal precision Behat
+      env:
+        PANTHER_EXTERNAL_BASE_URI: "http://localhost:9080/index_test_precision.php"
+      run: vendor/bin/behat --strict --no-interaction -vvv -f progress --config behat.yml.dist -p ui_precision
+
     - name: Upload Logs
       uses: actions/upload-artifact@v4
       if: failure()
       with:
-        name: "Logs (PHP ${{ matrix.php }}, Symfony ${{ matrix.pimcore }})"
+        name: "Logs (PHP ${{ matrix.php }}, Symfony ${{ matrix.opendxp }})"
         path: |
           var/log/
           etc/build/

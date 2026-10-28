@@ -12,7 +12,7 @@
         <field name="identifier" column="identifier" length="100" unique="true"/>
         <field name="active" column="active" type="boolean"/>
         <field name="position" column="position" type="integer"/>
-        <field name="logo" column="logo" type="pimcoreAsset" nullable="true"/>
+        <field name="logo" column="logo" type="opendxpAsset" nullable="true"/>
         <field name="creationDate" type="datetime">
             <gedmo:timestampable on="create"/>
         </field>

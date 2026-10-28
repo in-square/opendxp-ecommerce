@@ -12,7 +12,7 @@
     
 ## 2.1.7
  - Bugs:
-    - [Pimcore] fix getDataForEditmode (https://github.com/coreshop/CoreShop/pull/1372, https://github.com/coreshop/CoreShop/pull/1361)
+    - [OpenDxp] fix getDataForEditmode (https://github.com/coreshop/CoreShop/pull/1372, https://github.com/coreshop/CoreShop/pull/1361)
 
 ## 2.1.6
  - Bugs:
@@ -31,7 +31,7 @@
  - Bugs:
     - [IndexBundle] Change return type of WorkerInterface::getList (https://github.com/coreshop/CoreShop/pull/1280)
     - [ThemeBundle] fix default theme-resolvers (https://github.com/coreshop/CoreShop/pull/1281)
-    - [Pimcore] make compatible with Pimcore 6.5 (https://github.com/coreshop/CoreShop/pull/1285)
+    - [OpenDxp] make compatible with OpenDxp 6.5 (https://github.com/coreshop/CoreShop/pull/1285)
     - [Core] fix bug where we calculated item-discount and item-discount-prices (https://github.com/coreshop/CoreShop/pull/1293)
 
 ## 2.1.3
@@ -83,7 +83,7 @@
    
 ## 2.1.0
  - Bugs:
-   - [ThemeBundle] add missing dependency to pimcore-bundle (https://github.com/coreshop/CoreShop/pull/1138, https://github.com/coreshop/CoreShop/pull/1140)
+   - [ThemeBundle] add missing dependency to opendxp-bundle (https://github.com/coreshop/CoreShop/pull/1138, https://github.com/coreshop/CoreShop/pull/1140)
    - [ResourceBundle] fix naming of parameter sortBy (https://github.com/coreshop/CoreShop/pull/1132)
    - [Quantity Price Rules] Check Inherited Product Quantity Price Range Data (https://github.com/coreshop/CoreShop/pull/1143)
    - [FrontendBundle] allow usage of auto-wired Frontend Controllers (https://github.com/coreshop/CoreShop/pull/1141)
@@ -143,17 +143,17 @@
     - [Store Values] swap store-prices with store-values and make them extendable for custom store values (https://github.com/coreshop/CoreShop/pull/877, https://github.com/coreshop/CoreShop/pull/883, https://github.com/coreshop/CoreShop/pull/950, https://github.com/coreshop/CoreShop/pull/902, https://github.com/coreshop/CoreShop/pull/896)
     - [ResourceBundle] Add group to ThumbnailInstaller (https://github.com/coreshop/CoreShop/pull/1017) @AndiKeiser
     - [All] AutoWiring (https://github.com/coreshop/CoreShop/pull/850)
-    - [All] Pimcore 6/Symfony 4 compatibilty (https://github.com/coreshop/CoreShop/pull/996, https://github.com/coreshop/CoreShop/pull/1062, https://github.com/coreshop/CoreShop/pull/1035)
+    - [All] OpenDxp 6/Symfony 4 compatibilty (https://github.com/coreshop/CoreShop/pull/996, https://github.com/coreshop/CoreShop/pull/1062, https://github.com/coreshop/CoreShop/pull/1035)
     - [Tests] Update to friends-of-behat/symfony-extension:^2.0 (https://github.com/coreshop/CoreShop/pull/1024)
-    - [Travis] add setup for Pimcore 6 changed system.yml config (https://github.com/coreshop/CoreShop/pull/1029)
+    - [Travis] add setup for OpenDxp 6 changed system.yml config (https://github.com/coreshop/CoreShop/pull/1029)
     - [All] Introduce configurable decimal precision and factor (https://github.com/coreshop/CoreShop/pull/1030)
     - [All] change db type for pricing fields to BIGINT (https://github.com/coreshop/CoreShop/pull/1032, https://github.com/coreshop/CoreShop/pull/1098)
     - [ShippingBundle] introduce gross/net checkbox for amount condition (https://github.com/coreshop/CoreShop/pull/1042)
-    - [Graphql] Add Support for Pimcore GraphQl Data Hub (https://github.com/coreshop/CoreShop/pull/1052)
+    - [Graphql] Add Support for OpenDxp GraphQl Data Hub (https://github.com/coreshop/CoreShop/pull/1052)
     - [Tracking] Add Decimal Precision to Order Extractor (https://github.com/coreshop/CoreShop/pull/1058)
     - [MoneyBundle] add fallback in money-bundle for decimal precision (https://github.com/coreshop/CoreShop/pull/1061)
     - [Docs] Added visualization for coreshop_order Workflow (https://github.com/coreshop/CoreShop/pull/1067) @davidhoeck
-    - [Pimcore] add conflict for Pimcore 6.1.0 and Pimcore 6.1.1 (https://github.com/coreshop/CoreShop/pull/1069)
+    - [OpenDxp] add conflict for OpenDxp 6.1.0 and OpenDxp 6.1.1 (https://github.com/coreshop/CoreShop/pull/1069)
     - [Docs] Update 03_Theme.md (https://github.com/coreshop/CoreShop/pull/1072) @D37R4C7
     - [FQCN] FQCN Services (https://github.com/coreshop/CoreShop/pull/1079, https://github.com/coreshop/CoreShop/pull/1084, https://github.com/coreshop/CoreShop/issues/1085, https://github.com/coreshop/CoreShop/pull/1086, https://github.com/coreshop/CoreShop/pull/1090)
     - [Product] Unit Definition - Precision (https://github.com/coreshop/CoreShop/pull/1081, https://github.com/coreshop/CoreShop/pull/1091, https://github.com/coreshop/CoreShop/pull/1092) @solverat
@@ -164,18 +164,18 @@
     - [ShippingBundle] add more carrier price options (https://github.com/coreshop/CoreShop/pull/1015)
     - [FrontendBundle] show discount/surcharge label in order overview (https://github.com/coreshop/CoreShop/pull/1006)
     - [Index, IndexBundle] allow options for the listing load function (https://github.com/coreshop/CoreShop/pull/1001)
-    - [ResourceBundle] add connection interface into Pimcore Repository (https://github.com/coreshop/CoreShop/pull/1000)
+    - [ResourceBundle] add connection interface into OpenDxp Repository (https://github.com/coreshop/CoreShop/pull/1000)
     - [ProductBundle, CoreBundle] set itemQuantityFactor min value to null (https://github.com/coreshop/CoreShop/pull/993)
     - [Core] use default unit quanity in onhold inventory (https://github.com/coreshop/CoreShop/pull/990) @solverat
-    - [Maintenance] refactor to use new maintenance task from pimcore 5.8 (https://github.com/coreshop/CoreShop/pull/986)
-    - [All] require min Pimcore 5.8 and PHP 7.2 (https://github.com/coreshop/CoreShop/pull/973)
+    - [Maintenance] refactor to use new maintenance task from opendxp 5.8 (https://github.com/coreshop/CoreShop/pull/986)
+    - [All] require min OpenDxp 5.8 and PHP 7.2 (https://github.com/coreshop/CoreShop/pull/973)
     - [CoreBundle] introduce store-preview for products (https://github.com/coreshop/CoreShop/pull/982)
     - [Adjustments] remove return type AdjustmentInterface (https://github.com/coreshop/CoreShop/pull/978) @solverat
     - [Taxation] fix tax collection on gross values - 2.1 (https://github.com/coreshop/CoreShop/pull/974)
     - [Order] introduce translatable cart-price-rules (https://github.com/coreshop/CoreShop/pull/969)
     - [WholesaleCalculator] introduce purchasable wholesale calculator (https://github.com/coreshop/CoreShop/pull/957)
     - [Product] introduce stop propagation flag for price-rules (https://github.com/coreshop/CoreShop/pull/946)
-    - [Pimcore] make CoreShop 2.1 compatible with Pimcore 5.7.2 (https://github.com/coreshop/CoreShop/pull/915)
+    - [OpenDxp] make CoreShop 2.1 compatible with OpenDxp 5.7.2 (https://github.com/coreshop/CoreShop/pull/915)
     - [CoreBundle] serialize relational values (product and store) as relation (https://github.com/coreshop/CoreShop/pull/916)
     - [Core] Disable Customer Deletion if bounded Orders are available (https://github.com/coreshop/CoreShop/pull/732)
     - [PriceRules] add priority to product-price-rules (https://github.com/coreshop/CoreShop/pull/905)
@@ -188,7 +188,7 @@
     - [Order] make accessor protected for OrderDocument Processor (https://github.com/coreshop/CoreShop/pull/775)
     - [WorkflowBundle, OrderBundle] always load all available coreshop states into js (https://github.com/coreshop/CoreShop/pull/773)
     - [Core, Order] also apply discounts to cart-items (https://github.com/coreshop/CoreShop/pull/770)
-    - [OrderBundle, Pimcore] extract DataLoader from Controller to be used oustide (https://github.com/coreshop/CoreShop/pull/771)
+    - [OrderBundle, OpenDxp] extract DataLoader from Controller to be used oustide (https://github.com/coreshop/CoreShop/pull/771)
     - [OrderBundle] add event to prepare sale in order to better extend details (https://github.com/coreshop/CoreShop/pull/772)
     - [IndexBundle] implement optional inclusion into ProcessManager (https://github.com/coreshop/CoreShop/pull/758)
  
@@ -196,8 +196,8 @@
     - [Product] remove getIsAvailableWhenOutOfStock and setIsAvailableWhenOutOfStock (https://github.com/coreshop/CoreShop/pull/1019)
     - [CoreBundle] fix inheritance for store-values (https://github.com/coreshop/CoreShop/pull/1028)
     - [ResourceBundle] Fix missing coreshop.helper namespace (https://github.com/coreshop/CoreShop/pull/1039)
-    - [PimcoreBundle] fix dynamic-dropdown for pimcore-6 (https://github.com/coreshop/CoreShop/pull/1040)
-    - [All] fix related to element.href and this pimcore PR: pimcore/pimcore#4496 (https://github.com/coreshop/CoreShop/pull/1041)
+    - [OpenDxpBundle] fix dynamic-dropdown for opendxp-6 (https://github.com/coreshop/CoreShop/pull/1040)
+    - [All] fix related to element.href and this opendxp PR: opendxp/opendxp#4496 (https://github.com/coreshop/CoreShop/pull/1041)
     - [Core] Store Values - default value to 0 instead of null, fix setting inherited store values (https://github.com/coreshop/CoreShop/pull/1093)
     - [FrontendBundle] fix wishlist remove and allow purchasables (https://github.com/coreshop/CoreShop/pull/997)
     - [Bundles] provide proper version strings and names (https://github.com/coreshop/CoreShop/pull/970)

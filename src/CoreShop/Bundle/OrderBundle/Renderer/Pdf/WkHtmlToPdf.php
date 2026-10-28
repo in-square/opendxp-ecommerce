@@ -18,11 +18,11 @@ declare(strict_types=1);
 
 namespace CoreShop\Bundle\OrderBundle\Renderer\Pdf;
 
-use Pimcore\Tool\Console;
+use OpenDxp\Tool\Console;
 use Symfony\Component\Process\Process;
 
 /**
- * @deprecated Deprecated since CoreShop 4.1, to be removed in CoreShop 5.0. No replacement available, use Pimcore's Web2Print Renderer instead.
+ * @deprecated Deprecated since CoreShop 4.1, to be removed in CoreShop 5.0. No replacement available, use OpenDxp's Web2Print Renderer instead.
  *
  * @psalm-suppress DeprecatedInterface
  */
@@ -39,7 +39,7 @@ final class WkHtmlToPdf implements PdfRendererInterface
         trigger_deprecation(
             'coreshop/order-bundle',
             '4.1',
-            'The "%s" class is deprecated and will be removed in CoreShop 5.0. No replacement available, use Pimcore\'s Web2Print Renderer instead.',
+            'The "%s" class is deprecated and will be removed in CoreShop 5.0. No replacement available, use OpenDxp\'s Web2Print Renderer instead.',
             self::class,
         );
 

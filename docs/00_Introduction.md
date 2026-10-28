@@ -3,10 +3,10 @@ slug: /
 title: Introduction
 ---
 
-# Introduction to CoreShop - Pimcore eCommerce Framework
+# Introduction to CoreShop - OpenDxp eCommerce Framework
 
 Welcome to the CoreShop documentation. This section is designed for developers and provides comprehensive information on
-utilizing CoreShop within Pimcore, a powerful and flexible eCommerce solution.
+utilizing CoreShop within OpenDxp, a powerful and flexible eCommerce solution.
 
 ![illustration.png](img%2Fillustration.png)
 
@@ -28,4 +28,4 @@ Our documentation is organized into easy-to-navigate sections, each tailored to 
 - **Live Demo**: Experience CoreShop firsthand and use our [CoreShop Demo](https://demo4.coreshop.org) as a blueprint
   for your implementations.
 
-For more information about Pimcore itself, visit [pimcore.com](https://pimcore.com).
+For more information about OpenDxp itself, visit [opendxp.com](https://opendxp.com).

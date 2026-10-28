@@ -18,12 +18,12 @@ declare(strict_types=1);
 
 namespace CoreShop\Bundle\ResourceBundle\CoreExtension;
 
-use CoreShop\Bundle\ResourceBundle\Pimcore\CacheMarshallerInterface;
+use CoreShop\Bundle\ResourceBundle\OpenDxp\CacheMarshallerInterface;
 use CoreShop\Component\Resource\Model\ResourceInterface;
 use CoreShop\Component\Resource\Repository\RepositoryInterface;
-use Pimcore\Model;
-use Pimcore\Model\DataObject\ClassDefinition\Data;
-use Pimcore\Model\DataObject\Concrete;
+use OpenDxp\Model;
+use OpenDxp\Model\DataObject\ClassDefinition\Data;
+use OpenDxp\Model\DataObject\Concrete;
 
 /**
  * @psalm-suppress InvalidReturnType, InvalidReturnStatement
@@ -147,7 +147,7 @@ abstract class Select extends Data implements
             $tmpData = $this->getRepository()->find($data->getId());
 
             if ($tmpData instanceof ResourceInterface) {
-                //Dirty Fix, Pimcore sometimes calls properties without getter
+                //Dirty Fix, OpenDxp sometimes calls properties without getter
                 //This could cause Problems with translations, therefore, we need to set
                 //the value here
                 $container->setValue($this->getName(), $tmpData);

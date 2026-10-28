@@ -27,10 +27,10 @@ simple models such as currencies, countries, etc. Here are the primary resources
 
 In CoreShop, the term 'Resource' refers to these ORM Models.
 
-## Pimcore Models
+## OpenDxp Models
 
-Leveraging Pimcore's flexible data model, CoreShop uses Data Objects for frequently used and modified entities. The
-following are the key objects implemented using Pimcore Data Objects:
+Leveraging OpenDxp's flexible data model, CoreShop uses Data Objects for frequently used and modified entities. The
+following are the key objects implemented using OpenDxp Data Objects:
 
 - **Product**: The core entity in any eCommerce platform.
 - **Product Category**: Organizing products into categories.
@@ -43,4 +43,4 @@ following are the key objects implemented using Pimcore Data Objects:
 - **Customer Group**: Grouping customers for specific functionalities or offers.
 - **Addresses**: Managing customer addresses.
 
-When discussing 'Objects' in the context of CoreShop, it refers to these Pimcore Data Objects.
+When discussing 'Objects' in the context of CoreShop, it refers to these OpenDxp Data Objects.

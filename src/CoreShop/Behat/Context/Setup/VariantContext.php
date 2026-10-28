@@ -25,9 +25,9 @@ use CoreShop\Component\Variant\Model\AttributeColorInterface;
 use CoreShop\Component\Variant\Model\AttributeGroupInterface;
 use CoreShop\Component\Variant\Model\AttributeValueInterface;
 use CoreShop\Component\Variant\Model\ProductVariantAwareInterface;
-use Pimcore\File;
-use Pimcore\Model\DataObject\Data\RgbaColor;
-use Pimcore\Model\DataObject\Service;
+use OpenDxp\File;
+use OpenDxp\Model\DataObject\Data\RgbaColor;
+use OpenDxp\Model\DataObject\Service;
 
 final class VariantContext implements Context
 {

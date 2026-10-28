@@ -22,7 +22,7 @@ use Behat\Behat\Context\Context;
 use CoreShop\Bundle\TestBundle\Service\SharedStorageInterface;
 use CoreShop\Component\Core\Model\ProductInterface;
 use CoreShop\Component\Core\Repository\ProductRepositoryInterface;
-use Pimcore\Model\DataObject\AbstractObject;
+use OpenDxp\Model\DataObject\AbstractObject;
 use Webmozart\Assert\Assert;
 
 final class ProductContext implements Context
@@ -40,7 +40,7 @@ final class ProductContext implements Context
     public function getProductByName($productName)
     {
         /**
-         * @var \Pimcore\Model\DataObject\Listing\Concrete $list
+         * @var \OpenDxp\Model\DataObject\Listing\Concrete $list
          */
         $list = $this->productRepository->getList();
         $list->setLocale('en');
@@ -68,7 +68,7 @@ final class ProductContext implements Context
     public function getProductByKey($productName)
     {
         /**
-         * @var \Pimcore\Model\DataObject\Listing\Concrete $list
+         * @var \OpenDxp\Model\DataObject\Listing\Concrete $list
          */
         $list = $this->productRepository->getList();
         $list->setLocale('en');

@@ -1,0 +1,20 @@
+default:
+    suites:
+        ui_opendxp_exchange_rate:
+            contexts:
+                - coreshop.behat.context.hook.opendxp_setup
+                - coreshop.behat.context.hook.coreshop_setup
+
+                - CoreShop\Bundle\TestBundle\Context\Hook\DoctrineORMContext
+                - coreshop.behat.context.hook.opendxp_dao
+
+                - CoreShop\Bundle\TestBundle\Context\Transform\SharedStorageContext
+
+                - coreshop.behat.context.setup.backend_security
+
+                - coreshop.behat.context.ui_opendxp.login
+                - coreshop.behat.context.ui_opendxp.menu
+                - coreshop.behat.context.ui_opendxp.pwa
+                - coreshop.behat.context.ui_opendxp.coreshop.exchange_rate
+            filters:
+                tags: "@ui_opendxp&&@exchange_rate"

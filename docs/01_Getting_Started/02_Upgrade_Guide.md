@@ -2,7 +2,7 @@
 
 Please check the [Upgrade_Notes](02_Upgrade_Notes.md) Guide for changes and for potential breaking changes.
 
-We follow similar approach to updates as Pimcore does. So always update to the latest Minor release version first before 
+We follow similar approach to updates as OpenDxp does. So always update to the latest Minor release version first before
 updating to the next Major release version. This means that if you are on 3.2.1 and want to update to 4.0, you should update
 to the latest 3.2.x release first and then update to 4.0 or 4.1.
 

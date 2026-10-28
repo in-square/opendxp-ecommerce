@@ -1,0 +1,16 @@
+default:
+    suites:
+        ui_opendxp_quote:
+            contexts:
+                - coreshop.behat.context.hook.opendxp_setup
+                - coreshop.behat.context.hook.coreshop_setup
+
+                - CoreShop\Bundle\TestBundle\Context\Hook\DoctrineORMContext
+                - coreshop.behat.context.hook.opendxp_dao
+
+                - CoreShop\Bundle\TestBundle\Context\Transform\SharedStorageContext
+
+                - coreshop.behat.context.ui_opendxp.login
+                - coreshop.behat.context.ui_opendxp.menu
+            filters:
+                tags: "@ui_opendxp&&@quote"

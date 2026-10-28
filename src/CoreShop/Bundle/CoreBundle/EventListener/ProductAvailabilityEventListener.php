@@ -23,10 +23,10 @@ use CoreShop\Component\Core\Model\OrderItemInterface;
 use CoreShop\Component\Order\Model\PurchasableInterface;
 use CoreShop\Component\Order\OrderSaleStates;
 use CoreShop\Component\Order\Repository\OrderItemRepositoryInterface;
-use CoreShop\Component\Pimcore\DataObject\VersionHelper;
+use CoreShop\Component\OpenDxp\DataObject\VersionHelper;
 use Doctrine\DBAL\Connection;
-use Pimcore\Event\Model\DataObjectEvent;
-use Pimcore\Model\DataObject\Concrete;
+use OpenDxp\Event\Model\DataObjectEvent;
+use OpenDxp\Model\DataObject\Concrete;
 
 final class ProductAvailabilityEventListener
 {

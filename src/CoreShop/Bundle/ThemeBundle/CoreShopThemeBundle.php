@@ -21,13 +21,13 @@ namespace CoreShop\Bundle\ThemeBundle;
 use Composer\InstalledVersions;
 use CoreShop\Bundle\ThemeBundle\DependencyInjection\Compiler\CompositeThemeResolverPass;
 use CoreShop\Bundle\ThemeBundle\DependencyInjection\Compiler\RemoveThemeAwareTranslatorPass;
-use Pimcore\Extension\Bundle\AbstractPimcoreBundle;
-use Pimcore\HttpKernel\Bundle\DependentBundleInterface;
-use Pimcore\HttpKernel\BundleCollection\BundleCollection;
+use OpenDxp\Extension\Bundle\AbstractOpenDxpBundle;
+use OpenDxp\HttpKernel\Bundle\DependentBundleInterface;
+use OpenDxp\HttpKernel\BundleCollection\BundleCollection;
 use Sylius\Bundle\ThemeBundle\SyliusThemeBundle;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
-class CoreShopThemeBundle extends AbstractPimcoreBundle implements DependentBundleInterface
+class CoreShopThemeBundle extends AbstractOpenDxpBundle implements DependentBundleInterface
 {
     public static function registerDependentBundles(BundleCollection $collection): void
     {
@@ -66,6 +66,10 @@ class CoreShopThemeBundle extends AbstractPimcoreBundle implements DependentBund
         $bundleName = 'coreshop/theme-bundle';
 
         if (class_exists(InstalledVersions::class)) {
+            if (InstalledVersions::isInstalled('in-square/opendxp-ecommerce')) {
+                return InstalledVersions::getPrettyVersion('in-square/opendxp-ecommerce');
+            }
+
             if (InstalledVersions::isInstalled('coreshop/core-shop')) {
                 return InstalledVersions::getPrettyVersion('coreshop/core-shop');
             }

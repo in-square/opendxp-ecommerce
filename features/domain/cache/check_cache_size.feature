@@ -15,5 +15,5 @@ Feature: Adding a new Product and adding it to the cache
     Then the cache item should be a DataObject
     And the cache item should have an object-var "taxRule" with value of tax rule group
     And the cache item serialized should have a property "taxRule" with value of tax rule group
-    Given I restore the object with Pimcore Cache Helper
+    Given I restore the object with OpenDxp Cache Helper
     Then the cache object should have an object-var "taxRule" of type ResourceInterface

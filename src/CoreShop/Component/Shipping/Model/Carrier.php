@@ -23,7 +23,7 @@ use CoreShop\Component\Resource\Model\TimestampableTrait;
 use CoreShop\Component\Resource\Model\TranslatableTrait;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
-use Pimcore\Model\Asset;
+use OpenDxp\Model\Asset;
 
 /**
  * @psalm-suppress MissingConstructor

@@ -37,8 +37,8 @@ services:
             - true
             - paymentState
 
-    coreshop.state_machine.marking_store.order_payment_pimcore_marking_store:
-        class: CoreShop\Bundle\WorkflowBundle\MarkingStore\PimcorePersistentMarkingStore
+    coreshop.state_machine.marking_store.order_payment_opendxp_marking_store:
+        class: CoreShop\Bundle\WorkflowBundle\MarkingStore\OpenDxpPersistentMarkingStore
         arguments:
             - '@coreshop.state_machine.marking_store.single_state.order_payment_state'
 
@@ -48,8 +48,8 @@ services:
             - true
             - orderState
 
-    coreshop.state_machine.marking_store.order_pimcore_marking_store:
-        class: CoreShop\Bundle\WorkflowBundle\MarkingStore\PimcorePersistentMarkingStore
+    coreshop.state_machine.marking_store.order_opendxp_marking_store:
+        class: CoreShop\Bundle\WorkflowBundle\MarkingStore\OpenDxpPersistentMarkingStore
         arguments:
             - '@coreshop.state_machine.marking_store.single_state.order_state'
 
@@ -59,8 +59,8 @@ services:
             - true
             - quoteState
 
-    coreshop.state_machine.marking_store.quote_pimcore_marking_store:
-        class: CoreShop\Bundle\WorkflowBundle\MarkingStore\PimcorePersistentMarkingStore
+    coreshop.state_machine.marking_store.quote_opendxp_marking_store:
+        class: CoreShop\Bundle\WorkflowBundle\MarkingStore\OpenDxpPersistentMarkingStore
         arguments:
             - '@coreshop.state_machine.marking_store.single_state.quote_state'
 
@@ -70,8 +70,8 @@ services:
             - true
             - shippingState
 
-    coreshop.state_machine.marking_store.order_sales_type_pimcore_marking_store:
-        class: CoreShop\Bundle\WorkflowBundle\MarkingStore\PimcorePersistentMarkingStore
+    coreshop.state_machine.marking_store.order_sales_type_opendxp_marking_store:
+        class: CoreShop\Bundle\WorkflowBundle\MarkingStore\OpenDxpPersistentMarkingStore
         arguments:
             - '@coreshop.state_machine.marking_store.single_state.order_sales_type_state'
             - false
@@ -82,8 +82,8 @@ services:
             - true
             - saleState
 
-    coreshop.state_machine.marking_store.order_shipment_pimcore_marking_store:
-        class: CoreShop\Bundle\WorkflowBundle\MarkingStore\PimcorePersistentMarkingStore
+    coreshop.state_machine.marking_store.order_shipment_opendxp_marking_store:
+        class: CoreShop\Bundle\WorkflowBundle\MarkingStore\OpenDxpPersistentMarkingStore
         arguments:
             - '@coreshop.state_machine.marking_store.single_state.order_shipment_state'
 
@@ -93,8 +93,8 @@ services:
             - true
             - invoiceState
 
-    coreshop.state_machine.marking_store.order_invoice_pimcore_marking_store:
-        class: CoreShop\Bundle\WorkflowBundle\MarkingStore\PimcorePersistentMarkingStore
+    coreshop.state_machine.marking_store.order_invoice_opendxp_marking_store:
+        class: CoreShop\Bundle\WorkflowBundle\MarkingStore\OpenDxpPersistentMarkingStore
         arguments:
             - '@coreshop.state_machine.marking_store.single_state.order_invoice_state'
 
@@ -110,13 +110,13 @@ services:
             - true
             - state
 
-    coreshop.state_machine.marking_store.shipment_pimcore_marking_store:
-        class: CoreShop\Bundle\WorkflowBundle\MarkingStore\PimcorePersistentMarkingStore
+    coreshop.state_machine.marking_store.shipment_opendxp_marking_store:
+        class: CoreShop\Bundle\WorkflowBundle\MarkingStore\OpenDxpPersistentMarkingStore
         arguments:
             - '@coreshop.state_machine.marking_store.single_state.shipment_state'
 
-    coreshop.state_machine.marking_store.invoice_pimcore_marking_store:
-        class: CoreShop\Bundle\WorkflowBundle\MarkingStore\PimcorePersistentMarkingStore
+    coreshop.state_machine.marking_store.invoice_opendxp_marking_store:
+        class: CoreShop\Bundle\WorkflowBundle\MarkingStore\OpenDxpPersistentMarkingStore
         arguments:
             - '@coreshop.state_machine.marking_store.single_state.invoice_state'
 

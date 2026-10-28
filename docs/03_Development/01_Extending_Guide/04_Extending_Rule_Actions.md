@@ -59,7 +59,7 @@ With configuration, comes a Javascript file as well:
 ```javascript
 // public/coreshop/js/custom_action.js
 
-pimcore.registerNS('coreshop.product.pricerule.actions.custom');
+opendxp.registerNS('coreshop.product.pricerule.actions.custom');
 coreshop.product.pricerule.actions.custom = Class.create(coreshop.rules.actions.abstract, {
 
     type: 'custom',
@@ -111,7 +111,7 @@ and add this to your config.yml:
 
 ```yaml
 core_shop_product:
-  pimcore_admin:
+  opendxp_admin:
     js:
       custom_action: '/coreshop/js/custom_action.js'
 ```

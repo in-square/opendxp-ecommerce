@@ -20,7 +20,7 @@ namespace CoreShop\Bundle\CoreBundle\Migrations;
 
 use Doctrine\DBAL\Schema\Schema;
 use Doctrine\Migrations\AbstractMigration;
-use Pimcore\Bundle\StaticRoutesBundle\Model\Staticroute;
+use OpenDxp\Bundle\StaticRoutesBundle\Model\Staticroute;
 
 /**
  * Auto-generated Migration: Please modify to your needs!

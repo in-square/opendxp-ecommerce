@@ -20,8 +20,8 @@ namespace CoreShop\Component\SEO\Extractor;
 
 use CoreShop\Component\SEO\Model\SEOImageAwareInterface;
 use CoreShop\Component\SEO\Model\SEOMetadataInterface;
-use Pimcore\Model\Asset\Image;
-use Pimcore\Tool;
+use OpenDxp\Model\Asset\Image;
+use OpenDxp\Tool;
 use Webmozart\Assert\Assert;
 
 final class ImageExtractor implements ExtractorInterface

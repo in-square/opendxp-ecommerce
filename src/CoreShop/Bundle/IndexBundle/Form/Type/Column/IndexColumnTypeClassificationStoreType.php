@@ -32,13 +32,13 @@ final class IndexColumnTypeClassificationStoreType extends AbstractType
             ->add('keyConfigId', IntegerType::class, [
                 'constraints' => [
                     new NotBlank(['groups' => ['coreshop']]),
-                    new Type(['type' => 'numeric', 'groups' => ['coreshop']]),
+                    new Type(type: 'numeric', groups: ['coreshop']),
                 ],
             ])
             ->add('groupConfigId', IntegerType::class, [
                 'constraints' => [
                     new NotBlank(['groups' => ['coreshop']]),
-                    new Type(['type' => 'numeric', 'groups' => ['coreshop']]),
+                    new Type(type: 'numeric', groups: ['coreshop']),
                 ],
             ])
         ;

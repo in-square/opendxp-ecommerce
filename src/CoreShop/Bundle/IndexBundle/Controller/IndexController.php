@@ -23,7 +23,7 @@ use CoreShop\Component\Index\Interpreter\LocalizedInterpreterInterface;
 use CoreShop\Component\Index\Interpreter\RelationInterpreterInterface;
 use CoreShop\Component\Index\Model\IndexableInterface;
 use CoreShop\Component\Registry\ServiceRegistryInterface;
-use Pimcore\Model\DataObject;
+use OpenDxp\Model\DataObject;
 use Symfony\Component\DependencyInjection\Attribute\Autowire;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -98,9 +98,9 @@ class IndexController extends ResourceController
 
         foreach ($classes as $class) {
             if ($class instanceof DataObject\ClassDefinition) {
-                $pimcoreClass = 'Pimcore\Model\DataObject\\' . ucfirst($class->getName());
+                $opendxpClass = 'OpenDxp\Model\DataObject\\' . ucfirst($class->getName());
 
-                if (in_array(IndexableInterface::class, class_implements($pimcoreClass), true)) {
+                if (in_array(IndexableInterface::class, class_implements($opendxpClass), true)) {
                     $availableClasses[] = [
                         'name' => $class->getName(),
                     ];

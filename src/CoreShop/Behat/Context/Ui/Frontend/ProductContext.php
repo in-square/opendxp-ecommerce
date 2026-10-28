@@ -25,7 +25,7 @@ use CoreShop\Bundle\TestBundle\Service\JavascriptHelper;
 use CoreShop\Component\Core\Model\ProductInterface;
 use CoreShop\Component\Product\Model\ProductUnitInterface;
 use CoreShop\Component\Variant\Model\AttributeInterface;
-use Pimcore\Model\DataObject\Concrete;
+use OpenDxp\Model\DataObject\Concrete;
 use Webmozart\Assert\Assert;
 
 final class ProductContext implements Context

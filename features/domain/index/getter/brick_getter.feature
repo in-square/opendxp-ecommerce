@@ -4,12 +4,12 @@ Feature: Adding a object index
   I want to create a new index where a field comes from an brick
 
   Background:
-    Given there is a pimcore class "BrickTest"
+    Given there is a opendxp class "BrickTest"
     And the definition has a brick field "attributes"
     And the definition has a checkbox field "enabled"
     And the definition has a localized input field "name"
     And the definitions parent class is set to "\CoreShop\Behat\Model\Index\TestIndex"
-    And there is a pimcore brick "Attribute"
+    And there is a opendxp brick "Attribute"
     And the definition has a input field "name"
     And the definition has a input field "val"
     And the definition is allowed for behat-class "BrickTest" in field "attributes"

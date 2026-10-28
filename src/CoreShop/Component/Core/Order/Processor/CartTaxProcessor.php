@@ -28,7 +28,7 @@ use CoreShop\Component\Order\Processor\CartProcessorInterface;
 use CoreShop\Component\Registry\ServiceRegistry;
 use CoreShop\Component\Shipping\Taxation\TaxCalculationStrategyInterface;
 use CoreShop\Component\Taxation\Collector\TaxCollectorInterface;
-use Pimcore\Model\DataObject\Fieldcollection;
+use OpenDxp\Model\DataObject\Fieldcollection;
 
 final class CartTaxProcessor implements CartProcessorInterface
 {

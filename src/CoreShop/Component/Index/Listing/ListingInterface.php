@@ -21,9 +21,9 @@ namespace CoreShop\Component\Index\Listing;
 use CoreShop\Component\Index\Condition\ConditionInterface;
 use CoreShop\Component\Index\Model\IndexInterface;
 use CoreShop\Component\Index\Order\OrderInterface;
-use CoreShop\Component\Resource\Pimcore\Model\PimcoreModelInterface;
-use Pimcore\Model\DataObject\Concrete;
-use Pimcore\Model\Paginator\PaginateListingInterface;
+use CoreShop\Component\Resource\OpenDxp\Model\OpenDxpModelInterface;
+use OpenDxp\Model\DataObject\Concrete;
+use OpenDxp\Model\Paginator\PaginateListingInterface;
 
 interface ListingInterface extends \Countable, PaginateListingInterface
 {
@@ -54,12 +54,12 @@ interface ListingInterface extends \Countable, PaginateListingInterface
     /**
      * Returns all products valid for this search.
      *
-     * @return PimcoreModelInterface[]
+     * @return OpenDxpModelInterface[]
      */
     public function getObjects();
 
     /**
-     * @return PimcoreModelInterface[]
+     * @return OpenDxpModelInterface[]
      */
     public function getItems(int $offset, int $itemCountPerPage): array;
 

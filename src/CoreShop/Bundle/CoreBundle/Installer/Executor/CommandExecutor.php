@@ -21,7 +21,6 @@ namespace CoreShop\Bundle\CoreBundle\Installer\Executor;
 use Symfony\Component\Console\Application;
 use Symfony\Component\Console\Input\ArrayInput;
 use Symfony\Component\Console\Input\InputInterface;
-use Symfony\Component\Console\Output\NullOutput;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Process\Exception\RuntimeException;
 
@@ -34,7 +33,7 @@ final class CommandExecutor
     ) {
     }
 
-    public function runCommand($command, $parameters = [], OutputInterface $output = null): self
+    public function runCommand(string $command, array $parameters = [], ?OutputInterface $output = null): self
     {
         $parameters = array_merge(
             ['command' => $command],
@@ -42,20 +41,17 @@ final class CommandExecutor
             $parameters,
         );
 
+        $autoExit = $this->application->isAutoExitEnabled();
         $this->application->setAutoExit(false);
-        $exitCode = $this->application->run(new ArrayInput($parameters), $output ?: new NullOutput());
 
-        if (1 === $exitCode) {
-            throw new RuntimeException('This command terminated with a permission error.');
+        try {
+            $exitCode = $this->application->run(new ArrayInput($parameters), $output ?? $this->output);
+        } finally {
+            $this->application->setAutoExit($autoExit);
         }
 
         if (0 !== $exitCode) {
-            $this->application->setAutoExit(true);
-
-            $errorMessage = sprintf('The command terminated with an error code: %u.', $exitCode);
-            $this->output->writeln("<error>$errorMessage</error>");
-
-            throw new \Exception($errorMessage, $exitCode);
+            throw new RuntimeException(sprintf('Command "%s" failed with exit code %d.', $command, $exitCode), $exitCode);
         }
 
         return $this;

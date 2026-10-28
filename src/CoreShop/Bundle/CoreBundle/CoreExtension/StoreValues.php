@@ -21,7 +21,7 @@ namespace CoreShop\Bundle\CoreBundle\CoreExtension;
 use CoreShop\Bundle\CoreBundle\Form\Type\Product\ProductStoreValuesType;
 use CoreShop\Bundle\ResourceBundle\CoreExtension\TempEntityManagerTrait;
 use CoreShop\Bundle\ResourceBundle\Doctrine\ORM\EntityMerger;
-use CoreShop\Bundle\ResourceBundle\Pimcore\CacheMarshallerInterface;
+use CoreShop\Bundle\ResourceBundle\OpenDxp\CacheMarshallerInterface;
 use CoreShop\Component\Core\Model\ProductInterface;
 use CoreShop\Component\Core\Model\ProductStoreValuesInterface;
 use CoreShop\Component\Core\Model\StoreInterface;
@@ -33,10 +33,10 @@ use CoreShop\Component\Store\Repository\StoreRepositoryInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use JMS\Serializer\DeserializationContext;
 use JMS\Serializer\SerializationContext;
-use Pimcore\Model;
-use Pimcore\Model\DataObject\Concrete;
-use Pimcore\Model\DataObject\Localizedfield;
-use Pimcore\Model\DataObject\Objectbrick\Data\AbstractData;
+use OpenDxp\Model;
+use OpenDxp\Model\DataObject\Concrete;
+use OpenDxp\Model\DataObject\Localizedfield;
+use OpenDxp\Model\DataObject\Objectbrick\Data\AbstractData;
 use Webmozart\Assert\Assert;
 
 /**
@@ -55,10 +55,7 @@ class StoreValues extends Model\DataObject\ClassDefinition\Data implements
 
     public string $fieldtype = 'coreShopStoreValues';
 
-    /**
-     * @var int
-     */
-    public $width;
+    public int|string|null $width = null;
 
     /**
      * @var string
@@ -80,22 +77,18 @@ class StoreValues extends Model\DataObject\ClassDefinition\Data implements
         return $this->fieldtype;
     }
 
-    /**
-     * @return int
-     */
-    public function getWidth()
+    public function getWidth(): int|string|null
     {
         return $this->width;
     }
 
-    /**
-     * @param int $width
-     *
-     * @return $this
-     */
-    public function setWidth($width)
+    public function setWidth(int|string|null $width): static
     {
-        $this->width = $this->getAsIntegerCast($width);
+        if (is_numeric($width)) {
+            $width = (int) $width;
+        }
+
+        $this->width = $width;
 
         return $this;
     }
@@ -179,7 +172,7 @@ class StoreValues extends Model\DataObject\ClassDefinition\Data implements
         $code .= 'public function get' . ucfirst($key) . 'ForStore (\CoreShop\Component\Store\Model\StoreInterface $store): ?\CoreShop\Component\Core\Model\ProductStoreValuesInterface {' . "\n";
         $code .= "\t" . '$this->' . $key . ' = $this->getClass()->getFieldDefinition("' . $key . '")->preGetData($this);' . "\n";
         $code .= "\t" . '$data = $this->' . $key . ";\n\n";
-        $code .= "\t" . 'if (\Pimcore\Model\DataObject::doGetInheritedValues() && $this->getClass()->getFieldDefinition("' . $key . '")->isEmpty($data)) {' . "\n";
+        $code .= "\t" . 'if (\OpenDxp\Model\DataObject::doGetInheritedValues() && $this->getClass()->getFieldDefinition("' . $key . '")->isEmpty($data)) {' . "\n";
         $code .= "\t\t" . 'try {' . "\n";
         $code .= "\t\t\t" . 'return $this->getValueFromParent("' . $key . 'ForStore", $store);' . "\n";
         $code .= "\t\t" . '} catch (InheritanceParentNotFoundException $e) {' . "\n";
@@ -291,7 +284,7 @@ class StoreValues extends Model\DataObject\ClassDefinition\Data implements
         $code .= '* @return static' . "\n";
         $code .= '*/' . "\n";
         $code .= 'public function set' . ucfirst($key) . 'OfType (string $type, $value, \CoreShop\Component\Store\Model\StoreInterface $store): self {' . "\n";
-        $code .= "\t" . '$storeValue = \CoreShop\Component\Pimcore\DataObject\InheritanceHelper::useInheritedValues(function() use ($store) {' . "\n";
+        $code .= "\t" . '$storeValue = \CoreShop\Component\OpenDxp\DataObject\InheritanceHelper::useInheritedValues(function() use ($store) {' . "\n";
         $code .= "\t\t" . 'return $this->getStoreValuesForStore($store);' . "\n";
         $code .= "\t" . '}, false);' . "\n";
         $code .= "\t" . "\n";
@@ -398,7 +391,7 @@ class StoreValues extends Model\DataObject\ClassDefinition\Data implements
         return $newStoreValues;
     }
 
-    public function load(Localizedfield|\Pimcore\Model\DataObject\Fieldcollection\Data\AbstractData|AbstractData|Concrete $object, array $params = []): mixed
+    public function load(Localizedfield|\OpenDxp\Model\DataObject\Fieldcollection\Data\AbstractData|AbstractData|Concrete $object, array $params = []): mixed
     {
         if (isset($params['force']) && $params['force']) {
             return $this->getProductStoreValuesRepository()->findForObject($object, $this->getName());
@@ -407,7 +400,7 @@ class StoreValues extends Model\DataObject\ClassDefinition\Data implements
         return null;
     }
 
-    public function save(Localizedfield|\Pimcore\Model\DataObject\Fieldcollection\Data\AbstractData|AbstractData|Concrete $object, array $params = []): void
+    public function save(Localizedfield|\OpenDxp\Model\DataObject\Fieldcollection\Data\AbstractData|AbstractData|Concrete $object, array $params = []): void
     {
         if (!$object instanceof ProductInterface) {
             return;
@@ -435,7 +428,7 @@ class StoreValues extends Model\DataObject\ClassDefinition\Data implements
                 continue;
             }
 
-            $entityMerger = new EntityMerger($this->getEntityManager());
+            $entityMerger = $this->getEntityMerger();
             $entityMerger->merge($productStoreValue);
 
             if ($productStoreValue->getProduct() && $productStoreValue->getProduct()->getId() !== $object->getId()) {
@@ -568,7 +561,7 @@ class StoreValues extends Model\DataObject\ClassDefinition\Data implements
         return $this->unmarshalVersion($concrete, $data);
     }
 
-    public function delete(Localizedfield|\Pimcore\Model\DataObject\Fieldcollection\Data\AbstractData|AbstractData|Concrete $object, array $params = []): void
+    public function delete(Localizedfield|\OpenDxp\Model\DataObject\Fieldcollection\Data\AbstractData|AbstractData|Concrete $object, array $params = []): void
     {
         if (!$object instanceof ProductInterface) {
             return;
@@ -874,7 +867,12 @@ class StoreValues extends Model\DataObject\ClassDefinition\Data implements
      */
     protected function getEntityManager()
     {
-        return \Pimcore::getContainer()->get('doctrine.orm.entity_manager');
+        return \OpenDxp::getContainer()->get('doctrine.orm.entity_manager');
+    }
+
+    protected function getEntityMerger(): EntityMerger
+    {
+        return \OpenDxp::getContainer()->get(EntityMerger::class);
     }
 
     /**
@@ -882,7 +880,7 @@ class StoreValues extends Model\DataObject\ClassDefinition\Data implements
      */
     protected function getFormFactory()
     {
-        return \Pimcore::getContainer()->get('coreshop.form.factory');
+        return \OpenDxp::getContainer()->get('coreshop.form.factory');
     }
 
     /**
@@ -890,7 +888,7 @@ class StoreValues extends Model\DataObject\ClassDefinition\Data implements
      */
     protected function getStoreRepository()
     {
-        return \Pimcore::getContainer()->get('coreshop.repository.store');
+        return \OpenDxp::getContainer()->get('coreshop.repository.store');
     }
 
     /**
@@ -898,7 +896,7 @@ class StoreValues extends Model\DataObject\ClassDefinition\Data implements
      */
     protected function getFactory()
     {
-        return \Pimcore::getContainer()->get('coreshop.factory.product_store_values');
+        return \OpenDxp::getContainer()->get('coreshop.factory.product_store_values');
     }
 
     /**
@@ -906,7 +904,7 @@ class StoreValues extends Model\DataObject\ClassDefinition\Data implements
      */
     protected function getProductStoreValuesRepository()
     {
-        return \Pimcore::getContainer()->get('coreshop.repository.product_store_values');
+        return \OpenDxp::getContainer()->get('coreshop.repository.product_store_values');
     }
 
     /**
@@ -914,7 +912,7 @@ class StoreValues extends Model\DataObject\ClassDefinition\Data implements
      */
     protected function getProductStoreValuesRepositoryFactory()
     {
-        return \Pimcore::getContainer()->get('coreshop.repository.factory.product_store_values');
+        return \OpenDxp::getContainer()->get('coreshop.repository.factory.product_store_values');
     }
 
     /**
@@ -922,6 +920,6 @@ class StoreValues extends Model\DataObject\ClassDefinition\Data implements
      */
     protected function getSerializer()
     {
-        return \Pimcore::getContainer()->get('jms_serializer');
+        return \OpenDxp::getContainer()->get('jms_serializer');
     }
 }

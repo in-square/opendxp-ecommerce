@@ -18,7 +18,7 @@ declare(strict_types=1);
 
 namespace CoreShop\Bundle\ResourceBundle\CoreExtension;
 
-use Pimcore\Model;
+use OpenDxp\Model;
 
 /**
  * @psalm-suppress InvalidReturnType, InvalidReturnStatement

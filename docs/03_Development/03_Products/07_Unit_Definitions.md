@@ -2,9 +2,9 @@
 
 CoreShop has a great new feature for product units. E.g. you can sell items "per meter" etc.
 
-First, add some product units in Pimcore > CoreShop > Product > Product Units. Click "Add" and fill all the fields.
+First, add some product units in OpenDxp > CoreShop > Product > Product Units. Click "Add" and fill all the fields.
 
-Then you can add product-units directly in the product-objects inside Pimcore (take a look at the "Price"-tab). There,
+Then you can add product-units directly in the product-objects inside OpenDxp (take a look at the "Price"-tab). There,
 you can also add multiple product units (eg: 1 box contains of 12 items - CoreShop will show you different
 order-possibilities in the add-to-cart section in the webshop)
 

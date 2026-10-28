@@ -18,14 +18,14 @@ declare(strict_types=1);
 
 namespace CoreShop\Bundle\ProductBundle\CoreExtension;
 
-use CoreShop\Bundle\ResourceBundle\Pimcore\CacheMarshallerInterface;
+use CoreShop\Bundle\ResourceBundle\OpenDxp\CacheMarshallerInterface;
 use CoreShop\Component\Product\Model\ProductInterface;
 use CoreShop\Component\Product\Model\ProductUnitDefinitionInterface;
 use CoreShop\Component\Product\Model\ProductUnitDefinitionsInterface;
 use CoreShop\Component\Resource\Model\ResourceInterface;
 use CoreShop\Component\Resource\Repository\RepositoryInterface;
-use Pimcore\Model\DataObject\ClassDefinition\Data;
-use Pimcore\Model\DataObject\Concrete;
+use OpenDxp\Model\DataObject\ClassDefinition\Data;
+use OpenDxp\Model\DataObject\Concrete;
 
 /**
  * @psalm-suppress InvalidReturnType, InvalidReturnStatement
@@ -113,7 +113,7 @@ class ProductUnitDefinition extends Data implements
             $tmpData = $this->getRepository()->find($data->getId());
 
             if ($tmpData instanceof ResourceInterface) {
-                //Dirty Fix, Pimcore sometimes calls properties without getter
+                //Dirty Fix, OpenDxp sometimes calls properties without getter
                 //This could cause Problems with translations, therefore, we need to set
                 //the value here
                 $container->setValue($this->getName(), $tmpData);
@@ -253,7 +253,7 @@ class ProductUnitDefinition extends Data implements
         return (string) $data;
     }
 
-    public function getForCsvExport(Concrete|\Pimcore\Model\DataObject\Objectbrick\Data\AbstractData|\Pimcore\Model\DataObject\Fieldcollection\Data\AbstractData|\Pimcore\Model\DataObject\Localizedfield $object, array $params = []): string
+    public function getForCsvExport(Concrete|\OpenDxp\Model\DataObject\Objectbrick\Data\AbstractData|\OpenDxp\Model\DataObject\Fieldcollection\Data\AbstractData|\OpenDxp\Model\DataObject\Localizedfield $object, array $params = []): string
     {
         return '';
     }
@@ -263,6 +263,6 @@ class ProductUnitDefinition extends Data implements
      */
     protected function getRepository()
     {
-        return \Pimcore::getContainer()->get('coreshop.repository.product_unit_definition');
+        return \OpenDxp::getContainer()->get('coreshop.repository.product_unit_definition');
     }
 }

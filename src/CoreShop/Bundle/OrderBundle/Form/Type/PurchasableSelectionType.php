@@ -18,8 +18,8 @@ declare(strict_types=1);
 
 namespace CoreShop\Bundle\OrderBundle\Form\Type;
 
-use CoreShop\Bundle\ResourceBundle\Form\Type\PimcoreResourceSelectionType;
+use CoreShop\Bundle\ResourceBundle\Form\Type\OpenDxpResourceSelectionType;
 
-final class PurchasableSelectionType extends PimcoreResourceSelectionType
+final class PurchasableSelectionType extends OpenDxpResourceSelectionType
 {
 }

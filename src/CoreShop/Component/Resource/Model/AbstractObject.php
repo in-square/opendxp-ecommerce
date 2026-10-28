@@ -18,7 +18,7 @@ declare(strict_types=1);
 
 namespace CoreShop\Component\Resource\Model;
 
-use Pimcore\Model\DataObject\Concrete;
+use OpenDxp\Model\DataObject\Concrete;
 
 abstract class AbstractObject extends Concrete implements ResourceInterface
 {

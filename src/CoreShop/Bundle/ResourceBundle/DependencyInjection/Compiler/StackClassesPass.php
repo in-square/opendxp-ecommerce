@@ -25,14 +25,14 @@ final class StackClassesPass implements CompilerPassInterface
 {
     public function process(ContainerBuilder $container): void
     {
-        if (!$container->hasParameter('coreshop.all.pimcore_classes') || !$container->hasParameter('coreshop.all.stack')) {
+        if (!$container->hasParameter('coreshop.all.opendxp_classes') || !$container->hasParameter('coreshop.all.stack')) {
             return;
         }
 
         /**
          * @var array $classes
          */
-        $classes = $container->getParameter('coreshop.all.pimcore_classes');
+        $classes = $container->getParameter('coreshop.all.opendxp_classes');
 
         /**
          * @var array $stack
@@ -40,13 +40,13 @@ final class StackClassesPass implements CompilerPassInterface
         $stack = $container->getParameter('coreshop.all.stack');
 
         $classStack = [];
-        $classStackPimcoreClassName = [];
+        $classStackOpenDxpClassName = [];
 
         foreach ($stack as $alias => $interface) {
             [$applicationName, $name] = explode('.', $alias);
 
             $classStack[$alias] = [];
-            $classStackPimcoreClassName[$alias] = [];
+            $classStackOpenDxpClassName[$alias] = [];
 
             foreach ($classes as $definition) {
                 if (!@interface_exists($definition['classes']['interface'])) {
@@ -56,22 +56,22 @@ final class StackClassesPass implements CompilerPassInterface
                 if ($interface === $definition['classes']['interface'] || in_array($interface, class_implements($definition['classes']['interface']), true)) {
                     $classStack[$alias][] = $definition['classes']['model'];
 
-                    if (!empty($definition['classes']['pimcore_class_name'])) {
-                        $class = $definition['classes']['pimcore_class_name'];
+                    if (!empty($definition['classes']['opendxp_class_name'])) {
+                        $class = $definition['classes']['opendxp_class_name'];
                     } else {
                         $fullClassName = $definition['classes']['model'];
-                        $class = str_replace(['Pimcore\\Model\\DataObject\\', '\\'], '', $fullClassName);
+                        $class = str_replace(['OpenDxp\\Model\\DataObject\\', '\\'], '', $fullClassName);
                     }
 
-                    $classStackPimcoreClassName[$alias][] = $class;
+                    $classStackOpenDxpClassName[$alias][] = $class;
                 }
             }
 
             $container->setParameter(sprintf('%s.stack.%s.fqcns', $applicationName, $name), $classStack[$alias]);
-            $container->setParameter(sprintf('%s.stack.%s.pimcore_class_names', $applicationName, $name), $classStackPimcoreClassName[$alias]);
+            $container->setParameter(sprintf('%s.stack.%s.opendxp_class_names', $applicationName, $name), $classStackOpenDxpClassName[$alias]);
         }
 
         $container->setParameter('coreshop.all.stack.fqcns', $classStack);
-        $container->setParameter('coreshop.all.stack.pimcore_class_names', $classStackPimcoreClassName);
+        $container->setParameter('coreshop.all.stack.opendxp_class_names', $classStackOpenDxpClassName);
     }
 }

@@ -22,8 +22,8 @@ use Behat\Behat\Context\Context;
 use CoreShop\Bundle\TestBundle\Service\SharedStorageInterface;
 use CoreShop\Component\Customer\Model\CustomerGroupInterface;
 use CoreShop\Component\Resource\Factory\FactoryInterface;
-use Pimcore\File;
-use Pimcore\Model\DataObject\Folder;
+use OpenDxp\File;
+use OpenDxp\Model\DataObject\Folder;
 
 final class CustomerGroupContext implements Context
 {

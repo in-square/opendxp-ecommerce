@@ -28,13 +28,13 @@ use CoreShop\Component\Index\Model\IndexColumnInterface;
 use CoreShop\Component\Index\Model\IndexInterface;
 use CoreShop\Component\Index\Service\IndexUpdaterServiceInterface;
 use CoreShop\Component\Index\Worker\WorkerInterface;
-use CoreShop\Component\Pimcore\BatchProcessing\DataObjectBatchListing;
+use CoreShop\Component\OpenDxp\BatchProcessing\DataObjectBatchListing;
 use CoreShop\Component\Registry\ServiceRegistryInterface;
 use CoreShop\Component\Resource\Factory\FactoryInterface;
 use Doctrine\Persistence\ObjectManager;
-use Pimcore\Model\DataObject\AbstractObject;
-use Pimcore\Model\DataObject\ClassDefinition;
-use Pimcore\Model\DataObject\Listing;
+use OpenDxp\Model\DataObject\AbstractObject;
+use OpenDxp\Model\DataObject\ClassDefinition;
+use OpenDxp\Model\DataObject\Listing;
 
 final class IndexContext implements Context
 {
@@ -211,7 +211,7 @@ final class IndexContext implements Context
         /**
          * @psalm-var class-string $list
          */
-        $list = '\Pimcore\Model\DataObject\\' . $class . '\Listing';
+        $list = '\OpenDxp\Model\DataObject\\' . $class . '\Listing';
         /**
          * @var Listing $list
          *

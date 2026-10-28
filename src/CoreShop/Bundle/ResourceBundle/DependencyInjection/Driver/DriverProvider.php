@@ -21,7 +21,7 @@ namespace CoreShop\Bundle\ResourceBundle\DependencyInjection\Driver;
 use CoreShop\Bundle\ResourceBundle\CoreShopResourceBundle;
 use CoreShop\Bundle\ResourceBundle\DependencyInjection\Driver\Doctrine\DoctrineORMDriver;
 use CoreShop\Bundle\ResourceBundle\DependencyInjection\Driver\Exception\UnknownDriverException;
-use CoreShop\Bundle\ResourceBundle\DependencyInjection\Driver\Pimcore\PimcoreDriver;
+use CoreShop\Bundle\ResourceBundle\DependencyInjection\Driver\OpenDxp\OpenDxpDriver;
 use CoreShop\Component\Resource\Metadata\MetadataInterface;
 
 final class DriverProvider
@@ -41,7 +41,7 @@ final class DriverProvider
 
         return match ($type) {
             CoreShopResourceBundle::DRIVER_DOCTRINE_ORM => new DoctrineORMDriver(),
-            CoreShopResourceBundle::DRIVER_PIMCORE => new PimcoreDriver(),
+            CoreShopResourceBundle::DRIVER_OPENDXP => new OpenDxpDriver(),
             default => throw new UnknownDriverException($type),
         };
     }

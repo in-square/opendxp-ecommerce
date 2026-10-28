@@ -36,9 +36,9 @@ use CoreShop\Component\Index\Order\OrderRendererInterface;
 use CoreShop\Component\Index\Worker\FilterGroupHelperInterface;
 use CoreShop\Component\Index\Worker\WorkerInterface;
 use CoreShop\Component\Registry\ServiceRegistryInterface;
-use Pimcore\Model\DataObject\AbstractObject;
-use Pimcore\Model\DataObject\Concrete;
-use Pimcore\Tool;
+use OpenDxp\Model\DataObject\AbstractObject;
+use OpenDxp\Model\DataObject\Concrete;
+use OpenDxp\Tool;
 use Psr\Log\LoggerAwareTrait;
 use Webmozart\Assert\Assert;
 
@@ -101,8 +101,8 @@ abstract class AbstractWorker implements WorkerInterface
 
     protected function prepareData(IndexInterface $index, IndexableInterface $object): array
     {
-        $inAdmin = \Pimcore::inAdmin();
-        \Pimcore::unsetAdminMode();
+        $inAdmin = \OpenDxp::inAdmin();
+        \OpenDxp::unsetAdminMode();
         $hidePublishedMemory = AbstractObject::doHideUnpublished();
         AbstractObject::setHideUnpublished(false);
 
@@ -197,7 +197,7 @@ abstract class AbstractWorker implements WorkerInterface
         ];
 
         if ($inAdmin) {
-            \Pimcore::setAdminMode();
+            \OpenDxp::setAdminMode();
         }
 
         AbstractObject::setHideUnpublished($hidePublishedMemory);

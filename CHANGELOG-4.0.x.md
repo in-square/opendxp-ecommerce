@@ -1,5 +1,5 @@
 # 4.0.17
-* [Pimcore] DynamicDropdown - check if null by @codingioanniskrikos in https://github.com/coreshop/CoreShop/pull/2874
+* [OpenDxp] DynamicDropdown - check if null by @codingioanniskrikos in https://github.com/coreshop/CoreShop/pull/2874
 * [Messenger] Fix `MessageRepository` service registration by @jdreesen in https://github.com/coreshop/CoreShop/pull/2876
 * [UPMERGE] 3.2 -> 4.0 by @github-actions[bot] in https://github.com/coreshop/CoreShop/pull/2878
 
@@ -42,13 +42,13 @@
 
 ## 4.0.11
 
-* [Pimcore] use getCount() instead of getTotalCount() for BatchListing by @hethehe in https://github.com/coreshop/CoreShop/pull/2715
+* [OpenDxp] use getCount() instead of getTotalCount() for BatchListing by @hethehe in https://github.com/coreshop/CoreShop/pull/2715
 * [Store] fix cached store context by @dpfaffenbauer in https://github.com/coreshop/CoreShop/pull/2727
 * [Twig] twig >= 3.14 is compatible again by @dpfaffenbauer in https://github.com/coreshop/CoreShop/pull/2719
 
 ## 4.0.10
 
-* [PimcoreBundle] respect user language for grid filter labels (#2694) by @benwalch in https://github.com/coreshop/CoreShop/pull/2695
+* [OpenDxpBundle] respect user language for grid filter labels (#2694) by @benwalch in https://github.com/coreshop/CoreShop/pull/2695
 * [Product] fix regression of price rules for products with default unit by @dpfaffenbauer in https://github.com/coreshop/CoreShop/pull/2698
 * [NotificationBundle] Mail Processor: Fix adding recipient twice by @benwalch in https://github.com/coreshop/CoreShop/pull/2701
 
@@ -66,7 +66,7 @@
 * [Order] fixes for backend order creation by @dpfaffenbauer in https://github.com/coreshop/CoreShop/pull/2652
 * [Messenger] fix serialization of failed_at by @dpfaffenbauer in https://github.com/coreshop/CoreShop/pull/2658
 * [CoreBundle] fixes for Reports by @dpfaffenbauer in https://github.com/coreshop/CoreShop/pull/2659
-* [Pimcore] add conflict for Pimcore 11.3.1 by @dpfaffenbauer in https://github.com/coreshop/CoreShop/pull/2664
+* [OpenDxp] add conflict for OpenDxp 11.3.1 by @dpfaffenbauer in https://github.com/coreshop/CoreShop/pull/2664
 
 ## 4.0.7
 
@@ -86,7 +86,7 @@
 
 ## 4.0.5
 
-* [Core] Pimcore 11.1 and 11.2 compatibility and psalm update by @dpfaffenbauer in https://github.com/coreshop/CoreShop/pull/2584
+* [Core] OpenDxp 11.1 and 11.2 compatibility and psalm update by @dpfaffenbauer in https://github.com/coreshop/CoreShop/pull/2584
 * [NoteService] implement deadlock retry strategy by @dpfaffenbauer in https://github.com/coreshop/CoreShop/pull/2588
 
 ## 4.0.4
@@ -124,10 +124,10 @@
 
 ## 4.0.0-beta.4
 
-* [Pimcore11] remove o_ column usages by @dpfaffenbauer in https://github.com/coreshop/CoreShop/pull/2413
-* [Pimcore11] fix return type for getChildCategories by @dpfaffenbauer in https://github.com/coreshop/CoreShop/pull/2414
+* [OpenDxp11] remove o_ column usages by @dpfaffenbauer in https://github.com/coreshop/CoreShop/pull/2413
+* [OpenDxp11] fix return type for getChildCategories by @dpfaffenbauer in https://github.com/coreshop/CoreShop/pull/2414
 * can not save store shop settings by @sevarozh in https://github.com/coreshop/CoreShop/pull/2415
-* [Pimcore] require Pimcore 11.1 as minimum by @dpfaffenbauer in https://github.com/coreshop/CoreShop/pull/2423
+* [OpenDxp] require OpenDxp 11.1 as minimum by @dpfaffenbauer in https://github.com/coreshop/CoreShop/pull/2423
 * Fix error in the filter functionality for multiselects by @hethehe in https://github.com/coreshop/CoreShop/pull/2426
 
 ## 4.0.0-beta.3
@@ -145,6 +145,6 @@
 
 ## 4.0.0-beta.1
 
-> CoreShop 4.0.0 is the same as 3.1.0, but with Pimcore 11 compatibility. Updating CoreShop therefore is quite easy. Since Symfony now doesn't have a full container anymore, we use Service Containers now for our Controllers. So your overwritten Controllers probably need changes.
+> CoreShop 4.0.0 is the same as 3.1.0, but with OpenDxp 11 compatibility. Updating CoreShop therefore is quite easy. Since Symfony now doesn't have a full container anymore, we use Service Containers now for our Controllers. So your overwritten Controllers probably need changes.
 
- - Pimcore 11 Compatibility (https://github.com/coreshop/CoreShop/pull/2252, https://github.com/coreshop/CoreShop/pull/2340, https://github.com/coreshop/CoreShop/pull/2345, https://github.com/coreshop/CoreShop/pull/2352, https://github.com/coreshop/CoreShop/pull/2321, https://github.com/coreshop/CoreShop/pull/2347)
+ - OpenDxp 11 Compatibility (https://github.com/coreshop/CoreShop/pull/2252, https://github.com/coreshop/CoreShop/pull/2340, https://github.com/coreshop/CoreShop/pull/2345, https://github.com/coreshop/CoreShop/pull/2352, https://github.com/coreshop/CoreShop/pull/2321, https://github.com/coreshop/CoreShop/pull/2347)

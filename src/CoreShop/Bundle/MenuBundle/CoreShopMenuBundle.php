@@ -21,12 +21,12 @@ namespace CoreShop\Bundle\MenuBundle;
 use Composer\InstalledVersions;
 use CoreShop\Bundle\MenuBundle\DependencyInjection\CompilerPass\MenuBuilderPass;
 use Knp\Bundle\MenuBundle\KnpMenuBundle;
-use Pimcore\Extension\Bundle\AbstractPimcoreBundle;
-use Pimcore\HttpKernel\Bundle\DependentBundleInterface;
-use Pimcore\HttpKernel\BundleCollection\BundleCollection;
+use OpenDxp\Extension\Bundle\AbstractOpenDxpBundle;
+use OpenDxp\HttpKernel\Bundle\DependentBundleInterface;
+use OpenDxp\HttpKernel\BundleCollection\BundleCollection;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
-final class CoreShopMenuBundle extends AbstractPimcoreBundle implements DependentBundleInterface
+final class CoreShopMenuBundle extends AbstractOpenDxpBundle implements DependentBundleInterface
 {
     public static function registerDependentBundles(BundleCollection $collection): void
     {
@@ -54,6 +54,10 @@ final class CoreShopMenuBundle extends AbstractPimcoreBundle implements Dependen
         $bundleName = 'coreshop/menu-bundle';
 
         if (class_exists(InstalledVersions::class)) {
+            if (InstalledVersions::isInstalled('in-square/opendxp-ecommerce')) {
+                return InstalledVersions::getPrettyVersion('in-square/opendxp-ecommerce');
+            }
+
             if (InstalledVersions::isInstalled('coreshop/core-shop')) {
                 return InstalledVersions::getPrettyVersion('coreshop/core-shop');
             }
@@ -78,6 +82,6 @@ final class CoreShopMenuBundle extends AbstractPimcoreBundle implements Dependen
 
     public function getPackageName(): string
     {
-        return 'coreshop/pimcore-bundle';
+        return 'coreshop/opendxp-bundle';
     }
 }

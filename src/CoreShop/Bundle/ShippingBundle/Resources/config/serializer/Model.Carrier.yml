@@ -21,7 +21,7 @@ CoreShop\Component\Shipping\Model\Carrier:
             groups: [Detailed]
         logo:
             expose: true
-            type: pimcoreAsset
+            type: opendxpAsset
             groups: [Detailed]
         taxCalculationStrategy:
             expose: true

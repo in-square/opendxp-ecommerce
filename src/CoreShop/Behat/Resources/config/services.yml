@@ -1,9 +1,9 @@
 imports:
     - { resource: services/contexts.yml }
     - { resource: services/pages.yml }
-    - { resource: services/pages_pimcore.yml }
+    - { resource: services/pages_opendxp.yml }
     - { resource: services/elements.yml }
-    - { resource: services/elements_pimcore.yml }
+    - { resource: services/elements_opendxp.yml }
 
 payum:
     gateways:

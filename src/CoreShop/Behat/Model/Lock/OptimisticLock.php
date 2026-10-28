@@ -19,20 +19,20 @@ declare(strict_types=1);
 namespace CoreShop\Behat\Model\Lock;
 
 use CoreShop\Bundle\OptimisticEntityLockBundle\Model\OptimisticLockedInterface;
-use CoreShop\Component\Resource\Exception\ImplementedByPimcoreException;
-use CoreShop\Component\Resource\Pimcore\Model\AbstractPimcoreModel;
+use CoreShop\Component\Resource\Exception\ImplementedByOpenDxpException;
+use CoreShop\Component\Resource\OpenDxp\Model\AbstractOpenDxpModel;
 
-class OptimisticLock extends AbstractPimcoreModel implements OptimisticLockedInterface
+class OptimisticLock extends AbstractOpenDxpModel implements OptimisticLockedInterface
 {
     public function getOptimisticLockVersion(): ?int
     {
-        throw new ImplementedByPimcoreException(__CLASS__, __METHOD__);
+        throw new ImplementedByOpenDxpException(__CLASS__, __METHOD__);
     }
 
     /** @noinspection ReturnTypeCanBeDeclaredInspection */
     public function setOptimisticLockVersion(?int $optimisticLockVersion)
     {
-        throw new ImplementedByPimcoreException(__CLASS__, __METHOD__);
+        throw new ImplementedByOpenDxpException(__CLASS__, __METHOD__);
     }
 
     /**
@@ -40,7 +40,7 @@ class OptimisticLock extends AbstractPimcoreModel implements OptimisticLockedInt
      */
     public function getUser(): void
     {
-        throw new ImplementedByPimcoreException(__CLASS__, __METHOD__);
+        throw new ImplementedByOpenDxpException(__CLASS__, __METHOD__);
     }
 
     /**
@@ -48,6 +48,6 @@ class OptimisticLock extends AbstractPimcoreModel implements OptimisticLockedInt
      */
     public function setUser($user): void
     {
-        throw new ImplementedByPimcoreException(__CLASS__, __METHOD__);
+        throw new ImplementedByOpenDxpException(__CLASS__, __METHOD__);
     }
 }

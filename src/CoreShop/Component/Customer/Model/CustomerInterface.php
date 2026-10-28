@@ -20,9 +20,9 @@ namespace CoreShop\Component\Customer\Model;
 
 use CoreShop\Component\Locale\Model\LocaleAwareInterface;
 use CoreShop\Component\Resource\Model\ResourceInterface;
-use CoreShop\Component\Resource\Pimcore\Model\PimcoreModelInterface;
+use CoreShop\Component\Resource\OpenDxp\Model\OpenDxpModelInterface;
 
-interface CustomerInterface extends ResourceInterface, PimcoreModelInterface, LocaleAwareInterface
+interface CustomerInterface extends ResourceInterface, OpenDxpModelInterface, LocaleAwareInterface
 {
     public function getId(): ?int;
 

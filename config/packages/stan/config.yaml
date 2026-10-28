@@ -5,7 +5,7 @@ doctrine:
     dbal:
         connections:
             default:
-                url: '%pimcore_test.db.dsn%'
+                url: '%opendxp_test.db.dsn%'
                 host: ''
                 port: ''
                 dbname: ''
@@ -13,5 +13,5 @@ doctrine:
                 password: ''
 
 parameters:
-    pimcore_test.db.dsn: '%env(PIMCORE_TEST_DB_DSN)%'
-    env(PIMCORE_TEST_DB_DSN): ~
+    opendxp_test.db.dsn: '%env(OPENDXP_TEST_DB_DSN)%'
+    env(OPENDXP_TEST_DB_DSN): ~

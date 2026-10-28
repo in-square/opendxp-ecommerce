@@ -19,9 +19,9 @@ declare(strict_types=1);
 namespace CoreShop\Component\Address\Model;
 
 use CoreShop\Component\Resource\Model\ResourceInterface;
-use CoreShop\Component\Resource\Pimcore\Model\PimcoreModelInterface;
+use CoreShop\Component\Resource\OpenDxp\Model\OpenDxpModelInterface;
 
-interface AddressInterface extends ResourceInterface, PimcoreModelInterface
+interface AddressInterface extends ResourceInterface, OpenDxpModelInterface
 {
     public function getId(): ?int;
 

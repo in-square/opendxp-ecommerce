@@ -20,9 +20,9 @@ namespace CoreShop\Bundle\ResourceBundle\DependencyInjection;
 
 use CoreShop\Bundle\ResourceBundle\Controller\ResourceController;
 use CoreShop\Bundle\ResourceBundle\CoreShopResourceBundle;
-use CoreShop\Bundle\ResourceBundle\Pimcore\PimcoreRepository;
+use CoreShop\Bundle\ResourceBundle\OpenDxp\OpenDxpRepository;
 use CoreShop\Component\Resource\Factory\Factory;
-use CoreShop\Component\Resource\Factory\PimcoreFactory;
+use CoreShop\Component\Resource\Factory\OpenDxpFactory;
 use CoreShop\Component\Resource\Translation\Provider\TranslationLocaleProviderInterface;
 use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
@@ -52,7 +52,8 @@ final class Configuration implements ConfigurationInterface
         $this->addResourcesSection($rootNode);
         $this->addTranslationsSection($rootNode);
         $this->addDriversSection($rootNode);
-        $this->addPimcoreResourcesSection($rootNode);
+        $this->addOpenDxpResourcesSection($rootNode);
+        $this->addCascadeMergeAssociationsSection($rootNode);
 
         return $treeBuilder;
     }
@@ -104,7 +105,7 @@ final class Configuration implements ConfigurationInterface
                         ->end()
                     ->end()
                 ->end()
-                ->arrayNode('pimcore')
+                ->arrayNode('opendxp')
                     ->useAttributeAsKey('name')
                         ->arrayPrototype()
                             ->children()
@@ -116,13 +117,13 @@ final class Configuration implements ConfigurationInterface
                                 ->arrayNode('classes')
                                     ->children()
                                         ->scalarNode('model')->isRequired()->cannotBeEmpty()->end()
-                                        ->scalarNode('pimcore_class_name')->end()
+                                        ->scalarNode('opendxp_class_name')->end()
                                         ->scalarNode('interface')->cannotBeEmpty()->end()
-                                        ->scalarNode('repository')->cannotBeEmpty()->defaultValue(PimcoreRepository::class)->end()
-                                        ->scalarNode('factory')->defaultValue(PimcoreFactory::class)->end()
+                                        ->scalarNode('repository')->cannotBeEmpty()->defaultValue(OpenDxpRepository::class)->end()
+                                        ->scalarNode('factory')->defaultValue(OpenDxpFactory::class)->end()
                                         ->scalarNode('install_file')->end()
-                                        ->scalarNode('type')->defaultValue(CoreShopResourceBundle::PIMCORE_MODEL_TYPE_OBJECT)->end()
-                                        ->arrayNode('pimcore_controller')
+                                        ->scalarNode('type')->defaultValue(CoreShopResourceBundle::OPENDXP_MODEL_TYPE_OBJECT)->end()
+                                        ->arrayNode('opendxp_controller')
                                             ->useAttributeAsKey('name')
                                             ->prototype('scalar')->end()
                                         ->end()
@@ -161,10 +162,10 @@ final class Configuration implements ConfigurationInterface
         ;
     }
 
-    private function addPimcoreResourcesSection(ArrayNodeDefinition $node): void
+    private function addOpenDxpResourcesSection(ArrayNodeDefinition $node): void
     {
         $node->children()
-            ->arrayNode('pimcore_admin')
+            ->arrayNode('opendxp_admin')
                 ->addDefaultsIfNotSet()
                 ->children()
                     ->arrayNode('js')
@@ -182,6 +183,23 @@ final class Configuration implements ConfigurationInterface
                     ->arrayNode('editmode_css')
                         ->useAttributeAsKey('name')
                         ->prototype('scalar')->end()
+                    ->end()
+                ->end()
+            ->end()
+        ->end()
+        ;
+    }
+
+    private function addCascadeMergeAssociationsSection(ArrayNodeDefinition $node): void
+    {
+        $node->children()
+            ->arrayNode('orm_cascade_merge_associations')
+                ->useAttributeAsKey('class')
+                ->arrayPrototype()
+                    ->children()
+                        ->arrayNode('associations')
+                            ->scalarPrototype()->end()
+                        ->end()
                     ->end()
                 ->end()
             ->end()

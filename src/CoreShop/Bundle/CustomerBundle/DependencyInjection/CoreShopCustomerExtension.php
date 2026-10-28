@@ -26,7 +26,7 @@ use CoreShop\Bundle\ResourceBundle\DependencyInjection\Extension\AbstractModelEx
 use CoreShop\Component\Customer\Context\CustomerContextInterface;
 use CoreShop\Component\Customer\Context\RequestBased\RequestResolverInterface;
 use CoreShop\Component\Registry\Autoconfiguration;
-use Pimcore\Bundle\NewsletterBundle\PimcoreNewsletterBundle;
+use OpenDxp\Bundle\NewsletterBundle\OpenDxpNewsletterBundle;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
@@ -38,10 +38,10 @@ final class CoreShopCustomerExtension extends AbstractModelExtension
         $configs = $this->processConfiguration($this->getConfiguration([], $container), $configs);
         $loader = new YamlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));
 
-        $this->registerPimcoreModels('coreshop', $configs['pimcore'], $container);
-        $this->registerPimcoreResources('coreshop', $configs['pimcore_admin'], $container);
+        $this->registerOpenDxpModels('coreshop', $configs['opendxp'], $container);
+        $this->registerOpenDxpResources('coreshop', $configs['opendxp_admin'], $container);
         $this->registerStack('coreshop', $configs['stack'], $container);
-        $this->registerDependantBundles('coreshop', [PimcoreNewsletterBundle::class], $container);
+        $this->registerDependantBundles('coreshop', [OpenDxpNewsletterBundle::class], $container);
 
         $container->setParameter('coreshop.customer.security.login_identifier', $configs['login_identifier']);
 

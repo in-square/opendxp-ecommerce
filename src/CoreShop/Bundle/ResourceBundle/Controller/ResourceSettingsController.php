@@ -19,8 +19,8 @@ declare(strict_types=1);
 namespace CoreShop\Bundle\ResourceBundle\Controller;
 
 use CoreShop\Bundle\ResourceBundle\CoreShopResourceBundle;
-use Pimcore\Model\Element\AbstractElement;
-use Pimcore\Model\Element\Service;
+use OpenDxp\Model\Element\AbstractElement;
+use OpenDxp\Model\Element\Service;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -49,18 +49,18 @@ class ResourceSettingsController extends AdminController
             'stack' => [],
         ];
 
-        if ($this->parameterBag->has('coreshop.all.pimcore_classes')) {
+        if ($this->parameterBag->has('coreshop.all.opendxp_classes')) {
             /**
              * @var array $classes
              */
-            $classes = $this->parameterBag->get('coreshop.all.pimcore_classes');
+            $classes = $this->parameterBag->get('coreshop.all.opendxp_classes');
 
             foreach ($classes as $key => $definition) {
                 if (!isset($definition['classes']['type'])) {
                     continue;
                 }
 
-                if ($definition['classes']['type'] !== CoreShopResourceBundle::PIMCORE_MODEL_TYPE_OBJECT) {
+                if ($definition['classes']['type'] !== CoreShopResourceBundle::OPENDXP_MODEL_TYPE_OBJECT) {
                     continue;
                 }
 
@@ -68,11 +68,11 @@ class ResourceSettingsController extends AdminController
                 $application = $alias[0];
                 $alias = $alias[1];
 
-                if (isset($definition['classes']['pimcore_class_name'])) {
-                    $class = $definition['classes']['pimcore_class_name'];
+                if (isset($definition['classes']['opendxp_class_name'])) {
+                    $class = $definition['classes']['opendxp_class_name'];
                 } else {
                     $fullClassName = $definition['classes']['model'];
-                    $class = str_replace(['Pimcore\\Model\\DataObject\\', '\\'], '', $fullClassName);
+                    $class = str_replace(['OpenDxp\\Model\\DataObject\\', '\\'], '', $fullClassName);
                 }
 
                 $config['classMap'][$application][$alias] = $class;
@@ -81,7 +81,7 @@ class ResourceSettingsController extends AdminController
             /**
              * @var array $stack
              */
-            $stack = $this->getParameter('coreshop.all.stack.pimcore_class_names');
+            $stack = $this->getParameter('coreshop.all.stack.opendxp_class_names');
 
             foreach ($stack as $key => $impl) {
                 $alias = explode('.', $key);

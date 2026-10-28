@@ -5,7 +5,7 @@ Feature: Adding a object index
   But when the user unpublishes the object, the object should be removed from the index
 
   Background:
-    Given there is a pimcore class "Test"
+    Given there is a opendxp class "Test"
     And the definition has a checkbox field "enabled"
     And the definition has a localized input field "name"
     And the definitions parent class is set to "\CoreShop\Behat\Model\Index\TestEnableIndex"

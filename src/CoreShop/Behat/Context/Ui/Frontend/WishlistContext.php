@@ -23,7 +23,7 @@ use CoreShop\Behat\Page\Frontend\ProductPageInterface;
 use CoreShop\Behat\Page\Frontend\WishlistPageInterface;
 use CoreShop\Bundle\TestBundle\Service\SharedStorageInterface;
 use CoreShop\Component\Core\Model\ProductInterface;
-use Pimcore\Model\DataObject\Concrete;
+use OpenDxp\Model\DataObject\Concrete;
 use Webmozart\Assert\Assert;
 
 final class WishlistContext implements Context

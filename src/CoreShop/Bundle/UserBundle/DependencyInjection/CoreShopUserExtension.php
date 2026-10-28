@@ -31,8 +31,8 @@ final class CoreShopUserExtension extends AbstractModelExtension
         $loader = new YamlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));
 
         //$this->registerResources('coreshop', $configs['driver'], $configs['resources'], $container);
-        $this->registerPimcoreModels('coreshop', $configs['pimcore'], $container);
-        $this->registerPimcoreResources('coreshop', $configs['pimcore_admin'], $container);
+        $this->registerOpenDxpModels('coreshop', $configs['opendxp'], $container);
+        $this->registerOpenDxpResources('coreshop', $configs['opendxp_admin'], $container);
         $this->registerStack('coreshop', $configs['stack'], $container);
 
         $loader->load('services.yml');

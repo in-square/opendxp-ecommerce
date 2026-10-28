@@ -21,7 +21,7 @@ namespace CoreShop\Component\Store\Context\RequestBased;
 use CoreShop\Component\Store\Context\SiteBasedResolverInterface;
 use CoreShop\Component\Store\Context\StoreNotFoundException;
 use CoreShop\Component\Store\Model\StoreInterface;
-use Pimcore\Model\Site;
+use OpenDxp\Model\Site;
 use Symfony\Component\HttpFoundation\Request;
 
 final class SiteBasedRequestResolver implements RequestResolverInterface

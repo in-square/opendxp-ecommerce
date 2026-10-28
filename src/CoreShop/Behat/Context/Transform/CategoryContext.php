@@ -38,22 +38,26 @@ final class CategoryContext implements Context
     public function getCategoryByName($categoryName): CategoryInterface
     {
         /**
-         * @var \Pimcore\Model\DataObject\Listing\Concrete $list
+         * @var \OpenDxp\Model\DataObject\Listing\Concrete $list
          */
         $list = $this->categoryRepository->getList();
         $list->setLocale('en');
         $list->setCondition('name = ?', [$categoryName]);
+        $list->setLimit(1);
         $list->load();
 
         Assert::eq(
-            count($list->getObjects()),
+            $list->getTotalCount(),
             1,
-            sprintf('%d categories has been found with name "%s".', count($list->getObjects()), $categoryName),
+            sprintf('%d categories has been found with name "%s".', $list->getTotalCount(), $categoryName),
         );
 
         $objects = $list->getObjects();
 
-        return reset($objects);
+        $category = reset($objects);
+        Assert::isInstanceOf($category, CategoryInterface::class);
+
+        return $category;
     }
 
     /**

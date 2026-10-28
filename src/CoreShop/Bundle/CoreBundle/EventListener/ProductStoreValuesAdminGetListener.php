@@ -19,8 +19,8 @@ declare(strict_types=1);
 namespace CoreShop\Bundle\CoreBundle\EventListener;
 
 use CoreShop\Component\Core\Model\ProductInterface;
-use Pimcore\Bundle\AdminBundle\Event\AdminEvents;
-use Pimcore\Model\DataObject\ClassDefinition;
+use OpenDxp\Bundle\AdminBundle\Event\AdminEvents;
+use OpenDxp\Model\DataObject\ClassDefinition;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\EventDispatcher\GenericEvent;
 

@@ -34,7 +34,7 @@ The following are the default blocks provided by CoreShop:
 
 ## Creating a New Block
 
-To introduce a new block, you'll need to create a new Pimcore Backend Javascript File, following the
+To introduce a new block, you'll need to create a new OpenDxp Backend Javascript File, following the
 namespace `coreshop.order.order.detail.blocks`.
 
 ### Example
@@ -42,7 +42,7 @@ namespace `coreshop.order.order.detail.blocks`.
 Below is a sample JavaScript code to demonstrate how to add a custom block:
 
 ```javascript
-pimcore.registerNS('coreshop.order.order.detail.blocks.custom');
+opendxp.registerNS('coreshop.order.order.detail.blocks.custom');
 coreshop.order.order.detail.blocks.custom = Class.create(coreshop.order.order.detail.abstractBlock, {
     saleInfo: null,
 

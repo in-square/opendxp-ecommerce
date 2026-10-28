@@ -25,8 +25,8 @@ use CoreShop\Component\Variant\Model\ProductVariantAwareInterface;
 use CoreShop\Component\Variant\Model\Resolved\ResolvedAttribute;
 use CoreShop\Component\Variant\Model\Resolved\ResolvedAttributeGroup;
 use CoreShop\Component\Variant\Model\Resolved\ResolvedIndex;
-use Pimcore\Model\DataObject\AbstractObject;
-use Pimcore\Model\DataObject\Concrete;
+use OpenDxp\Model\DataObject\AbstractObject;
+use OpenDxp\Model\DataObject\Concrete;
 use Symfony\Contracts\EventDispatcher\EventDispatcherInterface;
 
 class AttributeCollector implements AttributeCollectorInterface

@@ -4,7 +4,7 @@ Feature: Adding a object index
   I want to create a new index with a column and a special config
 
   Background:
-    Given there is a pimcore class "ColumnExtensionTest"
+    Given there is a opendxp class "ColumnExtensionTest"
     And the definition has a checkbox field "enabled"
     And the definition has a localized input field "name"
     And the definitions parent class is set to "\CoreShop\Behat\Model\Index\TestIndex"

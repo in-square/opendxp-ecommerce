@@ -21,7 +21,7 @@ namespace CoreShop\Behat\Context\Setup;
 use Behat\Behat\Context\Context;
 use CoreShop\Bundle\OptimisticEntityLockBundle\Exception\OptimisticLockException;
 use CoreShop\Bundle\OptimisticEntityLockBundle\Manager\EntityLockManagerInterface;
-use Pimcore\Model\DataObject\Concrete;
+use OpenDxp\Model\DataObject\Concrete;
 use Webmozart\Assert\Assert;
 
 final class OptimisticEntityLockContext implements Context

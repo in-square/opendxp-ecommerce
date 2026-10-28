@@ -18,9 +18,9 @@ declare(strict_types=1);
 
 namespace CoreShop\Component\Address\Model;
 
-use CoreShop\Component\Resource\Pimcore\Model\AbstractPimcoreModel;
+use CoreShop\Component\Resource\OpenDxp\Model\AbstractOpenDxpModel;
 
-abstract class Address extends AbstractPimcoreModel implements AddressInterface
+abstract class Address extends AbstractOpenDxpModel implements AddressInterface
 {
     public function hasAddressIdentifier(): bool
     {

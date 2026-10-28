@@ -49,7 +49,7 @@ var
 .env.local
 composer.lock
 config/local/
-config/pimcore/
+config/opendxp/
 .php-version
 etc/build
 public/bundles

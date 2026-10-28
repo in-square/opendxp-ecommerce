@@ -35,12 +35,12 @@ class Carrier extends Select
 
     protected function getRepository()
     {
-        return \Pimcore::getContainer()->get('coreshop.repository.carrier');
+        return \OpenDxp::getContainer()->get('coreshop.repository.carrier');
     }
 
     protected function getModel(): string
     {
-        return \Pimcore::getContainer()->getParameter('coreshop.model.carrier.class');
+        return \OpenDxp::getContainer()->getParameter('coreshop.model.carrier.class');
     }
 
     protected function getInterface(): string

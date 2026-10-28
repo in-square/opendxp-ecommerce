@@ -1,0 +1,25 @@
+core_shop_order:
+    opendxp:
+        order:
+            path:
+                order: coreshop/orders
+                cart: coreshop/carts
+                quote: coreshop/quotes
+            classes:
+                opendxp_controller:
+                    default: CoreShop\Bundle\CoreBundle\Controller\OrderController
+                    creation: CoreShop\Bundle\CoreBundle\Controller\OrderCreationController
+                install_file: '@CoreShopCoreBundle/Resources/install/opendxp/classes/CoreShopOrderBundle/CoreShopOrder.json'
+                interface: CoreShop\Component\Core\Model\OrderInterface
+        order_item:
+            classes:
+                install_file: '@CoreShopCoreBundle/Resources/install/opendxp/classes/CoreShopOrderBundle/CoreShopOrderItem.json'
+                interface: CoreShop\Component\Core\Model\OrderItemInterface
+        order_shipment:
+            classes:
+                install_file: '@CoreShopCoreBundle/Resources/install/opendxp/classes/CoreShopOrderBundle/CoreShopOrderShipment.json'
+                interface: CoreShop\Component\Core\Model\OrderShipmentInterface
+        order_shipment_item:
+            classes:
+                install_file: '@CoreShopCoreBundle/Resources/install/opendxp/classes/CoreShopOrderBundle/CoreShopOrderShipmentItem.json'
+                interface: CoreShop\Component\Core\Model\OrderShipmentItemInterface

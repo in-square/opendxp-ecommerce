@@ -31,10 +31,10 @@ final class CoreShopVariantExtension extends AbstractModelExtension
         $loader = new YamlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));
 
         //$this->registerResources('coreshop', CoreShopResourceBundle::DRIVER_DOCTRINE_ORM, $config['resources'], $container);
-        $this->registerPimcoreModels('coreshop', $configs['pimcore'], $container);
+        $this->registerOpenDxpModels('coreshop', $configs['opendxp'], $container);
 
-        if (array_key_exists('pimcore_admin', $configs)) {
-            $this->registerPimcoreResources('coreshop', $configs['pimcore_admin'], $container);
+        if (array_key_exists('opendxp_admin', $configs)) {
+            $this->registerOpenDxpResources('coreshop', $configs['opendxp_admin'], $container);
         }
 
         if (array_key_exists('stack', $configs)) {

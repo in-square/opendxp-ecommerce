@@ -74,10 +74,10 @@ class CustomConditionType extends AbstractType
 }
 ```
 
-Create a corresponding Pimcore Backend UI JavaScript file:
+Create a corresponding OpenDxp Backend UI JavaScript file:
 
 ```javascript
-pimcore.registerNS('coreshop.product.pricerules.conditions.custom');
+opendxp.registerNS('coreshop.product.pricerules.conditions.custom');
 coreshop.product.pricerule.conditions.custom = Class.create(coreshop.rules.conditions.abstract, {
     type: 'custom',
 

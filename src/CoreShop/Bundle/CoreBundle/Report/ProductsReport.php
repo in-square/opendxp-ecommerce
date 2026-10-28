@@ -19,14 +19,14 @@ declare(strict_types=1);
 namespace CoreShop\Bundle\CoreBundle\Report;
 
 use Carbon\Carbon;
-use CoreShop\Bundle\ResourceBundle\Pimcore\Repository\StackRepositoryInterface;
+use CoreShop\Bundle\ResourceBundle\OpenDxp\Repository\StackRepositoryInterface;
 use CoreShop\Component\Core\Model\StoreInterface;
 use CoreShop\Component\Core\Report\ExportReportInterface;
 use CoreShop\Component\Core\Report\ReportInterface;
 use CoreShop\Component\Currency\Formatter\MoneyFormatterInterface;
 use CoreShop\Component\Locale\Context\LocaleContextInterface;
 use CoreShop\Component\Order\OrderSaleStates;
-use CoreShop\Component\Resource\Repository\PimcoreRepositoryInterface;
+use CoreShop\Component\Resource\Repository\OpenDxpRepositoryInterface;
 use CoreShop\Component\Resource\Repository\RepositoryInterface;
 use Doctrine\DBAL\Connection;
 use Symfony\Component\HttpFoundation\ParameterBag;
@@ -40,8 +40,8 @@ class ProductsReport implements ReportInterface, ExportReportInterface
         private Connection $db,
         private MoneyFormatterInterface $moneyFormatter,
         private LocaleContextInterface $localeContext,
-        private PimcoreRepositoryInterface $orderRepository,
-        private PimcoreRepositoryInterface $orderItemRepository,
+        private OpenDxpRepositoryInterface $orderRepository,
+        private OpenDxpRepositoryInterface $orderItemRepository,
         private StackRepositoryInterface $productStackRepository,
     ) {
     }

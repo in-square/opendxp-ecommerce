@@ -24,7 +24,7 @@ use CoreShop\Bundle\PayumPaymentBundle\CoreShopPayumPaymentBundle;
 use CoreShop\Bundle\ResourceBundle\AbstractResourceBundle;
 use CoreShop\Bundle\ResourceBundle\CoreShopResourceBundle;
 use Payum\Bundle\PayumBundle\PayumBundle;
-use Pimcore\HttpKernel\BundleCollection\BundleCollection;
+use OpenDxp\HttpKernel\BundleCollection\BundleCollection;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
 final class CoreShopPayumBundle extends AbstractResourceBundle

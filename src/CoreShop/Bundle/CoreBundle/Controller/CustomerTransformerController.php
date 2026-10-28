@@ -24,7 +24,7 @@ use CoreShop\Component\Core\Model\CompanyInterface;
 use CoreShop\Component\Core\Model\CustomerInterface;
 use CoreShop\Component\Customer\Repository\CompanyRepositoryInterface;
 use CoreShop\Component\Customer\Repository\CustomerRepositoryInterface;
-use Pimcore\Model\Element\ValidationException;
+use OpenDxp\Model\Element\ValidationException;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Contracts\Service\Attribute\SubscribedService;

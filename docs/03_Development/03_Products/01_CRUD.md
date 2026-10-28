@@ -1,6 +1,6 @@
 # Product
 
-CoreShop leverages Pimcore Data Objects for persisting Product Information but adds a layer of dynamism and
+CoreShop leverages OpenDxp Data Objects for persisting Product Information but adds a layer of dynamism and
 configurability through a Factory and Repository Pattern.
 
 ## Create
@@ -28,7 +28,7 @@ $repository = $container->get('coreshop.repository.product');
 // Query by ID
 $productWithIdOne = $repository->findById(1);
 
-// Get a Listing as in Pimcore
+// Get a Listing as in OpenDxp
 $list = $repository->getList();
 $list->setCondition("active = 1");
 $products = $list->getObjects();
@@ -36,7 +36,7 @@ $products = $list->getObjects();
 
 ## Update
 
-Updating a product follows the same pattern as in Pimcore:
+Updating a product follows the same pattern as in OpenDxp:
 
 ```php
 $repository = $container->get('coreshop.repository.product');
@@ -51,7 +51,7 @@ $productWithIdOne->save();
 
 ## Delete
 
-Deleting a product also follows the familiar Pimcore process:
+Deleting a product also follows the familiar OpenDxp process:
 
 ```php
 $repository = $container->get('coreshop.repository.product');

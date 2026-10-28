@@ -1,7 +1,7 @@
 imports:
     - { resource: services/form.yml }
     - { resource: services/workflow.yml }
-    - { resource: services/pimcore.yml }
+    - { resource: services/opendxp.yml }
     - { resource: services/paymentprovider-rules.yml }
 
 services:

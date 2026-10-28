@@ -18,7 +18,7 @@ declare(strict_types=1);
 
 namespace CoreShop\Bundle\ProductQuantityPriceRulesBundle\Event;
 
-use Pimcore\Model\DataObject\Concrete;
+use OpenDxp\Model\DataObject\Concrete;
 use Symfony\Component\EventDispatcher\GenericEvent;
 
 final class ProductQuantityPriceRuleValidationEvent extends GenericEvent

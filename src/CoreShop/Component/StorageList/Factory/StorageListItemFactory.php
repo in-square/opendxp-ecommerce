@@ -20,7 +20,7 @@ namespace CoreShop\Component\StorageList\Factory;
 
 use CoreShop\Component\Resource\Factory\FactoryInterface;
 use CoreShop\Component\Resource\Model\ResourceInterface;
-use CoreShop\Component\Resource\Pimcore\Model\AbstractPimcoreModel;
+use CoreShop\Component\Resource\OpenDxp\Model\AbstractOpenDxpModel;
 use CoreShop\Component\StorageList\Model\StorageListItemInterface;
 
 class StorageListItemFactory implements StorageListItemFactoryInterface
@@ -42,7 +42,7 @@ class StorageListItemFactory implements StorageListItemFactoryInterface
          */
         $item = $this->storageListItemFactory->createNew();
 
-        if ($item instanceof AbstractPimcoreModel) {
+        if ($item instanceof AbstractOpenDxpModel) {
             $item->setKey(uniqid());
             $item->setPublished(true);
         }

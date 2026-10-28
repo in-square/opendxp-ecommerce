@@ -27,7 +27,7 @@ core_shop_workflow:
 
 ### Add translations
 
-Just use the Pimcore Backend/Frontend translation or just add it via default symfony translation context:
+Just use the OpenDxp Backend/Frontend translation or just add it via default symfony translation context:
 
 ```yml
 # app/Resources/translations/admin.en.yml

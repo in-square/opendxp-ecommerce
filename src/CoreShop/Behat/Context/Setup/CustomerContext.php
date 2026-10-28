@@ -27,8 +27,8 @@ use CoreShop\Component\Core\Model\UserInterface;
 use CoreShop\Component\Customer\Context\FixedCustomerContext;
 use CoreShop\Component\Customer\Model\CustomerGroupInterface;
 use CoreShop\Component\Resource\Factory\FactoryInterface;
-use Pimcore\File;
-use Pimcore\Model\DataObject\Folder;
+use OpenDxp\File;
+use OpenDxp\Model\DataObject\Folder;
 
 final class CustomerContext implements Context
 {

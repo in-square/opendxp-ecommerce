@@ -1,193 +1,200 @@
 {
-  "name": "coreshop/core-shop",
-  "type": "pimcore-bundle",
-  "license": "GPL-3.0-or-later",
-  "description": "CoreShop - Pimcore eCommerce",
-  "keywords": [
-    "pimcore",
-    "coreshop",
-    "pimcore-ecommerce",
-    "ecommerce",
-    "pimcore-plugin"
-  ],
-  "homepage": "https://www.coreshop.com",
-  "authors": [
-    {
-      "name": "CoreShop Team",
-      "email": "info@coreshop.com",
-      "homepage": "https://www.coreshop.com/",
-      "role": "Developer"
+    "name": "in-square/opendxp-ecommerce",
+    "type": "opendxp-bundle",
+    "license": "GPL-3.0-or-later",
+    "description": "CoreShop - OpenDxp eCommerce",
+    "keywords": [
+        "opendxp",
+        "coreshop",
+        "opendxp-ecommerce",
+        "ecommerce",
+        "opendxp-plugin"
+    ],
+    "homepage": "https://www.coreshop.com",
+    "authors": [
+        {
+            "name": "CoreShop Team",
+            "email": "info@coreshop.com",
+            "homepage": "https://www.coreshop.com/",
+            "role": "Developer"
+        },
+        {
+            "name": "Dominik Pfaffenbauer",
+            "email": "dominik@pfaffenbauer.at",
+            "homepage": "https://www.pfaffenbauer.at/",
+            "role": "Developer"
+        }
+    ],
+    "replace": {
+        "coreshop/address": "self.version",
+        "coreshop/address-bundle": "self.version",
+        "coreshop/admin-bundle": "self.version",
+        "coreshop/class-definition-patch-bundle": "self.version",
+        "coreshop/configuration": "self.version",
+        "coreshop/configuration-bundle": "self.version",
+        "coreshop/core": "self.version",
+        "coreshop/core-bundle": "self.version",
+        "coreshop/core-shop": "self.version",
+        "coreshop/currency": "self.version",
+        "coreshop/currency-bundle": "self.version",
+        "coreshop/customer": "self.version",
+        "coreshop/customer-bundle": "self.version",
+        "coreshop/frontend-bundle": "self.version",
+        "coreshop/index": "self.version",
+        "coreshop/index-bundle": "self.version",
+        "coreshop/inventory": "self.version",
+        "coreshop/inventory-bundle": "self.version",
+        "coreshop/locale": "self.version",
+        "coreshop/locale-bundle": "self.version",
+        "coreshop/menu-bundle": "self.version",
+        "coreshop/messenger-bundle": "self.version",
+        "coreshop/money-bundle": "self.version",
+        "coreshop/notification": "self.version",
+        "coreshop/notification-bundle": "self.version",
+        "coreshop/opendxp": "self.version",
+        "coreshop/opendxp-bundle": "self.version",
+        "coreshop/optimistic-entity-lock-bundle": "self.version",
+        "coreshop/order": "self.version",
+        "coreshop/order-bundle": "self.version",
+        "coreshop/payment": "self.version",
+        "coreshop/payment-bundle": "self.version",
+        "coreshop/payum-bundle": "self.version",
+        "coreshop/payum-payment": "self.version",
+        "coreshop/payum-payment-bundle": "self.version",
+        "coreshop/product": "self.version",
+        "coreshop/product-bundle": "self.version",
+        "coreshop/product-quantity-price-rules": "self.version",
+        "coreshop/product-quantity-price-rules-bundle": "self.version",
+        "coreshop/registry": "self.version",
+        "coreshop/resource": "self.version",
+        "coreshop/resource-bundle": "self.version",
+        "coreshop/rule": "self.version",
+        "coreshop/rule-bundle": "self.version",
+        "coreshop/seo": "self.version",
+        "coreshop/seo-bundle": "self.version",
+        "coreshop/sequence": "self.version",
+        "coreshop/sequence-bundle": "self.version",
+        "coreshop/shipping": "self.version",
+        "coreshop/shipping-bundle": "self.version",
+        "coreshop/storage-list": "self.version",
+        "coreshop/storage-list-bundle": "self.version",
+        "coreshop/store": "self.version",
+        "coreshop/store-bundle": "self.version",
+        "coreshop/taxation": "self.version",
+        "coreshop/taxation-bundle": "self.version",
+        "coreshop/test-bundle": "self.version",
+        "coreshop/theme-bundle": "self.version",
+        "coreshop/tracking": "self.version",
+        "coreshop/tracking-bundle": "self.version",
+        "coreshop/user": "self.version",
+        "coreshop/user-bundle": "self.version",
+        "coreshop/variant": "self.version",
+        "coreshop/variant-bundle": "self.version",
+        "coreshop/wishlist": "self.version",
+        "coreshop/wishlist-bundle": "self.version",
+        "coreshop/workflow-bundle": "self.version"
     },
-    {
-      "name": "Dominik Pfaffenbauer",
-      "email": "dominik@pfaffenbauer.at",
-      "homepage": "https://www.pfaffenbauer.at/",
-      "role": "Developer"
-    }
-  ],
-  "replace": {
-    "coreshop/resource": "self.version",
-    "coreshop/address": "self.version",
-    "coreshop/configuration": "self.version",
-    "coreshop/currency": "self.version",
-    "coreshop/customer": "self.version",
-    "coreshop/index": "self.version",
-    "coreshop/locale": "self.version",
-    "coreshop/notification": "self.version",
-    "coreshop/order": "self.version",
-    "coreshop/payment": "self.version",
-    "coreshop/product": "self.version",
-    "coreshop/registry": "self.version",
-    "coreshop/rule": "self.version",
-    "coreshop/sequence": "self.version",
-    "coreshop/shipping": "self.version",
-    "coreshop/store": "self.version",
-    "coreshop/taxation": "self.version",
-    "coreshop/core": "self.version",
-    "coreshop/resource-bundle": "self.version",
-    "coreshop/address-bundle": "self.version",
-    "coreshop/admin-bundle": "self.version",
-    "coreshop/configuration-bundle": "self.version",
-    "coreshop/currency-bundle": "self.version",
-    "coreshop/customer-bundle": "self.version",
-    "coreshop/frontend-bundle": "self.version",
-    "coreshop/index-bundle": "self.version",
-    "coreshop/locale-bundle": "self.version",
-    "coreshop/money-bundle": "self.version",
-    "coreshop/notification-bundle": "self.version",
-    "coreshop/order-bundle": "self.version",
-    "coreshop/payment-bundle": "self.version",
-    "coreshop/payum-bundle": "self.version",
-    "coreshop/product-bundle": "self.version",
-    "coreshop/rule-bundle": "self.version",
-    "coreshop/sequence-bundle": "self.version",
-    "coreshop/shipping-bundle": "self.version",
-    "coreshop/store-bundle": "self.version",
-    "coreshop/taxation-bundle": "self.version",
-    "coreshop/tracking-bundle": "self.version",
-    "coreshop/core-bundle": "self.version",
-    "coreshop/pimcore": "self.version",
-    "coreshop/storage-list": "self.version",
-    "coreshop/inventory": "self.version",
-    "coreshop/inventory-bundle": "self.version",
-    "coreshop/workflow-bundle": "self.version",
-    "coreshop/seo": "self.version",
-    "coreshop/seo-bundle": "self.version",
-    "coreshop/pimcore-bundle": "self.version",
-    "coreshop/tracking": "self.version",
-    "coreshop/theme-bundle": "self.version",
-    "coreshop/menu-bundle": "self.version",
-    "coreshop/payum-payment": "self.version",
-    "coreshop/payum-payment-bundle": "self.version",
-    "coreshop/optimistic-entity-lock-bundle": "self.version",
-    "coreshop/messenger-bundle": "self.version",
-    "coreshop/class-definition-patch-bundle": "self.version",
-    "coreshop/test-bundle": "self.version"
-  },
-  "require": {
-    "php": "^8.1",
-    "ext-json": "*",
-    "doctrine/data-fixtures": "^1.5",
-    "doctrine/doctrine-bundle": "^2.4",
-    "doctrine/doctrine-fixtures-bundle": "^3.4",
-    "doctrine/orm": "^2.9",
-    "fakerphp/faker": "^1.16",
-    "gedmo/doctrine-extensions": "^3.11",
-    "jms/serializer-bundle": "^4.0 | ^5.0",
-    "knplabs/knp-menu-bundle": "^3.1",
-    "laminas/laminas-stdlib": "^3.6",
-    "laminas/laminas-zendframework-bridge": "^1.5",
-    "payum/payum": "^1.7",
-    "payum/payum-bundle": "^2.6",
-    "php-http/guzzle7-adapter": "^1.0",
-    "php-http/message-factory": "^1.1",
-    "pimcore/admin-ui-classic-bundle": "^1.2",
-    "pimcore/google-marketing-bundle": "^1.0",
-    "pimcore/newsletter-bundle": "^1.0",
-    "pimcore/pimcore": "^11.5",
-    "pimcore/web-to-print-bundle": "^1.3",
-    "rinvex/countries": "^7.3",
-    "sebastian/diff": "^4.0 | ^5.0 | ^6.0",
-    "stof/doctrine-extensions-bundle": "^1.6",
-    "sylius/theme-bundle": "^2.2",
-    "symfony/dotenv": "^6.3",
-    "symfony/http-client": "^6.3",
-    "symfony/intl": "^6.3",
-    "symfony/notifier": "^6.3",
-    "symfony/serializer": "^6.3",
-    "symfony/twig-bundle": "^6.3",
-    "symfony/form": "^6.3",
-    "webmozart/assert": "^1.10"
-  },
-  "suggest": {
-    "pimcore/opensearch-client": "Allows to use OpenSearch as your index engine."
-  },
-  "require-dev": {
-    "behat/behat": "^3.22",
-    "behat/mink": "^1.12",
-    "chrome-php/chrome": "^1.11",
-    "dbrekelmans/bdi": "^1.0",
-    "friends-of-behat/mink-debug-extension": "^2.0",
-    "friends-of-behat/mink-extension": "^2.4",
-    "friends-of-behat/page-object-extension": "^0.3.2",
-    "friends-of-behat/symfony-extension": "^2.1",
-    "gotenberg/gotenberg-php": "^2.6",
-    "phpstan/phpstan": "^2.1",
-    "phpstan/phpstan-doctrine": "^2.0",
-    "phpstan/phpstan-symfony": "^2.0",
-    "phpstan/phpstan-webmozart-assert": "^2.0",
-    "phpunit/phpunit": "^10.0",
-    "pimcore/opensearch-client": "^1.0",
-    "robertfausk/behat-panther-extension": "^1.0",
-    "symfony/panther": "^2.2",
-    "symfony/runtime": "^6.4",
-    "symplify/easy-coding-standard": "^11.1",
-    "vimeo/psalm": "^6.10"
-  },
-  "conflict": {
-    "jms/serializer-bundle": "4.1.0",
-    "twig/twig": ">=3.9.0 <3.14.0",
-    "pimcore/pimcore": "11.3.1"
-  },
-  "autoload": {
-    "psr-4": {
-      "CoreShop\\Bundle\\": "src/CoreShop/Bundle/",
-      "CoreShop\\Component\\": "src/CoreShop/Component/",
-      "CoreShop\\Behat\\": "src/CoreShop/Behat/"
+    "require": {
+        "doctrine/data-fixtures": "^1.5",
+        "doctrine/doctrine-bundle": "^2.15",
+        "doctrine/doctrine-fixtures-bundle": "^3.4",
+        "doctrine/orm": "^3.6",
+        "ext-json": "*",
+        "fakerphp/faker": "^1.16",
+        "gedmo/doctrine-extensions": "^3.11",
+        "jms/serializer-bundle": "^4.0 | ^5.0",
+        "knplabs/knp-menu-bundle": "^3.1",
+        "laminas/laminas-stdlib": "^3.6",
+        "laminas/laminas-zendframework-bridge": "^1.5",
+        "open-dxp/admin-bundle": "^1.2",
+        "open-dxp/google-marketing-bundle": "^1.0",
+        "open-dxp/newsletter-bundle": "^1.0",
+        "open-dxp/opendxp": "^1.3",
+        "open-dxp/web-to-print-bundle": "^1.1",
+        "payum/payum": "^1.7",
+        "payum/payum-bundle": "^2.6",
+        "php": "^8.3",
+        "php-http/guzzle7-adapter": "^1.0",
+        "php-http/message-factory": "^1.1",
+        "rinvex/countries": "^7.3",
+        "sebastian/diff": "^4.0 | ^5.0 | ^6.0 | ^7.0",
+        "stof/doctrine-extensions-bundle": "^1.6",
+        "sylius/theme-bundle": "^2.2",
+        "symfony/dotenv": "^7.4",
+        "symfony/form": "^7.4",
+        "symfony/http-client": "^7.4",
+        "symfony/intl": "^7.4",
+        "symfony/notifier": "^7.4",
+        "symfony/serializer": "^7.4",
+        "symfony/twig-bundle": "^7.4",
+        "webmozart/assert": "^1.10"
     },
-    "exclude-from-classmap": [
-      "src/CoreShop/*/*/Tests/"
-    ]
-  },
-  "autoload-dev": {
-    "psr-4": {
-      "Pimcore\\Model\\DataObject\\": [
-        "var/classes/DataObject",
-        "var/tmp/behat/var/classes/DataObject"
-      ]
+    "suggest": {},
+    "require-dev": {
+        "behat/behat": "^3.22",
+        "behat/mink": "^1.12",
+        "chrome-php/chrome": "^1.11",
+        "dbrekelmans/bdi": "^1.0",
+        "friends-of-behat/mink-debug-extension": "^2.0",
+        "friends-of-behat/mink-extension": "^2.4",
+        "friends-of-behat/page-object-extension": "^0.3.2",
+        "friends-of-behat/symfony-extension": "^2.1",
+        "gotenberg/gotenberg-php": "^2.6",
+        "phpstan/phpstan": "^2.1",
+        "phpstan/phpstan-doctrine": "^2.0",
+        "phpstan/phpstan-symfony": "^2.0",
+        "phpstan/phpstan-webmozart-assert": "^2.0",
+        "phpunit/phpunit": "^10.0",
+        "robertfausk/behat-panther-extension": "^1.0",
+        "symfony/panther": "^2.2",
+        "symfony/runtime": "^7.4",
+        "symplify/easy-coding-standard": "^11.1",
+        "vimeo/psalm": "^6.10"
     },
-    "classmap": [
-      "src/Kernel.php",
-      "src/BehatKernel.php",
-      "src/AppKernel.php"
-    ]
-  },
-  "extra": {
-    "symfony-bin-dir": "bin",
-    "symfony-var-dir": "var",
-    "symfony-tests-dir": "tests",
-    "symfony-assets-install": "relative",
-    "branch-alias": {
-      "dev-next": "4.1-dev",
-      "dev-4.1": "4.1-dev"
+    "conflict": {
+        "jms/serializer-bundle": "4.1.0",
+        "twig/twig": ">=3.9.0 <3.14.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "CoreShop\\Bundle\\": "src/CoreShop/Bundle/",
+            "CoreShop\\Component\\": "src/CoreShop/Component/",
+            "CoreShop\\Behat\\": "src/CoreShop/Behat/"
+        },
+        "exclude-from-classmap": [
+            "src/CoreShop/*/*/Tests/"
+        ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "OpenDxp\\Model\\DataObject\\": [
+                "var/classes/DataObject",
+                "var/tmp/behat/var/classes/DataObject"
+            ]
+        },
+        "classmap": [
+            "src/Kernel.php",
+            "src/BehatKernel.php",
+            "src/AppKernel.php"
+        ]
+    },
+    "extra": {
+        "symfony-bin-dir": "bin",
+        "symfony-var-dir": "var",
+        "symfony-tests-dir": "tests",
+        "symfony-assets-install": "relative",
+        "branch-alias": {
+            "dev-next": "4.1-dev",
+            "dev-4.1": "4.1-dev",
+            "dev-opendxp-migration-base": "4.1-dev"
+        }
+    },
+    "config": {
+        "sort-packages": true,
+        "allow-plugins": {
+            "phpstan/extension-installer": false,
+            "symfony/runtime": true,
+            "php-http/discovery": true
+        }
     }
-  },
-  "config": {
-    "sort-packages": true,
-    "allow-plugins": {
-      "phpstan/extension-installer": false,
-      "symfony/runtime": true,
-      "php-http/discovery": true
-    }
-  }
 }

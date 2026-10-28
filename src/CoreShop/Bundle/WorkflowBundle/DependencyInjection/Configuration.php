@@ -48,6 +48,11 @@ final class Configuration implements ConfigurationInterface
         return $treeBuilder;
     }
 
+    /**
+     * @template TParent of (\Symfony\Component\Config\Definition\Builder\NodeDefinition&\Symfony\Component\Config\Definition\Builder\ParentNodeDefinitionInterface)|null
+     *
+     * @param NodeBuilder<TParent> $node
+     */
     private function addStateMachineSection(NodeBuilder $node): void
     {
         $node
@@ -124,6 +129,11 @@ final class Configuration implements ConfigurationInterface
         ;
     }
 
+    /**
+     * @template TParent of (\Symfony\Component\Config\Definition\Builder\NodeDefinition&\Symfony\Component\Config\Definition\Builder\ParentNodeDefinitionInterface)|null
+     *
+     * @param NodeBuilder<TParent> $node
+     */
     private function addColorSection(NodeBuilder $node): void
     {
         $node
@@ -141,6 +151,11 @@ final class Configuration implements ConfigurationInterface
         ;
     }
 
+    /**
+     * @template TParent of (\Symfony\Component\Config\Definition\Builder\NodeDefinition&\Symfony\Component\Config\Definition\Builder\ParentNodeDefinitionInterface)|null
+     *
+     * @param NodeBuilder<TParent> $node
+     */
     private function addCallBackSection(NodeBuilder $node): void
     {
         $callbacks = $node
@@ -154,6 +169,11 @@ final class Configuration implements ConfigurationInterface
         $callbacks->end()->end();
     }
 
+    /**
+     * @template TParent of \Symfony\Component\Config\Definition\Builder\NodeParentInterface|null
+     *
+     * @param ArrayNodeDefinition<TParent> $callbacks
+     */
     private function addSubCallbackSection(ArrayNodeDefinition $callbacks, string $type): void
     {
         $callbacks

@@ -1,4 +1,0 @@
-services:
-    CoreShop\Behat\Element\Pimcore\MenuElementInterface: '@CoreShop\Behat\Element\Pimcore\MenuElement'
-    CoreShop\Behat\Element\Pimcore\MenuElement:
-        parent: FriendsOfBehat\PageObjectExtension\Element\Element

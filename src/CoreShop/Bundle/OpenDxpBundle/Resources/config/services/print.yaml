@@ -1,0 +1,14 @@
+services:
+  _defaults:
+    public: true
+
+  CoreShop\Component\OpenDxp\Print\PrintablePdfRendererInterface: '@CoreShop\Component\OpenDxp\Print\OpenDxpPrintablePdfRenderer'
+  CoreShop\Component\OpenDxp\Print\OpenDxpPrintablePdfRenderer:
+    arguments:
+      - '@fragment.renderer.inline'
+
+  CoreShop\Component\OpenDxp\Print\PersistedPrintablePdfRenderer:
+    decorates: 'CoreShop\Component\OpenDxp\Print\PrintablePdfRendererInterface'
+    arguments:
+      - '@CoreShop\Component\OpenDxp\Print\PersistedPrintablePdfRenderer.inner'
+      - '%kernel.debug%'

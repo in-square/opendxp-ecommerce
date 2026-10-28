@@ -19,9 +19,9 @@ declare(strict_types=1);
 namespace CoreShop\Bundle\OptimisticEntityLockBundle;
 
 use Composer\InstalledVersions;
-use Pimcore\Extension\Bundle\AbstractPimcoreBundle;
+use OpenDxp\Extension\Bundle\AbstractOpenDxpBundle;
 
-class CoreShopOptimisticEntityLockBundle extends AbstractPimcoreBundle
+class CoreShopOptimisticEntityLockBundle extends AbstractOpenDxpBundle
 {
     public function getNiceName(): string
     {
@@ -47,6 +47,10 @@ class CoreShopOptimisticEntityLockBundle extends AbstractPimcoreBundle
         $bundleName = 'coreshop/optimistic-entity-lock-bundle';
 
         if (class_exists(InstalledVersions::class)) {
+            if (InstalledVersions::isInstalled('in-square/opendxp-ecommerce')) {
+                return InstalledVersions::getPrettyVersion('in-square/opendxp-ecommerce');
+            }
+
             if (InstalledVersions::isInstalled('coreshop/core-shop')) {
                 return InstalledVersions::getPrettyVersion('coreshop/core-shop');
             }

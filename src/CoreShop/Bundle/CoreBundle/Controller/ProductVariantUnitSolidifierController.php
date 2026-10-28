@@ -25,7 +25,7 @@ use CoreShop\Component\Core\Product\Cloner\ProductQuantityPriceRulesCloner;
 use CoreShop\Component\Core\Product\Cloner\ProductUnitDefinitionsCloner;
 use CoreShop\Component\Core\Repository\ProductRepositoryInterface;
 use CoreShop\Component\Resource\Model\AbstractObject;
-use Pimcore\Model\DataObject;
+use OpenDxp\Model\DataObject;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;

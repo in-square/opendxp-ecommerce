@@ -1,0 +1,9 @@
+core_shop_wishlist:
+    opendxp:
+        wishlist:
+            path:
+                wishlist: coreshop/wishlists
+            classes:
+                install_file: '@CoreShopCoreBundle/Resources/install/opendxp/classes/CoreShopWishlistBundle/CoreShopWishlist.json'
+                interface: CoreShop\Component\Core\Model\WishlistInterface
+                repository: CoreShop\Bundle\CoreBundle\OpenDxp\Repository\WishlistRepository

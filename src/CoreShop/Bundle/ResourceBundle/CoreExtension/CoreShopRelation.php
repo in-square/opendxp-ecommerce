@@ -18,9 +18,9 @@ declare(strict_types=1);
 
 namespace CoreShop\Bundle\ResourceBundle\CoreExtension;
 
-use Pimcore\Model\DataObject\ClassDefinition\Data;
-use Pimcore\Model\DataObject\Concrete;
-use Pimcore\Model\Element;
+use OpenDxp\Model\DataObject\ClassDefinition\Data;
+use OpenDxp\Model\DataObject\Concrete;
+use OpenDxp\Model\Element;
 
 /**
  * @psalm-suppress InvalidReturnType, InvalidReturnStatement
@@ -62,9 +62,9 @@ class CoreShopRelation extends Data\ManyToOneRelation
         $this->returnConcrete = $returnConcrete;
     }
 
-    protected function getCoreShopPimcoreClasses()
+    protected function getCoreShopOpenDxpClasses()
     {
-        return \Pimcore::getContainer()->getParameter('coreshop.all.stack.pimcore_class_names');
+        return \OpenDxp::getContainer()->getParameter('coreshop.all.stack.opendxp_class_names');
     }
 
     public function getParameterTypeDeclaration(): ?string
@@ -76,7 +76,7 @@ class CoreShopRelation extends Data\ManyToOneRelation
         /**
          * @var array $stack
          */
-        $stack = \Pimcore::getContainer()->getParameter('coreshop.all.stack');
+        $stack = \OpenDxp::getContainer()->getParameter('coreshop.all.stack');
 
         return '?\\' . $stack[$this->stack];
     }
@@ -105,7 +105,7 @@ class CoreShopRelation extends Data\ManyToOneRelation
             return $this;
         }
 
-        parent::setClasses(Element\Service::fixAllowedTypes($this->getCoreShopPimcoreClasses()[$this->stack], 'classes'));
+        parent::setClasses(Element\Service::fixAllowedTypes($this->getCoreShopOpenDxpClasses()[$this->stack], 'classes'));
 
         return $this;
     }

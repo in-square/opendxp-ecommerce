@@ -96,5 +96,5 @@ Replace `*` with a controller type (e.g., `configuration`, `payment_provider`).
 
 ## Model Events
 
-Pimcore Events can be used for CoreShop's Pimcore Models. Learn more
-at [Pimcore Events](https://pimcore.com/docs/platform/Pimcore/Extending_Pimcore/Event_API_and_Event_Manager).
+OpenDxp Events can be used for CoreShop's OpenDxp Models. Learn more
+at [OpenDxp Events](https://opendxp.com/docs/platform/OpenDxp/Extending_OpenDxp/Event_API_and_Event_Manager).

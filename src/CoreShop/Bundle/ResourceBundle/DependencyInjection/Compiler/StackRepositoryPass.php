@@ -19,8 +19,8 @@ declare(strict_types=1);
 namespace CoreShop\Bundle\ResourceBundle\DependencyInjection\Compiler;
 
 use CoreShop\Bundle\ResourceBundle\CoreShopResourceBundle;
-use CoreShop\Bundle\ResourceBundle\Pimcore\Repository\StackRepository;
-use CoreShop\Bundle\ResourceBundle\Pimcore\Repository\StackRepositoryInterface;
+use CoreShop\Bundle\ResourceBundle\OpenDxp\Repository\StackRepository;
+use CoreShop\Bundle\ResourceBundle\OpenDxp\Repository\StackRepositoryInterface;
 use CoreShop\Component\Resource\Metadata\Metadata;
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
@@ -31,7 +31,7 @@ final class StackRepositoryPass implements CompilerPassInterface
 {
     public function process(ContainerBuilder $container): void
     {
-        if (!$container->hasParameter('coreshop.all.stack.pimcore_class_names') ||
+        if (!$container->hasParameter('coreshop.all.stack.opendxp_class_names') ||
             !$container->hasParameter('coreshop.all.stack')) {
             return;
         }
@@ -52,7 +52,7 @@ final class StackRepositoryPass implements CompilerPassInterface
             $definition = new Definition(Metadata::class);
             $definition
                 ->setFactory([Metadata::class, 'fromAliasAndConfiguration'])
-                ->setArguments([$alias, ['driver' => CoreShopResourceBundle::DRIVER_PIMCORE]])
+                ->setArguments([$alias, ['driver' => CoreShopResourceBundle::DRIVER_OPENDXP]])
             ;
 
             $repositoryDefinition = new Definition(StackRepository::class);

@@ -12,7 +12,7 @@
         <field name="identifier" column="identifier" nullable="true"/>
         <field name="trackingUrl" column="trackingUrl" nullable="true"/>
         <field name="hideFromCheckout" column="hideFromCheckout" type="boolean"/>
-        <field name="logo" column="logo" type="pimcoreAsset" nullable="true"/>
+        <field name="logo" column="logo" type="opendxpAsset" nullable="true"/>
         <field name="taxCalculationStrategy" column="taxCalculationStrategy" nullable="true"/>
         <field name="creationDate" type="datetime">
             <gedmo:timestampable on="create"/>

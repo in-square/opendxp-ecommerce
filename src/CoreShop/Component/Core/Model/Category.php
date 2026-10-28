@@ -24,13 +24,13 @@ abstract class Category extends BaseCategory implements CategoryInterface
 {
     public function getMetaTitle(?string $language = null): ?string
     {
-        return $this->getPimcoreMetaTitle($language) ?: $this->getName($language);
+        return $this->getOpenDxpMetaTitle($language) ?: $this->getName($language);
     }
 
     public function getMetaDescription(?string $language = null): ?string
     {
-        if (null !== $this->getPimcoreMetaDescription($language)) {
-            return $this->getPimcoreMetaDescription($language);
+        if (null !== $this->getOpenDxpMetaDescription($language)) {
+            return $this->getOpenDxpMetaDescription($language);
         }
 
         if (null !== $this->getDescription($language)) {

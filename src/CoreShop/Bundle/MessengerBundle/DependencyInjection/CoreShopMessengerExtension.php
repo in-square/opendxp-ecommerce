@@ -18,12 +18,12 @@ declare(strict_types=1);
 
 namespace CoreShop\Bundle\MessengerBundle\DependencyInjection;
 
-use CoreShop\Bundle\PimcoreBundle\DependencyInjection\Extension\AbstractPimcoreExtension;
+use CoreShop\Bundle\OpenDxpBundle\DependencyInjection\Extension\AbstractOpenDxpExtension;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
 
-final class CoreShopMessengerExtension extends AbstractPimcoreExtension
+final class CoreShopMessengerExtension extends AbstractOpenDxpExtension
 {
     public function load(array $configs, ContainerBuilder $container): void
     {
@@ -39,6 +39,6 @@ final class CoreShopMessengerExtension extends AbstractPimcoreExtension
             $loader->load('services/menu.yml');
         }
 
-        $this->registerPimcoreResources('coreshop', $config['pimcore_admin'], $container);
+        $this->registerOpenDxpResources('coreshop', $config['opendxp_admin'], $container);
     }
 }

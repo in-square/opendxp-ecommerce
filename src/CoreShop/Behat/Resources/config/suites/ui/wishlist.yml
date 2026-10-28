@@ -2,11 +2,11 @@ default:
     suites:
         ui_wishlist:
             contexts:
-                - coreshop.behat.context.hook.pimcore_setup
+                - coreshop.behat.context.hook.opendxp_setup
                 - coreshop.behat.context.hook.coreshop_setup
 
                 - coreshop.behat.context.hook.doctrine_orm
-                - coreshop.behat.context.hook.pimcore_dao
+                - coreshop.behat.context.hook.opendxp_dao
 
                 - coreshop.behat.context.transform.shared_storage
                 - coreshop.behat.context.transform.tax_rate

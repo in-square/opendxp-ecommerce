@@ -20,7 +20,7 @@ namespace CoreShop\Behat\Context\Transform;
 
 use Behat\Behat\Context\Context;
 use CoreShop\Bundle\TestBundle\Service\SharedStorageInterface;
-use Pimcore\Cache;
+use OpenDxp\Cache;
 
 final class CacheContext implements Context
 {

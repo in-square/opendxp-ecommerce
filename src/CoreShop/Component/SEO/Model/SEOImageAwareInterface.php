@@ -18,7 +18,7 @@ declare(strict_types=1);
 
 namespace CoreShop\Component\SEO\Model;
 
-use Pimcore\Model\Asset\Image;
+use OpenDxp\Model\Asset\Image;
 
 interface SEOImageAwareInterface
 {

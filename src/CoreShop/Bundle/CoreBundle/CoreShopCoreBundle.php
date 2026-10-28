@@ -47,9 +47,9 @@ use CoreShop\Bundle\UserBundle\CoreShopUserBundle;
 use CoreShop\Bundle\VariantBundle\CoreShopVariantBundle;
 use CoreShop\Bundle\WishlistBundle\CoreShopWishlistBundle;
 use Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle;
-use Pimcore\Bundle\CustomReportsBundle\PimcoreCustomReportsBundle;
-use Pimcore\Bundle\NewsletterBundle\PimcoreNewsletterBundle;
-use Pimcore\HttpKernel\BundleCollection\BundleCollection;
+use OpenDxp\Bundle\CustomReportsBundle\OpenDxpCustomReportsBundle;
+use OpenDxp\Bundle\NewsletterBundle\OpenDxpNewsletterBundle;
+use OpenDxp\HttpKernel\BundleCollection\BundleCollection;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
 final class CoreShopCoreBundle extends AbstractResourceBundle
@@ -98,8 +98,8 @@ final class CoreShopCoreBundle extends AbstractResourceBundle
         $collection->addBundle(new CoreShopProductQuantityPriceRulesBundle(), 1600);
         $collection->addBundle(new CoreShopWishlistBundle(), 1500);
         $collection->addBundle(new CoreShopClassDefinitionPatchBundle(), 1400);
-        $collection->addBundle(new PimcoreCustomReportsBundle(), 20000);
-        $collection->addBundle(new PimcoreNewsletterBundle(), 20000);
+        $collection->addBundle(new OpenDxpCustomReportsBundle(), 20000);
+        $collection->addBundle(new OpenDxpNewsletterBundle(), 20000);
     }
 
     public function getPackageName(): string
@@ -119,7 +119,7 @@ final class CoreShopCoreBundle extends AbstractResourceBundle
 
     public function getDescription(): string
     {
-        return 'CoreShop - Pimcore eCommerce';
+        return 'CoreShop - OpenDxp eCommerce';
     }
 
     public function getInstaller(): Installer

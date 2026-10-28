@@ -18,7 +18,7 @@ declare(strict_types=1);
 
 namespace CoreShop\Bundle\MenuBundle\Renderer;
 
-use CoreShop\Bundle\MenuBundle\Guard\PimcoreGuard;
+use CoreShop\Bundle\MenuBundle\Guard\OpenDxpGuard;
 use Knp\Menu\ItemInterface;
 use Knp\Menu\Renderer\RendererInterface;
 use Twig\Environment;
@@ -30,7 +30,7 @@ class JsonRenderer implements RendererInterface
     public function __construct(
         private Environment $environment,
         string $template,
-        private PimcoreGuard $guard,
+        private OpenDxpGuard $guard,
         array $defaultOptions = [],
     ) {
         $this->defaultOptions = array_merge([

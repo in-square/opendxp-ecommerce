@@ -1,0 +1,9 @@
+@ui @ui_opendxp @menu
+Feature: Test if I can open the CoreShop Menu
+
+    Background: Sign in with email and password
+        Given I log into the OpenDxp backend
+
+    Scenario:
+        Given I open the CoreShop menu
+        Then a Menu should be open

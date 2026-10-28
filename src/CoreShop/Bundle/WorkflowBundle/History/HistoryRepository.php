@@ -18,8 +18,8 @@ declare(strict_types=1);
 
 namespace CoreShop\Bundle\WorkflowBundle\History;
 
-use Pimcore\Model\DataObject;
-use Pimcore\Model\Element\Note;
+use OpenDxp\Model\DataObject;
+use OpenDxp\Model\Element\Note;
 
 class HistoryRepository implements HistoryRepositoryInterface
 {

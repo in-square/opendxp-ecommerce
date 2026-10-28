@@ -20,8 +20,8 @@ namespace CoreShop\Component\Index\Interpreter;
 
 use CoreShop\Component\Index\Model\IndexableInterface;
 use CoreShop\Component\Index\Model\IndexColumnInterface;
-use Pimcore\Model\DataObject\AbstractObject;
-use Pimcore\Model\DataObject\Data\ObjectMetadata;
+use OpenDxp\Model\DataObject\AbstractObject;
+use OpenDxp\Model\DataObject\Data\ObjectMetadata;
 
 class ObjectInterpreter implements RelationInterpreterInterface
 {

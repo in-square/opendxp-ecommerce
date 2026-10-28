@@ -21,8 +21,8 @@ namespace CoreShop\Component\Core\Customer;
 use CoreShop\Component\Address\Model\AddressInterface;
 use CoreShop\Component\Core\Model\CompanyInterface;
 use CoreShop\Component\Core\Model\CustomerInterface;
-use Pimcore\Model\DataObject\Folder;
-use Pimcore\Model\Element\ElementInterface;
+use OpenDxp\Model\DataObject\Folder;
+use OpenDxp\Model\Element\ElementInterface;
 
 interface CustomerTransformHelperInterface
 {

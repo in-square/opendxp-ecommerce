@@ -4,7 +4,7 @@ Feature: Adding a object index
   I want to create a new index with boolean values
 
   Background:
-    Given there is a pimcore class "BooleanTest"
+    Given there is a opendxp class "BooleanTest"
     And the definition has a checkbox field "enabled"
     And the definition has a checkbox field "booleanTest"
     And the definition has a localized input field "name"

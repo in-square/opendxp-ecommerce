@@ -8,7 +8,7 @@ imports:
     - domain/country.yml
     - domain/index.yml
     - domain/index_condition.yml
-    - domain/pimcore.yml
+    - domain/opendxp.yml
     - domain/order.yml
     - domain/seo.yml
     - domain/cli.yml

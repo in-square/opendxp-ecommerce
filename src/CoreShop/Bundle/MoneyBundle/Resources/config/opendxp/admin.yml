@@ -1,0 +1,7 @@
+core_shop_money:
+    opendxp_admin:
+        js:
+            core_extension_data_money: '/bundles/coreshopmoney/opendxp/js/coreExtension/data/coreShopMoney.js'
+            core_extension_tag_money: '/bundles/coreshopmoney/opendxp/js/coreExtension/tags/coreShopMoney.js'
+        css:
+            money: '/bundles/coreshopmoney/opendxp/css/money.css'

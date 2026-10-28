@@ -19,10 +19,10 @@ declare(strict_types=1);
 namespace CoreShop\Component\Product\Model;
 
 use CoreShop\Component\Resource\Model\ToggleableTrait;
-use CoreShop\Component\Resource\Pimcore\Model\AbstractPimcoreModel;
-use Pimcore\Model\Asset\Image;
+use CoreShop\Component\Resource\OpenDxp\Model\AbstractOpenDxpModel;
+use OpenDxp\Model\Asset\Image;
 
-abstract class Product extends AbstractPimcoreModel implements ProductInterface
+abstract class Product extends AbstractOpenDxpModel implements ProductInterface
 {
     use ToggleableTrait;
 

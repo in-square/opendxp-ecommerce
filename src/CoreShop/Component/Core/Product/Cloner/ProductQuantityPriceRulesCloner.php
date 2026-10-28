@@ -22,8 +22,8 @@ use CoreShop\Component\Core\Model\ProductInterface;
 use CoreShop\Component\Core\Model\QuantityRangeInterface;
 use CoreShop\Component\Product\Model\ProductUnitDefinitionInterface;
 use Doctrine\Common\Collections\Collection;
-use Pimcore\Model\DataObject\ClassDefinition\Data\CustomDataCopyInterface;
-use Pimcore\Model\DataObject\Concrete;
+use OpenDxp\Model\DataObject\ClassDefinition\Data\CustomDataCopyInterface;
+use OpenDxp\Model\DataObject\Concrete;
 
 class ProductQuantityPriceRulesCloner implements ProductClonerInterface
 {

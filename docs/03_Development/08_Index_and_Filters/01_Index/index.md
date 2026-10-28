@@ -26,7 +26,7 @@ Each field in the index requires certain properties to be configured:
 
 | Field                              | Description                                                                                                                                                          |
 |------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Key                                | The Pimcore field name.                                                                                                                                              |
+| Key                                | The OpenDxp field name.                                                                                                                                              |
 | Name                               | The name of the field in the index.                                                                                                                                  |
 | Getter Class                       | Important for field-types like "Localized Fields", "Classification Store", "Object Brick", and "Field Collection". Used to retrieve the correct value for the index. |
 | [Interpreter](./01_Interpreter.md) | Transforms values before they are stored in the index, e.g., resolving dependencies or creating a similarity index.                                                  |

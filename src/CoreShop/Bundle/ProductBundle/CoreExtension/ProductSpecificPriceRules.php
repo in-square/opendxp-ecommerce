@@ -21,7 +21,7 @@ namespace CoreShop\Bundle\ProductBundle\CoreExtension;
 use CoreShop\Bundle\ProductBundle\Form\Type\ProductSpecificPriceRuleType;
 use CoreShop\Bundle\ResourceBundle\CoreExtension\TempEntityManagerTrait;
 use CoreShop\Bundle\ResourceBundle\Doctrine\ORM\EntityMerger;
-use CoreShop\Bundle\ResourceBundle\Pimcore\CacheMarshallerInterface;
+use CoreShop\Bundle\ResourceBundle\OpenDxp\CacheMarshallerInterface;
 use CoreShop\Component\Product\Model\ProductInterface;
 use CoreShop\Component\Product\Model\ProductSpecificPriceRuleInterface;
 use CoreShop\Component\Product\Repository\ProductSpecificPriceRuleRepositoryInterface;
@@ -29,10 +29,10 @@ use CoreShop\Component\Resource\Factory\RepositoryFactoryInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use JMS\Serializer\DeserializationContext;
 use JMS\Serializer\SerializationContext;
-use Pimcore\Model\DataObject\ClassDefinition\Data;
-use Pimcore\Model\DataObject\Concrete;
-use Pimcore\Model\DataObject\LazyLoadedFieldsInterface;
-use Pimcore\Model\DataObject\Traits\SimpleComparisonTrait;
+use OpenDxp\Model\DataObject\ClassDefinition\Data;
+use OpenDxp\Model\DataObject\Concrete;
+use OpenDxp\Model\DataObject\LazyLoadedFieldsInterface;
+use OpenDxp\Model\DataObject\Traits\SimpleComparisonTrait;
 use Symfony\Component\Form\FormFactoryInterface;
 use Webmozart\Assert\Assert;
 
@@ -340,12 +340,12 @@ class ProductSpecificPriceRules extends Data implements
         return $prices;
     }
 
-    public function save(Concrete|\Pimcore\Model\DataObject\Objectbrick\Data\AbstractData|\Pimcore\Model\DataObject\Fieldcollection\Data\AbstractData|\Pimcore\Model\DataObject\Localizedfield $object, array $params = []): void
+    public function save(Concrete|\OpenDxp\Model\DataObject\Objectbrick\Data\AbstractData|\OpenDxp\Model\DataObject\Fieldcollection\Data\AbstractData|\OpenDxp\Model\DataObject\Localizedfield $object, array $params = []): void
     {
         if ($object instanceof ProductInterface) {
             $existingPriceRules = $object->getObjectVar($this->getName());
 
-            $entityMerger = new EntityMerger($this->getEntityManager());
+            $entityMerger = $this->getEntityMerger();
 
             $all = $this->load($object, ['force' => true]);
             $founds = [];
@@ -374,7 +374,7 @@ class ProductSpecificPriceRules extends Data implements
         }
     }
 
-    public function load(Concrete|\Pimcore\Model\DataObject\Objectbrick\Data\AbstractData|\Pimcore\Model\DataObject\Fieldcollection\Data\AbstractData|\Pimcore\Model\DataObject\Localizedfield $object, array $params = []): mixed
+    public function load(Concrete|\OpenDxp\Model\DataObject\Objectbrick\Data\AbstractData|\OpenDxp\Model\DataObject\Fieldcollection\Data\AbstractData|\OpenDxp\Model\DataObject\Localizedfield $object, array $params = []): mixed
     {
         if (isset($params['force']) && $params['force']) {
             return $this->getProductSpecificPriceRuleRepository()->findForProduct($object);
@@ -383,7 +383,7 @@ class ProductSpecificPriceRules extends Data implements
         return null;
     }
 
-    public function delete(Concrete|\Pimcore\Model\DataObject\Objectbrick\Data\AbstractData|\Pimcore\Model\DataObject\Fieldcollection\Data\AbstractData|\Pimcore\Model\DataObject\Localizedfield $object, array $params = []): void
+    public function delete(Concrete|\OpenDxp\Model\DataObject\Objectbrick\Data\AbstractData|\OpenDxp\Model\DataObject\Fieldcollection\Data\AbstractData|\OpenDxp\Model\DataObject\Localizedfield $object, array $params = []): void
     {
         if ($object instanceof ProductInterface) {
             $all = $this->load($object, ['force' => true]);
@@ -396,7 +396,7 @@ class ProductSpecificPriceRules extends Data implements
         }
     }
 
-    public function getForCsvExport(Concrete|\Pimcore\Model\DataObject\Objectbrick\Data\AbstractData|\Pimcore\Model\DataObject\Fieldcollection\Data\AbstractData|\Pimcore\Model\DataObject\Localizedfield $object, array $params = []): string
+    public function getForCsvExport(Concrete|\OpenDxp\Model\DataObject\Objectbrick\Data\AbstractData|\OpenDxp\Model\DataObject\Fieldcollection\Data\AbstractData|\OpenDxp\Model\DataObject\Localizedfield $object, array $params = []): string
     {
         return '';
     }
@@ -406,7 +406,7 @@ class ProductSpecificPriceRules extends Data implements
      */
     private function getContainer()
     {
-        return \Pimcore::getContainer();
+        return \OpenDxp::getContainer();
     }
 
     /**
@@ -436,6 +436,11 @@ class ProductSpecificPriceRules extends Data implements
     private function getEntityManager()
     {
         return $this->getContainer()->get('doctrine.orm.entity_manager');
+    }
+
+    private function getEntityMerger(): EntityMerger
+    {
+        return $this->getContainer()->get(EntityMerger::class);
     }
 
     /**

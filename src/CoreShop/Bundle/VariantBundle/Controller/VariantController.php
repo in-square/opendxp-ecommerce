@@ -24,8 +24,8 @@ use CoreShop\Bundle\VariantBundle\Service\VariantGeneratorService;
 use CoreShop\Component\Variant\Model\AttributeGroupInterface;
 use CoreShop\Component\Variant\Model\AttributeInterface;
 use CoreShop\Component\Variant\Model\ProductVariantAwareInterface;
-use Pimcore\Model\DataObject;
-use Pimcore\Model\DataObject\AbstractObject;
+use OpenDxp\Model\DataObject;
+use OpenDxp\Model\DataObject\AbstractObject;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Messenger\MessageBusInterface;
@@ -61,7 +61,7 @@ class VariantController extends AdminController
                 'text' => sprintf('%s (ID: %s)', $group->getKey(), $group->getId()),
                 'sorting' => $group->getSorting(),
                 'leaf' => false,
-                'iconCls' => 'pimcore_icon_object',
+                'iconCls' => 'opendxp_icon_object',
                 'data' => array_map(static function (AttributeInterface $attribute) use ($group) {
                     return [
                         'text' => sprintf('%s (ID: %s)', $attribute->getKey(), $attribute->getId()),
@@ -70,7 +70,7 @@ class VariantController extends AdminController
                         'sorting' => $attribute->getSorting(),
                         'leaf' => true,
                         'checked' => false,
-                        'iconCls' => 'pimcore_icon_object',
+                        'iconCls' => 'opendxp_icon_object',
                     ];
                 }, $group->getAttributes()),
             ];

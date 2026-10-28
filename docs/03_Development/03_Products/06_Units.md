@@ -1,6 +1,6 @@
 # Product Units
 
-Units for Products can be defined globally in the Pimcore Backend on CoreShopMenu > Product > Product Units.
+Units for Products can be defined globally in the OpenDxp Backend on CoreShopMenu > Product > Product Units.
 
 Each Product can have different units. Also each product/unit relation can have an own precision that differs to other
 relations. To archive that, the relation between products and units consists of three objects:
@@ -9,7 +9,7 @@ relations. To archive that, the relation between products and units consists of 
 - ProductUnitDefinition
 - ProductUnitDefinitions
 
-As already said, the ProductUnit can be created in Pimcore Backend and consists mainly of the key for unit like PCS, CNT
+As already said, the ProductUnit can be created in OpenDxp Backend and consists mainly of the key for unit like PCS, CNT
 etc. and some localized fields for rendering in frontend.
 
 To connect a ProductUnit to a CoreShopProduct in Backend you need to get the ProductUnit via repository and create a

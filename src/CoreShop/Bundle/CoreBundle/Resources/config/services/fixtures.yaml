@@ -74,7 +74,7 @@ services:
       - '@coreshop.repository.category'
       - '@coreshop.repository.store'
       - '@coreshop.factory.category'
-      - '@CoreShop\Component\Pimcore\DataObject\ObjectServiceInterface'
+      - '@CoreShop\Component\OpenDxp\DataObject\ObjectServiceInterface'
     tags:
       - { name: doctrine.fixture.orm }
 
@@ -100,7 +100,7 @@ services:
       - '@kernel'
       - '@coreshop.repository.category'
       - '@coreshop.factory.product'
-      - '@CoreShop\Component\Pimcore\DataObject\ObjectServiceInterface'
+      - '@CoreShop\Component\OpenDxp\DataObject\ObjectServiceInterface'
       - '@coreshop.repository.product'
       - '@coreshop.repository.attribute_group'
       - '@coreshop.repository.attribute_color'

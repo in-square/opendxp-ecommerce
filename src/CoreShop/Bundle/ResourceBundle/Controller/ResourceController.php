@@ -22,11 +22,11 @@ use CoreShop\Bundle\ResourceBundle\Form\Helper\ErrorSerializer;
 use CoreShop\Component\Resource\Factory\FactoryInterface;
 use CoreShop\Component\Resource\Metadata\MetadataInterface;
 use CoreShop\Component\Resource\Model\ResourceInterface;
-use CoreShop\Component\Resource\Repository\PimcoreRepositoryInterface;
+use CoreShop\Component\Resource\Repository\OpenDxpRepositoryInterface;
 use CoreShop\Component\Resource\Repository\RepositoryInterface;
 use Doctrine\Persistence\ObjectManager;
-use Pimcore\Model\DataObject;
-use Pimcore\Security\User\User;
+use OpenDxp\Model\DataObject;
+use OpenDxp\Security\User\User;
 use Psr\Container\ContainerInterface;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -64,7 +64,7 @@ class ResourceController extends AdminController
             $user = $this->tokenStorage->getToken()?->getUser();
 
             if (!$user instanceof User) {
-                throw new \RuntimeException(sprintf('Unknown Pimcore Admin User Class given "%s"', get_class($user)));
+                throw new \RuntimeException(sprintf('Unknown OpenDxp Admin User Class given "%s"', get_class($user)));
             }
 
             $user = $user->getUser();
@@ -232,8 +232,8 @@ class ResourceController extends AdminController
 
         $repo = $this->repository;
 
-        if (!$repo instanceof PimcoreRepositoryInterface) {
-            throw new \InvalidArgumentException('Only Supported with Pimcore Repositories');
+        if (!$repo instanceof OpenDxpRepositoryInterface) {
+            throw new \InvalidArgumentException('Only Supported with OpenDxp Repositories');
         }
 
         $name = null;

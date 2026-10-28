@@ -1,0 +1,21 @@
+services:
+    _defaults:
+        public: true
+
+    coreshop.opendxp.document.editable.filter:
+        class: CoreShop\Component\Resource\OpenDxp\ResourceDocumentTagFactory
+        arguments:
+            - 'CoreShop\Bundle\ResourceBundle\CoreExtension\Document\Select'
+            - 'coreshop.repository.filter'
+            - 'name'
+        tags:
+            - { name: coreshop.opendxp.document.editable, type: coreshop_filter }
+
+    coreshop.opendxp.document.editable.index:
+        class: CoreShop\Component\Resource\OpenDxp\ResourceDocumentTagFactory
+        arguments:
+            - 'CoreShop\Bundle\ResourceBundle\CoreExtension\Document\Select'
+            - 'coreshop.repository.index'
+            - 'name'
+        tags:
+            - { name: coreshop.opendxp.document.editable, type: coreshop_index }

@@ -25,7 +25,7 @@ use Symfony\Contracts\Service\Attribute\SubscribedService;
 /**
  * @psalm-suppress InternalClass
  */
-class AdminController extends \Pimcore\Bundle\AdminBundle\Controller\AdminAbstractController
+class AdminController extends \OpenDxp\Bundle\AdminBundle\Controller\AdminAbstractController
 {
     public function __construct(
         \Psr\Container\ContainerInterface $container,

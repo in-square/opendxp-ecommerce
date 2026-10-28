@@ -27,7 +27,7 @@ use CoreShop\Component\StorageList\Provider\ContextProviderInterface;
 use CoreShop\Component\StorageList\Resolver\StorageListResolverInterface;
 use CoreShop\Component\StorageList\Storage\StorageListStorageInterface;
 use CoreShop\Component\StorageList\StorageListManagerInterface;
-use Pimcore\Model\DataObject\Concrete;
+use OpenDxp\Model\DataObject\Concrete;
 use Psr\Container\ContainerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\ClickableInterface;

@@ -18,11 +18,11 @@ declare(strict_types=1);
 
 namespace CoreShop\Component\Wishlist\Model;
 
-use CoreShop\Component\Resource\Pimcore\Model\PimcoreModelInterface;
+use CoreShop\Component\Resource\OpenDxp\Model\OpenDxpModelInterface;
 use CoreShop\Component\StorageList\Model\StorageListItemInterface;
 
 interface WishlistItemInterface extends
-    PimcoreModelInterface,
+    OpenDxpModelInterface,
     StorageListItemInterface
 {
     public function getWishlist(): ?WishlistInterface;

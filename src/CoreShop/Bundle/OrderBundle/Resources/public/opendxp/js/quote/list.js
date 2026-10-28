@@ -1,0 +1,32 @@
+/*
+ * CoreShop.
+ *
+ * This source file is subject to the GNU General Public License version 3 (GPLv3)
+ * For the full copyright and license information, please view the LICENSE.md and gpl-3.0.txt
+ * files that are distributed with this source code.
+ *
+ * @copyright  Copyright (c) CoreShop GmbH (https://www.coreshop.com)
+ * @license    https://www.coreshop.com/license     GPLv3 and CCL
+ *
+ */
+
+opendxp.registerNS('coreshop.order.quote.list');
+coreshop.order.quote.list = Class.create(coreshop.order.order.list, {
+    type: 'quote',
+
+    open: function (id, callback) {
+        coreshop.order.helper.openQuote(id, callback);
+    },
+
+    setupContextMenuPlugin: function () {
+        this.contextMenuPlugin = new coreshop.opendxp.plugin.grid(
+            'coreshop_quote',
+            function (id) {
+                this.open(id);
+            }.bind(this),
+            [coreshop.class_map.coreshop.order],
+            this.getGridPaginator()
+        );
+    }
+});
+

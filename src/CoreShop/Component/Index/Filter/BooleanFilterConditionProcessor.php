@@ -22,7 +22,7 @@ use CoreShop\Component\Index\Condition\MatchCondition;
 use CoreShop\Component\Index\Listing\ListingInterface;
 use CoreShop\Component\Index\Model\FilterConditionInterface;
 use CoreShop\Component\Index\Model\FilterInterface;
-use Pimcore\Model\DataObject\QuantityValue\Unit;
+use OpenDxp\Model\DataObject\QuantityValue\Unit;
 use Symfony\Component\HttpFoundation\ParameterBag;
 
 class BooleanFilterConditionProcessor implements FilterConditionProcessorInterface

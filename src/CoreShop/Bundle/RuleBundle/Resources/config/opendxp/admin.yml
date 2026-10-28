@@ -1,0 +1,13 @@
+core_shop_rule:
+    opendxp_admin:
+        js:
+            rule_panel: '/bundles/coreshoprule/opendxp/js/rules/panel.js'
+            rule_item: '/bundles/coreshoprule/opendxp/js/rules/item.js'
+            rule_abstract: '/bundles/coreshoprule/opendxp/js/rules/abstract.js'
+            rule_condition: '/bundles/coreshoprule/opendxp/js/rules/condition.js'
+            rule_action: '/bundles/coreshoprule/opendxp/js/rules/action.js'
+            rule_action_abstract: '/bundles/coreshoprule/opendxp/js/rules/actions/abstract.js'
+            rule_condition_abstract: '/bundles/coreshoprule/opendxp/js/rules/conditions/abstract.js'
+            rule_condition_nested: '/bundles/coreshoprule/opendxp/js/rules/conditions/nested.js'
+        css:
+            rule: '/bundles/coreshoprule/opendxp/css/rule.css'

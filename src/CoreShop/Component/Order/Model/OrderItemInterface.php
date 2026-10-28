@@ -19,12 +19,12 @@ declare(strict_types=1);
 namespace CoreShop\Component\Order\Model;
 
 use CoreShop\Component\Resource\Model\ImmutableInterface;
-use CoreShop\Component\Resource\Pimcore\Model\PimcoreModelInterface;
+use CoreShop\Component\Resource\OpenDxp\Model\OpenDxpModelInterface;
 use CoreShop\Component\StorageList\Model\StorageListItemInterface;
-use Pimcore\Model\DataObject\Fieldcollection;
+use OpenDxp\Model\DataObject\Fieldcollection;
 
 interface OrderItemInterface extends
-    PimcoreModelInterface,
+    OpenDxpModelInterface,
     AdjustableInterface,
     ConvertedAdjustableInterface,
     StorageListItemInterface,

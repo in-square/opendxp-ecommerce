@@ -20,8 +20,8 @@ namespace CoreShop\Bundle\TestBundle\Context\Transform;
 
 use Behat\Behat\Context\Context;
 use CoreShop\Bundle\TestBundle\Service\SharedStorageInterface;
-use Pimcore\Bundle\NewsletterBundle\Model\Document\Newsletter;
-use Pimcore\Model\Document;
+use OpenDxp\Bundle\NewsletterBundle\Model\Document\Newsletter;
+use OpenDxp\Model\Document;
 use Webmozart\Assert\Assert;
 
 final class DocumentContext implements Context

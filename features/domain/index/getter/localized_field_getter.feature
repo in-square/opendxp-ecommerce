@@ -4,7 +4,7 @@ Feature: Adding a object index
   I want to create a new index where a field comes from an localized field
 
   Background:
-    Given there is a pimcore class "LocalizedTest"
+    Given there is a opendxp class "LocalizedTest"
     And the definition has a checkbox field "enabled"
     And the definition has a localized input field "name"
     And the definition has a localized textarea field "shortDescription"

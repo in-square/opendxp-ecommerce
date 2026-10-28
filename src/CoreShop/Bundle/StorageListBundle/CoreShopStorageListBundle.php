@@ -21,6 +21,8 @@ namespace CoreShop\Bundle\StorageListBundle;
 use CoreShop\Bundle\ResourceBundle\AbstractResourceBundle;
 use CoreShop\Bundle\ResourceBundle\CoreShopResourceBundle;
 use CoreShop\Bundle\StorageListBundle\DependencyInjection\Compiler\RegisterAllStorageListsPass;
+use CoreShop\Bundle\StorageListBundle\DependencyInjection\Compiler\RegisterFrontendLogoutListenersPass;
+use Symfony\Component\DependencyInjection\Compiler\PassConfig;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
 final class CoreShopStorageListBundle extends AbstractResourceBundle
@@ -37,6 +39,7 @@ final class CoreShopStorageListBundle extends AbstractResourceBundle
         parent::build($container);
 
         $container->addCompilerPass(new RegisterAllStorageListsPass());
+        $container->addCompilerPass(new RegisterFrontendLogoutListenersPass(), PassConfig::TYPE_BEFORE_OPTIMIZATION);
     }
 
     protected function getModelNamespace(): string

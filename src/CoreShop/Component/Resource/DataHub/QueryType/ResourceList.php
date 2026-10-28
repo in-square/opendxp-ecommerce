@@ -20,7 +20,7 @@ namespace CoreShop\Component\Resource\DataHub\QueryType;
 
 use GraphQL\Type\Definition\ResolveInfo;
 use GraphQL\Type\Definition\Type;
-use Pimcore\Model\DataObject\ClassDefinition\Data;
+use OpenDxp\Model\DataObject\ClassDefinition\Data;
 
 class ResourceList extends Resource
 {

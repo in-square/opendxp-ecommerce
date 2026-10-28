@@ -20,7 +20,7 @@ namespace CoreShop\Bundle\TestBundle\Context\Transform;
 
 use Behat\Behat\Context\Context;
 use CoreShop\Bundle\TestBundle\Service\SharedStorageInterface;
-use Pimcore\Model\Element\ElementInterface;
+use OpenDxp\Model\Element\ElementInterface;
 
 final class ElementContext implements Context
 {

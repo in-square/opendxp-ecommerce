@@ -22,7 +22,7 @@ use CoreShop\Bundle\FrontendBundle\TemplateConfigurator\TemplateConfiguratorInte
 use CoreShop\Component\Core\Context\ShopperContextInterface;
 use CoreShop\Component\Order\Context\CartContextInterface;
 use CoreShop\Component\SEO\SEOPresentationInterface;
-use Pimcore\Http\RequestHelper;
+use OpenDxp\Http\RequestHelper;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Contracts\Translation\TranslatorInterface;

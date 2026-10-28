@@ -18,10 +18,10 @@ declare(strict_types=1);
 
 namespace CoreShop\Bundle\MoneyBundle\CoreExtension;
 
-use Pimcore\Model\DataObject;
-use Pimcore\Model\DataObject\ClassDefinition\Data;
-use Pimcore\Model\DataObject\Concrete;
-use Pimcore\Model\Element\ValidationException;
+use OpenDxp\Model\DataObject;
+use OpenDxp\Model\DataObject\ClassDefinition\Data;
+use OpenDxp\Model\DataObject\Concrete;
+use OpenDxp\Model\Element\ValidationException;
 
 /**
  * @psalm-suppress InvalidReturnType, InvalidReturnStatement, MissingConstructor
@@ -32,10 +32,7 @@ class Money extends DataObject\ClassDefinition\Data implements
 {
     public string $fieldtype = 'coreShopMoney';
 
-    /**
-     * @var int
-     */
-    public $width;
+    public int|string|null $width = null;
 
     /**
      * @var int
@@ -89,22 +86,18 @@ class Money extends DataObject\ClassDefinition\Data implements
         return ($this->nullable ? '?' : '') . 'int';
     }
 
-    /**
-     * @return int
-     */
-    public function getWidth()
+    public function getWidth(): int|string|null
     {
         return $this->width;
     }
 
-    /**
-     * @param int $width
-     *
-     * @return $this
-     */
-    public function setWidth($width)
+    public function setWidth(int|string|null $width): static
     {
-        $this->width = $this->getAsIntegerCast($width);
+        if (is_numeric($width)) {
+            $width = (int) $width;
+        }
+
+        $this->width = $width;
 
         return $this;
     }
@@ -239,7 +232,7 @@ class Money extends DataObject\ClassDefinition\Data implements
 
         // insert this line if inheritance from parent objects is allowed
         if ($class instanceof DataObject\ClassDefinition && $class->getAllowInherit() && $this->supportsInheritance()) {
-            $code .= "\t" . 'if(\Pimcore\Model\DataObject::doGetInheritedValues() && $this->getClass()->getFieldDefinition("' . $key . '")->isEmpty($data)) {' . "\n";
+            $code .= "\t" . 'if(\OpenDxp\Model\DataObject::doGetInheritedValues() && $this->getClass()->getFieldDefinition("' . $key . '")->isEmpty($data)) {' . "\n";
             $code .= "\t\t" . 'try {' . "\n";
             $code .= "\t\t\t" . 'return $this->getValueFromParent("' . $key . '");' . "\n";
             $code .= "\t\t" . '} catch (InheritanceParentNotFoundException $e) {' . "\n";
@@ -248,7 +241,7 @@ class Money extends DataObject\ClassDefinition\Data implements
             $code .= "\t" . '}' . "\n\n";
         }
 
-        $code .= "\t" . 'if ($data instanceof \\Pimcore\\Model\\DataObject\\Data\\EncryptedField) {' . "\n";
+        $code .= "\t" . 'if ($data instanceof \\OpenDxp\\Model\\DataObject\\Data\\EncryptedField) {' . "\n";
         $code .= "\t\t" . '    return $data->getPlain();' . "\n";
         $code .= "\t" . '}' . "\n\n";
 
@@ -264,15 +257,15 @@ class Money extends DataObject\ClassDefinition\Data implements
 
         switch ($class::class) {
             case DataObject\Objectbrick\Definition::class:
-                $returnType = '\\Pimcore\\Model\\DataObject\\Objectbrick\\Data\\' . ucfirst($class->getKey());
+                $returnType = '\\OpenDxp\\Model\\DataObject\\Objectbrick\\Data\\' . ucfirst($class->getKey());
 
                 break;
             case DataObject\Fieldcollection\Definition::class:
-                $returnType = '\\Pimcore\\Model\\DataObject\\FieldCollection\\Data\\' . ucfirst($class->getKey());
+                $returnType = '\\OpenDxp\\Model\\DataObject\\FieldCollection\\Data\\' . ucfirst($class->getKey());
 
                 break;
             case DataObject\ClassDefinition::class:
-                $returnType = '\\Pimcore\\Model\\DataObject\\FieldCollection\\Data\\' . ucfirst($class->getName());
+                $returnType = '\\OpenDxp\\Model\\DataObject\\FieldCollection\\Data\\' . ucfirst($class->getName());
 
                 break;
         }
@@ -292,8 +285,8 @@ class Money extends DataObject\ClassDefinition\Data implements
             if ($this->getDelegate()) {
                 $code .= "\t" . '$encryptedFd = $this->getClass()->getFieldDefinition("' . $key . '");' . "\n";
                 $code .= "\t" . '$delegate = $encryptedFd->getDelegate();' . "\n";
-                $code .= "\t" . 'if ($delegate && !($' . $key . ' instanceof \\Pimcore\\Model\\DataObject\\Data\\EncryptedField)) {' . "\n";
-                $code .= "\t\t" . '$' . $key . ' = new \\Pimcore\\Model\\DataObject\\Data\\EncryptedField($delegate, $' . $key . ');' . "\n";
+                $code .= "\t" . 'if ($delegate && !($' . $key . ' instanceof \\OpenDxp\\Model\\DataObject\\Data\\EncryptedField)) {' . "\n";
+                $code .= "\t\t" . '$' . $key . ' = new \\OpenDxp\\Model\\DataObject\\Data\\EncryptedField($delegate, $' . $key . ');' . "\n";
                 $code .= "\t" . '}' . "\n";
             }
         }
@@ -335,7 +328,7 @@ class Money extends DataObject\ClassDefinition\Data implements
         }
 
         if ($this->supportsInheritance()) {
-            $code .= "\t" . 'if(\Pimcore\Model\DataObject::doGetInheritedValues($this->getObject()) && $this->getDefinition()->getFieldDefinition("' . $key . '")->isEmpty($data)) {' . "\n";
+            $code .= "\t" . 'if(\OpenDxp\Model\DataObject::doGetInheritedValues($this->getObject()) && $this->getDefinition()->getFieldDefinition("' . $key . '")->isEmpty($data)) {' . "\n";
             $code .= "\t\t" . 'try {' . "\n";
             $code .= "\t\t\t" . 'return $this->getValueFromParent("' . $key . '");' . "\n";
             $code .= "\t\t" . '} catch (InheritanceParentNotFoundException $e) {' . "\n";
@@ -344,7 +337,7 @@ class Money extends DataObject\ClassDefinition\Data implements
             $code .= "\t" . '}' . "\n";
         }
 
-        $code .= "\t" . 'if ($data instanceof \\Pimcore\\Model\\DataObject\\Data\\EncryptedField) {' . "\n";
+        $code .= "\t" . 'if ($data instanceof \\OpenDxp\\Model\\DataObject\\Data\\EncryptedField) {' . "\n";
         $code .= "\t\t" . 'return $data->getPlain();' . "\n";
         $code .= "\t" . '}' . "\n";
 
@@ -362,7 +355,7 @@ class Money extends DataObject\ClassDefinition\Data implements
         $code .= '/**' . "\n";
         $code .= '* Set ' . str_replace(['/**', '*/', '//'], '', $this->getName()) . ' - ' . str_replace(['/**', '*/', '//'], '', $this->getTitle()) . "\n";
         $code .= '* @param ' . $this->getPhpdocReturnType() . ' $' . $key . "\n";
-        $code .= '* @return \\Pimcore\\Model\\DataObject\\Objectbrick\\Data\\' . ucfirst($brickClass->getKey()) . "\n";
+        $code .= '* @return \\OpenDxp\\Model\\DataObject\\Objectbrick\\Data\\' . ucfirst($brickClass->getKey()) . "\n";
         $code .= '*/' . "\n";
         $code .= 'public function set' . ucfirst($key) . ' (' . ($this->nullable ? '?' : '') . 'int ' . '$' . $key . ") {\n";
         $code .= "\t" . '$fd = $this->getDefinition()->getFieldDefinition("' . $key . '");' . "\n";
@@ -371,8 +364,8 @@ class Money extends DataObject\ClassDefinition\Data implements
             if ($this->getDelegate()) {
                 $code .= "\t" . '$encryptedFd = $this->getDefinition()->getFieldDefinition("' . $key . '");' . "\n";
                 $code .= "\t" . '$delegate = $encryptedFd->getDelegate();' . "\n";
-                $code .= "\t" . 'if ($delegate && !($' . $key . ' instanceof \\Pimcore\\Model\\DataObject\\Data\\EncryptedField)) {' . "\n";
-                $code .= "\t\t" . '$' . $key . ' = new \\Pimcore\\Model\\DataObject\\Data\\EncryptedField($delegate, $' . $key . ');' . "\n";
+                $code .= "\t" . 'if ($delegate && !($' . $key . ' instanceof \\OpenDxp\\Model\\DataObject\\Data\\EncryptedField)) {' . "\n";
+                $code .= "\t\t" . '$' . $key . ' = new \\OpenDxp\\Model\\DataObject\\Data\\EncryptedField($delegate, $' . $key . ');' . "\n";
                 $code .= "\t" . '}' . "\n";
             }
         }
@@ -416,7 +409,7 @@ class Money extends DataObject\ClassDefinition\Data implements
             $code .= "\t" . '$data = $this->' . $key . ";\n";
         }
 
-        $code .= "\t" . 'if ($data instanceof \\Pimcore\\Model\\DataObject\\Data\\EncryptedField) {' . "\n";
+        $code .= "\t" . 'if ($data instanceof \\OpenDxp\\Model\\DataObject\\Data\\EncryptedField) {' . "\n";
         $code .= "\t\t" . '    return $data->getPlain();' . "\n";
         $code .= "\t" . '}' . "\n";
 
@@ -434,7 +427,7 @@ class Money extends DataObject\ClassDefinition\Data implements
         $code .= '/**' . "\n";
         $code .= '* Set ' . str_replace(['/**', '*/', '//'], '', $this->getName()) . ' - ' . str_replace(['/**', '*/', '//'], '', $this->getTitle()) . "\n";
         $code .= '* @param ' . $this->getPhpdocReturnType() . ' $' . $key . "\n";
-        $code .= '* @return \\Pimcore\\Model\\DataObject\\Fieldcollection\\Data\\' . ucfirst($fieldcollectionDefinition->getKey()) . "\n";
+        $code .= '* @return \\OpenDxp\\Model\\DataObject\\Fieldcollection\\Data\\' . ucfirst($fieldcollectionDefinition->getKey()) . "\n";
         $code .= '*/' . "\n";
         $code .= 'public function set' . ucfirst($key) . ' (' . ($this->nullable ? '?' : '') . 'int ' . '$' . $key . ") {\n";
         $code .= "\t" . '$fd = $this->getDefinition()->getFieldDefinition("' . $key . '");' . "\n";
@@ -443,8 +436,8 @@ class Money extends DataObject\ClassDefinition\Data implements
             if ($this->getDelegate()) {
                 $code .= "\t" . '$encryptedFd = $this->getDefinition()->getFieldDefinition("' . $key . '");' . "\n";
                 $code .= "\t" . '$delegate = $encryptedFd->getDelegate();' . "\n";
-                $code .= "\t" . 'if ($delegate && !($' . $key . ' instanceof \\Pimcore\\Model\\DataObject\\Data\\EncryptedField)) {' . "\n";
-                $code .= "\t\t" . '$' . $key . ' = new \\Pimcore\\Model\\DataObject\\Data\\EncryptedField($delegate, $' . $key . ');' . "\n";
+                $code .= "\t" . 'if ($delegate && !($' . $key . ' instanceof \\OpenDxp\\Model\\DataObject\\Data\\EncryptedField)) {' . "\n";
+                $code .= "\t\t" . '$' . $key . ' = new \\OpenDxp\\Model\\DataObject\\Data\\EncryptedField($delegate, $' . $key . ');' . "\n";
                 $code .= "\t" . '}' . "\n";
             }
         }
@@ -484,7 +477,7 @@ class Money extends DataObject\ClassDefinition\Data implements
             $code .= $this->getPreGetValueHookCode($key);
         }
 
-        $code .= "\t" . 'if ($data instanceof \\Pimcore\\Model\\DataObject\\Data\\EncryptedField) {' . "\n";
+        $code .= "\t" . 'if ($data instanceof \\OpenDxp\\Model\\DataObject\\Data\\EncryptedField) {' . "\n";
         $code .= "\t\t" . 'return $data->getPlain();' . "\n";
         $code .= "\t" . '}' . "\n";
 
@@ -514,7 +507,7 @@ class Money extends DataObject\ClassDefinition\Data implements
         $code = '/**' . "\n";
         $code .= '* Set ' . str_replace(['/**', '*/', '//'], '', $this->getName()) . ' - ' . str_replace(['/**', '*/', '//'], '', $this->getTitle()) . "\n";
         $code .= '* @param ' . $this->getPhpdocReturnType() . ' $' . $key . "\n";
-        $code .= '* @return \\Pimcore\\Model\\DataObject\\' . ucfirst($classname) . "\n";
+        $code .= '* @return \\OpenDxp\\Model\\DataObject\\' . ucfirst($classname) . "\n";
         $code .= '*/' . "\n";
         $code .= 'public function set' . ucfirst($key) . ' (' . ($this->nullable ? '?' : '') . 'int ' . '$' . $key . ', $language = null) {' . "\n";
         if ($this->supportsDirtyDetection()) {
@@ -525,8 +518,8 @@ class Money extends DataObject\ClassDefinition\Data implements
             if ($this->getDelegate()) {
                 $code .= "\t" . '$encryptedFd = $this->getClass()->getFieldDefinition("' . $key . '");' . "\n";
                 $code .= "\t" . '$delegate = $encryptedFd->getDelegate();' . "\n";
-                $code .= "\t" . 'if ($delegate && !($' . $key . ' instanceof \\Pimcore\\Model\\DataObject\\Data\\EncryptedField)) {' . "\n";
-                $code .= "\t\t" . '$' . $key . ' = new \\Pimcore\\Model\\DataObject\\Data\\EncryptedField($delegate, $' . $key . ');' . "\n";
+                $code .= "\t" . 'if ($delegate && !($' . $key . ' instanceof \\OpenDxp\\Model\\DataObject\\Data\\EncryptedField)) {' . "\n";
+                $code .= "\t\t" . '$' . $key . ' = new \\OpenDxp\\Model\\DataObject\\Data\\EncryptedField($delegate, $' . $key . ');' . "\n";
                 $code .= "\t" . '}' . "\n";
             }
         }
@@ -645,7 +638,7 @@ class Money extends DataObject\ClassDefinition\Data implements
      */
     protected function getDecimalFactor()
     {
-        return \Pimcore::getContainer()->getParameter('coreshop.currency.decimal_factor');
+        return \OpenDxp::getContainer()->getParameter('coreshop.currency.decimal_factor');
     }
 
     /**
@@ -653,7 +646,7 @@ class Money extends DataObject\ClassDefinition\Data implements
      */
     protected function getDecimalPrecision()
     {
-        return \Pimcore::getContainer()->getParameter('coreshop.currency.decimal_precision');
+        return \OpenDxp::getContainer()->getParameter('coreshop.currency.decimal_precision');
     }
 
     /**

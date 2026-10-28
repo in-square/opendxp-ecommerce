@@ -18,10 +18,10 @@ declare(strict_types=1);
 
 namespace CoreShop\Component\Variant\Model;
 
-use CoreShop\Component\Resource\Pimcore\Model\PimcoreModelInterface;
-use Pimcore\Model\DataObject\Concrete;
+use CoreShop\Component\Resource\OpenDxp\Model\OpenDxpModelInterface;
+use OpenDxp\Model\DataObject\Concrete;
 
-interface ProductVariantAwareInterface extends PimcoreModelInterface
+interface ProductVariantAwareInterface extends OpenDxpModelInterface
 {
     public function getName(string $language = null): ?string;
 

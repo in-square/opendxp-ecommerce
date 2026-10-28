@@ -1,6 +1,6 @@
 # Cart Price Rules Documentation
 
-CoreShop provides a versatile framework for offering discounts and promotions in your e-commerce store using the Pimcore
+CoreShop provides a versatile framework for offering discounts and promotions in your e-commerce store using the OpenDxp
 platform. Cart price rules can be customized based on a variety of factors, including cart subtotal, specific products,
 customer groups, and more. This documentation aims to guide you through the process of creating and managing cart price
 rules in CoreShop.

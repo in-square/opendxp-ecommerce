@@ -22,7 +22,7 @@ use CoreShop\Component\Index\Condition\ConditionInterface;
 use CoreShop\Component\Index\Listing\ListingInterface;
 use CoreShop\Component\Index\Model\IndexInterface;
 use CoreShop\Component\Index\Worker\WorkerInterface;
-use Pimcore\Tool;
+use OpenDxp\Tool;
 
 abstract class AbstractListing implements ListingInterface
 {

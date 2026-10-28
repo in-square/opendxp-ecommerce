@@ -19,7 +19,7 @@ declare(strict_types=1);
 namespace CoreShop\Bundle\ThemeBundle\Service;
 
 use Laminas\Stdlib\PriorityQueue;
-use Pimcore\Model\Document;
+use OpenDxp\Model\Document;
 
 final class CompositeThemeResolver implements ThemeResolverInterface, DocumentThemeResolverInterface
 {

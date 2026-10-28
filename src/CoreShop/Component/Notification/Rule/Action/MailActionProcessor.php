@@ -19,9 +19,9 @@ declare(strict_types=1);
 namespace CoreShop\Component\Notification\Rule\Action;
 
 use CoreShop\Component\Notification\Model\NotificationRuleInterface;
-use CoreShop\Component\Pimcore\DataObject\InheritanceHelper;
-use CoreShop\Component\Pimcore\Mail\MailProcessorInterface;
-use Pimcore\Model\Document;
+use CoreShop\Component\OpenDxp\DataObject\InheritanceHelper;
+use CoreShop\Component\OpenDxp\Mail\MailProcessorInterface;
+use OpenDxp\Model\Document;
 
 class MailActionProcessor implements NotificationRuleProcessorInterface
 {

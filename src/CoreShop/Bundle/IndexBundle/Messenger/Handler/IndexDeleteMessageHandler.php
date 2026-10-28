@@ -20,7 +20,7 @@ namespace CoreShop\Bundle\IndexBundle\Messenger\Handler;
 
 use CoreShop\Bundle\IndexBundle\Messenger\IndexDeleteMessage;
 use CoreShop\Component\Index\Service\IndexUpdaterServiceInterface;
-use Pimcore\Model\DataObject\AbstractObject;
+use OpenDxp\Model\DataObject\AbstractObject;
 
 class IndexDeleteMessageHandler
 {

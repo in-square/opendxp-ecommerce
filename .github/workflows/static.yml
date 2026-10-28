@@ -1,21 +1,25 @@
 name: Static Tests (Lint, Stan)
 on:
   push:
-    branches: [ '4.0' , '4.1','next']
     paths:
       - 'features/**'
       - 'behat.yml.dist'
       - 'src/**'
+      - 'config/**'
+      - 'tests/**'
+      - '.github/workflows/**'
       - '*.php'
       - '*.neon'
       - '*.xml'
       - 'composer.json'
   pull_request:
-    branches: [ '4.0', '4.1','next' ]
     paths:
       - 'features/**'
       - 'behat.yml.dist'
       - 'src/**'
+      - 'config/**'
+      - 'tests/**'
+      - '.github/workflows/**'
       - '*.php'
       - '*.neon'
       - '*.xml'
@@ -30,12 +34,21 @@ jobs:
     runs-on: ubuntu-latest
     env:
       APP_ENV: "test"
-      PIMCORE_TEST_DB_DSN: "mysql://root:root@127.0.0.1:3306/coreshop_test"
+      OPENDXP_TEST_DB_DSN: "mysql://root:root@127.0.0.1:3306/coreshop_test"
+      CORESHOP_MIGRATION_TEST_DSN: "mysql://root:root@127.0.0.1:3306/coreshop_migration_test"
+      OPENDXP_INSTALL_MYSQL_HOST_SOCKET: "127.0.0.1"
+      OPENDXP_INSTALL_MYSQL_PORT: "3306"
+      OPENDXP_INSTALL_MYSQL_DATABASE: "coreshop_test"
+      OPENDXP_INSTALL_MYSQL_USERNAME: "root"
+      OPENDXP_INSTALL_MYSQL_PASSWORD: "root"
+      OPENDXP_INSTALL_ADMIN_USERNAME: "admin"
+      OPENDXP_INSTALL_ADMIN_PASSWORD: "admin"
+      OPENDXP_KERNEL_CLASS: "Kernel"
 
     strategy:
       matrix:
-        php: [ 8.2, 8.3 ]
-        pimcore: [ ~11.5 ]
+        php: [ 8.3 ]
+        opendxp: [ '~1.3.0', '^1.3' ]
         jms: [ ^4.0, ^5.0 ]
         dependencies: [ highest ]
     services:
@@ -47,7 +60,7 @@ jobs:
         ports:
           - 3306:3306
         options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
-    name: "${{ matrix.pimcore }}, PHP ${{ matrix.php }}, Deps ${{ matrix.dependencies }}, JMS ${{ matrix.jms }}"
+    name: "${{ matrix.opendxp }}, PHP ${{ matrix.php }}, Deps ${{ matrix.dependencies }}, JMS ${{ matrix.jms }}"
 
     steps:
     - uses: actions/checkout@v4
@@ -57,7 +70,7 @@ jobs:
       with:
         php-version: ${{ matrix.php }}
         ini-values: display_errors=On, display_startup_errors=On, error_reporting=32767
-        extensions: intl, gd, simpleXML, dom, exif, fileinfo, iconv, mbstring, mysqli, pdo_mysql, zip, zlib
+        extensions: intl, gd, simpleXML, dom, exif, fileinfo, iconv, mbstring, mysqli, pdo_mysql, pdo_sqlite, zip, zlib
 
     - name: Validate composer.json and composer.lock
       run: composer validate
@@ -76,8 +89,8 @@ jobs:
     - name: jms/serializer-bundle
       run: composer require "jms/serializer-bundle:${{ matrix.jms }}" --no-update --no-scripts
 
-    - name: pimcore/pimcore
-      run: composer req pimcore/pimcore:${{ matrix.pimcore }} --no-interaction --no-scripts --no-update
+    - name: open-dxp/opendxp
+      run: composer req open-dxp/opendxp:${{ matrix.opendxp }} --no-interaction --no-scripts --no-update
 
     - if: matrix.dependencies == 'highest'
       name: Install dependencies highest
@@ -86,6 +99,16 @@ jobs:
     - if: matrix.dependencies == 'lowest'
       name: Install dependencies lowest
       run: composer update --no-progress --prefer-dist --optimize-autoloader --prefer-lowest
+
+    - name: Install OpenDXP and CoreShop
+      run: |
+        php vendor/bin/opendxp-install --env=test --no-interaction --skip-database-config
+        php bin/console coreshop:install --env=test --no-interaction
+
+    - name: Unit and Doctrine integration tests
+      run: |
+        mysql --host 127.0.0.1 --port ${{ job.services.database.ports['3306'] }} -uroot -proot -e "CREATE DATABASE coreshop_migration_test CHARSET=utf8mb4;"
+        vendor/bin/phpunit --bootstrap vendor/autoload.php --do-not-cache-result tests/Unit tests/Integration/Doctrine
 
     - name: Validate YAML
       run: bin/console lint:yaml src

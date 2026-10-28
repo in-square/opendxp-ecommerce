@@ -20,7 +20,7 @@ namespace CoreShop\Bundle\IndexBundle\Migrations;
 
 use Doctrine\DBAL\Schema\Schema;
 use Doctrine\Migrations\AbstractMigration;
-use Pimcore\Model\Tool\SettingsStore;
+use OpenDxp\Model\Tool\SettingsStore;
 
 class Version20220121154623 extends AbstractMigration
 {
@@ -28,11 +28,11 @@ class Version20220121154623 extends AbstractMigration
 
     public function up(Schema $schema): void
     {
-        SettingsStore::set(self::INSTALLATION_ID, true, 'bool', 'pimcore');
+        SettingsStore::set(self::INSTALLATION_ID, true, 'bool', 'opendxp');
     }
 
     public function down(Schema $schema): void
     {
-        SettingsStore::set(self::INSTALLATION_ID, false, 'bool', 'pimcore');
+        SettingsStore::set(self::INSTALLATION_ID, false, 'bool', 'opendxp');
     }
 }

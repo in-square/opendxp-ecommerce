@@ -22,9 +22,9 @@ In this example we want to filter orders with available shipments in state "read
 
 namespace App\CoreShop\OrderList\Filter;
 
-use CoreShop\Component\Pimcore\DataObject\Grid\GridFilterInterface;
-use Pimcore\Db\ZendCompatibility\QueryBuilder;
-use Pimcore\Model\DataObject;
+use CoreShop\Component\OpenDxp\DataObject\Grid\GridFilterInterface;
+use OpenDxp\Db\ZendCompatibility\QueryBuilder;
+use OpenDxp\Model\DataObject;
 
 class DemoFilter implements GridFilterInterface
 {

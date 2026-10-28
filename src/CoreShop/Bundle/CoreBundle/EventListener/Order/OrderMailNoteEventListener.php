@@ -18,12 +18,12 @@ declare(strict_types=1);
 
 namespace CoreShop\Bundle\CoreBundle\EventListener\Order;
 
-use CoreShop\Bundle\PimcoreBundle\Event\MailEvent;
+use CoreShop\Bundle\OpenDxpBundle\Event\MailEvent;
 use CoreShop\Component\Core\Model\OrderInterface;
 use CoreShop\Component\Order\Notes;
-use CoreShop\Component\Pimcore\DataObject\NoteServiceInterface;
-use CoreShop\Component\Pimcore\Mail;
-use Pimcore\Model\Document\Email;
+use CoreShop\Component\OpenDxp\DataObject\NoteServiceInterface;
+use CoreShop\Component\OpenDxp\Mail;
+use OpenDxp\Model\Document\Email;
 
 final class OrderMailNoteEventListener
 {
@@ -45,7 +45,7 @@ final class OrderMailNoteEventListener
     private function addOrderNote(OrderInterface $order, Email $emailDocument, Mail $mail, array $params = []): void
     {
         /** @psalm-suppress InvalidArgument */
-        $noteInstance = $this->noteService->createPimcoreNoteInstance($order, Notes::NOTE_EMAIL);
+        $noteInstance = $this->noteService->createOpenDxpNoteInstance($order, Notes::NOTE_EMAIL);
 
         $noteInstance->setTitle('Order Mail');
 

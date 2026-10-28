@@ -30,7 +30,7 @@ public function registerBundlesToCollection(BundleCollection $collection)
 
 ## Abstract
 
-Pimcore supports variants but does not define the specifics of what a variant is or how it differs from the parent
+OpenDxp supports variants but does not define the specifics of what a variant is or how it differs from the parent
 product or other variants. CoreShop addresses this by introducing two entities:
 
 1. **Attribute Group** (`CoreShop\Component\Variant\Model\AttributeGroupInterface`): Defines types like size or color.
@@ -59,7 +59,7 @@ By default, it includes three classes:
 - `CoreShopAttributeValue`
 
 The classes `Color` and `Value` represent value types, while `Group` is a group type. Manually import the classes
-from `vendor/coreshop/variant-bundle/Resources/install/pimcore/classes`.
+from `vendor/coreshop/variant-bundle/Resources/install/opendxp/classes`.
 
 ### Creating a "Product" Class
 
@@ -74,8 +74,8 @@ The Variant Bundle significantly enhances the flexibility of product management 
 diverse product variant configurations.
 
 ## Variant Generator
-The Variant Generator is a tool that automatically generates variants for a VariantAware Class based on the attribute groups 
-defined in the Data Object. The Generator is available in the Pimcore backend at the Toolbar on your VariantAware Class. 
+The Variant Generator is a tool that automatically generates variants for a VariantAware Class based on the attribute groups
+defined in the Data Object. The Generator is available in the OpenDxp backend at the Toolbar on your VariantAware Class.
 
 ### Installation
 

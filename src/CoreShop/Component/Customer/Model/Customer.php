@@ -18,8 +18,8 @@ declare(strict_types=1);
 
 namespace CoreShop\Component\Customer\Model;
 
-use CoreShop\Component\Resource\Pimcore\Model\AbstractPimcoreModel;
+use CoreShop\Component\Resource\OpenDxp\Model\AbstractOpenDxpModel;
 
-abstract class Customer extends AbstractPimcoreModel implements CustomerInterface
+abstract class Customer extends AbstractOpenDxpModel implements CustomerInterface
 {
 }

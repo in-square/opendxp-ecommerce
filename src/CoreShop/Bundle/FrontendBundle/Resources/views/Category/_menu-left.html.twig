@@ -3,7 +3,7 @@
 <div class="list-group categories">
     {% for category in categories %}
         {% set active = activeCategory is defined and activeCategory and activeCategory.id == category.id %}
-        <a href="{{ pimcore_object_path(category) }}" class="{% if active %} active {% endif %} list-group-item"     {{  coreshop_test_html_attribute('category-menu-left',category.name) }} >
+        <a href="{{ opendxp_object_path(category) }}" class="{% if active %} active {% endif %} list-group-item"     {{  coreshop_test_html_attribute('category-menu-left',category.name) }} >
             <i class="fa fa-chevron-right"></i>
             {{ category.name }}
 
@@ -12,7 +12,7 @@
             <div class="list-group categories">
                 {% for subCategory in activeSubCategories %}
                     {% set active = activeCategory is defined and activeCategory and activeCategory.id == subCategory.id %}
-                    <a href="{{ pimcore_object_path(subCategory) }}" class="{% if active %} active {% endif %} list-group-item">
+                    <a href="{{ opendxp_object_path(subCategory) }}" class="{% if active %} active {% endif %} list-group-item">
                         <i class="fa fa-chevron-right"></i>
                         {{ subCategory.name }}
                         {{  coreshop_test_html_attribute('category-menu-left',category.name) }}

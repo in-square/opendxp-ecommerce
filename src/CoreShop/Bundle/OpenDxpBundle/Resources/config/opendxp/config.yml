@@ -1,0 +1,13 @@
+imports:
+    - { resource: admin.yml }
+
+opendxp:
+    objects:
+        class_definitions:
+            data:
+                map:
+                    coreShopSerializedData: CoreShop\Bundle\OpenDxpBundle\CoreExtension\SerializedData
+                    coreShopDynamicDropdown: CoreShop\Bundle\OpenDxpBundle\CoreExtension\DynamicDropdown
+                    coreShopDynamicDropdownMultiple: CoreShop\Bundle\OpenDxpBundle\CoreExtension\DynamicDropdownMultiple
+                    coreShopItemSelector: CoreShop\Bundle\OpenDxpBundle\CoreExtension\ItemSelector
+                    coreShopSuperBoxSelect: CoreShop\Bundle\OpenDxpBundle\CoreExtension\SuperBoxSelect

@@ -48,7 +48,7 @@ CoreShop supports custom request-based country context resolvers:
 
 ## Example
 
-Creating a `DocumentBasedRequestRequestResolver` based on Pimcore Document:
+Creating a `DocumentBasedRequestRequestResolver` based on OpenDxp Document:
 
 ```php
 // PHP code for creating DocumentBasedRequestRequestResolver
@@ -60,10 +60,10 @@ And configure the service:
 services:
    App\CoreShop\Address\Context\DocumentBasedRequestRequestResolver:
       arguments:
-        - '@Pimcore\Http\Request\Resolver\DocumentResolver'
+        - '@OpenDxp\Http\Request\Resolver\DocumentResolver'
         - '@coreshop.repository.country'
       tags:
         - { name: coreshop.context.country.request_based.resolver }
 ```
 
-CoreShop will now resolve the current country based on the Pimcore site being accessed.
+CoreShop will now resolve the current country based on the OpenDxp site being accessed.

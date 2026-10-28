@@ -1,11 +1,9 @@
 name: Packages Bundles
 on:
   push:
-    branches: [ '4.0', '4.1','next' ]
     paths:
       - 'src/CoreShop/Bundle/**'
   pull_request:
-    branches: [ '4.0', '4.1','next' ]
     paths:
       - 'src/CoreShop/Bundle/**'
   release:
@@ -31,12 +29,12 @@ jobs:
   test-packages:
     needs: list
     runs-on: ubuntu-latest
-    name: "${{ matrix.package }}, PHP ${{ matrix.php }}, Pimcore ${{ matrix.pimcore }}"
+    name: "${{ matrix.package }}, PHP ${{ matrix.php }}, OpenDxp ${{ matrix.opendxp }}"
     strategy:
       fail-fast: false
       matrix:
-        php: [ 8.2, 8.3 ]
-        pimcore: [ ~11.5 ]
+        php: [ 8.3 ]
+        opendxp: [ '~1.3.0', '^1.3' ]
         dependencies: [ highest ]
         package: "${{ fromJson(needs.list.outputs.packages) }}"
 
@@ -59,15 +57,19 @@ jobs:
         path: ${{ steps.composer-cache.outputs.dir }}
         key: ${{ runner.os }}-php-${{ matrix.php }}-package-${{ matrix.package }}-composer-${{ hashFiles(format('src/CoreShop/{0}/composer.json', matrix.package)) }}
         restore-keys: |
-          ${{ runner.os }}-php-${{ matrix.php }}-${{ matrix.pimcore }}-package-${{ matrix.package }}-composer-
-          ${{ runner.os }}-php-${{ matrix.php }}-${{ matrix.pimcore }}-package-
+          ${{ runner.os }}-php-${{ matrix.php }}-${{ matrix.opendxp }}-package-${{ matrix.package }}-composer-
+          ${{ runner.os }}-php-${{ matrix.php }}-${{ matrix.opendxp }}-package-
+
+    - name: Resolve local split-package versions
+      run: php ../../../../.github/scripts/prepare-package-tests.php .
+      working-directory: "src/CoreShop/${{ matrix.package }}"
 
     - name: Validate composer.json
       run: composer validate --ansi --strict
       working-directory: "src/CoreShop/${{ matrix.package }}"
 
-    - name: pimcore/pimcore
-      run: composer req pimcore/pimcore:${{ matrix.pimcore }} --no-interaction --no-scripts --no-update
+    - name: open-dxp/opendxp
+      run: composer req open-dxp/opendxp:${{ matrix.opendxp }} --no-interaction --no-scripts --no-update
       env:
         COMPOSER_ROOT_VERSION: dev-master
       working-directory: "src/CoreShop/${{ matrix.package }}"

@@ -8,13 +8,13 @@ services:
     tags:
       - { name: fob.context_service }
 
-  CoreShop\Bundle\TestBundle\Context\Domain\PimcoreContext:
+  CoreShop\Bundle\TestBundle\Context\Domain\OpenDxpContext:
     arguments:
       - '%kernel.project_dir%/public'
-      - '%coreshop.all.pimcore.admin.js%'
-      - '%coreshop.all.pimcore.admin.css%'
-      - '%coreshop.all.pimcore.admin.editmode_js%'
-      - '%coreshop.all.pimcore.admin.editmode_css%'
+      - '%coreshop.all.opendxp.admin.js%'
+      - '%coreshop.all.opendxp.admin.css%'
+      - '%coreshop.all.opendxp.admin.editmode_js%'
+      - '%coreshop.all.opendxp.admin.editmode_css%'
     tags:
       - { name: fob.context_service }
 

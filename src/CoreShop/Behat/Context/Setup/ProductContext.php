@@ -36,11 +36,11 @@ use CoreShop\Component\Resource\Model\AbstractObject;
 use CoreShop\Component\Taxation\Model\TaxRuleGroupInterface;
 use CoreShop\Component\Variant\Model\AttributeGroupInterface;
 use CoreShop\Component\Variant\Model\AttributeInterface;
-use Pimcore\File;
-use Pimcore\Model\DataObject\Concrete;
-use Pimcore\Model\DataObject\Folder;
-use Pimcore\Model\DataObject\Service;
-use Pimcore\Tool;
+use OpenDxp\File;
+use OpenDxp\Model\DataObject\Concrete;
+use OpenDxp\Model\DataObject\Folder;
+use OpenDxp\Model\DataObject\Service;
+use OpenDxp\Tool;
 use Webmozart\Assert\Assert;
 
 final class ProductContext implements Context
@@ -86,7 +86,7 @@ final class ProductContext implements Context
      */
     public function theProductHasAMetaTitle(ProductInterface $product, $metaTitle): void
     {
-        $product->setPimcoreMetaTitle($metaTitle);
+        $product->setOpenDxpMetaTitle($metaTitle);
 
         $this->saveProduct($product);
     }
@@ -97,7 +97,7 @@ final class ProductContext implements Context
      */
     public function theProductHasAMetaDescription(ProductInterface $product, $metaDescription): void
     {
-        $product->setPimcoreMetaDescription($metaDescription);
+        $product->setOpenDxpMetaDescription($metaDescription);
 
         $this->saveProduct($product);
     }

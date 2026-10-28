@@ -1,5 +1,8 @@
 #!/usr/bin/env php
 <?php
+
+declare(strict_types=1);
+
 /**
  * CoreShop.
  *
@@ -11,27 +14,29 @@
  * @license    https://www.coreshop.com/license     GPLv3 and CCL
  */
 
-use Pimcore\Bootstrap;
-use Pimcore\Console\Application;
+use OpenDxp\Bootstrap;
+use OpenDxp\Console\Application;
 
-if (file_exists($a = getcwd() . '/vendor/autoload_runtime.php')) {
-    require_once $a;
-} elseif (file_exists($a = __DIR__ . '/../vendor/autoload_runtime.php')) {
-    require_once $a;
-} elseif (file_exists($a = __DIR__ . '/../../../../vendor/autoload_runtime.php')) {
-    require_once $a;
-} elseif (file_exists($a = __DIR__ . '/../autoload_runtime.php')) {
-    require_once $a;
-} else {
-    throw new LogicException('Symfony Runtime is missing. Try running "composer require symfony/runtime".');
+$autoload = dirname(__DIR__) . '/vendor/autoload_runtime.php';
+
+if (!is_file($autoload)) {
+    throw new LogicException('CoreShop standalone dependencies are missing. Run composer install in the CoreShop directory. For an embedded installation, use the host application bin/console.');
 }
 
-define('PIMCORE_CONSOLE', true);
+require_once $autoload;
 
-Bootstrap::setProjectRoot();
+return static function (): Application {
+    if (!defined('OPENDXP_CONSOLE')) {
+        define('OPENDXP_CONSOLE', true);
+    }
 
-return static function (array $context) {
-    $kernel = Bootstrap::startupCli();
+    if (!defined('OPENDXP_PROJECT_ROOT')) {
+        define('OPENDXP_PROJECT_ROOT', $_SERVER['OPENDXP_PROJECT_ROOT'] ?? $_ENV['OPENDXP_PROJECT_ROOT'] ?? getenv('OPENDXP_PROJECT_ROOT') ?: dirname(__DIR__));
+    }
 
-    return new Application($kernel);
+    if (!defined('OPENDXP_KERNEL_CLASS')) {
+        define('OPENDXP_KERNEL_CLASS', $_SERVER['OPENDXP_KERNEL_CLASS'] ?? $_ENV['OPENDXP_KERNEL_CLASS'] ?? getenv('OPENDXP_KERNEL_CLASS') ?: 'Kernel');
+    }
+
+    return new Application(Bootstrap::startupCli());
 };

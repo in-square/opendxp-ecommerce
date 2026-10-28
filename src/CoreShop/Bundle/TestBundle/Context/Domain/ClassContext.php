@@ -20,9 +20,9 @@ namespace CoreShop\Bundle\TestBundle\Context\Domain;
 
 use Behat\Behat\Context\Context;
 use CoreShop\Bundle\TestBundle\Service\ClassStorageInterface;
-use Pimcore\Model\DataObject\ClassDefinition;
-use Pimcore\Model\DataObject\Fieldcollection;
-use Pimcore\Model\DataObject\Objectbrick;
+use OpenDxp\Model\DataObject\ClassDefinition;
+use OpenDxp\Model\DataObject\Fieldcollection;
+use OpenDxp\Model\DataObject\Objectbrick;
 use Webmozart\Assert\Assert;
 
 final class ClassContext implements Context
@@ -33,41 +33,41 @@ final class ClassContext implements Context
     }
 
     /**
-     * @Then /^there should be a pimcore class "([^"]+)"$/
+     * @Then /^there should be a opendxp class "([^"]+)"$/
      */
-    public function thereShouldBeAPimcoreClass($name): void
+    public function thereShouldBeAOpenDxpClass($name): void
     {
         $definition = ClassDefinition::getByName($this->classStorage->get($name));
 
         Assert::notNull(
             $definition,
-            sprintf('Pimcore Class with name "%s" not found', $name),
+            sprintf('OpenDxp Class with name "%s" not found', $name),
         );
     }
 
     /**
-     * @Then /^there should be a pimcore brick "([^"]+)"$/
+     * @Then /^there should be a opendxp brick "([^"]+)"$/
      */
-    public function thereShouldBeAPimcoreBrick($name): void
+    public function thereShouldBeAOpenDxpBrick($name): void
     {
         $definition = Objectbrick\Definition::getByKey($this->classStorage->get($name));
 
         Assert::notNull(
             $definition,
-            sprintf('Pimcore Brick with key "%s" not found', $name),
+            sprintf('OpenDxp Brick with key "%s" not found', $name),
         );
     }
 
     /**
-     * @Then /^there should be a pimcore field-collection "([^"]+)"$/
+     * @Then /^there should be a opendxp field-collection "([^"]+)"$/
      */
-    public function thereShouldBeAPimcoreCollection($name): void
+    public function thereShouldBeAOpenDxpCollection($name): void
     {
         $definition = Fieldcollection\Definition::getByKey($this->classStorage->get($name));
 
         Assert::notNull(
             $definition,
-            sprintf('Pimcore Fieldcollection with key "%s" not found', $name),
+            sprintf('OpenDxp Fieldcollection with key "%s" not found', $name),
         );
     }
 
@@ -101,7 +101,7 @@ final class ClassContext implements Context
     public function anInstanceofDefinitionShouldImplement($definition, $class): void
     {
         if ($definition instanceof ClassDefinition) {
-            $className = sprintf('Pimcore\\Model\\DataObject\\%s', $definition->getName());
+            $className = sprintf('OpenDxp\\Model\\DataObject\\%s', $definition->getName());
 
             /**
              * @psalm-var class-string $class

@@ -43,7 +43,7 @@ final class PriceConfigurationType extends AbstractType
             ->add('price', MoneyType::class, [
                 'constraints' => [
                     new NotBlank(['groups' => $this->validationGroups]),
-                    new Type(['type' => 'numeric', 'groups' => $this->validationGroups]),
+                    new Type(type: 'numeric', groups: $this->validationGroups),
                 ],
             ])
             ->add('currency', CurrencyChoiceType::class, [

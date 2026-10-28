@@ -18,7 +18,7 @@ declare(strict_types=1);
 
 namespace CoreShop\Component\Resource\Exception;
 
-use Pimcore\Model\Element\ValidationException;
+use OpenDxp\Model\Element\ValidationException;
 
 class NiceValidationException extends ValidationException
 {

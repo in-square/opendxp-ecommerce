@@ -18,9 +18,9 @@ declare(strict_types=1);
 
 namespace CoreShop\Component\Taxation\Model;
 
-use CoreShop\Component\Resource\Pimcore\Model\AbstractPimcoreFieldcollection;
+use CoreShop\Component\Resource\OpenDxp\Model\AbstractOpenDxpFieldcollection;
 
-abstract class TaxItem extends AbstractPimcoreFieldcollection implements TaxItemInterface
+abstract class TaxItem extends AbstractOpenDxpFieldcollection implements TaxItemInterface
 {
     public function getId(): ?int
     {

@@ -17,7 +17,7 @@ imports:
     - { resource: services/settings.yml }
     - { resource: services/cart-processor.yml }
     - { resource: services/reports.yml }
-    - { resource: services/pimcore_installer.yml }
+    - { resource: services/opendxp_installer.yml }
     - { resource: services/inventory.yml }
     - { resource: services/handler.yml }
     - { resource: services/commands.yml }
@@ -37,15 +37,24 @@ services:
     _defaults:
         public: true
 
+    Symfony\Component\DependencyInjection\ContainerInterface: '@service_container'
+
+    CoreShop\Bundle\CoreBundle\Migrations\:
+        resource: '../../Migrations/'
+        exclude: '../../Migrations/AbstractContainerAwareMigration.php'
+        autowire: true
+        autoconfigure: true
+        public: false
+
     CoreShop\Bundle\CoreBundle\Security\ObjectUserProvider:
         arguments:
             - '@coreshop.repository.user'
             - '%coreshop.model.user.class%'
 
     coreshop.security.user.password_hasher_factories:
-        class: Pimcore\Security\Hasher\Factory\UserAwarePasswordHasherFactory
+        class: OpenDxp\Security\Hasher\Factory\UserAwarePasswordHasherFactory
         arguments:
-            - Pimcore\Security\Hasher\PasswordFieldHasher
+            - OpenDxp\Security\Hasher\PasswordFieldHasher
             - ['password']
 
     CoreShop\Component\Core\Configuration\ConfigurationServiceInterface: '@CoreShop\Component\Core\Configuration\ConfigurationService'

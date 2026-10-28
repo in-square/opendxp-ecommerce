@@ -21,7 +21,7 @@ namespace CoreShop\Bundle\WishlistBundle;
 use CoreShop\Bundle\ResourceBundle\AbstractResourceBundle;
 use CoreShop\Bundle\ResourceBundle\CoreShopResourceBundle;
 use CoreShop\Bundle\StorageListBundle\CoreShopStorageListBundle;
-use Pimcore\HttpKernel\BundleCollection\BundleCollection;
+use OpenDxp\HttpKernel\BundleCollection\BundleCollection;
 
 final class CoreShopWishlistBundle extends AbstractResourceBundle
 {

@@ -10,12 +10,12 @@
  * @license    https://www.coreshop.com/license     GNU General Public License version 3 (GPLv3)
  */
 
-if (!defined('PIMCORE_PROJECT_ROOT')) {
+if (!defined('OPENDXP_PROJECT_ROOT')) {
     define(
-        'PIMCORE_PROJECT_ROOT',
-        getenv('PIMCORE_PROJECT_ROOT')
-            ?: getenv('REDIRECT_PIMCORE_PROJECT_ROOT')
-            ?: realpath(getcwd())
+        'OPENDXP_PROJECT_ROOT',
+        getenv('OPENDXP_PROJECT_ROOT')
+            ?: getenv('REDIRECT_OPENDXP_PROJECT_ROOT')
+            ?: __DIR__
     );
 }
 
@@ -25,10 +25,6 @@ error_reporting(E_ALL);
 
 require_once __DIR__ .'/src/BehatKernel.php';
 
-if (file_exists(PIMCORE_PROJECT_ROOT.'/pimcore/config/bootstrap.php')) {
-    require_once PIMCORE_PROJECT_ROOT.'/pimcore/config/bootstrap.php';
-}
-else {
-    \Pimcore\Bootstrap::setProjectRoot();
-    \Pimcore\Bootstrap::bootstrap();
-}
+(new \Symfony\Component\Dotenv\Dotenv())->bootEnv(OPENDXP_PROJECT_ROOT . '/.env');
+
+\OpenDxp\Bootstrap::bootstrap();

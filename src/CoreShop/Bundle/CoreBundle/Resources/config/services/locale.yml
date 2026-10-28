@@ -2,10 +2,10 @@ services:
     _defaults:
         public: true
 
-    CoreShop\Component\Core\Locale\Context\PimcoreAdminLocaleContext:
+    CoreShop\Component\Core\Locale\Context\OpenDxpAdminLocaleContext:
         arguments:
-            - '@Pimcore\Http\Request\Resolver\PimcoreContextResolver'
-            - '@Pimcore\Security\User\TokenStorageUserResolver'
+            - '@OpenDxp\Http\Request\Resolver\OpenDxpContextResolver'
+            - '@OpenDxp\Security\User\TokenStorageUserResolver'
             - '@coreshop.translation_locale_provider'
             - '@request_stack'
         tags:

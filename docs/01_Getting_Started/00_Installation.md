@@ -1,11 +1,11 @@
 # Installation
 
-To install CoreShop, ensure you have a running instance of Pimcore on your system. Follow these steps to set up
+To install CoreShop, ensure you have a running instance of OpenDxp on your system. Follow these steps to set up
 CoreShop:
 
 ## Initial Setup
 
-1. Install with composer: `composer require coreshop/core-shop ^4.0`
+1. Install with composer: `composer require in-square/opendxp-ecommerce ^4.1`
 2. Enable the bundle in `config/bundles.php` and the `CoreShopCoreBundle` to the list of Bundles to load:
     ```php
     <?php
@@ -16,12 +16,12 @@ CoreShop:
         CoreShop\Bundle\FrontendBundle\CoreShopFrontendBundle::class => ['all' => true],
     ];
     ```
-3. To configure the CoreShop Password Hasher, create or update the `config/packages/pimcore.yaml` and add:
+3. To configure the CoreShop Password Hasher, create or update the `config/packages/opendxp.yaml` and add:
       ```yaml
-      pimcore:
+      opendxp:
           security:
               password_hasher_factories:
-                  Pimcore\Model\DataObject\CoreShopUser: coreshop.security.user.password_hasher_factories
+                  OpenDxp\Model\DataObject\CoreShopUser: coreshop.security.user.password_hasher_factories
       ```
 4. Update `config/packages/security.yaml` to allow access to the CoreShop Backend.
     - Add the CoreShop Frontend parameter at the very top of your `security.yaml` (before `security`):
@@ -86,7 +86,7 @@ bin/console messenger:consume coreshop_notification coreshop_index coreshop_vari
 
 CoreShop uses Payum for Payment. Checkout Payum's Documentation on how to add payment providers.
 
-Payment providers are implemented as Pimcore Plugin. They can be installed using composer. Here you can find all
+Payment providers are implemented as OpenDxp Plugin. They can be installed using composer. Here you can find all
 available payment modules via composer
 
 [Payum Documentation](https://payum.gitbook.io/payum)

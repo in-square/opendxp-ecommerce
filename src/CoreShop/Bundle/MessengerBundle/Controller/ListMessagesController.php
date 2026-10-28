@@ -30,7 +30,7 @@ use Symfony\Component\Messenger\Transport\Receiver\MessageCountAwareInterface;
 /**
  * @psalm-suppress InternalClass
  */
-class ListMessagesController extends \Pimcore\Bundle\AdminBundle\Controller\AdminAbstractController
+class ListMessagesController extends \OpenDxp\Bundle\AdminBundle\Controller\AdminAbstractController
 {
     public function listReceiverMessageCountAction(ReceiversRepositoryInterface $receiverLocator): Response
     {

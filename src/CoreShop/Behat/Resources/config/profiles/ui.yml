@@ -58,4 +58,4 @@ ui:
 
     gherkin:
         filters:
-            tags: '@ui&&~@ui_precision&&~@ui_pimcore&&~@wip'
+            tags: '@ui&&~@ui_precision&&~@ui_opendxp&&~@wip'

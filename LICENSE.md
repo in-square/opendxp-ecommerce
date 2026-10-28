@@ -30,5 +30,5 @@ contained in a separate written agreement between you and CoreShop GmbH.
 For more information about the CoreShop Commercial License (CCL) please contact info@coreshop.com.
 
 
-Please see also (files in this directory):  
-[GNU GENERAL PUBLIC LICENSE Version 3, 29 June 2007 - gpl-3.0.txt](gpl-3.0.txt)  
+Please see also (files in this directory):
+[GNU GENERAL PUBLIC LICENSE Version 3, 29 June 2007 - gpl-3.0.txt](gpl-3.0.txt)
