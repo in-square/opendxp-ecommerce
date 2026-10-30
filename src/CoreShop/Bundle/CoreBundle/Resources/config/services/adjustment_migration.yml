@@ -1,0 +1,22 @@
+services:
+    CoreShop\Bundle\CoreBundle\Migration\AdjustmentFields\AdjustmentSchemaMigration:
+        arguments:
+            - '@doctrine.dbal.default_connection'
+
+    CoreShop\Bundle\CoreBundle\Migration\AdjustmentFields\DefinitionUpdater:
+        arguments:
+            - '@doctrine.dbal.default_connection'
+
+    CoreShop\Bundle\CoreBundle\Migration\AdjustmentFields\MigrationBackup: ~
+
+    CoreShop\Bundle\CoreBundle\Migration\AdjustmentFields\SerializedAdjustmentFieldsConverter: ~
+
+    CoreShop\Bundle\CoreBundle\Migration\AdjustmentFields\HistoryFieldsMigrator:
+        arguments:
+            - '@doctrine.dbal.default_connection'
+            - '@OpenDxp\Model\Version\Adapter\VersionStorageAdapterInterface'
+            - '@CoreShop\Bundle\CoreBundle\Migration\AdjustmentFields\SerializedAdjustmentFieldsConverter'
+
+    CoreShop\Bundle\CoreBundle\Migration\AdjustmentFields\MigrationExecutionListener:
+        tags:
+            - { name: doctrine.event_listener, event: onMigrationsVersionExecuting, connection: default }

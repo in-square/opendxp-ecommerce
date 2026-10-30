@@ -27,6 +27,7 @@ services:
             OPENDXP_KERNEL_CLASS: Kernel
             OPENDXP_TEST_DB_DSN: "mysql://coreshop_test:coreshop_test@db:3306/coreshop_test?charset=utf8mb4"
             CORESHOP_MIGRATION_TEST_DSN: "mysql://coreshop_test:coreshop_test@db:3306/coreshop_migration_test?charset=utf8mb4"
+            CORESHOP_GRANT_TEST_DSN: "mysql://root:coreshop_test_root@db:3306/coreshop_migration_test?charset=utf8mb4"
             OPENDXP_INSTALL_MYSQL_HOST_SOCKET: db
             OPENDXP_INSTALL_MYSQL_PORT: 3306
             OPENDXP_INSTALL_MYSQL_DATABASE: coreshop_test

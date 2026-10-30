@@ -1,4 +1,5 @@
 imports:
+    - { resource: services/adjustment_migration.yml }
     - { resource: services/context.yml }
     - { resource: services/storage.yml }
     - { resource: services/form.yml }

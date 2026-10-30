@@ -1,5 +1,11 @@
 # Upgrading persisted CoreShop data
 
+Existing order, order-item and invoice adjustment fields also require
+[`Version20261030120000`](Adjustment-Fields-Upgrade.md). Read that procedure
+before any class rebuild: it preserves the existing shop definitions and does
+not use the general resource installer. Native historical version namespace
+conversion must precede its history validation.
+
 Prepare the host application's OpenDXP code and dependencies without rebuilding
 existing CoreShop class definitions. Take a database and version-storage backup
 and keep the application in maintenance mode throughout the upgrade.
@@ -15,11 +21,13 @@ CoreShop registers the historical `pimcoreObject`, `pimcoreDocument`,
 types. They allow native migrations to introspect a schema created by CoreShop
 for Pimcore. The runtime models and new mappings remain OpenDXP types.
 
-Run CoreShop migrations through the host application's console **before any
-native or CoreShop step that rebuilds object classes**:
+For the historical SEO column migration only, execute its specific version
+through the host application's console **before any step that rebuilds object
+classes**. Do not run the whole CoreShop migration set at this phase: the
+adjustment migration also validates native historical version namespaces.
 
 ```bash
-docker compose exec -T php php bin/console doctrine:migrations:migrate --prefix='CoreShop\Bundle\CoreBundle' --no-interaction
+docker compose exec -T php php bin/console doctrine:migrations:execute 'CoreShop\Bundle\CoreBundle\Migrations\Version20261028120000' --up --no-interaction
 ```
 
 Then complete the native OpenDXP and dependent-bundle migrations for the host
@@ -42,10 +50,19 @@ not transactional. Keep the version-storage backup and maintenance mode until
 the upgrade has been checked. Recycle-bin data remains part of the native host
 migration and is outside this command's object-class selection.
 
-Finally update the CoreShop classes and inspect the schema diff:
+Now run the [adjustment-field migration](Adjustment-Fields-Upgrade.md), after
+its own dry-run and acceptance on the copy. Complete other pending CoreShop
+migrations through the normal host migration runner only in the sequence verified
+for that installation.
+
+Update existing SEO definitions through a targeted, project-reviewed field
+change after their columns and historical payloads are secured. Preserve custom
+fields and layouts. Do not replace existing shop classes with the package's
+installation JSON definitions using the general resource installer. The adjustment
+migration updates its four fields and generated methods itself. Inspect any
+remaining schema diff:
 
 ```bash
-docker compose exec -T php php bin/console coreshop:resources:install --application-name=coreshop --update-classes --no-interaction
 docker compose exec -T php php bin/console coreshop:resources:create-tables coreshop --dump-sql
 ```
 
