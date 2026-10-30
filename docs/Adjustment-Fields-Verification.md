@@ -67,6 +67,28 @@ for the two touched files — PASS.
 
 ## Remaining acceptance
 
+### Localized-view regression follow-up
+
+The initial verification missed native localized output aliases. A focused
+regression suite now first reproduces all three failures against the original
+implementation: old localized aliases retained, already-migrated schema not
+repaired, and `verify()` accepting the wrong native contract. With the correction,
+three tests / 399 assertions pass for three custom class IDs and two languages,
+covering all four fields, values and column properties, fallback expressions,
+SELECT/filter/order queries, dependent project views and preserved project aliases,
+idempotence and repair of the original migration's partial contract.
+
+An additional subprocess fixture uses the installed OpenDXP native localized-view
+generator and actual locale-aware Listing API with all configured test languages
+and all four new fields. It passes without using a CoreShop installer or writing
+to the host application database. These remain disposable test fixtures, not a
+production or actual-shop upgrade.
+
+After this follow-up, the complete `tests/Unit` and `tests/Integration/Doctrine`
+suite with executor tests enabled passed: **81 tests, 1493 assertions**.
+PHP syntax, ECS, Symfony container lint and focused PHPStan level 5 passed;
+independent source review found no unresolved actionable findings.
+
 This evidence combines synthetic legacy schemas and a fresh OpenDXP installation
 with custom definitions deliberately changed to the old field contract. It is
 **not an upgrade of a copy of Nanili or another real shop**, and not a complete

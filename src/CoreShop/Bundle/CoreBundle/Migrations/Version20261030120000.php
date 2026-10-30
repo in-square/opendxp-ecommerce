@@ -24,6 +24,7 @@ use CoreShop\Bundle\CoreBundle\Migration\AdjustmentFields\HistoryFieldsMigrator;
 use CoreShop\Bundle\CoreBundle\Migration\AdjustmentFields\MigrationBackup;
 use Doctrine\DBAL\Connection;
 use Doctrine\DBAL\Schema\Schema;
+use OpenDxp\Tool;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
@@ -90,7 +91,7 @@ final class Version20261030120000 extends AbstractContainerAwareMigration
                 $this->modelClasses[] = $model;
             }
             $this->definitions = $this->definitionUpdater->definitions($names);
-            $this->plan = $this->schemaMigration->plan(array_map('strval', array_keys($this->definitions)));
+            $this->plan = $this->schemaMigration->plan(array_map('strval', array_keys($this->definitions)), Tool::getValidLanguages());
             $this->historyChanges = $this->history->validate(array_map('strval', array_keys($this->definitions)), array_values(array_unique($this->modelClasses)));
             $changed = $this->plan['changed'] || $this->historyChanges > 0;
             foreach ($this->definitions as $entry) {

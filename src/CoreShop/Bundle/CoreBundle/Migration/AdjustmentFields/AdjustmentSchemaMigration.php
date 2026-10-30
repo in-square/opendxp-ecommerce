@@ -30,9 +30,11 @@ final class AdjustmentSchemaMigration
     }
 
     /** @param list<string> $classIds
+     * @param list<string> $languages
+     *
      * @return array{sql: list<string>, tables: array<string, array>, views: array<string, array>, changed: bool, fingerprints?: array<string, string>}
      */
-    public function plan(array $classIds): array
+    public function plan(array $classIds, array $languages = []): array
     {
         if (!$this->connection->getDatabasePlatform() instanceof AbstractMySQLPlatform) {
             throw new \RuntimeException('Adjustment field migration requires MySQL/MariaDB with RENAME COLUMN support.');
@@ -45,6 +47,9 @@ final class AdjustmentSchemaMigration
                 throw new \RuntimeException('Unsupported OpenDXP class identifier.');
             }
             $standardViews['object_' . $classId] = true;
+            foreach ($languages as $language) {
+                $standardViews['object_localized_' . $classId . '_' . $language] = true;
+            }
             foreach (['object_store_', 'object_query_'] as $prefix) {
                 $table = $prefix . $classId;
                 $columns = $this->columns($table);
@@ -100,6 +105,7 @@ final class AdjustmentSchemaMigration
                         'after' => $after,
                         'characterSetClient' => (string) $row['character_set_client'],
                         'collationConnection' => (string) $row['collation_connection'],
+                        'native' => isset($standardViews[$name]),
                     ];
                     $sourceFields[$name] = isset($standardViews[$name]) ? AdjustmentFieldNames::MAP : [];
                     $added = true;
@@ -212,6 +218,14 @@ final class AdjustmentSchemaMigration
         }
         foreach ($plan['views'] as $name => $view) {
             $this->connection->executeQuery('SELECT * FROM ' . $this->quote($name) . ' LIMIT 0')->free();
+            if ($view['native']) {
+                $columns = $this->columns($name);
+                foreach (AdjustmentFieldNames::MAP as $old => $new) {
+                    if (!isset($columns[$new]) || isset($columns[$old])) {
+                        throw new \RuntimeException(sprintf('Native view %s must expose %s and must not expose %s.', $name, $new, $old));
+                    }
+                }
+            }
             $actual = $this->connection->fetchAssociative('SHOW CREATE VIEW ' . $this->quote($name));
             if ($actual['character_set_client'] !== $view['characterSetClient'] || $actual['collation_connection'] !== $view['collationConnection']) {
                 throw new \RuntimeException('View character set or collation changed unexpectedly: ' . $name);

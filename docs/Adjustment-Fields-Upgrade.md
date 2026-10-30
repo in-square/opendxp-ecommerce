@@ -72,6 +72,11 @@ The non-transactional sequence is:
    views in dependency order using their original logic, project aliases,
    ALGORITHM, DEFINER, SQL SECURITY, CHECK OPTION, creation charset and collation.
    Existing standard object-view adjustment output names become the target names.
+   Native localized views `object_localized_<classId>_<language>` are included for
+   the installation's configured valid languages. Their four output column names
+   and references from dependent project views are migrated as well; deliberate
+   project output aliases remain unchanged. Verification explicitly checks the
+   native output columns, beyond checking whether the views can be queried.
 4. In `postUp()`, verify actual columns, properties, data hashes and queryable
    views. Only now publish modified copies of the existing definitions and
    generated PHP classes. The publisher deliberately avoids the full native
@@ -169,6 +174,14 @@ attempt gets a distinct recovery directory; retain the earliest original manifes
 and all directories from later attempts. A failed DDL can leave the connection's
 view creation charset/collation temporarily changed: close that failed console
 process and retry from a fresh process after investigation.
+
+If the original `Version20261030120000` was already marked executed before the
+localized-view fix, normal `migrate` will not execute it again. On the restorable
+copy first, use the explicit `doctrine:migrations:execute` dry-run/up commands
+above to repair stale localized aliases with the corrected version. Do not delete
+migration metadata or run a general installer. The already renamed table columns
+and their amounts remain unchanged during this repair; retain the same backups
+and maintenance precautions.
 
 If recovery cannot be confidently completed, restore the coordinated pre-upgrade
 database, version backends, definitions/generated classes and compatible code.
