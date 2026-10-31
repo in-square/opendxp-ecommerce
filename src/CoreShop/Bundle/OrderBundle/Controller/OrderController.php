@@ -518,7 +518,7 @@ class OrderController extends OpenDxpController
         $list = [];
 
         /**
-         * @var DataObject\Concrete $order
+         * @var OrderInterface&DataObject\Concrete $order
          */
         $notes = $this->container->get(NoteServiceInterface::class)->getObjectNotes($order, Notes::NOTE_EMAIL);
 
@@ -677,7 +677,7 @@ class OrderController extends OpenDxpController
     protected function getStatesHistory(OrderInterface $order): array
     {
         /**
-         * @var DataObject\Concrete $order
+         * @var OrderInterface&DataObject\Concrete $order
          */
         $history = $this->container->get(WorkflowStateInfoManagerInterface::class)->getStateHistory($order);
 

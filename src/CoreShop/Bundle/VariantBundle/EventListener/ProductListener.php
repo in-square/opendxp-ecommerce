@@ -49,11 +49,6 @@ final class ProductListener implements EventSubscriberInterface
 
     public function preUpdate(DataObjectEvent $dataObjectEvent): void
     {
-        /**
-         * @var ProductVariantAwareInterface|null $object
-         *
-         * @psalm-var ProductVariantAwareInterface|null $object
-         */
         $object = $dataObjectEvent->getObject();
 
         if (!$object instanceof ProductVariantAwareInterface) {

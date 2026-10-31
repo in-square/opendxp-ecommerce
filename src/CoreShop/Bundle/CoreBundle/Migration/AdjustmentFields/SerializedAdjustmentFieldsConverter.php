@@ -41,12 +41,14 @@ final class SerializedAdjustmentFieldsConverter
         if ($this->offset !== strlen($payload)) {
             throw new \RuntimeException('Unexpected trailing serialized version data.');
         }
-        if ([] === $this->replacements) {
+        /** @var array<int, array{int, string}> $replacements */
+        $replacements = $this->replacements;
+        if ([] === $replacements) {
             return null;
         }
 
-        krsort($this->replacements);
-        foreach ($this->replacements as $offset => [$length, $replacement]) {
+        krsort($replacements);
+        foreach ($replacements as $offset => [$length, $replacement]) {
             $payload = substr_replace($payload, $replacement, $offset, $length);
         }
 

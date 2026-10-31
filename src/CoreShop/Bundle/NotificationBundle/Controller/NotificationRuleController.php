@@ -87,7 +87,7 @@ class NotificationRuleController extends ResourceController
     public function sortAction(Request $request): Response
     {
         /**
-         * @var EntityRepository $repository
+         * @var EntityRepository&\CoreShop\Component\Resource\Repository\RepositoryInterface $repository
          */
         $repository = $this->repository;
         $rule = $this->getParameterFromRequest($request, 'rule');

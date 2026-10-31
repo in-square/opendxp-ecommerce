@@ -23,6 +23,7 @@ use Doctrine\Migrations\Event\MigrationsVersionEventArgs;
 
 final class MigrationExecutionListener
 {
+    /** @psalm-suppress InternalMethod */
     public function onMigrationsVersionExecuting(MigrationsVersionEventArgs $event): void
     {
         $migration = $event->getPlan()->getMigration();

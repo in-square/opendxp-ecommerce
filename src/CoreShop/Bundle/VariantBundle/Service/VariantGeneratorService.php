@@ -64,9 +64,6 @@ class VariantGeneratorService implements VariantGeneratorServiceInterface
             return null;
         }
 
-        /**
-         * @var ProductVariantAwareInterface $variant
-         */
         $variant = new ($product::class)();
 
         $attributes = array_filter(array_map(static function ($attributeId) {

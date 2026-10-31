@@ -20,7 +20,7 @@ namespace CoreShop\Behat\Page\Frontend\Account;
 
 use Behat\Mink\Exception\ElementNotFoundException;
 use CoreShop\Bundle\TestBundle\Page\Frontend\AbstractFrontendPage;
-use CoreShop\Bundle\TestBundle\Service\DriverHelper;
+use RuntimeException;
 
 class RequestPasswordResetPage extends AbstractFrontendPage implements RequestPasswordResetPageInterface
 {
@@ -45,9 +45,14 @@ class RequestPasswordResetPage extends AbstractFrontendPage implements RequestPa
 
     public function reset(): void
     {
-        $this->getElement('reset_button')->click();
+        $button = $this->getElement('reset_button');
+        $session = $this->getSession();
+        $session->executeScript('window.__coreshopPasswordResetDocument = true;');
+        $button->click();
 
-        DriverHelper::waitForPageToLoad($this->getSession());
+        if (!$session->wait(10000, "document.readyState === 'complete' && window.__coreshopPasswordResetDocument !== true")) {
+            throw new RuntimeException('Password reset form submission did not finish loading a response document.');
+        }
     }
 
     public function specifyEmail(?string $email): void

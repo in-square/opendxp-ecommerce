@@ -204,7 +204,7 @@ interface OrderInterface extends
     public function setPriceRuleItems(Fieldcollection $priceRuleItems);
 
     /**
-     * @return PriceRuleItemInterface[]
+     * @return list<CartPriceRuleInterface|null>
      */
     public function getPriceRules(): array;
 

@@ -45,9 +45,6 @@ class TaxCalculationStrategyTaxRule implements TaxCalculationStrategyInterface
         int $shippingAmount,
         array $context = [],
     ): array {
-        /**
-         * @var StoreAwareInterface $shippable
-         */
         Assert::isInstanceOf($shippable, StoreAwareInterface::class);
 
         $store = $shippable->getStore();

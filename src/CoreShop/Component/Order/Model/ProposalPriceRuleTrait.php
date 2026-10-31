@@ -42,7 +42,7 @@ trait ProposalPriceRuleTrait
     }
 
     /**
-     * @return PriceRuleItemInterface[]
+     * @return list<CartPriceRuleInterface|null>
      */
     public function getPriceRules(): array
     {
@@ -56,9 +56,6 @@ trait ProposalPriceRuleTrait
             }
         }
 
-        /**
-         * @var PriceRuleItemInterface[] $rules
-         */
         return $rules;
     }
 

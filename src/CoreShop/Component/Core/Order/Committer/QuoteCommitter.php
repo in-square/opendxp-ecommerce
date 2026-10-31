@@ -30,6 +30,7 @@ use CoreShop\Component\Order\QuoteTransitions;
 use CoreShop\Component\OpenDxp\DataObject\ObjectClonerInterface;
 use CoreShop\Component\OpenDxp\DataObject\VersionHelper;
 use CoreShop\Component\Resource\Service\FolderCreationServiceInterface;
+use OpenDxp\Model\DataObject\Concrete;
 use OpenDxp\Model\DataObject\Service;
 use Webmozart\Assert\Assert;
 
@@ -70,7 +71,7 @@ class QuoteCommitter implements QuoteCommitterInterface
         $originalShippingAddress = $order->hasShippableItems() === false ? $order->getInvoiceAddress() : $order->getShippingAddress();
 
         /**
-         * @var AddressInterface $shippingAddress
+         * @var AddressInterface&Concrete $shippingAddress
          *
          * @psalm-suppress InvalidArgument
          */
@@ -81,7 +82,7 @@ class QuoteCommitter implements QuoteCommitterInterface
             false,
         );
         /**
-         * @var AddressInterface $invoiceAddress
+         * @var AddressInterface&Concrete $invoiceAddress
          *
          * @psalm-suppress InvalidArgument
          */

@@ -38,6 +38,8 @@ final class DefinitionUpdater
 
     /** @param list<string> $names
      * @return array<string, array{definition: ClassDefinition, changed: bool, layouts: array<string, CustomLayout>, before: string, files: array<string, string>}>
+     *
+     * @psalm-suppress InternalMethod
      */
     public function definitions(array $names): array
     {
@@ -129,7 +131,9 @@ final class DefinitionUpdater
         }
     }
 
-    /** @param array<string, array> $definitions */
+    /** @param array<string, array> $definitions
+     * @psalm-suppress InternalMethod
+     */
     private function customLayouts(array &$definitions): void
     {
         $configuration = Config::getSystemConfiguration();
@@ -190,10 +194,9 @@ final class DefinitionUpdater
             if (!$original->isWriteable()) {
                 throw new \RuntimeException('Custom layout is not writable: ' . $id . '.');
             }
-            $entry = &$definitions[$layout->getClassId()];
-            $entry['layouts'][$id] = $layout;
-            $entry['layoutBackups'][$id] = base64_encode(serialize($original));
-            unset($entry);
+            $classId = $layout->getClassId();
+            $definitions[$classId]['layouts'][$id] = $layout;
+            $definitions[$classId]['layoutBackups'][$id] = base64_encode(serialize($original));
         }
     }
 

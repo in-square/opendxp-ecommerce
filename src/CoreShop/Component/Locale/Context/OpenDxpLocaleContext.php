@@ -30,16 +30,7 @@ class OpenDxpLocaleContext implements LocaleContextInterface
 
     public function getLocaleCode(): string
     {
-        /**
-         * @var string|null $opendxpLocale
-         *
-         * @psalm-var string|null $opendxpLocale
-         */
         $opendxpLocale = $this->opendxpLocaleService->findLocale();
-
-        if (null === $opendxpLocale) {
-            throw new LocaleNotFoundException();
-        }
 
         if (!Tool::isValidLanguage($opendxpLocale)) {
             return Tool::getDefaultLanguage();

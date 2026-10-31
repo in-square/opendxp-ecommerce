@@ -34,6 +34,7 @@ use CoreShop\Component\Order\OrderTransitions;
 use CoreShop\Component\OpenDxp\DataObject\ObjectClonerInterface;
 use CoreShop\Component\OpenDxp\DataObject\VersionHelper;
 use CoreShop\Component\Resource\Service\FolderCreationServiceInterface;
+use OpenDxp\Model\DataObject\Concrete;
 use OpenDxp\Model\DataObject\Service;
 use Webmozart\Assert\Assert;
 
@@ -76,7 +77,7 @@ class OrderCommitter implements OrderCommitterInterface
         $originalShippingAddress = $order->hasShippableItems() === false ? $order->getInvoiceAddress() : $order->getShippingAddress();
 
         /**
-         * @var AddressInterface $shippingAddress
+         * @var AddressInterface&Concrete $shippingAddress
          *
          * @psalm-suppress InvalidArgument
          */
@@ -87,7 +88,7 @@ class OrderCommitter implements OrderCommitterInterface
             false,
         );
         /**
-         * @var AddressInterface $invoiceAddress
+         * @var AddressInterface&Concrete $invoiceAddress
          *
          * @psalm-suppress InvalidArgument
          */

@@ -34,7 +34,7 @@ final class ViewSqlRewriter
             $tokens[] = [
                 'value' => null !== $match[1] ? str_replace('``', '`', $match[1]) : ($match[4] ?? $raw),
                 'raw' => $raw,
-                'type' => null !== $match[1] ? 'identifier' : (null !== $match[2] || null !== $match[3] ? 'string' : (null !== $match[5] ? 'space' : (null !== $match[4] ? 'word' : 'symbol'))),
+                'type' => null !== $match[1] ? 'identifier' : (null !== $match[2] || null !== $match[3] ? 'string' : (null !== $match[5] ? 'space' : (null !== ($match[4] ?? null) ? 'word' : 'symbol'))),
             ];
             $offset += strlen($raw);
         }
@@ -103,9 +103,9 @@ final class ViewSqlRewriter
             if (!in_array($token['type'], ['identifier', 'word'], true) || !isset(AdjustmentFieldNames::MAP[$token['value']])) {
                 continue;
             }
-            $previous = $tokens[$significant[$position - 1] ?? -1]['value'] ?? '';
+            $previous = $position > 0 ? $tokens[$significant[$position - 1]]['value'] : '';
             if ('.' === $previous) {
-                $qualifier = $tokens[$significant[$position - 2] ?? -1]['value'] ?? '';
+                $qualifier = $position >= 2 ? $tokens[$significant[$position - 2]]['value'] : '';
                 $source = $references[$qualifier] ?? null;
                 if (null === $source) {
                     throw new \RuntimeException('Cannot resolve view column qualifier ' . $qualifier . '.');
@@ -114,9 +114,9 @@ final class ViewSqlRewriter
                     $tokens[$index]['raw'] = '`' . $sourceFields[$source][$token['value']] . '`';
                 }
             } elseif ('AS' === strtoupper($previous)) {
-                $expression = $tokens[$significant[$position - 2] ?? -1] ?? [];
+                $expression = $position >= 2 ? $tokens[$significant[$position - 2]] : [];
                 if ($standardObjectView && ($expression['raw'] ?? '') === '`' . AdjustmentFieldNames::MAP[$token['value']] . '`' &&
-                    '.' === ($tokens[$significant[$position - 3] ?? -1]['value'] ?? '')) {
+                    $position >= 3 && '.' === $tokens[$significant[$position - 3]]['value']) {
                     $tokens[$index]['raw'] = '`' . AdjustmentFieldNames::MAP[$token['value']] . '`';
                 }
             } else {

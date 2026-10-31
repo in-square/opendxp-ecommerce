@@ -55,9 +55,6 @@ final class DocumentContext implements Context
             default => throw new \InvalidArgumentException($type . ' is not valid')
         };
 
-        /**
-         * @var Document $document
-         */
         $document = new $classForType();
         $document->setParent(Document\Service::createFolderByPath($path));
         $document->setKey(Document\Service::getValidKey($key, 'document'));
