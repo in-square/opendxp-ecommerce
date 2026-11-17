@@ -21,6 +21,7 @@ namespace CoreShop\Component\Core\Notification\Rule\Action\Order;
 use CoreShop\Component\Core\Order\OrderMailProcessorInterface;
 use CoreShop\Component\Notification\Model\NotificationRuleInterface;
 use CoreShop\Component\Notification\Rule\Action\NotificationRuleProcessorInterface;
+use CoreShop\Component\OpenDxp\Element\ElementId;
 use CoreShop\Component\Order\Model\OrderInterface;
 use CoreShop\Component\Order\Repository\OrderRepositoryInterface;
 use OpenDxp\Model\Document;
@@ -55,8 +56,9 @@ class OrderMailActionProcessor implements NotificationRuleProcessorInterface
                 throw new \Exception('OrderMailActionProcessor: Language is not set.');
             }
 
-            if (array_key_exists($language, $configuration['mails'])) {
-                $mailDocumentId = $configuration['mails'][$language];
+            $mailDocumentId = ElementId::normalize($configuration['mails'][$language] ?? null);
+
+            if (null !== $mailDocumentId) {
                 $mailDocument = Document::getById($mailDocumentId);
 
                 $params['mailRule'] = $rule;

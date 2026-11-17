@@ -20,6 +20,7 @@ namespace CoreShop\Component\Notification\Rule\Action;
 
 use CoreShop\Component\Notification\Model\NotificationRuleInterface;
 use CoreShop\Component\OpenDxp\DataObject\InheritanceHelper;
+use CoreShop\Component\OpenDxp\Element\ElementId;
 use CoreShop\Component\OpenDxp\Mail\MailProcessorInterface;
 use OpenDxp\Model\Document;
 
@@ -33,7 +34,6 @@ class MailActionProcessor implements NotificationRuleProcessorInterface
     public function apply($subject, NotificationRuleInterface $rule, array $configuration, array $params = []): void
     {
         $language = null;
-        $mails = $configuration['mails'];
 
         if (array_key_exists('_locale', $params)) {
             $language = $params['_locale'];
@@ -43,8 +43,9 @@ class MailActionProcessor implements NotificationRuleProcessorInterface
             throw new \Exception('MailActionProcessor: Language is not set.');
         }
 
-        if (array_key_exists($language, $mails)) {
-            $mailDocumentId = $mails[$language];
+        $mailDocumentId = ElementId::normalize($configuration['mails'][$language] ?? null);
+
+        if (null !== $mailDocumentId) {
             $mailDocument = Document::getById($mailDocumentId);
             $recipient = [];
 

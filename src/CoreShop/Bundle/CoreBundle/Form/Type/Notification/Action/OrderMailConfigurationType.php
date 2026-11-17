@@ -21,7 +21,9 @@ namespace CoreShop\Bundle\CoreBundle\Form\Type\Notification\Action;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Validator\Constraints\Positive;
 
 class OrderMailConfigurationType extends AbstractType
 {
@@ -31,6 +33,11 @@ class OrderMailConfigurationType extends AbstractType
 
         $builder
             ->add('mails', CollectionType::class, [
+                'entry_type' => IntegerType::class,
+                'entry_options' => [
+                    'required' => false,
+                    'constraints' => [new Positive()],
+                ],
                 'allow_add' => true,
                 'allow_delete' => true,
             ])

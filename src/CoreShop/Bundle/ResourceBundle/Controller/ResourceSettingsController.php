@@ -19,6 +19,7 @@ declare(strict_types=1);
 namespace CoreShop\Bundle\ResourceBundle\Controller;
 
 use CoreShop\Bundle\ResourceBundle\CoreShopResourceBundle;
+use CoreShop\Component\OpenDxp\Element\ElementId;
 use OpenDxp\Model\Element\AbstractElement;
 use OpenDxp\Model\Element\Service;
 use Symfony\Component\HttpFoundation\Request;
@@ -28,11 +29,22 @@ class ResourceSettingsController extends AdminController
 {
     public function getNicePathAction(Request $request): Response
     {
-        $targets = json_decode($this->getParameterFromRequest($request, 'targets'), true);
+        $targets = $this->getParameterFromRequest($request, 'targets');
+        $targets = is_string($targets) ? json_decode($targets, true) : null;
         $result = [];
 
-        foreach ($targets as $target) {
-            $element = Service::getElementById($target['type'], $target['id']);
+        foreach (is_array($targets) ? $targets : [] as $target) {
+            if (!is_array($target)) {
+                continue;
+            }
+
+            $type = $target['type'] ?? null;
+            $id = ElementId::normalize($target['id'] ?? null);
+            if (!is_string($type) || null === $id) {
+                continue;
+            }
+
+            $element = Service::getElementById($type, $id);
 
             if ($element instanceof AbstractElement) {
                 $result[$element->getId()] = $element->getFullPath();
